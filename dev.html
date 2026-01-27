@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thinkora | Development</title>
+
+  <!-- Estilos globales -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR (se carga dinámicamente) -->
+  <div id="navbar-container"></div>
+
+  <!-- CONTENIDO DE LA PÁGINA -->
+  <main class="page-content">
+    <h1>Página de desarrollo</h1>
+    <p>
+      Esta es una página de prueba donde se valida la correcta carga
+      del navbar reutilizable y el sistema de idiomas.
+    </p>
+  </main>
+
+  <!-- SCRIPTS -->
+  <!-- 1️⃣ Idiomas -->
+  <script src="js/i18n.js"></script>
+
+  <!-- 2️⃣ Carga del navbar -->
+  <script>
+    fetch("/navbar.html")
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById("navbar-container").innerHTML = html;
+
+        // aplicar idioma guardado
+        const lang = localStorage.getItem("language") || "es";
+        updateTexts(lang);
+      })
+      .catch(err => console.error("Error loading navbar:", err));
+  </script>
+
+</body>
+</html>
