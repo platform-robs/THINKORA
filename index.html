@@ -33,8 +33,9 @@
       text-align: center;
       padding: 0 20px;
       color: #fff;
+      overflow: hidden;
     }
-
+  
     .hero h1 {
       font-family: 'Righteous', cursive;
       font-size: clamp(3rem, 8vw, 5rem);
@@ -45,7 +46,7 @@
       line-height: 1;
       animation: fadeIn 1s ease forwards;
     }
-
+  
     .hero p {
       font-size: clamp(1rem, 2.5vw, 1.4rem);
       margin-top: 15px;
@@ -53,40 +54,47 @@
       line-height: 1.5;
       opacity: 0;
       animation: fadeIn 1.2s ease forwards;
+      transition: opacity 1s ease, transform 1s ease;
     }
-
+  
+    .hero p .highlight {
+      background: linear-gradient(90deg, #00b0ff, #76ff03);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  
+    /* BOTONES SOBRIOS */
     .cta-buttons {
       margin-top: 30px;
       display: flex;
-      gap: 20px;
+      gap: 15px;
       flex-wrap: wrap;
       opacity: 0;
       animation: fadeIn 1.5s ease forwards;
     }
-
+  
     .cta-buttons a {
-      padding: 14px 28px;
-      border-radius: 10px;
-      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 500;
       text-decoration: none;
-      color: #000;
-      background: linear-gradient(90deg, #00b0ff, #76ff03);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255,255,255,0.3);
       transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
     }
-
+  
     .cta-buttons a:hover {
-      transform: translateY(-3px);
-      background: linear-gradient(90deg, #76ff03, #00b0ff);
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      border-color: #76ff03;
     }
-
-    /* ============================ 
-       ANIMACIONES
-    ============================ */
+  
+    /* ANIMACIONES */
     @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* ============================ 
-       RESPONSIVE
-    ============================ */
+  
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       .hero h1 { font-size: 3rem; }
       .hero p { font-size: 1rem; }
@@ -96,17 +104,19 @@
 </head>
 <body>
 
-  <!-- HERO PRINCIPAL -->
-  <section class="hero">
-    <h1>Thinkora</h1>
-    <p>Transformamos tus <span style="background: linear-gradient(90deg, #00b0ff, #76ff03); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.</p>
-    <div class="cta-buttons">
-      <a href="#services">Servicios</a>
-      <a href="#services">Paquetes</a>
-      <a href="#services">Herramientas</a>
-      <a href="#contact">Contacto</a>
-    </div>
-  </section>
+<!-- HERO PRINCIPAL -->
+<section class="hero">
+  <h1>Thinkora</h1>
+  <p id="hero-text">Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.</p>
+  <div class="cta-buttons">
+    <a href="#services">Servicios</a>
+    <a href="#packages">Paquetes</a>
+    <a href="#tools">Herramientas</a>
+    <a href="#contact">Contacto</a>
+  </div>
+</section>
+
+
 
  
   <!-- FOOTER -->
@@ -117,6 +127,29 @@
        SCRIPTS
        IMPORTANTE: el orden SÍ importa
   ====================================================== -->
+
+  <script>
+  // ============================
+  // ROTADOR DE TEXTOS HERO
+  // ============================
+  const heroText = document.getElementById("hero-text");
+  const messages = [
+    'Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.',
+    'Donde lo que piensas, se vuelve solución...'
+  ];
+  let index = 0;
+
+  setInterval(() => {
+    heroText.style.opacity = 0;
+    heroText.style.transform = 'translateY(20px)';
+    setTimeout(() => {
+      index = (index + 1) % messages.length;
+      heroText.innerHTML = messages[index];
+      heroText.style.opacity = 1;
+      heroText.style.transform = 'translateY(0)';
+    }, 600);
+  }, 6000); // cambia cada 6 segundos
+</script>
 
   <!-- 1️⃣ Traducciones (idiomas) -->
   <script src="assets/js/i18n.js"></script>
