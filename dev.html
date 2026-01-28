@@ -1,155 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- =====================================================
+       CONFIGURACIÓN BÁSICA
+  ====================================================== -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Thinkora | Desarrollo</title>
+  <!-- =====================================================
+       SEO BÁSICO (ajusta por página)
+  ====================================================== -->
+  <title>Thinkora | Development</title>
+  <meta name="description" content="Thinkora - Digital solutions under development.">
+  <meta name="author" content="Salvador Robles">
 
-  <!-- Fuentes (IMPORTANTÍSIMO: mismas que tu home) -->
+  <!-- =====================================================
+       FUENTES (IDENTIDAD THINKORA)
+  ====================================================== -->
   <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100vh;
-      font-family: 'Comfortaa', sans-serif;
-      background-color: #434343;
-      color: #d9d9d9;
-      overflow-x: hidden;
-    }
-
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* CONTENEDORES EXTERNOS */
-    #navbar-container,
-    #footer-container {
-      width: 100%;
-    }
-
-    /* CONTENIDO PRINCIPAL */
-    main {
-      flex: 1;
-      width: 100%;
-      max-width: 1000px;
-      padding: 80px 20px 40px;
-      box-sizing: border-box;
-      text-align: center;
-      animation: fadeInUp 0.8s ease forwards;
-    }
-
-    .title {
-      font-family: 'Righteous', cursive;
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      background: linear-gradient(90deg, #00b0ff, #76ff03);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 15px;
-    }
-
-    .subtitle {
-      font-size: clamp(1rem, 3vw, 1.3rem);
-      font-weight: 300;
-      margin-bottom: 40px;
-      color: #f1f1f1;
-    }
-
-    .card {
-      background: #505050;
-      border-radius: 14px;
-      padding: 30px 25px;
-      max-width: 700px;
-      margin: 0 auto;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-      animation: fadeInUp 1s ease forwards;
-    }
-
-    .card h2 {
-      font-family: 'Righteous', cursive;
-      font-size: 1.8rem;
-      color: #00b0ff;
-      margin-bottom: 15px;
-    }
-
-    .card p {
-      font-size: 1rem;
-      line-height: 1.7;
-      margin-bottom: 25px;
-    }
-
-    .status {
-      display: inline-block;
-      padding: 12px 22px;
-      border-radius: 999px;
-      font-weight: 700;
-      background: linear-gradient(90deg, #00b0ff, #76ff03);
-      color: #000;
-      font-size: 0.9rem;
-      letter-spacing: 0.5px;
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 768px) {
-      main {
-        padding-top: 60px;
-      }
-      .card {
-        padding: 22px 18px;
-      }
-    }
-  </style>
+  <!-- =====================================================
+       CSS GLOBAL
+       (un solo CSS para todo el sitio)
+  ====================================================== -->
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
 
-  <!-- NAVBAR (cargado dinámicamente) -->
+  <!-- =====================================================
+       NAVBAR
+       Se carga dinámicamente desde navbar.html
+       Esto permite reutilizarlo en todo el sitio
+  ====================================================== -->
   <div id="navbar-container"></div>
 
-  <!-- CONTENIDO -->
+  <!-- =====================================================
+       CONTENIDO PRINCIPAL
+       TODO lo que cambies entre páginas va aquí
+  ====================================================== -->
   <main>
-    <h1 class="title">Área de Desarrollo</h1>
-    <p class="subtitle">Aquí es donde las ideas se convierten en sistemas reales</p>
 
-    <div class="card">
-      <h2>🚧 Página en construcción</h2>
-      <p>
-        Esta sección está siendo desarrollada como parte del ecosistema Thinkora.
-        Aquí se documentarán pruebas, prototipos, ideas técnicas y soluciones
-        que evolucionan hacia productos digitales reales.
+    <!-- ===== TÍTULO PRINCIPAL ===== -->
+    <h1 class="title" data-i18n="dev.title">
+      Development
+    </h1>
+
+    <!-- ===== SUBTÍTULO / DESCRIPCIÓN ===== -->
+    <p class="subtitle" data-i18n="dev.subtitle">
+      This section is currently under development
+    </p>
+
+    <!-- ===== CARD PRINCIPAL ===== -->
+    <section class="card">
+
+      <h2 data-i18n="dev.cardTitle">
+        We are building something great 🚀
+      </h2>
+
+      <p data-i18n="dev.cardText">
+        This page is part of Thinkora’s ecosystem.  
+        We are working to deliver a clean, modern and powerful digital experience.
       </p>
-      <span class="status">EN DESARROLLO</span>
-    </div>
+
+      <!-- ===== ESTADO ===== -->
+      <div style="margin-top: 25px;">
+        <span class="status" data-i18n="dev.status">
+          IN DEVELOPMENT
+        </span>
+      </div>
+
+    </section>
+
+    <!-- ===== SEPARADOR VISUAL ===== -->
+    <div class="separator"></div>
+
+    <!-- ===== SECCIÓN INFORMATIVA ===== -->
+    <section>
+      <h2 class="section-title" data-i18n="dev.nextTitle">
+        What’s coming next?
+      </h2>
+
+      <p class="section-description" data-i18n="dev.nextText">
+        New features, services and projects are being designed to help businesses
+        transform ideas into real digital solutions.
+      </p>
+    </section>
+
   </main>
 
-  <!-- FOOTER (cargado dinámicamente) -->
+  <!-- =====================================================
+       FOOTER
+       Igual que el navbar, se reutiliza en todo el sitio
+  ====================================================== -->
   <div id="footer-container"></div>
 
-  <!-- SCRIPT PARA CARGAR NAVBAR Y FOOTER -->
-  <script>
-    function loadComponent(id, file) {
-      fetch(file)
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById(id).innerHTML = html;
-        })
-        .catch(err => {
-          console.error("Error cargando", file, err);
-        });
-    }
+  <!-- =====================================================
+       SCRIPTS
+       IMPORTANTE: el orden SÍ importa
+  ====================================================== -->
 
-    loadComponent("navbar-container", "navbar.html");
-    loadComponent("footer-container", "footer.html");
-  </script>
+  <!-- 1️⃣ Traducciones (idiomas) -->
+  <script src="assets/js/i18n.js"></script>
+
+  <!-- 2️⃣ Navbar dinámico -->
+  <script src="assets/js/navbar.js"></script>
+
+  <!-- 3️⃣ Footer dinámico -->
+  <script src="assets/js/footer.js"></script>
 
 </body>
 </html>
