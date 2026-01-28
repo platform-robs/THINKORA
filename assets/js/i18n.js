@@ -3,26 +3,59 @@ const translations = {
     nav: {
       home: "Inicio",
       services: "Servicios",
+      solutions: "Soluciones",
       projects: "Proyectos",
       contact: "Contacto"
     },
     footer: {
-      rights: "© 2025 Thinkora | Salvador Robles",
+      slogan: "Transformamos ideas en soluciones digitales",
+      services: "Servicios",
+      projects: "Proyectos",
+      contact: "Contacto",
       mail: "Correo",
-      phone: "WhatsApp"
+      whatsapp: "WhatsApp",
+      copy: "© 2025 Thinkora | Salvador Robles"
+    },
+    dev: {
+      title: "En desarrollo",
+      subtitle: "Esta sección está actualmente en construcción",
+      cardTitle: "Estamos creando algo increíble 🚀",
+      cardText:
+        "Esta página forma parte del ecosistema Thinkora. Estamos construyendo una experiencia digital moderna y poderosa.",
+      status: "EN DESARROLLO",
+      nextTitle: "¿Qué sigue?",
+      nextText:
+        "Nuevos servicios, proyectos y soluciones digitales están en camino."
     }
   },
+
   en: {
     nav: {
       home: "Home",
       services: "Services",
+      solutions: "Solutions",
       projects: "Projects",
       contact: "Contact"
     },
     footer: {
-      rights: "© 2025 Thinkora | Salvador Robles",
+      slogan: "We turn ideas into digital solutions",
+      services: "Services",
+      projects: "Projects",
+      contact: "Contact",
       mail: "Email",
-      phone: "WhatsApp"
+      whatsapp: "WhatsApp",
+      copy: "© 2025 Thinkora | Salvador Robles"
+    },
+    dev: {
+      title: "Under development",
+      subtitle: "This section is currently under construction",
+      cardTitle: "We are building something great 🚀",
+      cardText:
+        "This page is part of the Thinkora ecosystem. We are crafting a modern and powerful digital experience.",
+      status: "IN DEVELOPMENT",
+      nextTitle: "What’s next?",
+      nextText:
+        "New services, projects and digital solutions are coming soon."
     }
   }
 };
@@ -37,9 +70,9 @@ function setLanguage(lang) {
 
 function applyTranslations(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.dataset.i18n.split(".");
+    const keys = el.dataset.i18n.split(".");
     let text = translations[lang];
-    key.forEach(k => text = text?.[k]);
+    keys.forEach(k => text = text?.[k]);
     if (text) el.textContent = text;
   });
 }
