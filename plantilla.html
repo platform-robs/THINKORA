@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- =====================================================
+       CONFIGURACIÓN BÁSICA
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- =====================================================
+       SEO BÁSICO (ajusta por página)
+  ====================================================== -->
+  <title>Thinkora | Página</title>
+  <meta name="description" content="Thinkora - Soluciones digitales modernas.">
+  <meta name="author" content="Salvador Robles">
+
+  <!-- =====================================================
+       FUENTES (IDENTIDAD THINKORA)
+  ====================================================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- =====================================================
+       CSS GLOBAL
+       (un solo CSS para todo el sitio)
+  ====================================================== -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       NAVBAR DINÁMICO
+       Se carga desde navbar.js
+  ====================================================== -->
+  <div id="navbar-container"></div>
+
+  <!-- =====================================================
+       CONTENIDO PRINCIPAL
+       TODO lo que cambies entre páginas va aquí
+  ====================================================== -->
+  <main>
+    <h1 class="title" data-i18n="page.title">Título de la página</h1>
+    <p class="subtitle" data-i18n="page.subtitle">Subtítulo o descripción de la página</p>
+
+    <!-- Aquí agregas todo el contenido específico de cada página -->
+  </main>
+
+  <!-- =====================================================
+       FOOTER DINÁMICO
+       Se carga desde footer.js
+  ====================================================== -->
+  <div id="footer-container"></div>
+
+  <!-- =====================================================
+       SCRIPTS
+       IMPORTANTE: el orden SÍ importa
+  ====================================================== -->
+
+  <!-- 1️⃣ Traducciones (idiomas) -->
+  <script src="assets/js/i18n.js"></script>
+
+  <!-- 2️⃣ Navbar dinámico -->
+  <script src="assets/js/navbar.js"></script>
+
+  <!-- 3️⃣ Footer dinámico -->
+  <script src="assets/js/footer.js"></script>
+
+  <!-- 4️⃣ Script específico de cada página -->
+  <!-- <script src="assets/js/pagina.js"></script> -->
+
+</body>
+</html>
