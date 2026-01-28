@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const navbar = document.querySelector(".navbar");
       const navLinks = document.querySelector(".nav-links");
 
-      // SCROLL HIDE/SHOW
+      // SCROLL hide/show
       let lastScroll = 0;
       window.addEventListener("scroll", () => {
         const currentScroll = window.pageYOffset;
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         lastScroll = currentScroll;
       });
 
-      // HAMBURGER ANIMADA
+      // Hamburger
       const hamburger = document.createElement("div");
       hamburger.classList.add("hamburger");
       hamburger.innerHTML = `<div></div><div></div><div></div>`;
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         hamburger.classList.toggle("active");
       });
 
-      // Cerrar menú al hacer click en link
+      // Cerrar menú al click
       navLinks.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", () => {
           navLinks.classList.remove("show");
