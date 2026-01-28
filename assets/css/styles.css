@@ -325,12 +325,12 @@ main {
 }
 
 /* ===== BOTONES ===== */
-.footer-actions {
+.footer-links {
   display: flex;
-  flex-direction: column;
-  gap: 14px;
-  align-items: center;
+  justify-content: center;
+  gap: 30px;
   margin-bottom: 35px;
+  flex-wrap: wrap;
 }
 
 .footer-btn {
@@ -348,15 +348,12 @@ main {
   transition: transform 0.25s ease, background 0.25s ease;
 }
 
-.footer-btn i {
-  font-size: 1.1rem;
-}
-
 .footer-btn:hover {
   transform: translateY(-3px);
   background: linear-gradient(90deg, #00b0ff, #76ff03);
   color: #000;
 }
+
 
 /* ===== COPY ===== */
 .footer-copy {
