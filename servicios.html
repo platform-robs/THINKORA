@@ -85,82 +85,35 @@
     /* ============================ 
        SECCIÓN SOLUCIONES
     ============================ */
-.solution-grid {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.solution-card {
-  background: #2e2e2e;
-  border-radius: 15px;
-  width: 300px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.solution-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-}
-
-.solution-header {
-  display: flex;
-  justify-content: center; /* título centrado */
-  align-items: center;
-  padding: 10px 20px; /* más altura para centrar verticalmente */
-  cursor: pointer;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.solution-header h4 {
-  font-size: 1.2rem;
-  color: #fff;
-  margin: 0;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.solution-header i {
-  position: absolute;
-  right: 20px;
-  transition: transform 0.3s ease;
-  color: #00ff99;
-}
-
 .solution-content {
   max-height: 0;
+  opacity: 0;
   overflow: hidden;
   padding: 0 20px;
-  transition: max-height 0.5s ease, padding 0.5s ease;
-  list-style: none; /* quita los bullets */
-}
-
-.solution-content li {
-  margin: 10px 0;
-  color: #ccc;
-  font-size: 0.95rem;
-  padding-left: 0; /* opcional: elimina indentado de los li */
-}
-
-
-.solution-card.active .solution-header {
-  justify-content: flex-start; /* título se mueve arriba */
-  padding: 20px 20px 10px 20px;
+  transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+  list-style: none;
 }
 
 .solution-card.active .solution-content {
-  max-height: 500px; /* ajustable según cantidad de contenido */
-  padding: 0px 20px 0px 20px;
+  max-height: 500px; /* ajusta según cantidad de contenido */
+  opacity: 1;
+  padding: 10px 20px 20px 20px;
+}
+
+/* Título se mueve arriba al abrir */
+.solution-card.active .solution-header {
+  justify-content: flex-start;
+  padding: 20px 20px 10px 20px;
+}
+
+.solution-card .solution-header i {
+  transition: transform 0.3s ease;
 }
 
 .solution-card.active .solution-header i {
   transform: rotate(180deg);
 }
+
     .solution-card h4 .highlight,
     .service-card h3 .highlight {
       font-weight: 700;
@@ -285,19 +238,29 @@
 
   <!-- SCRIPTS -->
 <script>
-document.querySelectorAll('.solution-card').forEach(card => {
+const solutionCards = document.querySelectorAll('.solution-card');
+
+solutionCards.forEach(card => {
   const header = card.querySelector('.solution-header');
 
   header.addEventListener('click', () => {
+
+    // Cierra cualquier otra tarjeta abierta
+    solutionCards.forEach(c => {
+      if (c !== card) {
+        c.classList.remove('active');
+      }
+    });
+
+    // Alterna la tarjeta clickeada
     card.classList.toggle('active');
 
-    // Scroll automático para que la tarjeta desplegada quede en vista
+    // Scroll para que quede visible si se abre
     if (card.classList.contains('active')) {
       card.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 });
-
 </script>
   
   <script src="assets/js/i18n.js"></script>
