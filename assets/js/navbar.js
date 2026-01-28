@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(html => {
       document.getElementById("navbar-container").innerHTML = html;
 
-      // Aplica traducciones si existen
       if (typeof applyTranslations === "function") {
         applyTranslations(localStorage.getItem("language") || "es");
       }
@@ -12,25 +11,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const navbar = document.querySelector(".navbar");
       const navLinks = document.querySelector(".nav-links");
 
-      // ==========================
       // SCROLL HIDE/SHOW
-      // ==========================
       let lastScroll = 0;
       window.addEventListener("scroll", () => {
         const currentScroll = window.pageYOffset;
-
         if (currentScroll > lastScroll && currentScroll > 100) {
           navbar.style.top = "-100px";
         } else {
           navbar.style.top = "0";
         }
-
         lastScroll = currentScroll;
       });
 
-      // ==========================
-      // HAMBURGER MOBILE
-      // ==========================
+      // HAMBURGER ANIMADA
       const hamburger = document.createElement("div");
       hamburger.classList.add("hamburger");
       hamburger.innerHTML = `<div></div><div></div><div></div>`;
@@ -38,11 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       hamburger.addEventListener("click", () => {
         navLinks.classList.toggle("show");
+        hamburger.classList.toggle("active");
       });
 
       // Cerrar menú al hacer click en link
       navLinks.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => navLinks.classList.remove("show"));
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("show");
+          hamburger.classList.remove("active");
+        });
       });
     })
     .catch(err => console.error("Navbar error:", err));
