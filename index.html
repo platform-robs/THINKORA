@@ -1,204 +1,190 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- =====================================================
+       CONFIGURACIÓN BÁSICA
+  ====================================================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO -->
+  <!-- =====================================================
+       SEO BÁSICO
+  ====================================================== -->
   <title>Thinkora - Donde lo que piensas, se vuelve solución...</title>
   <meta name="description" content="Thinkora: Diseño y desarrollo web, aplicaciones web y automatización de procesos para empresas y emprendedores.">
   <meta name="author" content="Salvador Robles">
 
-  <!-- FUENTES -->
+  <!-- =====================================================
+       FUENTES
+  ====================================================== -->
   <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
-
-  <!-- ICONOS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- CSS -->
+  <!-- =====================================================
+       CSS GLOBAL
+  ====================================================== -->
   <link rel="stylesheet" href="assets/css/styles.css">
 
-<style>
-/* ============================ 
-   HERO PRINCIPAL
-============================ */
-.hero {
-  width: 100%;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #1e1e1e, #434343);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 20px;
-  color: #fff;
-}
+  <style>
+    /* ============================ 
+       HERO PRINCIPAL
+    ============================ */
+    .hero {
+      width: 100%;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1e1e1e, #434343);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      color: #fff;
+    }
 
-.hero h1 {
-  font-family: 'Righteous', cursive;
-  font-size: clamp(3rem, 8vw, 5rem);
-  background: linear-gradient(90deg, #00b0ff, #76ff03);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 0;
-  line-height: 1;
-  animation: fadeIn 1s ease forwards;
-}
+    .hero h1 {
+      font-family: 'Righteous', cursive;
+      font-size: clamp(3rem, 8vw, 5rem);
+      background: linear-gradient(90deg, #00b0ff, #76ff03);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+      line-height: 1;
+      animation: fadeIn 1s ease forwards;
+    }
 
-.hero-text-container {
-  height: 80px; /* fijo para que no se mueva */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 15px;
-  overflow: hidden;
-}
+    .hero-text-container {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 15px;
+      overflow: hidden;
+    }
 
-.hero-text-container p {
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
-  max-width: 700px;
-  line-height: 1.5;
-  opacity: 1;
-  transition: opacity 1s ease, transform 1s ease;
-}
+    .hero-text-container p {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      max-width: 700px;
+      line-height: 1.5;
+      transition: opacity 1s ease, transform 1s ease;
+    }
 
-.highlight {
-  background: linear-gradient(90deg, #00b0ff, #76ff03);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-}
+    .highlight {
+      background: linear-gradient(90deg, #00b0ff, #76ff03);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
 
-/* BOTONES SOBRIOS */
-.cta-buttons {
-  margin-top: 30px;
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+    /* Botones hero */
+    .cta-buttons {
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-.cta-buttons a, #lang-btn {
-  padding: 12px 24px;
-  border-radius: 6px;
-  font-weight: 500;
-  text-decoration: none;
-  color: #fff;
-  background-color: #00b0ff;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    .cta-buttons a {
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #000;
+      background: linear-gradient(90deg, #00b0ff, #76ff03);
+      transition: all 0.3s ease;
+    }
 
-.cta-buttons a:hover, #lang-btn:hover {
-  transform: translateY(-2px);
-  background-color: #76ff03;
-  color: #000;
-}
+    .cta-buttons a:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(90deg, #76ff03, #00b0ff);
+    }
 
-/* ============================ 
-   ANIMACIONES
-============================ */
-@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    /* ============================ 
+       ANIMACIONES
+    ============================ */
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ============================ 
-   RESPONSIVE
-============================ */
-@media (max-width: 768px) {
-  .hero h1 { font-size: 3rem; }
-  .hero-text-container p { font-size: 1rem; }
-  .cta-buttons { flex-direction: column; }
-}
-</style>
+    /* ============================ 
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 3rem; }
+      .hero-text-container p { font-size: 1rem; }
+      .cta-buttons { flex-direction: column; }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- HERO PRINCIPAL -->
-<section class="hero">
-  <h1>Thinkora</h1>
-  
-  <!-- Contenedor fijo para el texto que no mueva nada -->
-  <div class="hero-text-container">
-    <p id="hero-text">Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.</p>
-  </div>
+  <!-- NAVBAR -->
+  <div id="navbar-container"></div>
 
-  <div class="cta-buttons">
-    <a href="#services">Servicios</a>
-    <a href="#packages">Paquetes</a>
-    <a href="#tools">Herramientas</a>
-    <a href="#contact">Contacto</a>
-    <button id="lang-btn">EN</button>
-  </div>
-</section>
+  <!-- HERO PRINCIPAL -->
+  <section class="hero">
+    <h1 data-i18n="nav.home">Thinkora</h1>
+    
+    <div class="hero-text-container">
+      <p id="hero-text">
+        Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.
+      </p>
+    </div>
 
+    <div class="cta-buttons">
+      <a href="#services" data-i18n="nav.services">Servicios</a>
+      <a href="#packages">Paquetes</a>
+      <a href="#tools">Herramientas</a>
+      <a href="#contact" data-i18n="nav.contact">Contacto</a>
+      <a href="#" id="lang-toggle">ES / EN</a>
+    </div>
+  </section>
 
-
- 
   <!-- FOOTER -->
-
   <div id="footer-container"></div>
 
   <!-- =====================================================
        SCRIPTS
-       IMPORTANTE: el orden SÍ importa
   ====================================================== -->
-
- <script>
-const heroText = document.getElementById("hero-text");
-const heroMessages = [
-  'Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.',
-  'Explora nuestros servicios, paquetes y herramientas para tu negocio.',
-  'Donde lo que piensas, se vuelve solución...'
-];
-
-let msgIndex = 0;
-
-function changeHeroText() {
-  // Fade out
-  heroText.style.opacity = 0;
-  heroText.style.transform = 'translateY(20px)';
-  
-  setTimeout(() => {
-    // Cambiar el texto
-    msgIndex = (msgIndex + 1) % heroMessages.length;
-    heroText.innerHTML = heroMessages[msgIndex];
-    
-    // Fade in
-    heroText.style.opacity = 1;
-    heroText.style.transform = 'translateY(0)';
-  }, 1000); // coincide con la duración de la transición
-}
-
-// Cambiar cada 2.5 segundos
-setInterval(changeHeroText, 2500);
-
-/* ============================
-   BOTÓN DE IDIOMA
-============================ */
-const langBtn = document.getElementById("lang-btn");
-let currentLang = localStorage.getItem("language") || "es";
-
-function toggleLanguage() {
-  currentLang = currentLang === "es" ? "en" : "es";
-  localStorage.setItem("language", currentLang);
-  langBtn.textContent = currentLang.toUpperCase();
-
-  // Opcional: actualizar todo el contenido usando tu i18n.js
-  if (typeof applyTranslations === "function") {
-    applyTranslations(currentLang);
-  }
-}
-
-langBtn.addEventListener("click", toggleLanguage);
-langBtn.textContent = currentLang.toUpperCase();
-</script>
-
-  <!-- 1️⃣ Traducciones (idiomas) -->
   <script src="assets/js/i18n.js"></script>
-
-  <!-- 3️⃣ Footer dinámico -->
+  <script src="assets/js/navbar.js"></script>
   <script src="assets/js/footer.js"></script>
+
+  <script>
+    // =========================
+    // Hero animado
+    // =========================
+    const heroText = document.getElementById("hero-text");
+    const heroMessages = [
+      'Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.',
+      'Explora nuestros servicios, paquetes y herramientas para tu negocio.',
+      'Donde lo que piensas, se vuelve solución...'
+    ];
+
+    let msgIndex = 0;
+
+    function changeHeroText() {
+      heroText.style.opacity = 0;
+      heroText.style.transform = 'translateY(20px)';
+      
+      setTimeout(() => {
+        msgIndex = (msgIndex + 1) % heroMessages.length;
+        heroText.innerHTML = heroMessages[msgIndex];
+        heroText.style.opacity = 1;
+        heroText.style.transform = 'translateY(0)';
+      }, 1000);
+    }
+
+    setInterval(changeHeroText, 5000);
+
+    // =========================
+    // Cambio de idioma
+    // =========================
+    const langToggle = document.getElementById("lang-toggle");
+    langToggle.addEventListener("click", () => {
+      const newLang = localStorage.getItem("language") === "es" ? "en" : "es";
+      setLanguage(newLang);
+    });
+  </script>
 
 </body>
 </html>
