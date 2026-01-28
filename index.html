@@ -8,6 +8,7 @@
   <meta name="description" content="Thinkora: Diseño y desarrollo web, aplicaciones web y automatización de procesos para empresas y emprendedores.">
   <meta name="author" content="Salvador Robles">
 
+  <!-- FUENTES Y ICONOS -->
   <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="assets/css/styles.css">
@@ -49,15 +50,15 @@
       overflow: hidden;
     }
 
-.hero-text-container p {
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
-  max-width: 700px;
-  line-height: 1.5;
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 1s ease, transform 1s ease;
-  text-align: center;
-}
+    .hero-text-container p {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      max-width: 700px;
+      line-height: 1.5;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      text-align: center;
+    }
 
     .highlight {
       background: linear-gradient(90deg, #00b0ff, #76ff03);
@@ -66,7 +67,9 @@
       font-weight: 700;
     }
 
-    /* Botones hero */
+    /* ============================
+       BOTONES HERO SOBRIOS
+    ============================ */
     .cta-buttons {
       margin-top: 30px;
       display: flex;
@@ -74,25 +77,23 @@
       flex-wrap: wrap;
     }
 
-/* Botones hero sobrios y profesionales */
-.cta-buttons a {
-  padding: 12px 26px;
-  border-radius: 6px;
-  font-weight: 500;
-  text-decoration: none;
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(6px);
-  transition: all 0.3s ease;
-}
+    .cta-buttons a {
+      padding: 12px 26px;
+      border-radius: 6px;
+      font-weight: 500;
+      text-decoration: none;
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(6px);
+      transition: all 0.3s ease;
+    }
 
-.cta-buttons a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-  border-color: #00b0ff;
-}
-
+    .cta-buttons a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+      border-color: #00b0ff;
+    }
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -106,27 +107,27 @@
 
 <body>
 
-  <!-- NAVBAR -->
+  <!-- NAVBAR ORIGINAL -->
   <div id="navbar-container"></div>
 
   <!-- HERO PRINCIPAL -->
-<section class="hero">
-  <h1>Thinkora</h1> <!-- fijo, nunca cambia con idioma -->
-  
-  <div class="hero-text-container">
-    <p id="hero-text"></p>
-  </div>
+  <section class="hero">
+    <h1>Thinkora</h1> <!-- fijo, nunca cambia con idioma -->
 
-  <div class="cta-buttons">
-    <a href="#services" data-i18n="nav.services">Servicios</a>
-    <a href="#packages">Paquetes</a>
-    <a href="#tools">Herramientas</a>
-    <a href="#contact" data-i18n="nav.contact">Contacto</a>
-  </div>
-</section>
+    <div class="hero-text-container">
+      <p id="hero-text"></p>
+    </div>
 
+    <div class="cta-buttons">
+      <a href="servicios.html" data-i18n="nav.services">Servicios</a>
+      <a href="paquetes.html" data-i18n="nav.solutions">Paquetes</a>
+      <a href="herramientas.html" data-i18n="nav.projects">Herramientas</a>
+      <a href="nosotros.html" data-i18n="nav.about">Nosotros</a>
+      <a href="contacto.html" data-i18n="nav.contact">Contacto</a>
+    </div>
+  </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER ORIGINAL -->
   <div id="footer-container"></div>
 
   <!-- =====================================================
@@ -138,11 +139,10 @@
 
   <script>
     // =========================
-    // Hero multilingüe
+    // Hero multimensaje con transición suave
     // =========================
     const heroTextEl = document.getElementById("hero-text");
 
-    // Mensajes por idioma
     const heroMessages = {
       es: [
         'Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.',
@@ -158,38 +158,36 @@
 
     let msgIndex = 0;
 
-function updateHeroText() {
-  const lang = localStorage.getItem("language") || "es";
-  heroTextEl.style.opacity = 0;
-  heroTextEl.style.transform = 'translateY(15px)';
+    function updateHeroText() {
+      const lang = localStorage.getItem("language") || "es";
+      heroTextEl.style.opacity = 0;
+      heroTextEl.style.transform = 'translateY(15px)';
 
-  setTimeout(() => {
-    heroTextEl.innerHTML = heroMessages[lang][msgIndex];
-    heroTextEl.style.opacity = 1;
-    heroTextEl.style.transform = 'translateY(0)';
-  }, 500); // transición más corta, se ve más fluido
+      setTimeout(() => {
+        heroTextEl.innerHTML = heroMessages[lang][msgIndex];
+        heroTextEl.style.opacity = 1;
+        heroTextEl.style.transform = 'translateY(0)';
+      }, 500);
 
-  msgIndex = (msgIndex + 1) % heroMessages[lang].length;
-}
-
+      msgIndex = (msgIndex + 1) % heroMessages[lang].length;
+    }
 
     setInterval(updateHeroText, 5000);
-
-    // Inicializa hero al cargar
     document.addEventListener("DOMContentLoaded", () => updateHeroText());
 
     // =========================
-    // Cambio de idioma
+    // Cambio de idioma desde navbar
     // =========================
+    // Si quieres agregar botón directo en hero, se puede usar este:
+    /*
     const langToggle = document.getElementById("lang-toggle");
     langToggle.addEventListener("click", () => {
       const newLang = localStorage.getItem("language") === "es" ? "en" : "es";
       setLanguage(newLang);
-      // Reinicia hero para mostrar el primer mensaje en el nuevo idioma
       msgIndex = 0;
       updateHeroText();
     });
+    */
   </script>
-
 </body>
 </html>
