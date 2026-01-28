@@ -18,6 +18,24 @@ h1,h2,h3 { margin:0; }
 p { margin:0 0 1em 0; line-height:1.6; }
 section { padding: 60px 20px; max-width: 1200px; margin: auto; }
 
+/* ===================== NAVBAR ===================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #4e54c8;
+  color: #fff;
+  font-weight: 700;
+}
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: opacity 0.3s;
+}
+.navbar a:hover { opacity: 0.8; }
+
 /* ===================== HERO ===================== */
 .services-hero {
   text-align: center;
@@ -95,20 +113,32 @@ h2.category-title {
   font-weight: 500;
   opacity: 0.85;
 }
-.cta-btn {
-  display: inline-block;
-  padding: 14px 30px;
-  background: #4e54c8;
+
+/* ===================== FOOTER ===================== */
+footer {
+  background: #2f3640;
   color: #fff;
-  font-weight: 700;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 0.9rem;
 }
-.cta-btn:hover { background: #8f94fb; }
+footer p { margin: 5px 0; }
+
 </style>
 </head>
 <body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">Thinkora</div>
+  <div class="menu">
+    <a href="services.html" data-i18n="nav.services">Servicios</a>
+    <a href="packages.html" data-i18n="nav.packages">Paquetes</a>
+    <a href="tools.html" data-i18n="nav.tools">Herramientas</a>
+    <a href="about.html" data-i18n="nav.about">Nosotros</a>
+    <a href="contact.html" data-i18n="nav.contact">Contacto</a>
+  </div>
+</nav>
 
 <!-- HERO -->
 <section class="services-hero">
@@ -176,38 +206,38 @@ h2.category-title {
   <h2 class="category-title" data-i18n="solutions.categories.web">🌐 Páginas web + Automatización</h2>
 
   <div class="solution-card">
-    <h3>Formularios inteligentes</h3>
-    <p>Formularios personalizados, con lógica y validaciones avanzadas.</p>
+    <h3 data-i18n="solutions.cards.forms.title">Formularios inteligentes</h3>
+    <p data-i18n="solutions.cards.forms.desc">Formularios personalizados, con lógica y validaciones avanzadas.</p>
     <ul>
-      <li>Resúmenes automáticos</li>
-      <li>Control de acceso</li>
-      <li>Fácil integración con Sheets</li>
+      <li data-i18n="solutions.cards.forms.item1">Resúmenes automáticos</li>
+      <li data-i18n="solutions.cards.forms.item2">Control de acceso</li>
+      <li data-i18n="solutions.cards.forms.item3">Fácil integración con Sheets</li>
     </ul>
   </div>
 
   <!-- Eventos -->
-  <h2 class="category-title">🎉 Eventos</h2>
+  <h2 class="category-title" data-i18n="solutions.categories.events">🎉 Eventos</h2>
 
   <div class="solution-card">
-    <h3>Gestión de eventos</h3>
-    <p>Invitaciones, confirmaciones y métricas post-evento.</p>
+    <h3 data-i18n="solutions.cards.events.title">Gestión de eventos</h3>
+    <p data-i18n="solutions.cards.events.desc">Invitaciones, confirmaciones y métricas post-evento.</p>
     <ul>
-      <li>RSVP digital</li>
-      <li>Lista de invitados con QR</li>
-      <li>Reportes y métricas</li>
+      <li data-i18n="solutions.cards.events.item1">RSVP digital</li>
+      <li data-i18n="solutions.cards.events.item2">Lista de invitados con QR</li>
+      <li data-i18n="solutions.cards.events.item3">Reportes y métricas</li>
     </ul>
   </div>
 
   <!-- Almacén / Control de ingresos -->
-  <h2 class="category-title">📦 Almacén / Inventarios</h2>
+  <h2 class="category-title" data-i18n="solutions.categories.inventory">📦 Almacén / Inventarios</h2>
 
   <div class="solution-card">
-    <h3>Control de inventarios</h3>
-    <p>Registro y seguimiento de stock, entradas y salidas.</p>
+    <h3 data-i18n="solutions.cards.inventory.title">Control de inventarios</h3>
+    <p data-i18n="solutions.cards.inventory.desc">Registro y seguimiento de stock, entradas y salidas.</p>
     <ul>
-      <li>Alertas de stock bajo</li>
-      <li>Reportes automáticos</li>
-      <li>Historial por fecha</li>
+      <li data-i18n="solutions.cards.inventory.item1">Alertas de stock bajo</li>
+      <li data-i18n="solutions.cards.inventory.item2">Reportes automáticos</li>
+      <li data-i18n="solutions.cards.inventory.item3">Historial por fecha</li>
     </ul>
   </div>
 
@@ -220,6 +250,15 @@ h2.category-title {
   </p>
   <a href="#contact" class="cta-btn" data-i18n="services.ctaContact">Contáctame</a>
 </section>
+
+<!-- FOOTER -->
+<footer>
+  <p data-i18n="footer.slogan">Donde lo que piensas, se vuelve solución...</p>
+  <p><span data-i18n="footer.mail">Correo</span>: info@thinkora.com</p>
+  <p><span data-i18n="footer.phone">Whatsapp</span>: +52 449 516 5882</p>
+  <p data-i18n="footer.copy">Thinkora © 2026</p>
+  <p data-i18n="footer.author">Desarrollado y gestionado por Salvador Robles</p>
+</footer>
 
 </body>
 </html>
