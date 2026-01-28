@@ -221,6 +221,78 @@ main {
   margin: 40px auto;
 }
 
+
+/* ============================
+   NAVBAR
+============================ */
+.navbar {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  font-family: 'Righteous', cursive;
+  font-size: 1.6rem;
+  text-decoration: none;
+  background: linear-gradient(90deg, #00b0ff, #76ff03);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #d9d9d9;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #00b0ff;
+}
+
+.lang-switch button {
+  background: none;
+  border: none;
+  color: #d9d9d9;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.lang-switch button:hover {
+  color: #76ff03;
+}
+
+/* ============================
+   NAVBAR RESPONSIVE
+============================ */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+
+
+
 /* ============================
    FOOTER
 ============================ */
