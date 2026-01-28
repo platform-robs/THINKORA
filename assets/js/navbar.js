@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const navbar = container.querySelector(".navbar");
       const navLinks = container.querySelector(".nav-links");
 
-      // SCROLL hide/show suavizado
+      // SCROLL hide/show suave
       let lastScroll = 0;
       window.addEventListener("scroll", () => {
         const currentScroll = window.pageYOffset;
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         lastScroll = currentScroll;
       });
 
-      // Hamburger
+      // Hamburger mobile
       const hamburger = document.createElement("div");
       hamburger.classList.add("hamburger");
       hamburger.innerHTML = `<div></div><div></div><div></div>`;
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         hamburger.classList.toggle("active");
       });
 
-      // Cerrar menú al click
+      // Cerrar menú al click en link
       navLinks.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", () => {
           navLinks.classList.remove("show");
