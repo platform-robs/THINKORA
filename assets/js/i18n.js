@@ -2,8 +2,8 @@ const translations = {
   es: {
     nav: {
       services: "Servicios",
-      solutions: "Paquetes",
-      projects: "Herramientas",
+      packages: "Paquetes",
+      tools: "Herramientas",
       about: "Nosotros",
       contact: "Contacto"
     },
