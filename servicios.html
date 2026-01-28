@@ -1,118 +1,228 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- =====================================================
-       CONFIGURACIÓN BÁSICA
-  ====================================================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- =====================================================
-       SEO BÁSICO (ajusta por página)
-  ====================================================== -->
-  <title>Thinkora | Development</title>
-  <meta name="description" content="Thinkora - Digital solutions under development.">
-  <meta name="author" content="Salvador Robles">
-
-  <!-- =====================================================
-       FUENTES (IDENTIDAD THINKORA)
-  ====================================================== -->
+  <title>Thinkora | Servicios y Soluciones</title>
   <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
-
-  <!-- =====================================================
-       CSS GLOBAL
-       (un solo CSS para todo el sitio)
-  ====================================================== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* ============================
+       SECCIÓN DE SERVICIOS
+    ============================ */
+    .service { cursor: pointer; margin: 15px auto; max-width: 800px; border-radius: 10px; overflow: hidden; background: #505050; transition: transform 0.3s; text-align: center; }
+    .service-header { padding: 18px; font-weight: 700; color: #fff; position: relative; }
+    .service-header::after { content: "+"; position: absolute; right: 20px; font-size: 1.2rem; transition: transform 0.3s; }
+    .service.active .service-header::after { content: "−"; }
+    .service-content { max-height: 0; overflow: hidden; padding: 0 18px; color: #d9d9d9; background: #3a3a3a; transition: max-height 0.45s ease, padding 0.45s ease; line-height: 1.6; }
+    .service.active .service-content { max-height: 500px; padding: 15px 18px; }
+
+    /* ============================
+       SECCIÓN DE SOLUCIONES
+    ============================ */
+    .solutions-section { max-width: 1200px; margin: 50px auto; padding: 0 15px; }
+    .solutions-title { font-family: 'Righteous', cursive; font-size: 2.5rem; color: #00b0ff; text-align: center; margin-bottom: 30px; }
+    .solutions-category { margin-bottom: 40px; }
+    .category-title { font-size: 1.8rem; color: #76ff03; margin-bottom: 15px; }
+    .cards-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .solution-card { background: #3a3a3a; border-radius: 12px; padding: 20px; color: #d9d9d9; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s, box-shadow 0.3s; }
+    .solution-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
+    .solution-card h3 { font-size: 1.2rem; color: #00b0ff; margin-bottom: 10px; }
+    .solution-card p { font-size: 0.95rem; margin-bottom: 10px; line-height: 1.4; }
+    .solution-card ul { list-style: none; padding-left: 0; margin-bottom: 15px; }
+    .solution-card ul li::before { content: "✔"; margin-right: 8px; color: #76ff03; }
+    .solution-card .cta-btn { margin-top: auto; background: linear-gradient(90deg, #00b0ff, #76ff03); color: #000; font-weight: 600; text-align: center; padding: 10px; border-radius: 8px; text-decoration: none; transition: background 0.3s; }
+    .solution-card .cta-btn:hover { background: linear-gradient(90deg, #76ff03, #00b0ff); color: #fff; }
+
+    @media (max-width: 768px) {
+      .solutions-title { font-size: 2rem; }
+      .category-title { font-size: 1.4rem; }
+    }
+  </style>
 </head>
-
 <body>
-
-  <!-- =====================================================
-       NAVBAR
-       Se carga dinámicamente desde navbar.html
-       Esto permite reutilizarlo en todo el sitio
-  ====================================================== -->
+  <!-- NAVBAR -->
   <div id="navbar-container"></div>
 
-  <!-- =====================================================
-       CONTENIDO PRINCIPAL
-       TODO lo que cambies entre páginas va aquí
-  ====================================================== -->
+  <!-- HERO -->
   <main>
-
-    <!-- ===== TÍTULO PRINCIPAL ===== -->
-    <h1 class="title" data-i18n="dev.title">
-      Development
-    </h1>
-
-    <!-- ===== SUBTÍTULO / DESCRIPCIÓN ===== -->
-    <p class="subtitle" data-i18n="dev.subtitle">
-      This section is currently under development
+    <h1 class="title" data-i18n="services.title">Servicios y Soluciones</h1>
+    <p class="subtitle" data-i18n="services.subtitle">
+      Automatizo procesos y sistemas digitales para negocios y escuelas.<br>
+      Soluciones prácticas con Google Sheets, Apps Script y páginas web personalizadas.
     </p>
 
-    <!-- ===== CARD PRINCIPAL ===== -->
-    <section class="card">
+    <!-- SECCIÓN SERVICIOS (Acordeón) -->
+    <section id="services-section">
+      <div class="service">
+        <div class="service-header">Desarrollo Web</div>
+        <div class="service-content">Creación de sitios web modernos, responsivos y optimizados para cualquier dispositivo.</div>
+      </div>
+      <div class="service">
+        <div class="service-header">Automatización</div>
+        <div class="service-content">Sistemas que ahorran tiempo y recursos mediante la integración de procesos digitales.</div>
+      </div>
+      <div class="service">
+        <div class="service-header">Aplicaciones</div>
+        <div class="service-content">Aplicaciones web personalizadas que se ajustan a tus necesidades de negocio.</div>
+      </div>
+      <div class="service">
+        <div class="service-header">Consultoría</div>
+        <div class="service-content">Asesoría tecnológica para optimizar recursos e implementar soluciones efectivas.</div>
+      </div>
+      <div class="service">
+        <div class="service-header">UI/UX Design</div>
+        <div class="service-content">Diseños atractivos y funcionales para ofrecer la mejor experiencia al usuario.</div>
+      </div>
+      <div class="service">
+        <div class="service-header">Soporte Técnico</div>
+        <div class="service-content">Asistencia continua y soluciones rápidas para mantener tu negocio en marcha.</div>
+      </div>
+    </section>
 
-      <h2 data-i18n="dev.cardTitle">
-        We are building something great 🚀
-      </h2>
+    <!-- SECCIÓN SOLUCIONES -->
+    <section class="solutions-section">
+      <h2 class="solutions-title">Soluciones Disponibles</h2>
 
-      <p data-i18n="dev.cardText">
-        This page is part of Thinkora’s ecosystem.  
-        We are working to deliver a clean, modern and powerful digital experience.
-      </p>
+      <!-- Categoría Restaurantes / Comercios -->
+      <div class="solutions-category">
+        <h3 class="category-title">🍽️ Restaurantes y Comercios</h3>
+        <div class="cards-container">
+          <div class="solution-card">
+            <h3>Menú digital con QR</h3>
+            <p>Editable desde Google Sheets sin apps ni pagos mensuales.</p>
+            <ul>
+              <li>Menú actualizado en tiempo real</li>
+              <li>Compatible con cualquier dispositivo</li>
+              <li>Fácil de compartir con clientes</li>
+            </ul>
+            <a href="#" class="cta-btn">Quiero este sistema</a>
+          </div>
+          <div class="solution-card">
+            <h3>Sistema de pedidos</h3>
+            <p>Registro automático de pedidos y cálculo de totales.</p>
+            <ul>
+              <li>Historial por día</li>
+              <li>Alertas automáticas</li>
+              <li>Registro de clientes</li>
+            </ul>
+            <a href="#" class="cta-btn">Solicitar demo</a>
+          </div>
+          <!-- Agrega más tarjetas según tus proyectos -->
+        </div>
+      </div>
 
-      <!-- ===== ESTADO ===== -->
-      <div style="margin-top: 25px;">
-        <span class="status" data-i18n="dev.status">
-          IN DEVELOPMENT
-        </span>
+      <!-- Categoría Educación / Escuelas -->
+      <div class="solutions-category">
+        <h3 class="category-title">🎓 Escuelas y Cursos</h3>
+        <div class="cards-container">
+          <div class="solution-card">
+            <h3>Control de asistencia</h3>
+            <p>Automatiza el registro de alumnos en clases.</p>
+            <ul>
+              <li>Reportes semanales automáticos</li>
+              <li>Notificaciones a padres</li>
+              <li>Registro histórico de asistencia</li>
+            </ul>
+            <a href="#" class="cta-btn">Adaptable a tu institución</a>
+          </div>
+          <div class="solution-card">
+            <h3>Plataforma para maestros</h3>
+            <p>Gestión de tareas, boletas y evaluaciones.</p>
+            <ul>
+              <li>Generador de boletas PDF</li>
+              <li>Registro de calificaciones</li>
+              <li>Control de guardias y incidencias</li>
+            </ul>
+            <a href="#" class="cta-btn">Solicitar demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categoría Negocios / Oficinas -->
+      <div class="solutions-category">
+        <h3 class="category-title">💼 Negocios y Oficinas</h3>
+        <div class="cards-container">
+          <div class="solution-card">
+            <h3>Control de ventas</h3>
+            <p>Automatiza tus ingresos y reportes.</p>
+            <ul>
+              <li>Dashboards personalizables</li>
+              <li>Control de inventario</li>
+              <li>Alertas automáticas</li>
+            </ul>
+            <a href="#" class="cta-btn">Quiero este sistema</a>
+          </div>
+          <div class="solution-card">
+            <h3>Automatización administrativa</h3>
+            <p>Optimiza procesos internos y ahorro de tiempo.</p>
+            <ul>
+              <li>Reportes automáticos</li>
+              <li>Control de recursos</li>
+              <li>Panel de métricas</li>
+            </ul>
+            <a href="#" class="cta-btn">Solicitar cotización</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categoría Web / Automatización -->
+      <div class="solutions-category">
+        <h3 class="category-title">🌐 Páginas Web + Automatización</h3>
+        <div class="cards-container">
+          <div class="solution-card">
+            <h3>Landing Pages</h3>
+            <p>Páginas web rápidas, modernas y administrables.</p>
+            <ul>
+              <li>Formularios inteligentes</li>
+              <li>Panel de administración</li>
+              <li>Registro de clientes</li>
+            </ul>
+            <a href="#" class="cta-btn">Solicitar demo</a>
+          </div>
+          <div class="solution-card">
+            <h3>Formularios inteligentes</h3>
+            <p>Recolecta información y automatiza respuestas.</p>
+            <ul>
+              <li>Validaciones avanzadas</li>
+              <li>Acceso restringido</li>
+              <li>Resumen automático</li>
+            </ul>
+            <a href="#" class="cta-btn">Quiero este sistema</a>
+          </div>
+        </div>
       </div>
 
     </section>
-
-    <!-- ===== SEPARADOR VISUAL ===== -->
-    <div class="separator"></div>
-
-    <!-- ===== SECCIÓN INFORMATIVA ===== -->
-    <section>
-      <h2 class="section-title" data-i18n="dev.nextTitle">
-        What’s coming next?
-      </h2>
-
-      <p class="section-description" data-i18n="dev.nextText">
-        New features, services and projects are being designed to help businesses
-        transform ideas into real digital solutions.
-      </p>
-    </section>
-
   </main>
 
-  <!-- =====================================================
-       FOOTER
-       Igual que el navbar, se reutiliza en todo el sitio
-  ====================================================== -->
+  <!-- FOOTER -->
   <div id="footer-container"></div>
 
-  <!-- =====================================================
-       SCRIPTS
-       IMPORTANTE: el orden SÍ importa
-  ====================================================== -->
-
-  <!-- 1️⃣ Traducciones (idiomas) -->
+  <!-- SCRIPTS -->
   <script src="assets/js/i18n.js"></script>
-
-  <!-- 2️⃣ Navbar dinámico -->
   <script src="assets/js/navbar.js"></script>
-
-  <!-- 3️⃣ Footer dinámico -->
   <script src="assets/js/footer.js"></script>
 
+  <script>
+    // Acordeón de servicios
+    const services = document.querySelectorAll(".service");
+    services.forEach(service => {
+      const content = service.querySelector(".service-content");
+      service.addEventListener("click", () => {
+        services.forEach(s => {
+          if (s !== service) s.classList.remove("active");
+        });
+        service.classList.toggle("active");
+        if (service.classList.contains("active")) content.style.maxHeight = content.scrollHeight + "px";
+        else content.style.maxHeight = null;
+      });
+    });
+    window.addEventListener("resize", () => {
+      const open = document.querySelector(".service.active");
+      if(open) open.querySelector(".service-content").style.maxHeight = open.querySelector(".service-content").scrollHeight + "px";
+    });
+  </script>
 </body>
 </html>
