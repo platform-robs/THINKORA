@@ -302,39 +302,34 @@ main {
   background: #3a3a3a;
   padding: 60px 20px 30px;
   border-top: 1px solid #505050;
-  color: #eaeaea;
   font-family: 'Comfortaa', sans-serif;
+  color: #eaeaea;
 }
 
-/* ===== CONTENIDO PRINCIPAL ===== */
+/* ===== CONTENEDOR GENERAL ===== */
 .footer-content {
-  max-width: 1200px;
-  margin: 0 auto 40px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto 35px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
 /* ===== MARCA ===== */
-.footer-brand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .footer-logo {
   font-family: 'Righteous', cursive;
-  font-size: 2rem;
-  margin-bottom: 10px;
+  font-size: 2.1rem;
   color: #ffffff;
+  margin-bottom: 12px;
 }
 
 .footer-tagline {
   font-size: 0.95rem;
   color: #d9d9d9;
   line-height: 1.6;
+  margin-bottom: 30px;
+  max-width: 500px;
 }
 
 /* ===== CONTACTO ===== */
@@ -342,14 +337,15 @@ main {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
   align-items: center;
 }
 
-/* Botones de contacto */
+/* Botones */
 .footer-btn {
-  min-width: 240px;
-  padding: 14px 18px;
-  border-radius: 12px;
+  min-width: 260px;
+  padding: 15px 20px;
+  border-radius: 14px;
   background: #505050;
   color: #ffffff;
   text-decoration: none;
@@ -379,7 +375,7 @@ main {
   width: 100%;
   height: 1px;
   background: #505050;
-  margin: 30px 0;
+  margin: 40px 0 25px;
 }
 
 /* ===== COPYRIGHT ===== */
@@ -391,7 +387,6 @@ main {
   font-size: 0.85rem;
   color: #d0d0d0;
   margin: 0;
-  line-height: 1.6;
 }
 
 .footer-bottom span {
@@ -401,19 +396,19 @@ main {
   color: #bcbcbc;
 }
 
-/* ===== RESPONSIVE AJUSTES ===== */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
   .footer {
     padding: 50px 15px 25px;
   }
 
   .footer-logo {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
   }
 
   .footer-btn {
     width: 100%;
-    max-width: 300px;
+    max-width: 320px;
   }
 }
 
