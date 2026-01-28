@@ -279,15 +279,17 @@ main {
 
 @media (max-width: 600px) {
   .footer-links {
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: row;       /* ahora están uno al lado del otro */
+    justify-content: center;   /* centrados horizontalmente */
+    gap: 12px;                 /* espacio entre botones */
   }
 
   .footer-btn {
-    width: 100%;
-    min-width: unset;
+    width: auto;               /* ancho automático según contenido */
+    min-width: 120px;          /* tamaño mínimo para que no se vean muy pequeños */
   }
 }
+
 
 
 /* ===== COPYRIGHT ===== */
