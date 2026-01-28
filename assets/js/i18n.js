@@ -1,10 +1,10 @@
 const translations = {
   es: {
     nav: {
-      home: "Inicio",
       services: "Servicios",
-      solutions: "Soluciones",
-      projects: "Proyectos",
+      solutions: "Paquetes",
+      projects: "Herramientas",
+      about: "Nosotros",
       contact: "Contacto"
     },
     footer: {
@@ -24,15 +24,22 @@ const translations = {
       nextTitle: "¿Qué sigue?",
       nextText:
         "Nuevos servicios, proyectos y soluciones digitales están en camino."
+    },
+    hero: {
+      messages: [
+        'Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.',
+        'Explora nuestros servicios, paquetes y herramientas para tu negocio.',
+        'Donde lo que piensas, se vuelve solución...'
+      ]
     }
   },
 
   en: {
     nav: {
-      home: "Home",
       services: "Services",
-      solutions: "Solutions",
-      projects: "Projects",
+      solutions: "Packages",
+      projects: "Tools",
+      about: "About Us",
       contact: "Contact"
     },
     footer: {
@@ -52,6 +59,13 @@ const translations = {
       nextTitle: "What’s next?",
       nextText:
         "New services, projects and digital solutions are coming soon."
+    },
+    hero: {
+      messages: [
+        'We transform your <span class="highlight">ideas</span> into modern, efficient digital solutions tailored to your business.',
+        'Explore our services, packages, and tools for your business.',
+        'Where what you think becomes a solution...'
+      ]
     }
   }
 };
