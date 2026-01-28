@@ -71,6 +71,77 @@ main {
 }
 
 /* ============================
+   NAVBAR FIJO + SCROLL + HAMBURGER
+   SOLO AGREGADO, NO TOCA TU BLOQUE BASE
+============================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: #434343; /* mismo fondo que tu body */
+  transition: top 0.3s ease;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: #d9d9d9;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animación X */
+.hamburger.active div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active div:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Nav Links Mobile */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    flex-direction: column;
+    background-color: #434343;
+    width: 220px;
+    height: calc(100vh - 70px);
+    padding-top: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    transition: right 0.3s ease;
+  }
+
+  .nav-links.show {
+    right: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+
+/* ============================
    FOOTER
 ============================ */
 .footer {
