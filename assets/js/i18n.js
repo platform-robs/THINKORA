@@ -8,13 +8,11 @@ const translations = {
       contact: "Contacto"
     },
     footer: {
-      slogan: "Transformamos ideas en soluciones digitales",
-      services: "Servicios",
-      projects: "Proyectos",
-      contact: "Contacto",
+      slogan: "Donde lo que piensas, se vuelve solución...",
       mail: "Correo",
-      whatsapp: "WhatsApp",
-      copy: "© 2025 Thinkora | Salvador Robles"
+      phone: "Teléfono",
+      copy: "Thinkora © 2026",
+      author: "Desarrollado y gestionado por Salvador Robles"
     },
     dev: {
       title: "En desarrollo",
@@ -38,13 +36,11 @@ const translations = {
       contact: "Contact"
     },
     footer: {
-      slogan: "We turn ideas into digital solutions",
-      services: "Services",
-      projects: "Projects",
-      contact: "Contact",
+      slogan: "Where what you think becomes a solution...",
       mail: "Email",
-      whatsapp: "WhatsApp",
-      copy: "© 2025 Thinkora | Salvador Robles"
+      phone: "Phone",
+      copy: "Thinkora © 2026",
+      author: "Developed and managed by Salvador Robles"
     },
     dev: {
       title: "Under development",
