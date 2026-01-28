@@ -85,34 +85,67 @@
     /* ============================ 
        SECCIÓN SOLUCIONES
     ============================ */
-.solution-content {
-  max-height: 0;
-  opacity: 0;
+.solution-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.solution-card {
+  background: #2e2e2e;
+  border-radius: 15px;
+  width: 100%;
+  height: 200px; /* altura de la tarjeta */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   overflow: hidden;
-  padding: 0 20px;
-  transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
-  list-style: none;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.solution-card.active .solution-content {
-  max-height: 500px; /* ajusta según cantidad de contenido */
+.solution-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+/* Contenido inicial: solo subtítulo */
+.solution-card .card-title {
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+  transition: opacity 0.5s ease;
+  z-index: 2;
+}
+
+/* Contenido detallado: información de la tarjeta */
+.solution-card .card-content {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  font-size: 0.95rem;
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+/* Estado activo: subtítulo desaparece, contenido aparece */
+.solution-card.active .card-title {
+  opacity: 0;
+}
+
+.solution-card.active .card-content {
   opacity: 1;
-  padding: 10px 20px 20px 20px;
+  pointer-events: auto;
 }
 
-/* Título se mueve arriba al abrir */
-.solution-card.active .solution-header {
-  justify-content: flex-start;
-  padding: 20px 20px 10px 20px;
-}
-
-.solution-card .solution-header i {
-  transition: transform 0.3s ease;
-}
-
-.solution-card.active .solution-header i {
-  transform: rotate(180deg);
-}
 
     .solution-card h4 .highlight,
     .service-card h3 .highlight {
