@@ -69,14 +69,13 @@
     }
 
     /* ============================
-       BOTONES HERO SOBRIOS
+       BOTONES HERO
     ============================ */
     .cta-buttons {
       margin-top: 30px;
       display: flex;
       gap: 20px;
       flex-wrap: wrap;
-      justify-content: center;
     }
 
     .cta-buttons a {
@@ -106,21 +105,25 @@
       right: 25px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      z-index: 1000;
     }
 
     .lang-switch-hero button {
       background: none;
-      border: none;
-      color: #fff;
-      font-weight: 600;
+      border: 1px solid #d9d9d9;
+      color: #d9d9d9;
+      padding: 4px 8px;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
+      font-weight: 600;
+      transition: all 0.25s ease;
     }
 
     .lang-switch-hero button:hover {
-      color: #00b0ff;
+      background-color: #76ff03;
+      border-color: #00b0ff;
+      color: #000;
     }
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
@@ -129,23 +132,22 @@
       .hero h1 { font-size: 3rem; }
       .hero-text-container p { font-size: 1rem; }
       .cta-buttons { flex-direction: column; }
-      .lang-switch-hero { top: 15px; right: 15px; gap: 5px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- SWITCH DE IDIOMA (solo en hero) -->
-  <div class="lang-switch-hero">
-    <button onclick="setLanguage('es'); applyTranslations('es'); resetHeroText()">ES</button>
-    <span>|</span>
-    <button onclick="setLanguage('en'); applyTranslations('en'); resetHeroText()">EN</button>
-  </div>
-
   <!-- HERO PRINCIPAL -->
   <section class="hero">
     <h1>Thinkora</h1>
+
+    <!-- SWITCH DE IDIOMA -->
+    <div class="lang-switch-hero">
+      <button onclick="setLanguage('es'); applyTranslations('es'); resetHero()">ES</button>
+      <span>|</span>
+      <button onclick="setLanguage('en'); applyTranslations('en'); resetHero()">EN</button>
+    </div>
 
     <div class="hero-text-container">
       <p id="hero-text"></p>
@@ -163,9 +165,7 @@
   <!-- FOOTER ORIGINAL -->
   <div id="footer-container"></div>
 
-  <!-- =====================================================
-       SCRIPTS
-  ====================================================== -->
+  <!-- SCRIPTS -->
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/footer.js"></script>
 
@@ -174,7 +174,6 @@
     // Hero multimensaje
     // =========================
     const heroTextEl = document.getElementById("hero-text");
-
     const heroMessages = {
       es: [
         'Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.',
@@ -189,7 +188,6 @@
     };
 
     let msgIndex = 0;
-    let heroInterval;
 
     function updateHeroText() {
       const lang = localStorage.getItem("language") || "es";
@@ -205,17 +203,13 @@
       msgIndex = (msgIndex + 1) % heroMessages[lang].length;
     }
 
-    function resetHeroText() {
+    function resetHero() {
       msgIndex = 0;
       updateHeroText();
-      clearInterval(heroInterval);
-      heroInterval = setInterval(updateHeroText, 5000);
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      updateHeroText();
-      heroInterval = setInterval(updateHeroText, 5000);
-    });
+    setInterval(updateHeroText, 5000);
+    document.addEventListener("DOMContentLoaded", () => updateHeroText());
   </script>
 
 </body>
