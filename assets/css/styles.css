@@ -71,6 +71,141 @@ main {
 }
 
 /* ============================
+   NAVBAR BASE
+============================ */
+.navbar {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed; /* fijado arriba */
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #434343;
+  z-index: 999;
+  transition: transform 0.3s ease;
+}
+
+/* Logo */
+.navbar .logo a {
+  font-family: 'Righteous', cursive;
+  font-size: 1.8rem;
+  color: #00b0ff;
+  text-decoration: none;
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #d9d9d9;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #76ff03;
+}
+
+/* Language switch */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lang-switch button {
+  background: none;
+  border: 1px solid #d9d9d9;
+  color: #d9d9d9;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.lang-switch button:hover {
+  background-color: #76ff03;
+  border-color: #00b0ff;
+  color: #000;
+}
+
+/* Hamburger (mobile) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: #d9d9d9;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animación X */
+.hamburger.active div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active div:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ============================
+   NAVBAR RESPONSIVO
+============================ */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    flex-direction: column;
+    background-color: #434343;
+    width: 220px;
+    height: calc(100vh - 70px);
+    padding-top: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    transition: right 0.3s ease;
+  }
+
+  .nav-links.show {
+    right: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .lang-switch {
+    display: none; /* opcional, puedes moverlo dentro del menu si quieres */
+  }
+}
+
+
+/* ============================
    FOOTER
 ============================ */
 .footer {
