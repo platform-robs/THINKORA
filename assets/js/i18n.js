@@ -10,7 +10,7 @@ const translations = {
     footer: {
       slogan: "Donde lo que piensas, se vuelve solución...",
       mail: "Correo",
-      phone: "Teléfono",
+      phone: "Whatsapp",
       copy: "Thinkora © 2026",
       author: "Desarrollado y gestionado por Salvador Robles"
     },
@@ -45,7 +45,7 @@ const translations = {
     footer: {
       slogan: "Where what you think becomes a solution...",
       mail: "Email",
-      phone: "Phone",
+      phone: "Whatsapp",
       copy: "Thinkora © 2026",
       author: "Developed and managed by Salvador Robles"
     },
