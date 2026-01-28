@@ -18,101 +18,117 @@
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/styles.css">
 
-  <style>
-    /* ============================ 
-       HERO PRINCIPAL
-    ============================ */
-    .hero {
-      width: 100%;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #1e1e1e, #434343);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 20px;
-      color: #fff;
-      overflow: hidden;
-    }
-  
-    .hero h1 {
-      font-family: 'Righteous', cursive;
-      font-size: clamp(3rem, 8vw, 5rem);
-      background: linear-gradient(90deg, #00b0ff, #76ff03);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin: 0;
-      line-height: 1;
-      animation: fadeIn 1s ease forwards;
-    }
-  
-    .hero p {
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
-      margin-top: 15px;
-      max-width: 700px;
-      line-height: 1.5;
-      opacity: 0;
-      animation: fadeIn 1.2s ease forwards;
-      transition: opacity 1s ease, transform 1s ease;
-    }
-  
-    .hero p .highlight {
-      background: linear-gradient(90deg, #00b0ff, #76ff03);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  
-    /* BOTONES SOBRIOS */
-    .cta-buttons {
-      margin-top: 30px;
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeIn 1.5s ease forwards;
-    }
-  
-    .cta-buttons a {
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-weight: 500;
-      text-decoration: none;
-      color: #fff;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255,255,255,0.3);
-      transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
-    }
-  
-    .cta-buttons a:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
-      border-color: #76ff03;
-    }
-  
-    /* ANIMACIONES */
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-  
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 3rem; }
-      .hero p { font-size: 1rem; }
-      .cta-buttons { flex-direction: column; }
-    }
-  </style>
+<style>
+/* ============================ 
+   HERO PRINCIPAL
+============================ */
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e1e1e, #434343);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  color: #fff;
+}
+
+.hero h1 {
+  font-family: 'Righteous', cursive;
+  font-size: clamp(3rem, 8vw, 5rem);
+  background: linear-gradient(90deg, #00b0ff, #76ff03);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  line-height: 1;
+  animation: fadeIn 1s ease forwards;
+}
+
+.hero-text-container {
+  height: 80px; /* fijo para que no se mueva */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+.hero-text-container p {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  max-width: 700px;
+  line-height: 1.5;
+  opacity: 1;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.highlight {
+  background: linear-gradient(90deg, #00b0ff, #76ff03);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* BOTONES SOBRIOS */
+.cta-buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cta-buttons a, #lang-btn {
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #fff;
+  background-color: #00b0ff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-buttons a:hover, #lang-btn:hover {
+  transform: translateY(-2px);
+  background-color: #76ff03;
+  color: #000;
+}
+
+/* ============================ 
+   ANIMACIONES
+============================ */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ============================ 
+   RESPONSIVE
+============================ */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 3rem; }
+  .hero-text-container p { font-size: 1rem; }
+  .cta-buttons { flex-direction: column; }
+}
+</style>
 </head>
 <body>
 
 <!-- HERO PRINCIPAL -->
 <section class="hero">
   <h1>Thinkora</h1>
-  <p id="hero-text">Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.</p>
+  
+  <!-- Contenedor fijo para el texto que no mueva nada -->
+  <div class="hero-text-container">
+    <p id="hero-text">Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.</p>
+  </div>
+
   <div class="cta-buttons">
     <a href="#services">Servicios</a>
     <a href="#packages">Paquetes</a>
     <a href="#tools">Herramientas</a>
     <a href="#contact">Contacto</a>
+    <button id="lang-btn">EN</button>
   </div>
 </section>
 
@@ -128,27 +144,54 @@
        IMPORTANTE: el orden SÍ importa
   ====================================================== -->
 
-  <script>
-  // ============================
-  // ROTADOR DE TEXTOS HERO
-  // ============================
-  const heroText = document.getElementById("hero-text");
-  const messages = [
-    'Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.',
-    'Donde lo que piensas, se vuelve solución...'
-  ];
-  let index = 0;
+ <script>
+const heroText = document.getElementById("hero-text");
+const heroMessages = [
+  'Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.',
+  'Explora nuestros servicios, paquetes y herramientas para tu negocio.',
+  'Donde lo que piensas, se vuelve solución...'
+];
 
-  setInterval(() => {
-    heroText.style.opacity = 0;
-    heroText.style.transform = 'translateY(20px)';
-    setTimeout(() => {
-      index = (index + 1) % messages.length;
-      heroText.innerHTML = messages[index];
-      heroText.style.opacity = 1;
-      heroText.style.transform = 'translateY(0)';
-    }, 600);
-  }, 6000); // cambia cada 6 segundos
+let msgIndex = 0;
+
+function changeHeroText() {
+  // Fade out
+  heroText.style.opacity = 0;
+  heroText.style.transform = 'translateY(20px)';
+  
+  setTimeout(() => {
+    // Cambiar el texto
+    msgIndex = (msgIndex + 1) % heroMessages.length;
+    heroText.innerHTML = heroMessages[msgIndex];
+    
+    // Fade in
+    heroText.style.opacity = 1;
+    heroText.style.transform = 'translateY(0)';
+  }, 1000); // coincide con la duración de la transición
+}
+
+// Cambiar cada 5 segundos
+setInterval(changeHeroText, 5000);
+
+/* ============================
+   BOTÓN DE IDIOMA
+============================ */
+const langBtn = document.getElementById("lang-btn");
+let currentLang = localStorage.getItem("language") || "es";
+
+function toggleLanguage() {
+  currentLang = currentLang === "es" ? "en" : "es";
+  localStorage.setItem("language", currentLang);
+  langBtn.textContent = currentLang.toUpperCase();
+
+  // Opcional: actualizar todo el contenido usando tu i18n.js
+  if (typeof applyTranslations === "function") {
+    applyTranslations(currentLang);
+  }
+}
+
+langBtn.addEventListener("click", toggleLanguage);
+langBtn.textContent = currentLang.toUpperCase();
 </script>
 
   <!-- 1️⃣ Traducciones (idiomas) -->
