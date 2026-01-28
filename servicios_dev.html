@@ -85,53 +85,59 @@
     /* ============================ 
        SECCIÓN SOLUCIONES
     ============================ */
-    .solutions {
-      padding: 80px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .solution-category {
-      margin-bottom: 60px;
-    }
-    .solution-category h2 {
-      font-size: 1.8rem;
-      color: #00b0ff;
-      margin-bottom: 25px;
-      text-align: center;
-    }
-    .solution-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .solution-card {
-      background: #3a3a3a;
-      border-radius: 12px;
-      padding: 20px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: default;
-    }
-    .solution-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-    .solution-card h4 {
-      color: #fff;
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-    }
-    .solution-card ul {
-      list-style: disc inside;
-      margin: 0;
-      padding-left: 20px;
-      color: #ccc;
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-    .solution-card ul li {
-      margin-bottom: 6px;
-    }
+ .solution-category h2 {
+  color: #ccc; /* ahora neutro y elegante */
+  margin-bottom: 30px;
+  font-size: 1.7rem;
+  text-align: center;
+}
 
+.solution-card {
+  background: #2e2e2e;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.solution-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  cursor: pointer;
+}
+
+.solution-header h4 {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.solution-header i {
+  transition: transform 0.3s ease;
+  color: #00ff99;
+}
+
+.solution-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.solution-content li {
+  margin: 8px 0;
+  color: #ccc;
+}
+
+/* tarjeta expandida */
+.solution-card.active .solution-content {
+  max-height: 500px; /* suficiente para la lista */
+  padding: 15px 20px;
+}
+
+.solution-card.active .solution-header i {
+  transform: rotate(180deg);
+}
     .solution-card h4 .highlight,
     .service-card h3 .highlight {
       font-weight: 700;
@@ -206,91 +212,118 @@
     <div class="section-divider"></div>
 
     <!-- SECCIÓN SOLUCIONES -->
-    <h1 class="title" data-i18n="page.title">Soluciones</h1>
+    <h1 class="title">Soluciones</h1>
     <section id="solutions" class="solutions">
-
+    
       <!-- Restaurantes y Comercios -->
       <div class="solution-category">
         <h2>Restaurantes y Comercios</h2>
         <div class="solution-grid">
           <div class="solution-card">
-            <h4>Menú Digital con QR</h4>
-            <ul>
+            <div class="solution-header">
+              <h4>Menú Digital con QR</h4>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="solution-content">
               <li>Editable desde Google Sheets</li>
               <li>Sin apps adicionales</li>
               <li>Sin pagos mensuales</li>
             </ul>
           </div>
           <div class="solution-card">
-            <h4>Sistema de Pedidos</h4>
-            <ul>
+            <div class="solution-header">
+              <h4>Sistema de Pedidos</h4>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="solution-content">
               <li>Registro automático de órdenes</li>
               <li>Cálculo de totales</li>
               <li>Historial por día</li>
             </ul>
           </div>
           <div class="solution-card">
-            <h4>Control de Refill de Bebidas</h4>
-            <ul>
+            <div class="solution-header">
+              <h4>Control de Refill de Bebidas</h4>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="solution-content">
               <li>Automatiza seguimiento de refill</li>
               <li>Alertas de consumo</li>
             </ul>
           </div>
         </div>
       </div>
-
+    
       <!-- Escuelas y Cursos -->
       <div class="solution-category">
         <h2>Escuelas y Cursos</h2>
         <div class="solution-grid">
           <div class="solution-card">
-            <h4>Control de Asistencia</h4>
-            <ul>
+            <div class="solution-header">
+              <h4>Control de Asistencia</h4>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="solution-content">
               <li>Automatiza la asistencia de alumnos y maestros</li>
               <li>Reportes rápidos</li>
             </ul>
           </div>
           <div class="solution-card">
-            <h4>Plataforma para Maestros</h4>
-            <ul>
+            <div class="solution-header">
+              <h4>Plataforma para Maestros</h4>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="solution-content">
               <li>Gestión de calificaciones</li>
               <li>Tareas y horarios</li>
               <li>Comunicados internos</li>
             </ul>
           </div>
           <div class="solution-card">
-            <h4>Generador de Boletas en PDF</h4>
-            <ul>
+            <div class="solution-header">
+              <h4>Generador de Boletas en PDF</h4>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="solution-content">
               <li>Creación automática de boletas</li>
               <li>Envío a padres y alumnos</li>
             </ul>
           </div>
         </div>
       </div>
-
+    
       <!-- Negocios y Oficinas -->
       <div class="solution-category">
         <h2>Negocios y Oficinas</h2>
         <div class="solution-grid">
           <div class="solution-card">
-            <h4>Control de Ventas e Inventarios</h4>
-            <ul>
+            <div class="solution-header">
+              <h4>Control de Ventas e Inventarios</h4>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="solution-content">
               <li>Dashboards automáticos</li>
               <li>Reportes diarios y semanales</li>
               <li>Alertas para decisiones rápidas</li>
             </ul>
           </div>
           <div class="solution-card">
-            <h4>Automatización Administrativa</h4>
-            <ul>
+            <div class="solution-header">
+              <h4>Automatización Administrativa</h4>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="solution-content">
               <li>Alertas automáticas</li>
               <li>Flujos de trabajo optimizados</li>
               <li>Plantillas listas para usar</li>
             </ul>
           </div>
           <div class="solution-card">
-            <h4>Control de Ingresos y Almacén</h4>
-            <ul>
+            <div class="solution-header">
+              <h4>Control de Ingresos y Almacén</h4>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="solution-content">
               <li>Registro de inventarios</li>
               <li>Seguimiento de movimientos</li>
               <li>Control de productos</li>
@@ -298,36 +331,45 @@
           </div>
         </div>
       </div>
-
+    
       <!-- Eventos -->
       <div class="solution-category">
         <h2>Eventos</h2>
         <div class="solution-grid">
           <div class="solution-card">
-            <h4>Confirmación de Asistencia</h4>
-            <ul>
+            <div class="solution-header">
+              <h4>Confirmación de Asistencia</h4>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="solution-content">
               <li>RSVP digital</li>
               <li>Seguimiento de invitados</li>
               <li>Alertas automáticas</li>
             </ul>
           </div>
           <div class="solution-card">
-            <h4>Registro de Invitados con QR</h4>
-            <ul>
+            <div class="solution-header">
+              <h4>Registro de Invitados con QR</h4>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="solution-content">
               <li>Control de accesos</li>
               <li>Generación de credenciales digitales</li>
             </ul>
           </div>
           <div class="solution-card">
-            <h4>Panel de Métricas del Evento</h4>
-            <ul>
+            <div class="solution-header">
+              <h4>Panel de Métricas del Evento</h4>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <ul class="solution-content">
               <li>Visualiza estadísticas en tiempo real</li>
               <li>Participación y engagement</li>
             </ul>
           </div>
         </div>
       </div>
-
+    
     </section>
   </main>
 
@@ -335,6 +377,14 @@
   <div id="footer-container"></div>
 
   <!-- SCRIPTS -->
+  <script>
+  document.querySelectorAll('.solution-card').forEach(card => {
+    card.querySelector('.solution-header').addEventListener('click', () => {
+      card.classList.toggle('active');
+    });
+  });
+  </script>
+  
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/footer.js"></script>
