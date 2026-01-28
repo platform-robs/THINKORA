@@ -28,6 +28,7 @@
       text-align: center;
       padding: 0 20px;
       color: #fff;
+      position: relative;
     }
 
     .hero h1 {
@@ -75,6 +76,7 @@
       display: flex;
       gap: 20px;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     .cta-buttons a {
@@ -95,24 +97,55 @@
       border-color: #00b0ff;
     }
 
+    /* ============================
+       SWITCH DE IDIOMA HERO
+    ============================ */
+    .lang-switch-hero {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lang-switch-hero button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .lang-switch-hero button:hover {
+      color: #00b0ff;
+    }
+
     @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
     @media (max-width: 768px) {
       .hero h1 { font-size: 3rem; }
       .hero-text-container p { font-size: 1rem; }
       .cta-buttons { flex-direction: column; }
+      .lang-switch-hero { top: 15px; right: 15px; gap: 5px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- NAVBAR ORIGINAL -->
-  <div id="navbar-container"></div>
+  <!-- SWITCH DE IDIOMA (solo en hero) -->
+  <div class="lang-switch-hero">
+    <button onclick="setLanguage('es'); applyTranslations('es'); resetHeroText()">ES</button>
+    <span>|</span>
+    <button onclick="setLanguage('en'); applyTranslations('en'); resetHeroText()">EN</button>
+  </div>
 
   <!-- HERO PRINCIPAL -->
   <section class="hero">
-    <h1>Thinkora</h1> <!-- fijo, nunca cambia con idioma -->
+    <h1>Thinkora</h1>
 
     <div class="hero-text-container">
       <p id="hero-text"></p>
@@ -134,12 +167,11 @@
        SCRIPTS
   ====================================================== -->
   <script src="assets/js/i18n.js"></script>
-  <script src="assets/js/navbar.js"></script>
   <script src="assets/js/footer.js"></script>
 
   <script>
     // =========================
-    // Hero multimensaje con transición suave
+    // Hero multimensaje
     // =========================
     const heroTextEl = document.getElementById("hero-text");
 
@@ -157,6 +189,7 @@
     };
 
     let msgIndex = 0;
+    let heroInterval;
 
     function updateHeroText() {
       const lang = localStorage.getItem("language") || "es";
@@ -172,22 +205,18 @@
       msgIndex = (msgIndex + 1) % heroMessages[lang].length;
     }
 
-    setInterval(updateHeroText, 5000);
-    document.addEventListener("DOMContentLoaded", () => updateHeroText());
-
-    // =========================
-    // Cambio de idioma desde navbar
-    // =========================
-    // Si quieres agregar botón directo en hero, se puede usar este:
-    /*
-    const langToggle = document.getElementById("lang-toggle");
-    langToggle.addEventListener("click", () => {
-      const newLang = localStorage.getItem("language") === "es" ? "en" : "es";
-      setLanguage(newLang);
+    function resetHeroText() {
       msgIndex = 0;
       updateHeroText();
+      clearInterval(heroInterval);
+      heroInterval = setInterval(updateHeroText, 5000);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateHeroText();
+      heroInterval = setInterval(updateHeroText, 5000);
     });
-    */
   </script>
+
 </body>
 </html>
