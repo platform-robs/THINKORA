@@ -37,8 +37,8 @@ const translations = {
   en: {
     nav: {
       services: "Services",
-      solutions: "Packages",
-      projects: "Tools",
+      packages: "Packages",
+      tools: "Tools",
       about: "About Us",
       contact: "Contact"
     },
