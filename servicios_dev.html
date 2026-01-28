@@ -124,6 +124,15 @@
       color: #ccc;
       line-height: 1.4;
     }
+
+    .section-divider {
+      height: 2px;
+      max-width: 200px;
+      margin: 50px auto; /* espacio arriba y abajo */
+      background: linear-gradient(to right, transparent, #00b0ff, transparent);
+      border-radius: 1px;
+    }
+
   </style>
 </head>
 
@@ -134,10 +143,13 @@
 
   <!-- CONTENIDO PRINCIPAL -->
   <main>
-    <h1 class="title" data-i18n="page.title">Servicios & Soluciones</h1>
+    <h1 class="title" data-i18n="page.title">Servicios</h1>
     <p class="subtitle" data-i18n="page.subtitle">
       Thinkora convierte tus <span class="highlight">ideas</span> y <span class="highlight">necesidades</span> en <span class="highlight">sistemas</span>, <span class="highlight">automatizaciones</span> y <span class="highlight">herramientas inteligentes</span> que impulsan tu <span class="highlight">productividad</span> y <span class="highlight">crecimiento</span>.
     </p>
+
+    <!-- Línea de separación -->
+<div class="section-divider"></div>
 
     <!-- SECCIÓN SERVICIOS -->
     <section id="services" class="services">
@@ -173,7 +185,11 @@
       </div>
     </section>
 
+    <!-- Línea de separación -->
+<div class="section-divider"></div>
+
     <!-- SECCIÓN SOLUCIONES -->
+    <h1 class="title" data-i18n="page.title">Soluciones</h1>
     <section id="solutions" class="solutions">
 
       <!-- Restaurantes y Comercios -->
