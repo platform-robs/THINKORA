@@ -40,11 +40,10 @@
     }
     .subtitle .highlight {
       font-weight: 700;
-      background: linear-gradient(90deg, #00b0ff, #00ff99); /* azul a verde */
+      background: linear-gradient(90deg, #00b0ff, #00ff99);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
 
     /* ============================ 
        SECCIÓN SERVICIOS
@@ -122,22 +121,8 @@
       margin-bottom: 10px;
       font-size: 1.1rem;
     }
-    .solution-card p {
-      font-size: 0.9rem;
-      color: #ccc;
-      line-height: 1.4;
-    }
-
-    .section-divider {
-      height: 2px;
-      max-width: 200px;
-      margin: 50px auto; /* espacio arriba y abajo */
-      background: linear-gradient(to right, transparent, #00b0ff, transparent);
-      border-radius: 1px;
-    }
-
     .solution-card ul {
-      list-style: disc inside; /* bullets dentro de la tarjeta */
+      list-style: disc inside;
       margin: 0;
       padding-left: 20px;
       color: #ccc;
@@ -145,9 +130,8 @@
       line-height: 1.4;
     }
     .solution-card ul li {
-      margin-bottom: 6px; /* espacio entre bullets */
+      margin-bottom: 6px;
     }
-
 
     .solution-card h4 .highlight,
     .service-card h3 .highlight {
@@ -157,7 +141,13 @@
       -webkit-text-fill-color: transparent;
     }
 
-
+    .section-divider {
+      height: 2px;
+      max-width: 200px;
+      margin: 50px auto;
+      background: linear-gradient(to right, transparent, #00b0ff, transparent);
+      border-radius: 1px;
+    }
   </style>
 </head>
 
@@ -174,7 +164,7 @@
     </p>
 
     <!-- Línea de separación -->
-<div class="section-divider"></div>
+    <div class="section-divider"></div>
 
     <!-- SECCIÓN SERVICIOS -->
     <section id="services" class="services">
@@ -211,7 +201,7 @@
     </section>
 
     <!-- Línea de separación -->
-<div class="section-divider"></div>
+    <div class="section-divider"></div>
 
     <!-- SECCIÓN SOLUCIONES -->
     <h1 class="title" data-i18n="page.title">Soluciones</h1>
@@ -223,15 +213,26 @@
         <div class="solution-grid">
           <div class="solution-card">
             <h4>Menú Digital con QR</h4>
-            <p>Editable desde Google Sheets, sin apps adicionales y sin pagos mensuales.</p>
+            <ul>
+              <li>Editable desde Google Sheets</li>
+              <li>Sin apps adicionales</li>
+              <li>Sin pagos mensuales</li>
+            </ul>
           </div>
           <div class="solution-card">
             <h4>Sistema de Pedidos</h4>
-            <p>Registro automático de órdenes, cálculo de totales y historial por día.</p>
+            <ul>
+              <li>Registro automático de órdenes</li>
+              <li>Cálculo de totales</li>
+              <li>Historial por día</li>
+            </ul>
           </div>
           <div class="solution-card">
             <h4>Control de Refill de Bebidas</h4>
-            <p>Automatiza seguimiento de refill y alertas de consumo.</p>
+            <ul>
+              <li>Automatiza seguimiento de refill</li>
+              <li>Alertas de consumo</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -242,15 +243,25 @@
         <div class="solution-grid">
           <div class="solution-card">
             <h4>Control de Asistencia</h4>
-            <p>Automatiza la asistencia de alumnos y maestros, con reportes rápidos.</p>
+            <ul>
+              <li>Automatiza la asistencia de alumnos y maestros</li>
+              <li>Reportes rápidos</li>
+            </ul>
           </div>
           <div class="solution-card">
             <h4>Plataforma para Maestros</h4>
-            <p>Gestión de calificaciones, tareas, horarios y comunicados.</p>
+            <ul>
+              <li>Gestión de calificaciones</li>
+              <li>Tareas y horarios</li>
+              <li>Comunicados internos</li>
+            </ul>
           </div>
           <div class="solution-card">
             <h4>Generador de Boletas en PDF</h4>
-            <p>Automatiza la creación y envío de boletas a padres y alumnos.</p>
+            <ul>
+              <li>Creación automática de boletas</li>
+              <li>Envío a padres y alumnos</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -261,15 +272,27 @@
         <div class="solution-grid">
           <div class="solution-card">
             <h4>Control de Ventas e Inventarios</h4>
-            <p>Dashboards y reportes automáticos para decisiones más rápidas.</p>
+            <ul>
+              <li>Dashboards automáticos</li>
+              <li>Reportes diarios y semanales</li>
+              <li>Alertas para decisiones rápidas</li>
+            </ul>
           </div>
           <div class="solution-card">
             <h4>Automatización Administrativa</h4>
-            <p>Alertas, flujos y plantillas listas para optimizar tus procesos internos.</p>
+            <ul>
+              <li>Alertas automáticas</li>
+              <li>Flujos de trabajo optimizados</li>
+              <li>Plantillas listas para usar</li>
+            </ul>
           </div>
           <div class="solution-card">
             <h4>Control de Ingresos y Almacén</h4>
-            <p>Registro y seguimiento de inventarios y movimientos de productos.</p>
+            <ul>
+              <li>Registro de inventarios</li>
+              <li>Seguimiento de movimientos</li>
+              <li>Control de productos</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -280,15 +303,25 @@
         <div class="solution-grid">
           <div class="solution-card">
             <h4>Confirmación de Asistencia</h4>
-            <p>RSVP digital con seguimiento de invitados y alertas automáticas.</p>
+            <ul>
+              <li>RSVP digital</li>
+              <li>Seguimiento de invitados</li>
+              <li>Alertas automáticas</li>
+            </ul>
           </div>
           <div class="solution-card">
             <h4>Registro de Invitados con QR</h4>
-            <p>Control de accesos y generación de credenciales digitales.</p>
+            <ul>
+              <li>Control de accesos</li>
+              <li>Generación de credenciales digitales</li>
+            </ul>
           </div>
           <div class="solution-card">
             <h4>Panel de Métricas del Evento</h4>
-            <p>Visualiza estadísticas en tiempo real de la participación y engagement.</p>
+            <ul>
+              <li>Visualiza estadísticas en tiempo real</li>
+              <li>Participación y engagement</li>
+            </ul>
           </div>
         </div>
       </div>
