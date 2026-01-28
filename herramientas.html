@@ -1,1 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- =====================================================
+       CONFIGURACIÓN BÁSICA
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- =====================================================
+       SEO BÁSICO (ajusta por página)
+  ====================================================== -->
+  <title>Thinkora | Development</title>
+  <meta name="description" content="Thinkora - Digital solutions under development.">
+  <meta name="author" content="Salvador Robles">
 
+  <!-- =====================================================
+       FUENTES (IDENTIDAD THINKORA)
+  ====================================================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- =====================================================
+       CSS GLOBAL
+       (un solo CSS para todo el sitio)
+  ====================================================== -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       NAVBAR
+       Se carga dinámicamente desde navbar.html
+       Esto permite reutilizarlo en todo el sitio
+  ====================================================== -->
+  <div id="navbar-container"></div>
+
+  <!-- =====================================================
+       CONTENIDO PRINCIPAL
+       TODO lo que cambies entre páginas va aquí
+  ====================================================== -->
+  <main>
+
+    <!-- ===== TÍTULO PRINCIPAL ===== -->
+    <h1 class="title" data-i18n="dev.title">
+      Development
+    </h1>
+
+    <!-- ===== SUBTÍTULO / DESCRIPCIÓN ===== -->
+    <p class="subtitle" data-i18n="dev.subtitle">
+      This section is currently under development
+    </p>
+
+    <!-- ===== CARD PRINCIPAL ===== -->
+    <section class="card">
+
+      <h2 data-i18n="dev.cardTitle">
+        We are building something great 🚀
+      </h2>
+
+      <p data-i18n="dev.cardText">
+        This page is part of Thinkora’s ecosystem.  
+        We are working to deliver a clean, modern and powerful digital experience.
+      </p>
+
+      <!-- ===== ESTADO ===== -->
+      <div style="margin-top: 25px;">
+        <span class="status" data-i18n="dev.status">
+          IN DEVELOPMENT
+        </span>
+      </div>
+
+    </section>
+
+    <!-- ===== SEPARADOR VISUAL ===== -->
+    <div class="separator"></div>
+
+    <!-- ===== SECCIÓN INFORMATIVA ===== -->
+    <section>
+      <h2 class="section-title" data-i18n="dev.nextTitle">
+        What’s coming next?
+      </h2>
+
+      <p class="section-description" data-i18n="dev.nextText">
+        New features, services and projects are being designed to help businesses
+        transform ideas into real digital solutions.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- =====================================================
+       FOOTER
+       Igual que el navbar, se reutiliza en todo el sitio
+  ====================================================== -->
+  <div id="footer-container"></div>
+
+  <!-- =====================================================
+       SCRIPTS
+       IMPORTANTE: el orden SÍ importa
+  ====================================================== -->
+
+  <!-- 1️⃣ Traducciones (idiomas) -->
+  <script src="assets/js/i18n.js"></script>
+
+  <!-- 2️⃣ Navbar dinámico -->
+  <script src="assets/js/navbar.js"></script>
+
+  <!-- 3️⃣ Footer dinámico -->
+  <script src="assets/js/footer.js"></script>
+
+</body>
+</html>
