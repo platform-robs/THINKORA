@@ -1,15 +1,18 @@
-/* =========================
-   FUENTES & RESET
-========================= */
+/* ============================
+   FUENTES BASE
+============================ */
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap');
 
+/* ============================
+   RESET & BASE
+============================ */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html, body {
+  margin: 0;
+  padding: 0;
   width: 100%;
   min-height: 100vh;
   font-family: 'Comfortaa', sans-serif;
@@ -24,17 +27,17 @@ body {
   align-items: center;
 }
 
-/* =========================
-   CONTENEDORES
-========================= */
+/* ============================
+   CONTENEDORES EXTERNOS
+============================ */
 #navbar-container,
 #footer-container {
   width: 100%;
 }
 
-/* =========================
+/* ============================
    TIPOGRAFÍA PRINCIPAL
-========================= */
+============================ */
 .title,
 .thinkora {
   font-family: 'Righteous', cursive;
@@ -43,20 +46,20 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* =========================
-   MAIN
-========================= */
+/* ============================
+   CONTENIDO PRINCIPAL
+============================ */
 main {
   flex: 1;
   width: 100%;
   max-width: 1100px;
-  padding: 120px 20px 40px; /* espacio top para navbar */
+  padding: 80px 20px 40px;
   text-align: center;
 }
 
-/* =========================
+/* ============================
    NAVBAR
-========================= */
+============================ */
 .navbar {
   width: 100%;
   max-width: 1100px;
@@ -65,7 +68,7 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
+  position: fixed; /* fijo arriba */
   top: 0;
   left: 0;
   right: 0;
@@ -74,12 +77,14 @@ main {
   transition: top 0.3s ease;
 }
 
-/* Logo */
+/* Logo con gradiente */
 .navbar .logo a {
   font-family: 'Righteous', cursive;
   font-size: 1.8rem;
   text-decoration: none;
-  color: #fff;
+  background: linear-gradient(90deg, #00b0ff, #76ff03);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Nav Links */
@@ -113,9 +118,9 @@ main {
   margin: 0 5px;
 }
 
-/* =========================
-   HAMBURGER ANIMADA
-========================= */
+/* ============================
+   HAMBURGER MOBILE
+============================ */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -144,9 +149,7 @@ main {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* =========================
-   NAV LINKS MOBILE
-========================= */
+/* Nav Links Mobile */
 @media (max-width: 768px) {
   .nav-links {
     position: fixed;
@@ -154,9 +157,13 @@ main {
     right: -100%;
     flex-direction: column;
     background-color: #434343;
-    width: 200px;
+    width: 220px;
     height: calc(100vh - 70px);
     padding-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; /* centra los links */
+    gap: 20px;
     transition: right 0.3s ease;
   }
 
@@ -169,37 +176,9 @@ main {
   }
 }
 
-/* =========================
-   CARD Y SECCIONES
-========================= */
-.card {
-  background-color: #3a3a3a;
-  padding: 25px;
-  border-radius: 12px;
-  margin: 25px 0;
-  text-align: left;
-}
-
-.separator {
-  width: 60%;
-  height: 1px;
-  background-color: #505050;
-  margin: 40px auto;
-}
-
-.section-title {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-.section-description {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-/* =========================
-   FOOTER
-========================= */
+/* ============================
+   FOOTER (mantiene tu original)
+============================ */
 .footer {
   width: 100%;
   background: #3a3a3a;
@@ -213,4 +192,69 @@ main {
 }
 
 .footer-title {
-  font-fa
+  font-family: 'Righteous', cursive;
+  font-size: 2.2rem;
+  background: linear-gradient(90deg, #00b0ff, #76ff03);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.footer-slogan {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #d9d9d9;
+}
+
+.footer-contact {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 28px;
+}
+
+.footer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: #505050;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  width: auto;
+  max-width: 280px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.footer-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(90deg, #00b0ff, #76ff03);
+  color: #000;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  color: #bdbdbd;
+}
+
+.footer-author {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+@media (max-width: 600px) {
+  .footer-contact {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .footer-btn {
+    justify-content: center;
+  }
+}
