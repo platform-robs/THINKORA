@@ -37,7 +37,6 @@
       max-width: 900px;
       margin: 10px auto 50px auto;
       text-align: center;
-      transition: opacity 0.8s ease-in-out;
     }
     .subtitle .highlight {
       color: #00b0ff;
@@ -136,7 +135,9 @@
   <!-- CONTENIDO PRINCIPAL -->
   <main>
     <h1 class="title" data-i18n="page.title">Servicios & Soluciones</h1>
-    <p class="subtitle" id="page-subtitle"></p>
+    <p class="subtitle" data-i18n="page.subtitle">
+      Thinkora convierte tus <span class="highlight">ideas</span> y <span class="highlight">necesidades</span> en <span class="highlight">sistemas</span>, <span class="highlight">automatizaciones</span> y <span class="highlight">herramientas inteligentes</span> que impulsan tu <span class="highlight">productividad</span> y <span class="highlight">crecimiento</span>.
+    </p>
 
     <!-- SECCIÓN SERVICIOS -->
     <section id="services" class="services">
@@ -257,35 +258,10 @@
   <!-- FOOTER -->
   <div id="footer-container"></div>
 
-  <!-- =====================================================
-       SCRIPTS
-  ====================================================== -->
+  <!-- SCRIPTS -->
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/footer.js"></script>
-
-  <!-- Subtítulo dinámico -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const subtitleEl = document.getElementById("page-subtitle");
-      const texts = [
-        'Encuentra <span class="highlight">soluciones digitales</span> adaptadas a tu <span class="highlight">negocio</span>.',
-        'Thinkora convierte tus <span class="highlight">ideas</span> y <span class="highlight">necesidades</span> en sistemas, automatizaciones y herramientas inteligentes que impulsan tu <span class="highlight">productividad</span> y <span class="highlight">crecimiento</span>.'
-      ];
-      let index = 0;
-      function showText() {
-        subtitleEl.style.opacity = 0;
-        setTimeout(() => {
-          subtitleEl.innerHTML = texts[index];
-          subtitleEl.style.opacity = 1;
-          index = (index + 1) % texts.length;
-        }, 800);
-      }
-      subtitleEl.innerHTML = texts[0];
-      subtitleEl.style.opacity = 1;
-      setInterval(showText, 5000);
-    });
-  </script>
 
 </body>
 </html>
