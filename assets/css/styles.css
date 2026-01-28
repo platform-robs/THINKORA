@@ -246,21 +246,29 @@ main {
 }
 
 /* ===== BOTONES ===== */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
 .footer-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 18px;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
   border-radius: 12px;
   background: #505050;
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
-  white-space: nowrap;
-  width: auto;        /* 🔥 evita ancho completo */
+  min-width: 200px; /* todos los botones igual tamaño */
   max-width: 280px;
-  transition: transform 0.25s ease, background 0.25s ease;
+  transition: all 0.25s ease;
 }
 
 .footer-btn:hover {
@@ -268,6 +276,19 @@ main {
   background: linear-gradient(90deg, #00b0ff, #76ff03);
   color: #000;
 }
+
+@media (max-width: 600px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-btn {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
 
 /* ===== COPYRIGHT ===== */
 .footer-copy {
