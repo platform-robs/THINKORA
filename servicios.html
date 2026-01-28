@@ -1,264 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title data-i18n="services.title">Servicios & Soluciones</title>
-<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- =====================================================
+       CONFIGURACIÓN BÁSICA
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-/* ===================== BASE ===================== */
-body {
-  margin: 0;
-  font-family: 'Comfortaa', sans-serif;
-  background-color: #f5f6fa;
-  color: #2f3640;
-}
-h1,h2,h3 { margin:0; }
-p { margin:0 0 1em 0; line-height:1.6; }
-section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+  <!-- =====================================================
+       SEO BÁSICO (ajusta por página)
+  ====================================================== -->
+  <title>Thinkora | Página</title>
+  <meta name="description" content="Thinkora - Soluciones digitales modernas.">
+  <meta name="author" content="Salvador Robles">
 
-/* ===================== NAVBAR ===================== */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: #4e54c8;
-  color: #fff;
-  font-weight: 700;
-}
-.navbar a {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 20px;
-  transition: opacity 0.3s;
-}
-.navbar a:hover { opacity: 0.8; }
+  <!-- =====================================================
+       FUENTES (IDENTIDAD THINKORA)
+  ====================================================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
 
-/* ===================== HERO ===================== */
-.services-hero {
-  text-align: center;
-  background: linear-gradient(to right, #4e54c8, #8f94fb);
-  color: #fff;
-  padding: 100px 20px 80px 20px;
-  border-radius: 12px;
-}
-.services-hero h1 {
-  font-family: 'Righteous', cursive;
-  font-size: 2.8rem;
-  margin-bottom: 20px;
-}
-.services-hero p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
-
-/* ===================== SOLUTIONS ===================== */
-.solutions {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-  gap: 25px;
-  margin-top: 40px;
-}
-
-.solution-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.solution-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
-}
-.solution-card h3 {
-  font-family: 'Righteous', cursive;
-  font-size: 1.5rem;
-  color: #4e54c8;
-  margin-bottom: 10px;
-}
-.solution-card p {
-  font-size: 0.95rem;
-  opacity: 0.85;
-  margin-bottom: 12px;
-}
-.solution-card ul {
-  padding-left: 18px;
-  margin-bottom: 0;
-}
-.solution-card ul li {
-  margin-bottom: 6px;
-  font-size: 0.9rem;
-}
-
-/* ===================== SECTION TITLES ===================== */
-h2.category-title {
-  font-family: 'Righteous', cursive;
-  font-size: 2rem;
-  color: #8f94fb;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-/* ===================== CTA FINAL ===================== */
-.custom-system {
-  text-align: center;
-  margin-top: 80px;
-}
-.custom-system p {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-  font-weight: 500;
-  opacity: 0.85;
-}
-
-/* ===================== FOOTER ===================== */
-footer {
-  background: #2f3640;
-  color: #fff;
-  padding: 40px 20px;
-  text-align: center;
-  font-size: 0.9rem;
-}
-footer p { margin: 5px 0; }
-
-</style>
+  <!-- =====================================================
+       CSS GLOBAL
+       (un solo CSS para todo el sitio)
+  ====================================================== -->
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <div class="logo">Thinkora</div>
-  <div class="menu">
-    <a href="services.html" data-i18n="nav.services">Servicios</a>
-    <a href="packages.html" data-i18n="nav.packages">Paquetes</a>
-    <a href="tools.html" data-i18n="nav.tools">Herramientas</a>
-    <a href="about.html" data-i18n="nav.about">Nosotros</a>
-    <a href="contact.html" data-i18n="nav.contact">Contacto</a>
-  </div>
-</nav>
+  <!-- =====================================================
+       NAVBAR DINÁMICO
+       Se carga desde navbar.js
+  ====================================================== -->
+  <div id="navbar-container"></div>
 
-<!-- HERO -->
-<section class="services-hero">
-  <h1 data-i18n="services.title">Servicios & Soluciones</h1>
-  <p data-i18n="services.subtitle">
-    Automatizo procesos y sistemas digitales para negocios y escuelas. Soluciones prácticas con Google Sheets, Apps Script y páginas web personalizadas.
-  </p>
-</section>
+  <!-- =====================================================
+       CONTENIDO PRINCIPAL
+       TODO lo que cambies entre páginas va aquí
+  ====================================================== -->
+  <main>
+    <h1 class="title" data-i18n="page.title">Título de la página</h1>
+    <p class="subtitle" data-i18n="page.subtitle">Subtítulo o descripción de la página</p>
 
-<!-- SOLUTIONS -->
-<section class="solutions">
+    <!-- Aquí agregas todo el contenido específico de cada página -->
+  </main>
 
-  <!-- Restaurantes -->
-  <h2 class="category-title" data-i18n="solutions.categories.restaurants">🍽️ Restaurantes & Comercios</h2>
+  <!-- =====================================================
+       FOOTER DINÁMICO
+       Se carga desde footer.js
+  ====================================================== -->
+  <div id="footer-container"></div>
 
-  <div class="solution-card">
-    <h3 data-i18n="solutions.cards.menu_qr.title">Menú digital con QR</h3>
-    <p data-i18n="solutions.cards.menu_qr.desc">
-      Editable desde Google Sheets, sin apps ni pagos mensuales.
-    </p>
-    <ul>
-      <li data-i18n="solutions.cards.menu_qr.item1">Menú actualizado en tiempo real</li>
-      <li data-i18n="solutions.cards.menu_qr.item2">Compatible con cualquier dispositivo</li>
-      <li data-i18n="solutions.cards.menu_qr.item3">Fácil de compartir con clientes</li>
-    </ul>
-  </div>
+  <!-- =====================================================
+       SCRIPTS
+       IMPORTANTE: el orden SÍ importa
+  ====================================================== -->
 
-  <div class="solution-card">
-    <h3 data-i18n="solutions.cards.orders_system.title">Sistema de pedidos</h3>
-    <p data-i18n="solutions.cards.orders_system.desc">Registro automático y cálculo de totales diarios.</p>
-    <ul>
-      <li data-i18n="solutions.cards.orders_system.item1">Historial de pedidos</li>
-      <li data-i18n="solutions.cards.orders_system.item2">Cálculo automático</li>
-      <li data-i18n="solutions.cards.orders_system.item3">Reportes diarios</li>
-    </ul>
-  </div>
+  <!-- 1️⃣ Traducciones (idiomas) -->
+  <script src="assets/js/i18n.js"></script>
 
-  <!-- Educación -->
-  <h2 class="category-title" data-i18n="solutions.categories.education">🎓 Escuelas & Cursos</h2>
+  <!-- 2️⃣ Navbar dinámico -->
+  <script src="assets/js/navbar.js"></script>
 
-  <div class="solution-card">
-    <h3 data-i18n="solutions.cards.attendance_control.title">Control de asistencia</h3>
-    <p data-i18n="solutions.cards.attendance_control.desc">Registro automático para estudiantes y personal.</p>
-    <ul>
-      <li data-i18n="solutions.cards.attendance_control.item1">Reportes automáticos</li>
-      <li data-i18n="solutions.cards.attendance_control.item2">Notificaciones por correo</li>
-      <li data-i18n="solutions.cards.attendance_control.item3">Exportación sencilla</li>
-    </ul>
-  </div>
+  <!-- 3️⃣ Footer dinámico -->
+  <script src="assets/js/footer.js"></script>
 
-  <!-- Negocios -->
-  <h2 class="category-title" data-i18n="solutions.categories.business">💼 Negocios & Oficinas</h2>
-
-  <div class="solution-card">
-    <h3 data-i18n="solutions.cards.dashboards.title">Dashboards personalizados</h3>
-    <p data-i18n="solutions.cards.dashboards.desc">Visualiza métricas y KPIs de tu negocio.</p>
-    <ul>
-      <li data-i18n="solutions.cards.dashboards.item1">Datos en tiempo real</li>
-      <li data-i18n="solutions.cards.dashboards.item2">Gráficas interactivas</li>
-      <li data-i18n="solutions.cards.dashboards.item3">Personalizado a tu medida</li>
-    </ul>
-  </div>
-
-  <!-- Web y Automatización -->
-  <h2 class="category-title" data-i18n="solutions.categories.web">🌐 Páginas web + Automatización</h2>
-
-  <div class="solution-card">
-    <h3 data-i18n="solutions.cards.forms.title">Formularios inteligentes</h3>
-    <p data-i18n="solutions.cards.forms.desc">Formularios personalizados, con lógica y validaciones avanzadas.</p>
-    <ul>
-      <li data-i18n="solutions.cards.forms.item1">Resúmenes automáticos</li>
-      <li data-i18n="solutions.cards.forms.item2">Control de acceso</li>
-      <li data-i18n="solutions.cards.forms.item3">Fácil integración con Sheets</li>
-    </ul>
-  </div>
-
-  <!-- Eventos -->
-  <h2 class="category-title" data-i18n="solutions.categories.events">🎉 Eventos</h2>
-
-  <div class="solution-card">
-    <h3 data-i18n="solutions.cards.events.title">Gestión de eventos</h3>
-    <p data-i18n="solutions.cards.events.desc">Invitaciones, confirmaciones y métricas post-evento.</p>
-    <ul>
-      <li data-i18n="solutions.cards.events.item1">RSVP digital</li>
-      <li data-i18n="solutions.cards.events.item2">Lista de invitados con QR</li>
-      <li data-i18n="solutions.cards.events.item3">Reportes y métricas</li>
-    </ul>
-  </div>
-
-  <!-- Almacén / Control de ingresos -->
-  <h2 class="category-title" data-i18n="solutions.categories.inventory">📦 Almacén / Inventarios</h2>
-
-  <div class="solution-card">
-    <h3 data-i18n="solutions.cards.inventory.title">Control de inventarios</h3>
-    <p data-i18n="solutions.cards.inventory.desc">Registro y seguimiento de stock, entradas y salidas.</p>
-    <ul>
-      <li data-i18n="solutions.cards.inventory.item1">Alertas de stock bajo</li>
-      <li data-i18n="solutions.cards.inventory.item2">Reportes automáticos</li>
-      <li data-i18n="solutions.cards.inventory.item3">Historial por fecha</li>
-    </ul>
-  </div>
-
-</section>
-
-<!-- CTA FINAL -->
-<section class="custom-system">
-  <p data-i18n="services.notFound">
-    ¿No ves exactamente lo que necesitas? Puedo crear un sistema a tu medida.
-  </p>
-  <a href="#contact" class="cta-btn" data-i18n="services.ctaContact">Contáctame</a>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p data-i18n="footer.slogan">Donde lo que piensas, se vuelve solución...</p>
-  <p><span data-i18n="footer.mail">Correo</span>: info@thinkora.com</p>
-  <p><span data-i18n="footer.phone">Whatsapp</span>: +52 449 516 5882</p>
-  <p data-i18n="footer.copy">Thinkora © 2026</p>
-  <p data-i18n="footer.author">Desarrollado y gestionado por Salvador Robles</p>
-</footer>
+  <!-- 4️⃣ Script específico de cada página -->
+  <!-- <script src="assets/js/pagina.js"></script> -->
 
 </body>
 </html>
