@@ -2,23 +2,24 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("navbar.html")
     .then(res => res.text())
     .then(html => {
-      document.getElementById("navbar-container").innerHTML = html;
+      const container = document.getElementById("navbar-container");
+      container.innerHTML = html;
 
       if (typeof applyTranslations === "function") {
         applyTranslations(localStorage.getItem("language") || "es");
       }
 
-      const navbar = document.querySelector(".navbar");
-      const navLinks = document.querySelector(".nav-links");
+      const navbar = container.querySelector(".navbar");
+      const navLinks = container.querySelector(".nav-links");
 
-      // SCROLL hide/show
+      // SCROLL hide/show suavizado
       let lastScroll = 0;
       window.addEventListener("scroll", () => {
         const currentScroll = window.pageYOffset;
         if (currentScroll > lastScroll && currentScroll > 100) {
-          navbar.style.top = "-100px";
+          navbar.style.transform = "translateY(-120px)";
         } else {
-          navbar.style.top = "0";
+          navbar.style.transform = "translateY(0)";
         }
         lastScroll = currentScroll;
       });
