@@ -1,28 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- =====================================================
-       CONFIGURACIÓN BÁSICA
-  ====================================================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- =====================================================
-       SEO BÁSICO
-  ====================================================== -->
   <title>Thinkora - Donde lo que piensas, se vuelve solución...</title>
   <meta name="description" content="Thinkora: Diseño y desarrollo web, aplicaciones web y automatización de procesos para empresas y emprendedores.">
   <meta name="author" content="Salvador Robles">
 
-  <!-- =====================================================
-       FUENTES
-  ====================================================== -->
   <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- =====================================================
-       CSS GLOBAL
-  ====================================================== -->
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <style>
@@ -99,14 +86,8 @@
       background: linear-gradient(90deg, #76ff03, #00b0ff);
     }
 
-    /* ============================ 
-       ANIMACIONES
-    ============================ */
     @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ============================ 
-       RESPONSIVE
-    ============================ */
     @media (max-width: 768px) {
       .hero h1 { font-size: 3rem; }
       .hero-text-container p { font-size: 1rem; }
@@ -125,9 +106,7 @@
     <h1 data-i18n="nav.home">Thinkora</h1>
     
     <div class="hero-text-container">
-      <p id="hero-text">
-        Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.
-      </p>
+      <p id="hero-text"></p>
     </div>
 
     <div class="cta-buttons">
@@ -151,30 +130,44 @@
 
   <script>
     // =========================
-    // Hero animado
+    // Hero multilingüe
     // =========================
-    const heroText = document.getElementById("hero-text");
-    const heroMessages = [
-      'Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.',
-      'Explora nuestros servicios, paquetes y herramientas para tu negocio.',
-      'Donde lo que piensas, se vuelve solución...'
-    ];
+    const heroTextEl = document.getElementById("hero-text");
+
+    // Mensajes por idioma
+    const heroMessages = {
+      es: [
+        'Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.',
+        'Explora nuestros servicios, paquetes y herramientas para tu negocio.',
+        'Donde lo que piensas, se vuelve solución...'
+      ],
+      en: [
+        'We transform your <span class="highlight">ideas</span> into modern, efficient digital solutions tailored to your business.',
+        'Explore our services, packages, and tools for your business.',
+        'Where what you think becomes a solution...'
+      ]
+    };
 
     let msgIndex = 0;
 
-    function changeHeroText() {
-      heroText.style.opacity = 0;
-      heroText.style.transform = 'translateY(20px)';
-      
+    function updateHeroText() {
+      const lang = localStorage.getItem("language") || "es";
+      heroTextEl.style.opacity = 0;
+      heroTextEl.style.transform = 'translateY(20px)';
+
       setTimeout(() => {
-        msgIndex = (msgIndex + 1) % heroMessages.length;
-        heroText.innerHTML = heroMessages[msgIndex];
-        heroText.style.opacity = 1;
-        heroText.style.transform = 'translateY(0)';
-      }, 1000);
+        heroTextEl.innerHTML = heroMessages[lang][msgIndex];
+        heroTextEl.style.opacity = 1;
+        heroTextEl.style.transform = 'translateY(0)';
+      }, 800);
+
+      msgIndex = (msgIndex + 1) % heroMessages[localStorage.getItem("language") || "es"].length;
     }
 
-    setInterval(changeHeroText, 5000);
+    setInterval(updateHeroText, 5000);
+
+    // Inicializa hero al cargar
+    document.addEventListener("DOMContentLoaded", () => updateHeroText());
 
     // =========================
     // Cambio de idioma
@@ -183,6 +176,9 @@
     langToggle.addEventListener("click", () => {
       const newLang = localStorage.getItem("language") === "es" ? "en" : "es";
       setLanguage(newLang);
+      // Reinicia hero para mostrar el primer mensaje en el nuevo idioma
+      msgIndex = 0;
+      updateHeroText();
     });
   </script>
 
