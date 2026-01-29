@@ -1,11 +1,11 @@
 /* =====================================================
    SISTEMA DE TRADUCCIONES THINKORA
    -----------------------------------------------------
-   - Todo texto visible DEBE vivir aquí
-   - Cada idioma tiene la MISMA estructura
-   - Para agregar traducciones:
-     1. Agrega la clave en "es"
-     2. Duplica la misma clave en "en"
+   REGLAS:
+   - TODO texto visible vive aquí
+   - TODOS los idiomas comparten la MISMA estructura
+   - El HTML solo usa data-i18n / data-items
+   - NO se toca diseño ni estructura visual
 ===================================================== */
 
 const translations = {
@@ -59,8 +59,8 @@ const translations = {
     page: {
       title: "Servicios y Soluciones",
       subtitle1:
-        "Encuentra soluciones digitales adaptadas a tu negocio.\n" +
-        "Transforma tus ideas y necesidades en herramientas inteligentes que impulsan tu productividad y crecimiento."
+        "Encuentra soluciones digitales adaptadas a tu negocio.<br>" +
+        "Transforma tus <span class='highlight'>ideas</span> y <span class='highlight'>necesidades</span> en herramientas inteligentes que impulsan tu productividad y crecimiento."
     },
 
     /* ---------- TARJETAS DE SERVICIOS ---------- */
@@ -93,9 +93,9 @@ const translations = {
 
     /* ---------- INTRO SOLUCIONES ---------- */
     solutionsIntro:
-      "¿Te suena alguno de estos problemas?\n" +
-      "No importa si no ves exactamente lo que necesitas.\n" +
-      "Podemos construirlo contigo.",
+      "¿Te suena alguno de estos problemas?<br>" +
+      "No importa si no ves exactamente lo que necesitas.<br>" +
+      "<span class='highlight'>Podemos construirlo contigo.</span>",
 
     /* ---------- SOLUCIONES ---------- */
     solutions: {
@@ -258,153 +258,48 @@ const translations = {
     page: {
       title: "Services & Solutions",
       subtitle1:
-        "Find digital solutions tailored to your business.\n" +
-        "Transform your ideas and needs into smart tools that boost productivity and growth."
+        "Find digital solutions tailored to your business.<br>" +
+        "Transform your <span class='highlight'>ideas</span> and <span class='highlight'>needs</span> into smart tools that boost productivity and growth."
     },
 
     services: {
-      web: {
-        title: "Web Development",
-        desc: "Modern, responsive websites optimized for any device."
-      },
-      automation: {
-        title: "Automation",
-        desc: "Systems that save time and resources by integrating digital processes."
-      },
-      apps: {
-        title: "Web Applications",
-        desc: "Custom applications designed for your specific business needs."
-      },
-      consulting: {
-        title: "Consulting",
-        desc: "Technology consulting to optimize resources and improve business processes."
-      },
-      uiux: {
-        title: "UI / UX Design",
-        desc: "Attractive and functional designs that ensure the best user experience."
-      },
-      support: {
-        title: "Technical Support",
-        desc: "Ongoing assistance and fast solutions to keep your business running."
-      }
+      web: { title: "Web Development", desc: "Modern, responsive websites optimized for any device." },
+      automation: { title: "Automation", desc: "Systems that save time and resources by integrating digital processes." },
+      apps: { title: "Web Applications", desc: "Custom applications designed for your specific business needs." },
+      consulting: { title: "Consulting", desc: "Technology consulting to optimize resources and improve business processes." },
+      uiux: { title: "UI / UX Design", desc: "Attractive and functional designs that ensure the best user experience." },
+      support: { title: "Technical Support", desc: "Ongoing assistance and fast solutions to keep your business running." }
     },
 
     solutionsIntro:
-      "Does any of this sound familiar?\n" +
-      "Even if you don't see exactly what you need.\n" +
-      "We can build it with you.",
+      "Does any of this sound familiar?<br>" +
+      "Even if you don't see exactly what you need.<br>" +
+      "<span class='highlight'>We can build it with you.</span>",
 
     solutions: {
       admin: {
         title: "Business & Administration",
-        finance: {
-          title: "Financial Control",
-          items: [
-            "Sales tracking in Sheets",
-            "Expense alerts",
-            "Revenue and profit dashboards"
-          ]
-        },
-        quotes: {
-          title: "Reports & Quotations",
-          items: [
-            "Automatic PDF quotations",
-            "Email reports",
-            "Transaction history"
-          ]
-        },
-        operations: {
-          title: "Operational Management",
-          items: [
-            "Daily cash system",
-            "Inventory alerts",
-            "Customer management (CRM)"
-          ]
-        }
+        finance: { title: "Financial Control", items: ["Sales tracking in Sheets", "Expense alerts", "Revenue and profit dashboards"] },
+        quotes: { title: "Reports & Quotations", items: ["Automatic PDF quotations", "Email reports", "Transaction history"] },
+        operations: { title: "Operational Management", items: ["Daily cash system", "Inventory alerts", "Customer management (CRM)"] }
       },
-
       restaurants: {
         title: "Restaurants & Retail",
-        orders: {
-          title: "Orders & Consumption",
-          items: [
-            "Digital ordering system",
-            "Menu editable from Sheets",
-            "Automatic table billing"
-          ]
-        },
-        floor: {
-          title: "Floor Control",
-          items: [
-            "Table codes",
-            "Preparation times",
-            "Refill control"
-          ]
-        },
-        analysis: {
-          title: "Analysis & Improvement",
-          items: [
-            "Best-selling dishes",
-            "Tips tracking",
-            "Post-consumption surveys"
-          ]
-        }
+        orders: { title: "Orders & Consumption", items: ["Digital ordering system", "Menu editable from Sheets", "Automatic table billing"] },
+        floor: { title: "Floor Control", items: ["Table codes", "Preparation times", "Refill control"] },
+        analysis: { title: "Analysis & Improvement", items: ["Best-selling dishes", "Tips tracking", "Post-consumption surveys"] }
       },
-
       education: {
         title: "Education & Schools",
-        management: {
-          title: "School Management",
-          items: [
-            "Automatic attendance",
-            "Grade records",
-            "School schedules"
-          ]
-        },
-        communication: {
-          title: "Communication",
-          items: [
-            "Parent notifications",
-            "Student surveys",
-            "Incident logs"
-          ]
-        },
-        docs: {
-          title: "Documentation",
-          items: [
-            "PDF report cards",
-            "Homework tracking",
-            "Duty schedules"
-          ]
-        }
+        management: { title: "School Management", items: ["Automatic attendance", "Grade records", "School schedules"] },
+        communication: { title: "Communication", items: ["Parent notifications", "Student surveys", "Incident logs"] },
+        docs: { title: "Documentation", items: ["PDF report cards", "Homework tracking", "Duty schedules"] }
       },
-
       courses: {
         title: "Courses & Digital Products",
-        access: {
-          title: "Access & Users",
-          items: [
-            "Student registration",
-            "Code-based access",
-            "Waiting lists"
-          ]
-        },
-        tracking: {
-          title: "Progress Tracking",
-          items: [
-            "Material delivery",
-            "Progress dashboard",
-            "Automatic reminders"
-          ]
-        },
-        payments: {
-          title: "Payments & Certification",
-          items: [
-            "Payment tracking",
-            "Custom certificates",
-            "Access renewal"
-          ]
-        }
+        access: { title: "Access & Users", items: ["Student registration", "Code-based access", "Waiting lists"] },
+        tracking: { title: "Progress Tracking", items: ["Material delivery", "Progress dashboard", "Automatic reminders"] },
+        payments: { title: "Payments & Certification", items: ["Payment tracking", "Custom certificates", "Access renewal"] }
       }
     }
   }
@@ -420,27 +315,30 @@ function setLanguage(lang) {
   currentLang = lang;
   localStorage.setItem("language", lang);
   applyTranslations(lang);
+  renderItems();
 }
 
 function applyTranslations(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const keys = el.dataset.i18n.split(".");
     let text = translations[lang];
-
     keys.forEach(k => text = text?.[k]);
-
     if (!text) return;
-
-    // Si el texto contiene HTML, úsalo como HTML
-    if (text.includes("<")) {
-      el.innerHTML = text;
-    } else {
-      el.textContent = text;
-    }
+    el.innerHTML = text;
   });
 }
 
+function renderItems() {
+  document.querySelectorAll("[data-items]").forEach(el => {
+    const keys = el.dataset.items.split(".");
+    let items = translations[currentLang];
+    keys.forEach(k => items = items?.[k]);
+    if (!Array.isArray(items)) return;
+    el.innerHTML = items.map(i => `<p>${i}</p>`).join("");
+  });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   applyTranslations(currentLang);
+  renderItems();
 });
