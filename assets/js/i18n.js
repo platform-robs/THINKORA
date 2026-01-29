@@ -425,21 +425,21 @@ function setLanguage(lang) {
 function applyTranslations(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const keys = el.dataset.i18n.split(".");
-    let value = translations[lang];
+    let text = translations[lang];
 
-    keys.forEach(k => value = value?.[k]);
-    if (!value) return;
+    keys.forEach(k => text = text?.[k]);
 
-    // Arrays → listas (párrafos)
-    if (Array.isArray(value)) {
-      el.innerHTML = value.map(item => `<p>${item}</p>`).join("");
-      return;
+    if (!text) return;
+
+    // Si el texto contiene HTML, úsalo como HTML
+    if (text.includes("<")) {
+      el.innerHTML = text;
+    } else {
+      el.textContent = text;
     }
-
-    // Strings con saltos de línea / HTML
-    el.innerHTML = value.replace(/\n/g, "<br>");
   });
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
   applyTranslations(currentLang);
