@@ -298,3 +298,145 @@ main {
     min-width: 120px;
   }
 }
+
+/* ============================
+   SUBTÍTULOS Y DIVISORES
+============================ */
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 10px auto 50px;
+  text-align: center;
+}
+
+.subtitle .highlight {
+  font-weight: 700;
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-divider {
+  height: 1px;
+  max-width: 600px;
+  margin: 50px auto;
+  background: linear-gradient(to right, transparent, var(--accent-blue), transparent);
+}
+
+/* ============================
+   SERVICIOS
+============================ */
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.service-card {
+  background: var(--bg-card);
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.45);
+}
+
+.service-card i {
+  font-size: 2.4rem;
+  color: var(--accent-blue);
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  margin: 10px 0;
+  font-size: 1.3rem;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* ============================
+   SOLUCIONES
+============================ */
+.solution-category {
+  margin-top: 60px;
+}
+
+.solution-category h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: 'Righteous', cursive;
+}
+
+.solution-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 22px;
+}
+
+.solution-card {
+  background: var(--bg-card);
+  border-radius: 15px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.solution-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.card-title {
+  text-align: center;
+  font-size: 1.15rem;
+  z-index: 2;
+  transition: opacity 0.4s ease;
+}
+
+.card-title i {
+  display: block;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: var(--accent-blue);
+}
+
+.card-content {
+  position: absolute;
+  inset: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.solution-card.active .card-title {
+  opacity: 0;
+}
+
+.solution-card.active .card-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+
