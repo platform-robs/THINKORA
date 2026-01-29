@@ -86,17 +86,22 @@
        SECCIÓN SOLUCIONES
     ============================ */
 .solution-grid {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  flex-wrap: wrap;
 }
 
 .solution-card {
   background: #2e2e2e;
   border-radius: 15px;
-  width: 300px;
+  width: 100%;
+  height: 150px; /* altura de la tarjeta */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   overflow: hidden;
+  cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -105,52 +110,43 @@
   box-shadow: 0 15px 30px rgba(0,0,0,0.5);
 }
 
-.solution-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  cursor: pointer;
-}
-
-.solution-header h4 {
-  font-size: 1.2rem;
+/* Contenido inicial: solo subtítulo */
+.solution-card .card-title {
   color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+  transition: opacity 0.5s ease;
+  z-index: 2;
 }
 
-.solution-header i {
-  transition: transform 0.3s ease;
-  color: #00ff99;
-}
-
-.solution-content {
-  max-height: 0;
-  overflow: hidden;
-  padding: 0 20px;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-}
-
-.solution-content li {
-  margin: 10px 0;
+/* Contenido detallado: información de la tarjeta */
+.solution-card .card-content {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   color: #ccc;
   font-size: 0.95rem;
-}
-
-.solution-card.active .solution-content {
-  max-height: 500px; /* suficiente para los bullets */
-  padding: 15px 20px;
-}
-
-.solution-card.active .solution-header i {
-  transform: rotate(180deg);
-}
-
-.solution-category h2 {
-  color: #ccc;
+  padding: 20px;
   text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 30px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
+
+/* Estado activo: subtítulo desaparece, contenido aparece */
+.solution-card.active .card-title {
+  opacity: 0;
+}
+
+.solution-card.active .card-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
     .solution-card h4 .highlight,
     .service-card h3 .highlight {
       font-weight: 700;
@@ -160,8 +156,8 @@
     }
 
     .section-divider {
-      height: 2px;
-      max-width: 200px;
+      height: 1px;
+      max-width: 600px;
       margin: 50px auto;
       background: linear-gradient(to right, transparent, #00b0ff, transparent);
       border-radius: 1px;
@@ -173,15 +169,15 @@
 
   <!-- NAVBAR -->
   <div id="navbar-container"></div>
+  <section class="thinkora-bg">
+
 
   <!-- CONTENIDO PRINCIPAL -->
   <main>
-    <h1 class="title" data-i18n="page.title">Servicios</h1>
+    <h1 class="title" data-i18n="page.title">Servicios y Soluciones</h1>
     <p class="subtitle" data-i18n="page.subtitle1">
-      Encuentra soluciones digitales adaptadas a tu negocio.
-    </p>
-    <p class="subtitle" data-i18n="page.subtitle2">
-      Transforma tus <span class="highlight">ideas</span> y <span class="highlight">necesidades</span> en sistemas, automatizaciones y herramientas inteligentes que impulsan tu <span class="highlight">productividad</span> y <span class="highlight">crecimiento</span>.
+      Encuentra soluciones digitales adaptadas a tu negocio.<br>
+      Transforma tus <span class="highlight">ideas</span> y <span class="highlight">necesidades</span> en herramientas inteligentes que impulsan tu productividad y crecimiento.
     </p>
 
     <!-- Línea de separación -->
@@ -225,45 +221,187 @@
     <div class="section-divider"></div>
 
     <!-- SECCIÓN SOLUCIONES -->
-<h1 class="title">Soluciones</h1>
+<p class="subtitle" style="margin: 30px auto;">
+  ¿Te suena alguno de estos problemas?<br>
+  No importa si no ves exactamente lo que necesitas.<br>
+  <span class="highlight">Podemos construirlo contigo.</span>
+</p>
+
 <section id="solutions" class="solutions">
 
-  <!-- Restaurantes y Comercios -->
+  <!-- ================= ADMINISTRACIÓN & NEGOCIOS ================= -->
   <div class="solution-category">
-    <h2>Restaurantes y Comercios</h2>
+    <h2>Administración & Negocios</h2>
     <div class="solution-grid">
+
       <div class="solution-card">
-        <div class="solution-header">
-          <h4>Menú Digital con QR</h4>
-          <i class="fas fa-chevron-down"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-chart-line"></i>
+          Control Financiero
         </div>
-        <ul class="solution-content">
-          <li>Editable desde Google Sheets</li>
-          <li>Sin apps adicionales</li>
-          <li>Sin pagos mensuales</li>
-        </ul>
+        <div class="card-content">
+          <p>Control de ventas en Sheets</p>
+          <p>Gastos con alertas automáticas</p>
+          <p>Dashboard de ingresos y utilidades</p>
+        </div>
       </div>
+
       <div class="solution-card">
-        <div class="solution-header">
-          <h4>Sistema de Pedidos</h4>
-          <i class="fas fa-chevron-down"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-file-invoice"></i>
+          Reportes & Cotizaciones
         </div>
-        <ul class="solution-content">
-          <li>Registro automático de órdenes</li>
-          <li>Cálculo de totales</li>
-          <li>Historial por día</li>
-        </ul>
+        <div class="card-content">
+          <p>Cotizaciones automáticas en PDF</p>
+          <p>Reportes enviados por correo</p>
+          <p>Historial de movimientos</p>
+        </div>
       </div>
+
       <div class="solution-card">
-        <div class="solution-header">
-          <h4>Control de Refill de Bebidas</h4>
-          <i class="fas fa-chevron-down"></i>
+        <div class="card-title">
+          <i class="fa-solid fa-briefcase"></i>
+          Gestión Operativa
         </div>
-        <ul class="solution-content">
-          <li>Automatiza seguimiento de refill</li>
-          <li>Alertas de consumo</li>
-        </ul>
+        <div class="card-content">
+          <p>Sistema de caja diaria</p>
+          <p>Inventario con alertas</p>
+          <p>Registro de clientes (CRM)</p>
+        </div>
       </div>
+
+    </div>
+  </div>
+
+  <!-- ================= RESTAURANTES & COMERCIOS ================= -->
+  <div class="solution-category">
+    <h2>Restaurantes & Comercios</h2>
+    <div class="solution-grid">
+
+      <div class="solution-card">
+        <div class="card-title">
+          <i class="fa-solid fa-receipt"></i>
+          Pedidos & Consumo
+        </div>
+        <div class="card-content">
+          <p>Sistema de pedidos digital</p>
+          <p>Menú editable desde Sheets</p>
+          <p>Cuentas automáticas por mesa</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="card-title">
+          <i class="fa-solid fa-table"></i>
+          Control en Piso
+        </div>
+        <div class="card-content">
+          <p>Mesas por código</p>
+          <p>Tiempos de preparación</p>
+          <p>Control de refill</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="card-title">
+          <i class="fa-solid fa-chart-pie"></i>
+          Análisis & Mejora
+        </div>
+        <div class="card-content">
+          <p>Platillos más vendidos</p>
+          <p>Registro de propinas</p>
+          <p>Encuesta post-consumo</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= EDUCACIÓN & ESCUELAS ================= -->
+  <div class="solution-category">
+    <h2>Educación & Escuelas</h2>
+    <div class="solution-grid">
+
+      <div class="solution-card">
+        <div class="card-title">
+          <i class="fa-solid fa-school"></i>
+          Gestión Escolar
+        </div>
+        <div class="card-content">
+          <p>Asistencia automática</p>
+          <p>Registro de calificaciones</p>
+          <p>Horarios escolares</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="card-title">
+          <i class="fa-solid fa-envelope-open-text"></i>
+          Comunicación
+        </div>
+        <div class="card-content">
+          <p>Avisos a padres</p>
+          <p>Encuestas para alumnos</p>
+          <p>Bitácora de incidencias</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="card-title">
+          <i class="fa-solid fa-file-pdf"></i>
+          Documentación
+        </div>
+        <div class="card-content">
+          <p>Boletas en PDF</p>
+          <p>Registro de tareas</p>
+          <p>Control de guardias</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= CURSOS & INFOPRODUCTOS ================= -->
+  <div class="solution-category">
+    <h2>Cursos & Infoproductos</h2>
+    <div class="solution-grid">
+
+      <div class="solution-card">
+        <div class="card-title">
+          <i class="fa-solid fa-users"></i>
+          Accesos & Usuarios
+        </div>
+        <div class="card-content">
+          <p>Registro de alumnos</p>
+          <p>Acceso por código</p>
+          <p>Lista de espera</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="card-title">
+          <i class="fa-solid fa-graduation-cap"></i>
+          Seguimiento
+        </div>
+        <div class="card-content">
+          <p>Envío de material</p>
+          <p>Panel de progreso</p>
+          <p>Recordatorios automáticos</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="card-title">
+          <i class="fa-solid fa-certificate"></i>
+          Pagos & Certificación
+        </div>
+        <div class="card-content">
+          <p>Control de pagos</p>
+          <p>Certificados personalizados</p>
+          <p>Renovación de accesos</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -275,13 +413,22 @@
 
   <!-- SCRIPTS -->
 <script>
-document.querySelectorAll('.solution-card').forEach(card => {
-  card.querySelector('.solution-header').addEventListener('click', () => {
+const cards = document.querySelectorAll('.solution-card');
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    // Cierra cualquier otra tarjeta activa
+    cards.forEach(c => {
+      if (c !== card) c.classList.remove('active');
+    });
+    // Alterna la tarjeta clickeada
     card.classList.toggle('active');
   });
 });
+
 </script>
-  
+</section>
+
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/footer.js"></script>
