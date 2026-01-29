@@ -6,18 +6,18 @@
 
   <title>Thinkora | Servicios y Soluciones Digitales</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <div id="navbar-container"></div>
 
 <main>
 
-  <!-- HERO -->
+  <!-- ================= TÍTULO ================= -->
   <h1 class="title" data-i18n="page.title"></h1>
 
   <p class="subtitle" data-i18n="page.subtitle1"></p>
@@ -71,9 +71,9 @@
   <p class="subtitle" data-i18n="solutionsIntro"></p>
 
   <!-- ================= SOLUCIONES ================= -->
-  <section class="solutions">
+  <section id="solutions">
 
-    <!-- ADMINISTRACIÓN -->
+    <!-- ADMIN -->
     <div class="solution-category">
       <h2 data-i18n="solutions.admin.title"></h2>
 
@@ -209,21 +209,23 @@
 
 </main>
 
+<!-- FOOTER -->
 <div id="footer-container"></div>
 
-<script>
-const cards = document.querySelectorAll(".solution-card");
-cards.forEach(card => {
-  card.addEventListener("click", () => {
-    cards.forEach(c => c !== card && c.classList.remove("active"));
-    card.classList.toggle("active");
-  });
-});
-</script>
-
+<!-- ================= SCRIPTS ================= -->
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/navbar.js"></script>
 <script src="assets/js/footer.js"></script>
+
+<script>
+const cards = document.querySelectorAll('.solution-card');
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    cards.forEach(c => c !== card && c.classList.remove('active'));
+    card.classList.toggle('active');
+  });
+});
+</script>
 
 </body>
 </html>
