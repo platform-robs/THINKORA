@@ -4,6 +4,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap');
 
 /* ============================
+   PALETA THINKORA (NUEVA)
+============================ */
+:root {
+  --bg-main: #2f3437;
+  --bg-dark: #1f2326;
+  --bg-card: #252a2d;
+  --border-soft: #3a4044;
+
+  --text-main: #e6e6e6;
+  --text-muted: #b5b9bd;
+
+  --accent-blue: #00a8c6;
+  --accent-green: #4fd17a;
+
+  --gradient-main: linear-gradient(90deg, #00a8c6, #4fd17a);
+}
+
+/* ============================
    RESET & BASE
 ============================ */
 * {
@@ -16,8 +34,8 @@ html, body {
   width: 100%;
   min-height: 100vh;
   font-family: 'Comfortaa', sans-serif;
-  background-color: #434343;
-  color: #d9d9d9;
+  background-color: var(--bg-main);
+  color: var(--text-main);
   overflow-x: hidden;
 }
 
@@ -41,7 +59,7 @@ body {
 .title,
 .thinkora {
   font-family: 'Righteous', cursive;
-  background: linear-gradient(90deg, #00b0ff, #76ff03);
+  background: var(--gradient-main);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -68,24 +86,11 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-/* ============================
-   NAVBAR BASE
-============================ */
-.navbar {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed; /* fijado arriba */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: #434343;
+  background-color: var(--bg-main);
   z-index: 999;
   transition: transform 0.3s ease;
 }
@@ -94,7 +99,9 @@ main {
 .navbar .logo a {
   font-family: 'Righteous', cursive;
   font-size: 1.8rem;
-  color: #00b0ff;
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-decoration: none;
 }
 
@@ -109,13 +116,13 @@ main {
 
 .nav-links li a {
   text-decoration: none;
-  color: #d9d9d9;
+  color: var(--text-main);
   font-weight: 600;
   transition: color 0.3s ease;
 }
 
 .nav-links li a:hover {
-  color: #76ff03;
+  color: var(--accent-green);
 }
 
 /* Language switch */
@@ -127,8 +134,8 @@ main {
 
 .lang-switch button {
   background: none;
-  border: 1px solid #d9d9d9;
-  color: #d9d9d9;
+  border: 1px solid var(--border-soft);
+  color: var(--text-main);
   padding: 4px 8px;
   border-radius: 6px;
   cursor: pointer;
@@ -137,12 +144,11 @@ main {
 }
 
 .lang-switch button:hover {
-  background-color: #76ff03;
-  border-color: #00b0ff;
-  color: #000;
+  background: var(--gradient-main);
+  color: #0b0b0b;
 }
 
-/* Hamburger (mobile) */
+/* Hamburger */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -153,7 +159,7 @@ main {
 .hamburger div {
   width: 25px;
   height: 3px;
-  background-color: #d9d9d9;
+  background-color: var(--text-main);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -162,11 +168,9 @@ main {
 .hamburger.active div:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
-
 .hamburger.active div:nth-child(2) {
   opacity: 0;
 }
-
 .hamburger.active div:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
 }
@@ -180,12 +184,10 @@ main {
     top: 70px;
     right: -100%;
     flex-direction: column;
-    background-color: #434343;
+    background-color: var(--bg-dark);
     width: 220px;
     height: calc(100vh - 70px);
     padding-top: 40px;
-    display: flex;
-    justify-content: flex-start;
     align-items: center;
     gap: 20px;
     transition: right 0.3s ease;
@@ -200,31 +202,26 @@ main {
   }
 
   .lang-switch {
-    display: none; /* opcional, puedes moverlo dentro del menu si quieres */
+    display: none;
   }
 }
-
 
 /* ============================
    FOOTER
 ============================ */
 .footer {
   width: 100%;
-  background: #3a3a3a;
+  background: #262a2d;
   padding: 5px 20px 15px;
   text-align: center;
-  border-top: 1px solid #505050;
+  border-top: 1px solid var(--border-soft);
 }
 
-/* ===== MARCA ===== */
-.footer-brand {
-  margin-bottom: 22px;
-}
-
+/* Marca */
 .footer-title {
   font-family: 'Righteous', cursive;
   font-size: 2.2rem;
-  background: linear-gradient(90deg, #00b0ff, #76ff03);
+  background: var(--gradient-main);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
@@ -233,10 +230,10 @@ main {
 .footer-slogan {
   margin-top: 10px;
   font-size: 1rem;
-  color: #d9d9d9;
+  color: var(--text-muted);
 }
 
-/* ===== CONTACTO (CLAVE) ===== */
+/* Contacto */
 .footer-contact {
   display: grid;
   grid-template-columns: auto auto;
@@ -245,7 +242,7 @@ main {
   margin-bottom: 28px;
 }
 
-/* ===== BOTONES ===== */
+/* Botones */
 .footer-links {
   display: flex;
   justify-content: center;
@@ -261,41 +258,24 @@ main {
   gap: 8px;
   padding: 12px 20px;
   border-radius: 12px;
-  background: #505050;
+  background: #32373b;
   color: #fff;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.95rem;
-  min-width: 200px; /* todos los botones igual tamaño */
-  max-width: 280px;
+  min-width: 200px;
   transition: all 0.25s ease;
 }
 
 .footer-btn:hover {
   transform: translateY(-3px);
-  background: linear-gradient(90deg, #00b0ff, #76ff03);
-  color: #000;
+  background: var(--gradient-main);
+  color: #0b0b0b;
 }
 
-@media (max-width: 600px) {
-  .footer-links {
-    flex-direction: row;       /* ahora están uno al lado del otro */
-    justify-content: center;   /* centrados horizontalmente */
-    gap: 12px;                 /* espacio entre botones */
-  }
-
-  .footer-btn {
-    width: auto;               /* ancho automático según contenido */
-    min-width: 120px;          /* tamaño mínimo para que no se vean muy pequeños */
-  }
-}
-
-
-
-/* ===== COPYRIGHT ===== */
+/* Copyright */
 .footer-copy {
   font-size: 0.85rem;
-  color: #bdbdbd;
+  color: var(--text-muted);
 }
 
 .footer-author {
@@ -304,16 +284,17 @@ main {
   opacity: 0.85;
 }
 
-/* ============================
-   FOOTER RESPONSIVE
-============================ */
+/* Footer responsive */
 @media (max-width: 600px) {
   .footer-contact {
     grid-template-columns: 1fr;
-    gap: 14px;
+  }
+
+  .footer-links {
+    gap: 12px;
   }
 
   .footer-btn {
-    justify-content: center;
+    min-width: 120px;
   }
 }
