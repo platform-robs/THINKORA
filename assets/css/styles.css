@@ -1,29 +1,44 @@
-/* ============================
-   FUENTES BASE
-============================ */
+/* ======================================================
+   THINKORA DESIGN SYSTEM
+   Archivo: styles.css
+   Objetivo:
+   - Mantener consistencia visual
+   - Facilitar escalabilidad
+   - No romper diseño al agregar i18n o nuevas secciones
+====================================================== */
+
+/* ======================================================
+   1. FUENTES
+====================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap');
 
-/* ============================
-   PALETA THINKORA (NUEVA)
-============================ */
+/* ======================================================
+   2. VARIABLES GLOBALES (PALETA THINKORA)
+====================================================== */
 :root {
+  /* Backgrounds */
   --bg-main: #2f3437;
   --bg-dark: #1f2326;
   --bg-card: #252a2d;
+
+  /* Borders */
   --border-soft: #3a4044;
 
+  /* Text */
   --text-main: #e6e6e6;
   --text-muted: #b5b9bd;
 
+  /* Accents */
   --accent-blue: #00a8c6;
   --accent-green: #4fd17a;
 
+  /* Gradients */
   --gradient-main: linear-gradient(90deg, #00a8c6, #4fd17a);
 }
 
-/* ============================
-   RESET & BASE
-============================ */
+/* ======================================================
+   3. RESET & BASE
+====================================================== */
 * {
   box-sizing: border-box;
 }
@@ -45,28 +60,14 @@ body {
   align-items: center;
 }
 
-/* ============================
-   CONTENEDORES EXTERNOS
-============================ */
+/* ======================================================
+   4. CONTENEDORES GLOBALES
+====================================================== */
 #navbar-container,
 #footer-container {
   width: 100%;
 }
 
-/* ============================
-   TIPOGRAFÍA PRINCIPAL
-============================ */
-.title,
-.thinkora {
-  font-family: 'Righteous', cursive;
-  background: var(--gradient-main);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ============================
-   CONTENIDO PRINCIPAL
-============================ */
 main {
   flex: 1;
   width: 100%;
@@ -75,24 +76,35 @@ main {
   text-align: center;
 }
 
-/* ============================
-   NAVBAR
-============================ */
+/* ======================================================
+   5. TIPOGRAFÍA ESPECIAL
+====================================================== */
+.title,
+.thinkora {
+  font-family: 'Righteous', cursive;
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ======================================================
+   6. NAVBAR
+====================================================== */
 .navbar {
-  width: 100%;
+  position: fixed;
+  top: 0;
+  inset-inline: 0;
+  z-index: 999;
+
   max-width: 1100px;
   margin: 0 auto;
   padding: 20px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+
   background-color: var(--bg-main);
-  z-index: 999;
-  transition: transform 0.3s ease;
 }
 
 /* Logo */
@@ -105,7 +117,7 @@ main {
   text-decoration: none;
 }
 
-/* Nav links */
+/* Links */
 .nav-links {
   display: flex;
   gap: 25px;
@@ -114,21 +126,19 @@ main {
   padding: 0;
 }
 
-.nav-links li a {
+.nav-links a {
   text-decoration: none;
   color: var(--text-main);
   font-weight: 600;
-  transition: color 0.3s ease;
 }
 
-.nav-links li a:hover {
+.nav-links a:hover {
   color: var(--accent-green);
 }
 
-/* Language switch */
+/* Idioma */
 .lang-switch {
   display: flex;
-  align-items: center;
   gap: 6px;
 }
 
@@ -139,13 +149,6 @@ main {
   padding: 4px 8px;
   border-radius: 6px;
   cursor: pointer;
-  font-weight: 600;
-  transition: all 0.25s ease;
-}
-
-.lang-switch button:hover {
-  background: var(--gradient-main);
-  color: #0b0b0b;
 }
 
 /* Hamburger */
@@ -153,169 +156,27 @@ main {
   display: none;
   flex-direction: column;
   gap: 5px;
-  cursor: pointer;
 }
 
-.hamburger div {
-  width: 25px;
-  height: 3px;
-  background-color: var(--text-main);
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* Animación X */
-.hamburger.active div:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.hamburger.active div:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active div:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* ============================
-   NAVBAR RESPONSIVO
-============================ */
-@media (max-width: 768px) {
-  .nav-links {
-    position: fixed;
-    top: 70px;
-    right: -100%;
-    flex-direction: column;
-    background-color: var(--bg-dark);
-    width: 220px;
-    height: calc(100vh - 70px);
-    padding-top: 40px;
-    align-items: center;
-    gap: 20px;
-    transition: right 0.3s ease;
-  }
-
-  .nav-links.show {
-    right: 0;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  .lang-switch {
-    display: none;
-  }
-}
-
-/* ============================
-   FOOTER
-============================ */
+/* ======================================================
+   7. FOOTER
+====================================================== */
 .footer {
   width: 100%;
   background: #181a1c;
-  padding: 5px 20px 15px;
-  text-align: center;
   border-top: 1px solid var(--border-soft);
+  text-align: center;
+  padding: 10px 20px 20px;
 }
 
-/* Marca */
-.footer-title {
-  font-family: 'Righteous', cursive;
-  font-size: 2.2rem;
-  background: var(--gradient-main);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 0;
-}
-
-.footer-slogan {
-  margin-top: 10px;
-  font-size: 1rem;
-  color: var(--text-muted);
-}
-
-/* Contacto */
-.footer-contact {
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: center;
-  gap: 22px;
-  margin-bottom: 28px;
-}
-
-/* Botones */
-.footer-links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.footer-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 20px;
-  border-radius: 12px;
-  background: #32373b;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  min-width: 200px;
-  transition: all 0.25s ease;
-}
-
-.footer-btn:hover {
-  transform: translateY(-3px);
-  background: var(--gradient-main);
-  color: #0b0b0b;
-}
-
-/* Copyright */
-.footer-copy {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.footer-author {
-  margin-top: 6px;
-  font-size: 0.8rem;
-  opacity: 0.85;
-}
-
-/* Footer responsive */
-@media (max-width: 600px) {
-  .footer-contact {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-links {
-    gap: 12px;
-  }
-
-  .footer-btn {
-    min-width: 120px;
-  }
-}
-
-/* ============================
-   SUBTÍTULOS Y DIVISORES
-============================ */
+/* ======================================================
+   8. COMPONENTES COMUNES
+====================================================== */
 .subtitle {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  line-height: 1.6;
   max-width: 900px;
   margin: 10px auto 50px;
-  text-align: center;
-}
-
-.subtitle .highlight {
-  font-weight: 700;
-  background: var(--gradient-main);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 
 .section-divider {
@@ -325,61 +186,33 @@ main {
   background: linear-gradient(to right, transparent, var(--accent-blue), transparent);
 }
 
-/* ============================
-   SERVICIOS
-============================ */
+/* ======================================================
+   9. SERVICIOS
+====================================================== */
 .services {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
-  margin-top: 40px;
 }
 
 .service-card {
   background: var(--bg-card);
   border-radius: 15px;
   padding: 25px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .service-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.45);
+  box-shadow: 0 15px 30px rgba(0,0,0,.45);
 }
 
-.service-card i {
-  font-size: 2.4rem;
-  color: var(--accent-blue);
-  margin-bottom: 15px;
-}
-
-.service-card h3 {
-  margin: 10px 0;
-  font-size: 1.3rem;
-}
-
-.service-card p {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-}
-
-/* ============================
-   SOLUCIONES
-============================ */
-.solution-category {
-  margin-top: 60px;
-}
-
-.solution-category h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-family: 'Righteous', cursive;
-}
-
+/* ======================================================
+   10. SOLUCIONES
+====================================================== */
 .solution-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
   gap: 22px;
 }
 
@@ -391,52 +224,4 @@ main {
   align-items: center;
   justify-content: center;
   position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.solution-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-}
-
-.card-title {
-  text-align: center;
-  font-size: 1.15rem;
-  z-index: 2;
-  transition: opacity 0.4s ease;
-}
-
-.card-title i {
-  display: block;
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  color: var(--accent-blue);
-}
-
-.card-content {
-  position: absolute;
-  inset: 0;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-  text-align: center;
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-}
-
-.solution-card.active .card-title {
-  opacity: 0;
-}
-
-.solution-card.active .card-content {
-  opacity: 1;
-  pointer-events: auto;
-}
-
