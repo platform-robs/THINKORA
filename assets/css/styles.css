@@ -36,16 +36,6 @@ body {
 }
 
 /* ============================
-   FONDO GENERAL THINKORA
-============================ */
-.thinkora-bg {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #1e1e1e, #434343);
-  color: #fff;
-}
-
-
-/* ============================
    TIPOGRAFÍA PRINCIPAL
 ============================ */
 .title,
