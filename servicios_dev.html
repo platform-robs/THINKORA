@@ -25,144 +25,6 @@
        CSS GLOBAL
   ====================================================== -->
   <link rel="stylesheet" href="assets/css/styles.css">
-
-  <style>
-    /* ============================ 
-       HERO / SUBTÍTULO
-    ============================ */
-    .subtitle {
-      font-size: 1.1rem;
-      color: #d9d9d9;
-      line-height: 1.6;
-      max-width: 900px;
-      margin: 10px auto 50px auto;
-      text-align: center;
-    }
-    .subtitle .highlight {
-      font-weight: 700;
-      background: linear-gradient(90deg, #00b0ff, #00ff99);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* ============================ 
-       SECCIÓN SERVICIOS
-    ============================ */
-    .services {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-    }
-    .service-card {
-      background: #262a2d;
-      border-radius: 15px;
-      padding: 25px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    }
-    .service-card i {
-      font-size: 2.5rem;
-      color: #00b0ff;
-      margin-bottom: 15px;
-    }
-    .service-card h3 {
-      margin: 10px 0;
-      font-size: 1.3rem;
-      color: #fff;
-    }
-    .service-card p {
-      font-size: 0.95rem;
-      color: #d9d9d9;
-      line-height: 1.5;
-    }
-
-    /* ============================ 
-       SECCIÓN SOLUCIONES
-    ============================ */
-.solution-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.solution-card {
-  background: #262a2d;
-  border-radius: 15px;
-  width: 100%;
-  height: 150px; /* altura de la tarjeta */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.solution-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-}
-
-/* Contenido inicial: solo subtítulo */
-.solution-card .card-title {
-  color: #fff;
-  font-size: 1.2rem;
-  text-align: center;
-  transition: opacity 0.5s ease;
-  z-index: 2;
-}
-
-/* Contenido detallado: información de la tarjeta */
-.solution-card .card-content {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #ccc;
-  font-size: 0.95rem;
-  padding: 20px;
-  text-align: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-}
-
-/* Estado activo: subtítulo desaparece, contenido aparece */
-.solution-card.active .card-title {
-  opacity: 0;
-}
-
-.solution-card.active .card-content {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-
-    .solution-card h4 .highlight,
-    .service-card h3 .highlight {
-      font-weight: 700;
-      background: linear-gradient(90deg, #00b0ff, #00ff99);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .section-divider {
-      height: 1px;
-      max-width: 600px;
-      margin: 50px auto;
-      background: linear-gradient(to right, transparent, #00b0ff, transparent);
-      border-radius: 1px;
-    }
-  </style>
 </head>
 
 <body>
@@ -172,263 +34,284 @@
 
   <!-- CONTENIDO PRINCIPAL -->
   <main>
+
     <h1 class="title" data-i18n="page.title">Servicios y Soluciones</h1>
+
     <p class="subtitle" data-i18n="page.subtitle1">
       Encuentra soluciones digitales adaptadas a tu negocio.<br>
-      Transforma tus <span class="highlight">ideas</span> y <span class="highlight">necesidades</span> en herramientas inteligentes que impulsan tu productividad y crecimiento.
+      Transforma tus <span class="highlight">ideas</span> y
+      <span class="highlight">necesidades</span> en herramientas inteligentes
+      que impulsan tu productividad y crecimiento.
     </p>
 
-    <!-- Línea de separación -->
     <div class="section-divider"></div>
 
-    <!-- SECCIÓN SERVICIOS -->
+    <!-- ================= SERVICIOS ================= -->
     <section id="services" class="services">
+
       <div class="service-card">
         <i class="fas fa-code"></i>
-        <h3>Desarrollo Web</h3>
-        <p>Páginas web modernas, responsivas y optimizadas para cualquier dispositivo.</p>
+        <h3 data-i18n="services.web.title">Desarrollo Web</h3>
+        <p data-i18n="services.web.desc">
+          Páginas web modernas, responsivas y optimizadas para cualquier dispositivo.
+        </p>
       </div>
+
       <div class="service-card">
         <i class="fas fa-robot"></i>
-        <h3>Automatización</h3>
-        <p>Sistemas que ahorran tiempo y recursos mediante la integración de procesos digitales.</p>
+        <h3 data-i18n="services.automation.title">Automatización</h3>
+        <p data-i18n="services.automation.desc">
+          Sistemas que ahorran tiempo y recursos mediante la integración de procesos digitales.
+        </p>
       </div>
+
       <div class="service-card">
         <i class="fas fa-mobile-screen-button"></i>
-        <h3>Aplicaciones Web</h3>
-        <p>Aplicaciones personalizadas para satisfacer necesidades específicas de tu negocio.</p>
+        <h3 data-i18n="services.apps.title">Aplicaciones Web</h3>
+        <p data-i18n="services.apps.desc">
+          Aplicaciones personalizadas para satisfacer necesidades específicas de tu negocio.
+        </p>
       </div>
+
       <div class="service-card">
         <i class="fas fa-lightbulb"></i>
-        <h3>Consultoría</h3>
-        <p>Asesoría tecnológica para optimizar recursos y mejorar procesos en tu empresa.</p>
+        <h3 data-i18n="services.consulting.title">Consultoría</h3>
+        <p data-i18n="services.consulting.desc">
+          Asesoría tecnológica para optimizar recursos y mejorar procesos en tu empresa.
+        </p>
       </div>
+
       <div class="service-card">
         <i class="fas fa-paintbrush"></i>
-        <h3>UI/UX Design</h3>
-        <p>Diseños atractivos y funcionales que garantizan la mejor experiencia al usuario.</p>
+        <h3 data-i18n="services.uiux.title">UI / UX Design</h3>
+        <p data-i18n="services.uiux.desc">
+          Diseños atractivos y funcionales que garantizan la mejor experiencia al usuario.
+        </p>
       </div>
+
       <div class="service-card">
         <i class="fas fa-headset"></i>
-        <h3>Soporte Técnico</h3>
-        <p>Asistencia continua y soluciones rápidas para mantener tu negocio en marcha.</p>
+        <h3 data-i18n="services.support.title">Soporte Técnico</h3>
+        <p data-i18n="services.support.desc">
+          Asistencia continua y soluciones rápidas para mantener tu negocio en marcha.
+        </p>
       </div>
+
     </section>
 
-    <!-- Línea de separación -->
     <div class="section-divider"></div>
 
-    <!-- SECCIÓN SOLUCIONES -->
-<p class="subtitle" style="margin: 30px auto;">
-  ¿Te suena alguno de estos problemas?<br>
-  No importa si no ves exactamente lo que necesitas.<br>
-  <span class="highlight">Podemos construirlo contigo.</span>
-</p>
+    <!-- ================= INTRO SOLUCIONES ================= -->
+    <p class="subtitle" data-i18n="solutionsIntro" style="margin: 30px auto;">
+      ¿Te suena alguno de estos problemas?<br>
+      No importa si no ves exactamente lo que necesitas.<br>
+      <span class="highlight">Podemos construirlo contigo.</span>
+    </p>
 
-<section id="solutions" class="solutions">
+    <!-- ================= SOLUCIONES ================= -->
+    <section id="solutions" class="solutions">
 
-  <!-- ================= ADMINISTRACIÓN & NEGOCIOS ================= -->
-  <div class="solution-category">
-    <h2><br>Administración & Negocios</h2>
-    <div class="solution-grid">
+      <!-- ADMINISTRACIÓN -->
+      <div class="solution-category">
+        <h2 data-i18n="solutions.admin.title"><br>Administración & Negocios</h2>
 
-      <div class="solution-card">
-        <div class="card-title">
-          <i class="fa-solid fa-chart-line"></i>
-          Control Financiero
-        </div>
-        <div class="card-content">
-          <p>Control de ventas en Sheets</p>
-          <p>Gastos con alertas automáticas</p>
-          <p>Dashboard de ingresos y utilidades</p>
+        <div class="solution-grid">
+
+          <div class="solution-card">
+            <div class="card-title" data-i18n="solutions.admin.finance.title">
+              <i class="fa-solid fa-chart-line"></i>
+              Control Financiero
+            </div>
+            <div class="card-content">
+              <p data-i18n="solutions.admin.finance.items.0"></p>
+              <p data-i18n="solutions.admin.finance.items.1"></p>
+              <p data-i18n="solutions.admin.finance.items.2"></p>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-title" data-i18n="solutions.admin.quotes.title">
+              <i class="fa-solid fa-file-invoice"></i>
+              Reportes & Cotizaciones
+            </div>
+            <div class="card-content">
+              <p data-i18n="solutions.admin.quotes.items.0"></p>
+              <p data-i18n="solutions.admin.quotes.items.1"></p>
+              <p data-i18n="solutions.admin.quotes.items.2"></p>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-title" data-i18n="solutions.admin.operations.title">
+              <i class="fa-solid fa-briefcase"></i>
+              Gestión Operativa
+            </div>
+            <div class="card-content">
+              <p data-i18n="solutions.admin.operations.items.0"></p>
+              <p data-i18n="solutions.admin.operations.items.1"></p>
+              <p data-i18n="solutions.admin.operations.items.2"></p>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="solution-card">
-        <div class="card-title">
-          <i class="fa-solid fa-file-invoice"></i>
-          Reportes & Cotizaciones
-        </div>
-        <div class="card-content">
-          <p>Cotizaciones automáticas en PDF</p>
-          <p>Reportes enviados por correo</p>
-          <p>Historial de movimientos</p>
+      <!-- RESTAURANTES -->
+      <div class="solution-category">
+        <h2 data-i18n="solutions.restaurants.title"><br>Restaurantes & Comercios</h2>
+
+        <div class="solution-grid">
+
+          <div class="solution-card">
+            <div class="card-title" data-i18n="solutions.restaurants.orders.title">
+              <i class="fa-solid fa-receipt"></i>
+              Pedidos & Consumo
+            </div>
+            <div class="card-content">
+              <p data-i18n="solutions.restaurants.orders.items.0"></p>
+              <p data-i18n="solutions.restaurants.orders.items.1"></p>
+              <p data-i18n="solutions.restaurants.orders.items.2"></p>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-title" data-i18n="solutions.restaurants.floor.title">
+              <i class="fa-solid fa-table"></i>
+              Control en Piso
+            </div>
+            <div class="card-content">
+              <p data-i18n="solutions.restaurants.floor.items.0"></p>
+              <p data-i18n="solutions.restaurants.floor.items.1"></p>
+              <p data-i18n="solutions.restaurants.floor.items.2"></p>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-title" data-i18n="solutions.restaurants.analysis.title">
+              <i class="fa-solid fa-chart-pie"></i>
+              Análisis & Mejora
+            </div>
+            <div class="card-content">
+              <p data-i18n="solutions.restaurants.analysis.items.0"></p>
+              <p data-i18n="solutions.restaurants.analysis.items.1"></p>
+              <p data-i18n="solutions.restaurants.analysis.items.2"></p>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="solution-card">
-        <div class="card-title">
-          <i class="fa-solid fa-briefcase"></i>
-          Gestión Operativa
-        </div>
-        <div class="card-content">
-          <p>Sistema de caja diaria</p>
-          <p>Inventario con alertas</p>
-          <p>Registro de clientes (CRM)</p>
+      <!-- EDUCACIÓN -->
+      <div class="solution-category">
+        <h2 data-i18n="solutions.education.title"><br>Educación & Escuelas</h2>
+
+        <div class="solution-grid">
+
+          <div class="solution-card">
+            <div class="card-title" data-i18n="solutions.education.management.title">
+              <i class="fa-solid fa-school"></i>
+              Gestión Escolar
+            </div>
+            <div class="card-content">
+              <p data-i18n="solutions.education.management.items.0"></p>
+              <p data-i18n="solutions.education.management.items.1"></p>
+              <p data-i18n="solutions.education.management.items.2"></p>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-title" data-i18n="solutions.education.communication.title">
+              <i class="fa-solid fa-envelope-open-text"></i>
+              Comunicación
+            </div>
+            <div class="card-content">
+              <p data-i18n="solutions.education.communication.items.0"></p>
+              <p data-i18n="solutions.education.communication.items.1"></p>
+              <p data-i18n="solutions.education.communication.items.2"></p>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-title" data-i18n="solutions.education.docs.title">
+              <i class="fa-solid fa-file-pdf"></i>
+              Documentación
+            </div>
+            <div class="card-content">
+              <p data-i18n="solutions.education.docs.items.0"></p>
+              <p data-i18n="solutions.education.docs.items.1"></p>
+              <p data-i18n="solutions.education.docs.items.2"></p>
+            </div>
+          </div>
+
         </div>
       </div>
 
-    </div>
-  </div>
+      <!-- CURSOS -->
+      <div class="solution-category">
+        <h2 data-i18n="solutions.courses.title"><br>Cursos & Infoproductos</h2>
 
-  <!-- ================= RESTAURANTES & COMERCIOS ================= -->
-  <div class="solution-category">
-    <h2><br>Restaurantes & Comercios</h2>
-    <div class="solution-grid">
+        <div class="solution-grid">
 
-      <div class="solution-card">
-        <div class="card-title">
-          <i class="fa-solid fa-receipt"></i>
-          Pedidos & Consumo
-        </div>
-        <div class="card-content">
-          <p>Sistema de pedidos digital</p>
-          <p>Menú editable desde Sheets</p>
-          <p>Cuentas automáticas por mesa</p>
+          <div class="solution-card">
+            <div class="card-title" data-i18n="solutions.courses.access.title">
+              <i class="fa-solid fa-users"></i>
+              Accesos & Usuarios
+            </div>
+            <div class="card-content">
+              <p data-i18n="solutions.courses.access.items.0"></p>
+              <p data-i18n="solutions.courses.access.items.1"></p>
+              <p data-i18n="solutions.courses.access.items.2"></p>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-title" data-i18n="solutions.courses.tracking.title">
+              <i class="fa-solid fa-graduation-cap"></i>
+              Seguimiento
+            </div>
+            <div class="card-content">
+              <p data-i18n="solutions.courses.tracking.items.0"></p>
+              <p data-i18n="solutions.courses.tracking.items.1"></p>
+              <p data-i18n="solutions.courses.tracking.items.2"></p>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-title" data-i18n="solutions.courses.payments.title">
+              <i class="fa-solid fa-certificate"></i>
+              Pagos & Certificación
+            </div>
+            <div class="card-content">
+              <p data-i18n="solutions.courses.payments.items.0"></p>
+              <p data-i18n="solutions.courses.payments.items.1"></p>
+              <p data-i18n="solutions.courses.payments.items.2"></p>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="solution-card">
-        <div class="card-title">
-          <i class="fa-solid fa-table"></i>
-          Control en Piso
-        </div>
-        <div class="card-content">
-          <p>Mesas por código</p>
-          <p>Tiempos de preparación</p>
-          <p>Control de refill</p>
-        </div>
-      </div>
-
-      <div class="solution-card">
-        <div class="card-title">
-          <i class="fa-solid fa-chart-pie"></i>
-          Análisis & Mejora
-        </div>
-        <div class="card-content">
-          <p>Platillos más vendidos</p>
-          <p>Registro de propinas</p>
-          <p>Encuesta post-consumo</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ================= EDUCACIÓN & ESCUELAS ================= -->
-  <div class="solution-category">
-    <h2><br>Educación & Escuelas</h2>
-    <div class="solution-grid">
-
-      <div class="solution-card">
-        <div class="card-title">
-          <i class="fa-solid fa-school"></i>
-          Gestión Escolar
-        </div>
-        <div class="card-content">
-          <p>Asistencia automática</p>
-          <p>Registro de calificaciones</p>
-          <p>Horarios escolares</p>
-        </div>
-      </div>
-
-      <div class="solution-card">
-        <div class="card-title">
-          <i class="fa-solid fa-envelope-open-text"></i>
-          Comunicación
-        </div>
-        <div class="card-content">
-          <p>Avisos a padres</p>
-          <p>Encuestas para alumnos</p>
-          <p>Bitácora de incidencias</p>
-        </div>
-      </div>
-
-      <div class="solution-card">
-        <div class="card-title">
-          <i class="fa-solid fa-file-pdf"></i>
-          Documentación
-        </div>
-        <div class="card-content">
-          <p>Boletas en PDF</p>
-          <p>Registro de tareas</p>
-          <p>Control de guardias</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ================= CURSOS & INFOPRODUCTOS ================= -->
-  <div class="solution-category">
-    <h2><br>Cursos & Infoproductos</h2>
-    <div class="solution-grid">
-
-      <div class="solution-card">
-        <div class="card-title">
-          <i class="fa-solid fa-users"></i>
-          Accesos & Usuarios
-        </div>
-        <div class="card-content">
-          <p>Registro de alumnos</p>
-          <p>Acceso por código</p>
-          <p>Lista de espera</p>
-        </div>
-      </div>
-
-      <div class="solution-card">
-        <div class="card-title">
-          <i class="fa-solid fa-graduation-cap"></i>
-          Seguimiento
-        </div>
-        <div class="card-content">
-          <p>Envío de material</p>
-          <p>Panel de progreso</p>
-          <p>Recordatorios automáticos</p>
-        </div>
-      </div>
-
-      <div class="solution-card">
-        <div class="card-title">
-          <i class="fa-solid fa-certificate"></i>
-          Pagos & Certificación
-        </div>
-        <div class="card-content">
-          <p>Control de pagos</p>
-          <p>Certificados personalizados</p>
-          <p>Renovación de accesos</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-</section>
+    </section>
   </main>
 
   <!-- FOOTER -->
   <div id="footer-container"></div>
 
   <!-- SCRIPTS -->
-<script>
-const cards = document.querySelectorAll('.solution-card');
-
-cards.forEach(card => {
-  card.addEventListener('click', () => {
-    // Cierra cualquier otra tarjeta activa
-    cards.forEach(c => {
-      if (c !== card) c.classList.remove('active');
-    });
-    // Alterna la tarjeta clickeada
-    card.classList.toggle('active');
-  });
-});
-
-</script>
-  
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/footer.js"></script>
+
+  <script>
+    const cards = document.querySelectorAll('.solution-card');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        cards.forEach(c => c !== card && c.classList.remove('active'));
+        card.classList.toggle('active');
+      });
+    });
+  </script>
 
 </body>
 </html>
