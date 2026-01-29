@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Thinkora - Donde lo que piensas, se vuelve solución...</title>
+  <meta name="description" content="Thinkora: Diseño y desarrollo web, aplicaciones web y automatización de procesos para empresas, instituciones y negocios.">
+  <meta name="author" content="Salvador Robles">
+
+  <!-- FUENTES E ICONOS -->
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CSS GLOBAL -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <style>
+    /* ============================
+       HERO PRINCIPAL
+    ============================ */
+    .hero {
+      width: 100%;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, rgba(0,168,198,0.15), transparent 60%),
+        linear-gradient(135deg, var(--bg-dark), var(--bg-main));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      color: var(--text-main);
+      position: relative;
+    }
+
+    .hero h1 {
+      font-family: 'Righteous', cursive;
+      font-size: clamp(3rem, 8vw, 5rem);
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+      line-height: 1;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .hero-text-container {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 15px;
+      overflow: hidden;
+    }
+
+    .hero-text-container p {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      max-width: 720px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      text-align: center;
+    }
+
+    .highlight {
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    /* ============================
+       BOTONES HERO
+    ============================ */
+    .cta-buttons {
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cta-buttons a {
+      padding: 12px 26px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--text-main);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-soft);
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .cta-buttons a:nth-child(1) { animation-delay: 0.6s; }
+    .cta-buttons a:nth-child(2) { animation-delay: 0.8s; }
+    .cta-buttons a:nth-child(3) { animation-delay: 1s; }
+    .cta-buttons a:nth-child(4) { animation-delay: 1.2s; }
+    .cta-buttons a:nth-child(5) { animation-delay: 1.4s; }
+
+    .cta-buttons a:hover {
+      background: var(--gradient-main);
+      color: #0b0b0b;
+      transform: translateY(-3px);
+    }
+
+    /* ============================
+       SWITCH DE IDIOMA HERO
+    ============================ */
+    .lang-switch-hero {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 1000;
+    }
+
+    .lang-switch-hero button {
+      background: none;
+      border: 1px solid var(--border-soft);
+      color: var(--text-main);
+      padding: 4px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+
+    .lang-switch-hero button:hover {
+      background: var(--gradient-main);
+      color: #0b0b0b;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero-text-container { height: auto; }
+      .cta-buttons { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Thinkora</h1>
+
+    <!-- SWITCH IDIOMA -->
+    <div class="lang-switch-hero">
+      <button onclick="setLanguage('es'); applyTranslations('es'); resetHero()">ES</button>
+      <span>|</span>
+      <button onclick="setLanguage('en'); applyTranslations('en'); resetHero()">EN</button>
+    </div>
+
+    <div class="hero-text-container">
+      <p id="hero-text"></p>
+    </div>
+
+    <div class="cta-buttons">
+      <a href="servicios.html" data-i18n="nav.services">Servicios</a>
+      <a href="paquetes.html" data-i18n="nav.packages">Paquetes</a>
+      <a href="herramientas.html" data-i18n="nav.tools">Herramientas</a>
+      <a href="nosotros.html" data-i18n="nav.about">Nosotros</a>
+      <a href="contacto.html" data-i18n="nav.contact">Contacto</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div id="footer-container"></div>
+
+  <!-- SCRIPTS -->
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/footer.js"></script>
+
+  <script>
+    const heroTextEl = document.getElementById("hero-text");
+
+    const heroMessages = {
+      es: [
+        'Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.',
+        'Explora nuestros servicios, paquetes y herramientas para tu negocio.',
+        'Donde lo que piensas, se vuelve solución...'
+      ],
+      en: [
+        'We transform your <span class="highlight">ideas</span> into modern, efficient digital solutions tailored to your business.',
+        'Explore our services, packages, and tools for your business.',
+        'Where what you think becomes a solution...'
+      ]
+    };
+
+    let msgIndex = 0;
+
+    function updateHeroText() {
+      const lang = localStorage.getItem("language") || "es";
+      heroTextEl.style.opacity = 0;
+      heroTextEl.style.transform = 'translateY(15px)';
+
+      setTimeout(() => {
+        heroTextEl.innerHTML = heroMessages[lang][msgIndex];
+        heroTextEl.style.opacity = 1;
+        heroTextEl.style.transform = 'translateY(0)';
+      }, 500);
+
+      msgIndex = (msgIndex + 1) % heroMessages[lang].length;
+    }
+
+    function resetHero() {
+      msgIndex = 0;
+      updateHeroText();
+    }
+
+    setInterval(updateHeroText, 5000);
+    document.addEventListener("DOMContentLoaded", updateHeroText);
+  </script>
+
+</body>
+</html>
