@@ -1,195 +1,153 @@
 /* ======================================================
-   THINKORA DESIGN SYSTEM
-   Archivo: styles.css
-   Objetivo:
-   - Mantener consistencia visual
-   - Facilitar escalabilidad
-   - No romper diseño al agregar i18n o nuevas secciones
-====================================================== */
-
-/* ======================================================
-   1. FUENTES
+   FUENTES
 ====================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap');
 
 /* ======================================================
-   2. VARIABLES GLOBALES (PALETA THINKORA)
+   VARIABLES GLOBALES
 ====================================================== */
 :root {
-  /* Backgrounds */
-  --bg-main: #2f3437;
-  --bg-dark: #1f2326;
-  --bg-card: #252a2d;
-
-  /* Borders */
-  --border-soft: #3a4044;
-
-  /* Text */
-  --text-main: #e6e6e6;
-  --text-muted: #b5b9bd;
-
-  /* Accents */
-  --accent-blue: #00a8c6;
-  --accent-green: #4fd17a;
-
-  /* Gradients */
-  --gradient-main: linear-gradient(90deg, #00a8c6, #4fd17a);
+  --bg-main: #0f1113;
+  --bg-card: #262a2d;
+  --bg-navbar: #15181b;
+  --text-main: #ffffff;
+  --text-muted: #d9d9d9;
+  --accent-blue: #00b0ff;
+  --accent-green: #00ff99;
+  --shadow-soft: 0 10px 25px rgba(0,0,0,.4);
+  --shadow-strong: 0 15px 30px rgba(0,0,0,.5);
 }
 
 /* ======================================================
-   3. RESET & BASE
+   RESET BÁSICO
 ====================================================== */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100vh;
-  font-family: 'Comfortaa', sans-serif;
-  background-color: var(--bg-main);
-  color: var(--text-main);
-  overflow-x: hidden;
-}
-
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* ======================================================
-   4. CONTENEDORES GLOBALES
-====================================================== */
-#navbar-container,
-#footer-container {
-  width: 100%;
-}
-
-main {
-  flex: 1;
-  width: 100%;
-  max-width: 1100px;
-  padding: 80px 20px 40px;
-  text-align: center;
-}
-
-/* ======================================================
-   5. TIPOGRAFÍA ESPECIAL
-====================================================== */
-.title,
-.thinkora {
-  font-family: 'Righteous', cursive;
-  background: var(--gradient-main);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ======================================================
-   6. NAVBAR
-====================================================== */
-.navbar {
-  position: fixed;
-  top: 0;
-  inset-inline: 0;
-  z-index: 999;
-
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 20px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  background-color: var(--bg-main);
-}
-
-/* Logo */
-.navbar .logo a {
-  font-family: 'Righteous', cursive;
-  font-size: 1.8rem;
-  background: var(--gradient-main);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-decoration: none;
-}
-
-/* Links */
-.nav-links {
-  display: flex;
-  gap: 25px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links a {
-  text-decoration: none;
+  background: var(--bg-main);
   color: var(--text-main);
-  font-weight: 600;
-}
-
-.nav-links a:hover {
-  color: var(--accent-green);
-}
-
-/* Idioma */
-.lang-switch {
-  display: flex;
-  gap: 6px;
-}
-
-.lang-switch button {
-  background: none;
-  border: 1px solid var(--border-soft);
-  color: var(--text-main);
-  padding: 4px 8px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* Hamburger */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-}
-
-/* ======================================================
-   7. FOOTER
-====================================================== */
-.footer {
-  width: 100%;
-  background: #181a1c;
-  border-top: 1px solid var(--border-soft);
-  text-align: center;
-  padding: 10px 20px 20px;
-}
-
-/* ======================================================
-   8. COMPONENTES COMUNES
-====================================================== */
-.subtitle {
-  max-width: 900px;
-  margin: 10px auto 50px;
-  color: var(--text-muted);
+  font-family: 'Comfortaa', sans-serif;
   line-height: 1.6;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main {
+  padding: 120px 20px 80px;
+}
+
+/* ======================================================
+   TITULOS GENERALES
+====================================================== */
+.title {
+  font-family: 'Righteous', cursive;
+  text-align: center;
+  font-size: 2.6rem;
+  margin-bottom: 15px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 10px auto 50px;
+  text-align: center;
+}
+
+.highlight {
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ======================================================
+   DIVISOR DE SECCIONES
+====================================================== */
 .section-divider {
   height: 1px;
   max-width: 600px;
   margin: 50px auto;
   background: linear-gradient(to right, transparent, var(--accent-blue), transparent);
+  border-radius: 1px;
 }
 
 /* ======================================================
-   9. SERVICIOS
+   NAVBAR
+====================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  background: var(--bg-navbar);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  z-index: 1000;
+  box-shadow: 0 5px 20px rgba(0,0,0,.6);
+}
+
+.navbar-logo {
+  font-family: 'Righteous', cursive;
+  font-size: 1.6rem;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 25px;
+}
+
+.navbar-menu a {
+  font-size: .95rem;
+  transition: color .3s;
+}
+
+.navbar-menu a:hover {
+  color: var(--accent-blue);
+}
+
+/* ======================================================
+   FOOTER
+====================================================== */
+footer {
+  background: #111316;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: .9rem;
+}
+
+footer .brand {
+  font-family: 'Righteous', cursive;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+footer .brand span {
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ======================================================
+   SERVICIOS
 ====================================================== */
 .services {
+  max-width: 1100px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
@@ -199,21 +157,54 @@ main {
   background: var(--bg-card);
   border-radius: 15px;
   padding: 25px;
-  transition: transform .3s ease, box-shadow .3s ease;
+  text-align: center;
+  transition: transform .3s, box-shadow .3s;
 }
 
 .service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 30px rgba(0,0,0,.45);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-soft);
+}
+
+.service-card i {
+  font-size: 2.5rem;
+  color: var(--accent-blue);
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  margin: 10px 0;
+  font-size: 1.3rem;
+}
+
+.service-card p {
+  font-size: .95rem;
+  color: var(--text-muted);
 }
 
 /* ======================================================
-   10. SOLUCIONES
+   SOLUCIONES
 ====================================================== */
+.solutions {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.solution-category {
+  margin-bottom: 60px;
+}
+
+.solution-category h2 {
+  font-family: 'Righteous', cursive;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
 .solution-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .solution-card {
@@ -224,4 +215,72 @@ main {
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .3s, box-shadow .3s;
+}
+
+.solution-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-strong);
+}
+
+/* Título visible */
+.solution-card .card-title {
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+  z-index: 2;
+  transition: opacity .5s ease;
+}
+
+.solution-card .card-title i {
+  display: block;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: var(--accent-blue);
+}
+
+/* Contenido oculto */
+.solution-card .card-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: .95rem;
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .5s ease;
+}
+
+/* Estado activo */
+.solution-card.active .card-title {
+  opacity: 0;
+}
+
+.solution-card.active .card-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.1rem;
+  }
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .navbar-menu {
+    gap: 15px;
+  }
 }
