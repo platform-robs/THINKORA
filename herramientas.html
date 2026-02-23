@@ -10,7 +10,7 @@
   <!-- =====================================================
        SEO BÁSICO (ajusta por página)
   ====================================================== -->
-  <title>Thinkora | Development</title>
+  <title>Thinkora | Tools</title>
   <meta name="description" content="Thinkora - Digital solutions under development.">
   <meta name="author" content="Salvador Robles">
 
@@ -43,55 +43,26 @@
        CONTENIDO PRINCIPAL
        TODO lo que cambies entre páginas va aquí
   ====================================================== -->
-  <main>
+<main class="tools-main">
 
-    <!-- ===== TÍTULO PRINCIPAL ===== -->
-    <h1 class="title" data-i18n="dev.title">
-      Development
-    </h1>
+  <h1 data-i18n="toolsPage.title"></h1>
+  <p data-i18n="toolsPage.intro"></p>
 
-    <!-- ===== SUBTÍTULO / DESCRIPCIÓN ===== -->
-    <p class="subtitle" data-i18n="dev.subtitle">
-      This section is currently under development
-    </p>
+  <div class="tools-grid">
 
-    <!-- ===== CARD PRINCIPAL ===== -->
-    <section class="card">
+    <div class="tool-card" data-tool="quote" data-i18n="toolsPage.cards.quote"></div>
+    <div class="tool-card" data-tool="viewQuotes" data-i18n="toolsPage.cards.viewQuotes"></div>
+    <div class="tool-card" data-tool="techGen" data-i18n="toolsPage.cards.techGen"></div>
+    <div class="tool-card" data-tool="viewTech" data-i18n="toolsPage.cards.viewTech"></div>
+    <div class="tool-card" data-tool="contracts" data-i18n="toolsPage.cards.contracts"></div>
+    <div class="tool-card" data-tool="agents" data-i18n="toolsPage.cards.agents"></div>
+    <div class="tool-card" data-tool="qr" data-i18n="toolsPage.cards.qr"></div>
+    <div class="tool-card" data-tool="portfolio" data-i18n="toolsPage.cards.portfolio"></div>
+    <div class="tool-card highlight-card" id="createUserBtn" data-i18n="toolsPage.cards.createUser"></div>
 
-      <h2 data-i18n="dev.cardTitle">
-        We are building something great 🚀
-      </h2>
+  </div>
 
-      <p data-i18n="dev.cardText">
-        This page is part of Thinkora’s ecosystem.  
-        We are working to deliver a clean, modern and powerful digital experience.
-      </p>
-
-      <!-- ===== ESTADO ===== -->
-      <div style="margin-top: 25px;">
-        <span class="status" data-i18n="dev.status">
-          IN DEVELOPMENT
-        </span>
-      </div>
-
-    </section>
-
-    <!-- ===== SEPARADOR VISUAL ===== -->
-    <div class="separator"></div>
-
-    <!-- ===== SECCIÓN INFORMATIVA ===== -->
-    <section>
-      <h2 class="section-title" data-i18n="dev.nextTitle">
-        What’s coming next?
-      </h2>
-
-      <p class="section-description" data-i18n="dev.nextText">
-        New features, services and projects are being designed to help businesses
-        transform ideas into real digital solutions.
-      </p>
-    </section>
-
-  </main>
+</main>
 
   <!-- =====================================================
        FOOTER
@@ -107,11 +78,52 @@
   <!-- 1️⃣ Traducciones (idiomas) -->
   <script src="assets/js/i18n.js"></script>
 
-  <!-- 2️⃣ Navbar dinámico -->
-  <script src="assets/js/navbar.js"></script>
+ <!-- 2️⃣ Navbar dinámico -->
+<script src="assets/js/navbar.js"></script>
 
-  <!-- 3️⃣ Footer dinámico -->
-  <script src="assets/js/footer.js"></script>
+<!-- 3️⃣ Script de registro -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const form = document.getElementById("registerForm");
+  if (!form) return;
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+
+    const btn = e.target.querySelector("button");
+    btn.disabled = true;
+    btn.innerText = translations[currentLang].toolsPage.login.disabled;
+
+    const data = {
+      nombre: e.target.nombre.value,
+      apellidoP: e.target.apellidoP.value,
+      apellidoM: e.target.apellidoM.value,
+      telefono: e.target.telefono.value,
+      correo: e.target.correo.value,
+      password: e.target.password.value,
+      equipo: e.target.equipo.value,
+      subject: translations[currentLang].toolsPage.email.subject,
+      body: translations[currentLang].toolsPage.email.body
+        .replace("{{name}}", e.target.nombre.value)
+        .replace("{{team}}", e.target.equipo.value)
+        .replace("{{email}}", e.target.correo.value)
+    };
+
+    await fetch("TU_WEBAPP_URL", {
+      method: "POST",
+      body: JSON.stringify(data)
+    });
+
+    alert(translations[currentLang].toolsPage.register.success);
+    btn.disabled = false;
+  });
+
+});
+</script>
+
+<!-- 4️⃣ Footer dinámico -->
+<script src="assets/js/footer.js"></script>
 
 </body>
 </html>
