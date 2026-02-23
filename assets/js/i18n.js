@@ -213,7 +213,7 @@ const translations = {
       }
     }
 
-     /* ---------- SOLUCIONES ---------- */
+     /* ---------- HERRAMIENTAS ---------- */
      toolsPage: {
       title: "Herramientas Internas",
       intro:
@@ -360,7 +360,7 @@ const translations = {
       }
     },
 
-      /* ---------- SOLUTIONS ---------- */
+      /* ---------- TOOLS ---------- */
       toolsPage: {
         title: "Internal Tools",
         intro:
