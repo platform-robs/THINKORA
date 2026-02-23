@@ -251,50 +251,58 @@ button{
 <script>
 
 const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxGcyul5yuzawrEt-IimLrIjx7AzU_-LMcadyNYsv7Pd470OzdJVbf5Z7aRvkc3TA/exec";
-let selectedTool = "";
 
 /* =============================
-   ABRIR LOGIN
+   LOGIN
 ============================= */
+
+let selectedTool = "";
 
 function requestAccess(tool){
   selectedTool = tool;
-  document.getElementById("loginModal").style.display="flex";
+  document.getElementById("loginModal").style.display = "flex";
 }
 
 function closeLogin(){
-  document.getElementById("loginModal").style.display="none";
+  document.getElementById("loginModal").style.display = "none";
 }
-
-/* =============================
-   VALIDAR LOGIN
-============================= */
 
 async function validateAccess(){
 
-  const id = document.getElementById("loginId").value;
-  const password = document.getElementById("loginPassword").value;
+  const id = document.getElementById("loginId").value.trim();
+  const password = document.getElementById("loginPassword").value.trim();
 
-  const res = await fetch(WEBAPP_URL,{
-    method:"POST",
-    headers:{ "Content-Type":"application/json" },
-    body:JSON.stringify({
-      action:"login",
-      id:id,
-      password:password,
-      tool:selectedTool
-    })
-  });
-
-  const data = await res.json();
-
-  if(!data.success){
-    alert("Acceso denegado");
+  if(!id || !password){
+    alert("Ingresa ID y contraseña");
     return;
   }
 
-  // SI TODO ES CORRECTO
-  window.location.href="https://platform-robs.github.io/THINKORA/dev.html";
+  try{
+
+    const res = await fetch(WEBAPP_URL,{
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify({
+        action:"login",
+        id:id,
+        password:password,
+        tool:selectedTool
+      })
+    });
+
+    const data = await res.json();
+
+    if(data.success){
+      window.location.href = "https://platform-robs.github.io/THINKORA/dev.html";
+    }else{
+      alert("Acceso denegado");
+    }
+
+  }catch(error){
+    console.error(error);
+    alert("Error de conexión con el servidor");
+  }
+
 }
 
 /* =============================
@@ -325,36 +333,50 @@ document.getElementById("registerForm").addEventListener("submit", async functio
     return;
   }
 
-  await fetch(WEBAPP_URL,{
-    method:"POST",
-    headers:{ "Content-Type":"application/json" },
-    body:JSON.stringify({
-      action:"register",
-      nombre:form.nombre.value,
-      apellidoP:form.apellidoP.value,
-      apellidoM:form.apellidoM.value,
-      telefono:form.telefono.value,
-      correo:form.correo.value,
-      password:form.password.value,
-      equipo:form.equipo.value
-    })
-  });
+  try{
 
-  alert("Solicitud enviada correctamente");
-  closeRegister();
+    await fetch(WEBAPP_URL,{
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify({
+        action:"register",
+        nombre:form.nombre.value,
+        apellidoP:form.apellidoP.value,
+        apellidoM:form.apellidoM.value,
+        telefono:form.telefono.value,
+        correo:form.correo.value,
+        password:form.password.value,
+        equipo:form.equipo.value
+      })
+    });
+
+    alert("Solicitud enviada correctamente");
+    closeRegister();
+
+  }catch(error){
+    console.error(error);
+    alert("Error al enviar solicitud");
+  }
 
 });
 
-/* MAYÚSCULAS */
+/* =============================
+   MAYÚSCULAS AUTOMÁTICAS
+============================= */
+
 document.querySelectorAll("input[name='nombre'], input[name='apellidoP'], input[name='apellidoM']")
 .forEach(input=>{
   input.addEventListener("input",()=>{
-    input.value=input.value.toUpperCase();
+    input.value = input.value.toUpperCase();
   });
 });
 
+/* =============================
+   PORTAFOLIO
+============================= */
+
 function openPortfolio(){
-  window.location.href="https://platform-robs.github.io/THINKORA/dev.html";
+  window.location.href = "https://platform-robs.github.io/THINKORA/dev.html";
 }
 
 </script>
