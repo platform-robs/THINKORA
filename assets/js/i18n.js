@@ -211,7 +211,31 @@ const translations = {
           ]
         }
       }
-    }
+    },
+
+     /* ---------- NOSOTROS ---------- */
+
+   about: {
+     title: "Sobre Thinkora",
+     subtitle: "No construimos solo páginas web. Diseñamos sistemas digitales que impulsan negocios reales.",
+   
+     philosophyTitle: "Nuestra Filosofía",
+     philosophyText: "Thinkora nace de una idea simple pero poderosa: la tecnología debe simplificar procesos, no complicarlos.",
+   
+     whatWeDoTitle: "Qué hacemos realmente",
+   
+     systemsTitle: "Arquitectura de Sistemas",
+     systemsText: "Diseñamos la estructura digital que sostiene tu operación diaria.",
+   
+     growthTitle: "Optimización & Crecimiento",
+     growthText: "Automatizamos procesos para liberar tiempo y aumentar productividad.",
+   
+     strategyTitle: "Estrategia Digital",
+     strategyText: "No solo desarrollamos herramientas, diseñamos soluciones estratégicas.",
+   
+     visionTitle: "Nuestra Visión",
+     visionText: "Convertir ideas en sistemas digitales sólidos que ayuden a negocios a operar con claridad, control y eficiencia."
+   },
   },
 
   /* =====================================================
@@ -301,7 +325,32 @@ const translations = {
         tracking: { title: "Progress Tracking", items: ["Material delivery", "Progress dashboard", "Automatic reminders"] },
         payments: { title: "Payments & Certification", items: ["Payment tracking", "Custom certificates", "Access renewal"] }
       }
-    }
+    },
+
+       /* ---------- ABOUT ---------- */
+     about: {
+        title: "About Thinkora",
+        subtitle: "We don’t just build websites. We design digital systems that power real businesses.",
+      
+        philosophyTitle: "Our Philosophy",
+        philosophyText: "Thinkora was born from a simple yet powerful idea: technology should simplify processes, not complicate them.",
+      
+        whatWeDoTitle: "What We Really Do",
+      
+        systemsTitle: "System Architecture",
+        systemsText: "We design the digital structure that supports your daily operations.",
+      
+        growthTitle: "Optimization & Growth",
+        growthText: "We automate processes to free up time and increase productivity.",
+      
+        strategyTitle: "Digital Strategy",
+        strategyText: "We don’t just develop tools, we design strategic solutions.",
+      
+        visionTitle: "Our Vision",
+        visionText: "To transform ideas into solid digital systems that help businesses operate with clarity, control, and efficiency."
+      }
+   
+   }
   }
 };
 
