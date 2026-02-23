@@ -3,146 +3,340 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Thinkora | Herramientas</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
 
 <style>
-body{font-family:Comfortaa;background:#0f1115;color:white;margin:0}
-.tools-main{padding:60px 20px;text-align:center}
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:40px}
-.tool-card{background:#1a1d23;padding:25px;border-radius:16px;cursor:pointer;font-weight:600;transition:.3s}
-.tool-card:hover{transform:translateY(-5px);background:#242833}
-.highlight-card{background:#00c6ff;color:#000;font-weight:800}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);justify-content:center;align-items:center}
-.modal-content{background:#1a1d23;padding:30px;border-radius:20px;width:90%;max-width:400px}
-input,select{width:100%;padding:10px;margin:8px 0;border-radius:8px;border:none}
-button{width:100%;padding:10px;margin-top:10px;border:none;border-radius:8px;font-weight:bold;cursor:pointer}
-.close-btn{background:#444;color:white}
-.primary-btn{background:#00c6ff;color:black}
+
+/* ============================
+   SECCIÓN
+============================ */
+
+.tools-main h1{
+  font-family:'Righteous', cursive;
+  font-size:2.6rem;
+  margin-bottom:10px;
+}
+
+.tools-main p{
+  color:var(--text-muted);
+  max-width:800px;
+  margin:0 auto 50px;
+}
+
+/* ============================
+   GRID
+============================ */
+
+.tools-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+
+/* ============================
+   TARJETAS THINKORA
+============================ */
+
+.tool-card{
+  background:var(--bg-card);
+  border:1px solid var(--border-soft);
+  padding:30px 20px;
+  border-radius:18px;
+  text-decoration:none;
+  color:var(--text-main);
+  font-weight:600;
+  transition:.3s ease;
+  cursor:pointer;
+}
+
+.tool-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--accent-blue);
+  box-shadow:0 10px 25px rgba(0,168,198,.2);
+}
+
+.highlight-card{
+  background:var(--gradient-main);
+  color:#0b0b0b;
+  font-weight:800;
+}
+
+/* ============================
+   MODAL
+============================ */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  backdrop-filter:blur(6px);
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+}
+
+.modal-content{
+  background:var(--bg-dark);
+  padding:35px;
+  border-radius:20px;
+  width:90%;
+  max-width:500px;
+  text-align:left;
+}
+
+.modal-content h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+label{
+  display:block;
+  margin-bottom:6px;
+  font-size:.9rem;
+  color:var(--text-muted);
+}
+
+input, select{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid var(--border-soft);
+  background:var(--bg-card);
+  color:var(--text-main);
+}
+
+button{
+  margin-top:15px;
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  background:var(--gradient-main);
+  color:#0b0b0b;
+}
+
+.close-btn{
+  margin-top:10px;
+  background:#444;
+  color:white;
+}
+
 </style>
 </head>
 
 <body>
 
+<div id="navbar-container"></div>
+
 <main class="tools-main">
-<h1>Herramientas Thinkora</h1>
+
+<h1 data-i18n="toolsPage.title"></h1>
+<p data-i18n="toolsPage.intro"></p>
 
 <div class="tools-grid">
-  <div class="tool-card" onclick="requestAccess('cotizador')">Cotizador</div>
-  <div class="tool-card" onclick="requestAccess('verCotizaciones')">Ver Cotizaciones</div>
-  <div class="tool-card highlight-card" onclick="openRegister()">Crear Usuario</div>
+
+   <div class="tool-card" onclick="requestAccess('cotizador')">Cotizador</div>
+   <div class="tool-card" onclick="requestAccess('verCotizaciones')">Ver Cotizaciones</div>
+   <div class="tool-card" onclick="requestAccess('propuesta')">Generador Propuesta Técnica</div>
+   <div class="tool-card" onclick="requestAccess('verPropuesta')">Ver Propuestas Técnicas</div>
+   <div class="tool-card" onclick="requestAccess('contratos')">Contratos</div>
+   <div class="tool-card" onclick="requestAccess('agentes')">Presentación Agentes</div>
+   <a class="tool-card" href="https://platform-robs.github.io/THINKORA/dev.html">Generador QR</a>
+
+   <div class="tool-card" onclick="openPortfolio()">Portafolio</div>
+   <div class="tool-card highlight-card" onclick="openRegister()">Crear Usuario</div>
+
 </div>
+
 </main>
 
-<!-- REGISTRO -->
+<div id="footer-container"></div>
+
+<!-- ================= REGISTRO ================= -->
+
 <div class="modal" id="registerModal">
 <div class="modal-content">
-<h2>Registro</h2>
+<h2>Unirse al equipo Thinkora</h2>
+
 <form id="registerForm">
-<input name="nombre" placeholder="Nombre" required>
-<input name="apellidoP" placeholder="Apellido Paterno" required>
-<input name="apellidoM" placeholder="Apellido Materno" required>
-<input name="telefono" placeholder="Teléfono 10 dígitos" required>
-<input name="correo" type="email" placeholder="Correo" required>
-<input name="password" type="password" placeholder="Contraseña" required>
-<input name="confirmPassword" type="password" placeholder="Confirmar contraseña" required>
+
+<div class="form-group">
+<label>Nombre</label>
+<input name="nombre" required>
+</div>
+
+<div class="form-group">
+<label>Apellido Paterno</label>
+<input name="apellidoP" required>
+</div>
+
+<div class="form-group">
+<label>Apellido Materno</label>
+<input name="apellidoM" required>
+</div>
+
+<div class="form-group">
+<label>Teléfono (10 dígitos)</label>
+<input name="telefono" required>
+</div>
+
+<div class="form-group">
+<label>Correo</label>
+<input name="correo" type="email" required>
+</div>
+
+<div class="form-group">
+<label>Contraseña</label>
+<input name="password" type="password" required>
+</div>
+
+<div class="form-group">
+<label>Confirmar Contraseña</label>
+<input name="confirmPassword" type="password" required>
+</div>
+
+<div class="form-group">
+<label>Equipo</label>
 <select name="equipo" required>
-<option value="">Selecciona equipo</option>
+<option value="">Selecciona</option>
 <option value="Sales">Sales</option>
 <option value="Tech">Tech</option>
 </select>
-<button type="submit" class="primary-btn">Enviar Solicitud</button>
+</div>
+
+<button type="submit">Enviar Solicitud</button>
 <button type="button" class="close-btn" onclick="closeRegister()">Cerrar</button>
+
 </form>
 </div>
 </div>
 
-<!-- LOGIN -->
+<!-- ================= LOGIN ================= -->
+
 <div class="modal" id="loginModal">
 <div class="modal-content">
-<h2>Acceso</h2>
-<input id="loginId" placeholder="ID">
-<input id="loginPassword" type="password" placeholder="Contraseña">
-<button onclick="validateAccess()" class="primary-btn">Ingresar</button>
-<button onclick="closeLogin()" class="close-btn">Cerrar</button>
+<h2>Acceso requerido</h2>
+
+<div class="form-group">
+<label>ID</label>
+<input type="text" id="loginId">
+</div>
+
+<div class="form-group">
+<label>Contraseña</label>
+<input type="password" id="loginPassword">
+</div>
+
+<button onclick="validateAccess()">Ingresar</button>
+<button class="close-btn" onclick="closeLogin()">Cerrar</button>
+
 </div>
 </div>
 
 <script>
 
-const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwkiusDPtzKcizYzRkQHwUEe6N9E3D2ATlnmGGBBeBykf7pmnSjJ5wroH-HVMjEkW25/exec";
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxGcyul5yuzawrEt-IimLrIjx7AzU_-LMcadyNYsv7Pd470OzdJVbf5Z7aRvkc3TA/exec";
+
 let selectedTool = "";
 
-/* MODALES */
-function openRegister(){document.getElementById("registerModal").style.display="flex";}
-function closeRegister(){document.getElementById("registerModal").style.display="none";}
-function requestAccess(tool){selectedTool=tool;document.getElementById("loginModal").style.display="flex";}
-function closeLogin(){document.getElementById("loginModal").style.display="none";}
+/* LOGIN */
+function requestAccess(tool){
+  selectedTool = tool;
+  document.getElementById("loginModal").style.display = "flex";
+}
+
+function closeLogin(){
+  document.getElementById("loginModal").style.display = "none";
+}
+
+async function validateAccess(){
+
+  const id = document.getElementById("loginId").value.trim();
+  const password = document.getElementById("loginPassword").value.trim();
+
+  if(!id || !password){
+    alert("Ingresa ID y contraseña");
+    return;
+  }
+
+  try{
+    const res = await fetch(WEBAPP_URL,{
+      method:"POST",
+      body: new URLSearchParams({
+        action:"login",
+        id:id,
+        password:password,
+        tool:selectedTool
+      })
+    });
+
+    const data = await res.json();
+
+    if(data.success){
+      window.location.href = selectedTool + ".html";
+    }else{
+      alert(data.message);
+    }
+
+  }catch(err){
+    alert("Error de conexión con el servidor");
+  }
+}
 
 /* REGISTRO */
+function openRegister(){
+  document.getElementById("registerModal").style.display="flex";
+}
+
+function closeRegister(){
+  document.getElementById("registerModal").style.display="none";
+}
+
 document.getElementById("registerForm").addEventListener("submit", async function(e){
-e.preventDefault();
-const f=e.target;
 
-if(f.password.value!==f.confirmPassword.value){
-alert("Las contraseñas no coinciden");return;
-}
+  e.preventDefault();
+  const form = e.target;
 
-try{
-const res=await fetch(WEBAPP_URL,{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({
-action:"register",
-nombre:f.nombre.value,
-apellidoP:f.apellidoP.value,
-apellidoM:f.apellidoM.value,
-telefono:f.telefono.value,
-correo:f.correo.value,
-password:f.password.value,
-equipo:f.equipo.value
-})
+  if(form.password.value !== form.confirmPassword.value){
+    alert("Las contraseñas no coinciden");
+    return;
+  }
+
+  try{
+    await fetch(WEBAPP_URL,{
+      method:"POST",
+      body: new URLSearchParams({
+        action:"register",
+        nombre:form.nombre.value,
+        apellidoP:form.apellidoP.value,
+        apellidoM:form.apellidoM.value,
+        telefono:form.telefono.value,
+        correo:form.correo.value,
+        password:form.password.value,
+        equipo:form.equipo.value
+      })
+    });
+
+    alert("Solicitud enviada correctamente");
+    closeRegister();
+
+  }catch(err){
+    alert("Error al enviar solicitud");
+  }
 });
-const data=await res.json();
-alert("Solicitud enviada correctamente");
-closeRegister();
-}catch(err){
-alert("Error de conexión con el servidor");
-}
-});
-
-/* LOGIN */
-async function validateAccess(){
-const id=document.getElementById("loginId").value.trim();
-const password=document.getElementById("loginPassword").value.trim();
-
-if(!id||!password){alert("Ingresa ID y contraseña");return;}
-
-try{
-const res=await fetch(WEBAPP_URL,{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify({
-action:"login",
-id:id,
-password:password,
-tool:selectedTool
-})
-});
-const data=await res.json();
-
-if(data.success){
-alert(data.message);
-closeLogin();
-}else{
-alert(data.message);
-}
-}catch(err){
-alert("Error de conexión con el servidor");
-}
-}
 
 </script>
+
 </body>
 </html>
