@@ -1,1 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Thinkora | Tools</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+<div id="navbar-container"></div>
+
+<main class="tools-main">
+
+  <h1 data-i18n="toolsPage.title"></h1>
+  <p data-i18n="toolsPage.intro"></p>
+
+  <div class="tools-grid">
+
+    <div class="tool-card" data-tool="quote" data-i18n="toolsPage.cards.quote"></div>
+    <div class="tool-card" data-tool="viewQuotes" data-i18n="toolsPage.cards.viewQuotes"></div>
+    <div class="tool-card" data-tool="techGen" data-i18n="toolsPage.cards.techGen"></div>
+    <div class="tool-card" data-tool="viewTech" data-i18n="toolsPage.cards.viewTech"></div>
+    <div class="tool-card" data-tool="contracts" data-i18n="toolsPage.cards.contracts"></div>
+    <div class="tool-card" data-tool="agents" data-i18n="toolsPage.cards.agents"></div>
+    <div class="tool-card" data-tool="qr" data-i18n="toolsPage.cards.qr"></div>
+
+    <!-- Portafolio (no requiere permisos) -->
+    <div class="tool-card" onclick="openPortfolio()" data-i18n="toolsPage.cards.portfolio"></div>
+
+    <!-- Crear Usuario -->
+    <div class="tool-card highlight-card" onclick="openRegister()" data-i18n="toolsPage.cards.createUser"></div>
+
+  </div>
+</main>
+
+<div id="footer-container"></div>
+
+<!-- =====================================================
+MODAL LOGIN
+===================================================== -->
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+
+    <h2 data-i18n="toolsPage.login.title"></h2>
+
+    <input type="text" id="loginId" data-i18n-placeholder="toolsPage.login.id">
+    <input type="password" id="loginPassword" data-i18n-placeholder="toolsPage.login.password">
+
+    <button onclick="validateAccess()" data-i18n="toolsPage.login.submit"></button>
+
+    <button onclick="closeModal()" class="close-btn">X</button>
+
+  </div>
+</div>
+
+<!-- =====================================================
+MODAL REGISTRO
+===================================================== -->
+<div class="modal" id="registerModal">
+  <div class="modal-content">
+
+    <h2 data-i18n="toolsPage.register.title"></h2>
+
+    <form id="registerForm">
+
+      <input name="nombre" required data-i18n-placeholder="toolsPage.register.name">
+      <input name="apellidoP" required data-i18n-placeholder="toolsPage.register.lastName1">
+      <input name="apellidoM" required data-i18n-placeholder="toolsPage.register.lastName2">
+      <input name="telefono" required data-i18n-placeholder="toolsPage.register.phone">
+      <input name="correo" type="email" required data-i18n-placeholder="toolsPage.register.email">
+      <input name="password" type="password" required data-i18n-placeholder="toolsPage.register.password">
+      <input name="confirmPassword" type="password" required data-i18n-placeholder="toolsPage.register.confirmPassword">
+
+      <select name="equipo" required>
+        <option value="">Equipo</option>
+        <option value="Sales">Sales</option>
+        <option value="Tech">Tech</option>
+      </select>
+
+      <button type="submit" id="submitBtn" data-i18n="toolsPage.register.submit"></button>
+
+    </form>
+
+    <button onclick="closeRegister()" class="close-btn">X</button>
+
+  </div>
+</div>
+
+<!-- =====================================================
+SCRIPTS
+===================================================== -->
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/navbar.js"></script>
+
+<script>
+
+const WEBAPP_URL = "TU_WEBAPP_URL_AQUI";
+
+/* =============================
+   ABRIR MODALES
+============================= */
+
+function openRegister(){
+  document.getElementById("registerModal").style.display="flex";
+}
+
+function closeRegister(){
+  document.getElementById("registerModal").style.display="none";
+}
+
+/* =============================
+   ENVÍO REGISTRO
+============================= */
+
+document.getElementById("registerForm").addEventListener("submit", async function(e){
+
+  e.preventDefault();
+
+  const form = e.target;
+
+  if(form.password.value !== form.confirmPassword.value){
+    alert("Las contraseñas no coinciden");
+    return;
+  }
+
+  const btn = document.getElementById("submitBtn");
+  btn.disabled = true;
+
+  const data = {
+    nombre: form.nombre.value,
+    apellidoP: form.apellidoP.value,
+    apellidoM: form.apellidoM.value,
+    telefono: form.telefono.value,
+    correo: form.correo.value,
+    password: form.password.value,
+    equipo: form.equipo.value,
+    subject: translations[currentLang].toolsPage.email.subject,
+    body: translations[currentLang].toolsPage.email.body
+      .replace("{{name}}", form.nombre.value)
+      .replace("{{team}}", form.equipo.value)
+      .replace("{{email}}", form.correo.value)
+  };
+
+await fetch("https://script.google.com/macros/s/AKfycbzqrowJYv1VYr8QJmAbL2xCbxNMsgo0QQbwmI7zBzLV__Wwo9TyyJLRwcoJb8tAv1Pc/exec", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(data)
+});
+
+  alert(translations[currentLang].toolsPage.register.success);
+  btn.disabled = false;
+  closeRegister();
+});
+
+/* =============================
+   PORTAFOLIO
+============================= */
+
+function openPortfolio(){
+  alert("Aquí irá el popup con lista de proyectos.");
+}
+
+/* =============================
+   VALIDACIÓN DE ACCESO
+   (Aquí después conectamos con backend)
+============================= */
+
+function validateAccess(){
+  alert("Aquí irá validación con Apps Script.");
+}
+
+</script>
+
+</body>
+</html>
