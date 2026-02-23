@@ -358,65 +358,65 @@ const translations = {
         tracking: { title: "Progress Tracking", items: ["Material delivery", "Progress dashboard", "Automatic reminders"] },
         payments: { title: "Payments & Certification", items: ["Payment tracking", "Custom certificates", "Access renewal"] }
       }
-    }
-  },
+    },
 
-   /* ---------- SOLUTIONS ---------- */
-   toolsPage: {
-     title: "Internal Tools",
-     intro:
-       "Access Thinkora internal tools.<br>" +
-       "Some require permissions depending on your team and status.",
-   
-     cards: {
-       quote: "Quote Generator",
-       viewQuotes: "View Quotes",
-       techGen: "Technical Proposal Generator",
-       viewTech: "View Technical Proposals",
-       contracts: "Contracts",
-       agents: "Agents Presentation",
-       qr: "QR Generator",
-       portfolio: "Portfolio",
-       createUser: "Create User"
-     },
-   
-     login: {
-       title: "Access Required",
-       id: "ID",
-       password: "Password",
-       confirmPassword: "Confirm Password",
-       team: "Team",
-       submit: "Login",
-       register: "Register user",
-       error: "You don't have permission to access.",
-       disabled: "Sending request..."
-     },
-   
-     register: {
-       title: "Join the Thinkora Team",
-       name: "Name",
-       lastName1: "Last Name",
-       lastName2: "Second Last Name",
-       phone: "Phone",
-       email: "Email",
-       password: "Password",
-       confirmPassword: "Confirm Password",
-       team: "Team",
-       submit: "Send request",
-       success: "Request sent successfully. Check your email."
-     },
-   
-     email: {
-       subject: "Request received - Thinkora",
-       body:
-         "Hello {{name}},\n\n" +
-         "We have received your request to join Thinkora.\n\n" +
-         "Team: {{team}}\n" +
-         "Email: {{email}}\n\n" +
-         "Your request is under review.\n\n" +
-         "Thinkora"
-     }
-   }
+      /* ---------- SOLUTIONS ---------- */
+      toolsPage: {
+        title: "Internal Tools",
+        intro:
+          "Access Thinkora internal tools.<br>" +
+          "Some require permissions depending on your team and status.",
+      
+        cards: {
+          quote: "Quote Generator",
+          viewQuotes: "View Quotes",
+          techGen: "Technical Proposal Generator",
+          viewTech: "View Technical Proposals",
+          contracts: "Contracts",
+          agents: "Agents Presentation",
+          qr: "QR Generator",
+          portfolio: "Portfolio",
+          createUser: "Create User"
+        },
+      
+        login: {
+          title: "Access Required",
+          id: "ID",
+          password: "Password",
+          confirmPassword: "Confirm Password",
+          team: "Team",
+          submit: "Login",
+          register: "Register user",
+          error: "You don't have permission to access.",
+          disabled: "Sending request..."
+        },
+      
+        register: {
+          title: "Join the Thinkora Team",
+          name: "Name",
+          lastName1: "Last Name",
+          lastName2: "Second Last Name",
+          phone: "Phone",
+          email: "Email",
+          password: "Password",
+          confirmPassword: "Confirm Password",
+          team: "Team",
+          submit: "Send request",
+          success: "Request sent successfully. Check your email."
+        },
+      
+        email: {
+          subject: "Request received - Thinkora",
+          body:
+            "Hello {{name}},\n\n" +
+            "We have received your request to join Thinkora.\n\n" +
+            "Team: {{team}}\n" +
+            "Email: {{email}}\n\n" +
+            "Your request is under review.\n\n" +
+            "Thinkora"
+        }
+      }
+    },
 };
 
 /* =====================================================
