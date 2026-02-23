@@ -1,389 +1,242 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CONFIGURACIÓN BÁSICA -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Thinkora | Herramientas</title>
+  <!-- SEO -->
+  <title>Herramientas | Thinkora</title>
+  <meta name="description" content="Acceso a herramientas internas Thinkora.">
+  <meta name="author" content="Salvador Robles">
 
-<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
+  <!-- FUENTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<style>
+  <!-- CSS GLOBAL -->
+  <link rel="stylesheet" href="assets/css/styles.css">
 
-/* ============================
-   SECCIÓN
-============================ */
+  <!-- ESTILOS ESPECÍFICOS DE ESTA PÁGINA -->
+  <style>
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
 
-.tools-main h1{
-  font-family:'Righteous', cursive;
-  font-size:2.6rem;
-  margin-bottom:10px;
-}
+    .tool-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 30px 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
 
-.tools-main p{
-  color:var(--text-muted);
-  max-width:800px;
-  margin:0 auto 50px;
-}
+    .tool-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent-green);
+    }
 
-/* ============================
-   GRID
-============================ */
+    .tool-card i {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-.tools-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:25px;
-}
+    .tool-card h3 {
+      margin: 10px 0;
+    }
 
-/* ============================
-   TARJETAS THINKORA
-============================ */
+    .tool-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
 
-.tool-card{
-  background:var(--bg-card);
-  border:1px solid var(--border-soft);
-  padding:30px 20px;
-  border-radius:18px;
-  text-decoration:none;
-  color:var(--text-main);
-  font-weight:600;
-  transition:.3s ease;
-  cursor:pointer;
-}
+    /* MODAL LOGIN */
 
-.tool-card:hover{
-  transform:translateY(-6px);
-  border-color:var(--accent-blue);
-  box-shadow:0 10px 25px rgba(0,168,198,.2);
-}
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
 
-.highlight-card{
-  background:var(--gradient-main);
-  color:#0b0b0b;
-  font-weight:800;
-}
+    .modal {
+      background: var(--bg-card);
+      padding: 40px 30px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      border: 1px solid var(--border-soft);
+    }
 
-/* ============================
-   MODAL
-============================ */
+    .modal h2 {
+      margin-bottom: 25px;
+    }
 
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.75);
-  backdrop-filter:blur(6px);
-  justify-content:center;
-  align-items:center;
-  z-index:2000;
-}
+    .modal input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-dark);
+      color: var(--text-main);
+    }
 
-.modal-content{
-  background:var(--bg-dark);
-  padding:35px;
-  border-radius:20px;
-  width:90%;
-  max-width:500px;
-  text-align:left;
-}
+    .modal button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      background: var(--gradient-main);
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
 
-.modal-content h2{
-  text-align:center;
-  margin-bottom:20px;
-}
+    .modal button:hover {
+      transform: scale(1.03);
+    }
 
-.form-group{
-  margin-bottom:15px;
-}
+    .modal .error {
+      color: #ff6b6b;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
 
-label{
-  display:block;
-  margin-bottom:6px;
-  font-size:.9rem;
-  color:var(--text-muted);
-}
-
-input, select{
-  width:100%;
-  padding:12px;
-  border-radius:10px;
-  border:1px solid var(--border-soft);
-  background:var(--bg-card);
-  color:var(--text-main);
-}
-
-button{
-  margin-top:15px;
-  width:100%;
-  padding:12px;
-  border:none;
-  border-radius:10px;
-  font-weight:700;
-  cursor:pointer;
-  background:var(--gradient-main);
-  color:#0b0b0b;
-}
-
-.close-btn{
-  margin-top:10px;
-  background:#444;
-  color:white;
-}
-
-</style>
+    .modal .close-btn {
+      margin-top: 15px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
 
-<div id="navbar-container"></div>
+  <!-- NAVBAR -->
+  <div id="navbar-container"></div>
 
-<main class="tools-main">
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+    <h1 class="title">Herramientas Internas</h1>
+    <p class="subtitle">Acceso exclusivo para miembros del equipo</p>
 
-<h1 data-i18n="toolsPage.title"></h1>
-<p data-i18n="toolsPage.intro"></p>
+    <div class="tools-grid">
 
-<div class="tools-grid">
+      <div class="tool-card" onclick="openLogin('cotizador')">
+        <i class="fa-solid fa-calculator"></i>
+        <h3>Cotizador</h3>
+        <p>Genera cotizaciones personalizadas para clientes.</p>
+      </div>
 
-   <div class="tool-card" onclick="requestAccess('cotizador')">Cotizador</div>
-   <div class="tool-card" onclick="requestAccess('verCotizaciones')">Ver Cotizaciones</div>
-   <div class="tool-card" onclick="requestAccess('propuesta')">Generador Propuesta Técnica</div>
-   <div class="tool-card" onclick="requestAccess('verPropuesta')">Ver Propuestas Técnicas</div>
-   <div class="tool-card" onclick="requestAccess('contratos')">Contratos</div>
-   <div class="tool-card" onclick="requestAccess('agentes')">Presentación Agentes</div>
-  <a class="tool-card" href="https://platform-robs.github.io/THINKORA/dev.html">Generador QR</a>
+      <div class="tool-card" onclick="openLogin('verCotizaciones')">
+        <i class="fa-solid fa-file-lines"></i>
+        <h3>Ver Cotizaciones</h3>
+        <p>Consulta el historial de cotizaciones registradas.</p>
+      </div>
 
-  <div class="tool-card" onclick="openPortfolio()">Portafolio</div>
-
-  <div class="tool-card highlight-card" onclick="openRegister()">Crear Usuario</div>
-
-</div>
-
-</main>
-
-<!-- ================= REGISTRO ================= -->
-
-<div class="modal" id="registerModal">
-<div class="modal-content">
-
-<h2>Unirse al equipo Thinkora</h2>
-
-<form id="registerForm">
-
-<div class="form-group">
-<label>Nombre</label>
-<input name="nombre" required>
-</div>
-
-<div class="form-group">
-<label>Apellido Paterno</label>
-<input name="apellidoP" required>
-</div>
-
-<div class="form-group">
-<label>Apellido Materno</label>
-<input name="apellidoM" required>
-</div>
-
-<div class="form-group">
-<label>Teléfono (10 dígitos)</label>
-<input name="telefono" type="tel" pattern="[0-9]{10}" required>
-</div>
-
-<div class="form-group">
-<label>Correo</label>
-<input name="correo" type="email" required>
-</div>
-
-<div class="form-group">
-<label>Contraseña</label>
-<input name="password" type="password" required>
-</div>
-
-<div class="form-group">
-<label>Confirmar Contraseña</label>
-<input name="confirmPassword" type="password" required>
-</div>
-
-<div class="form-group">
-<label>Equipo</label>
-<select name="equipo" required>
-<option value="">Selecciona</option>
-<option value="Sales">Sales</option>
-<option value="Tech">Tech</option>
-</select>
-</div>
-
-<button type="submit">Enviar Solicitud</button>
-<button type="button" class="close-btn" onclick="closeRegister()">Cerrar</button>
-
-</form>
-
-</div>
-</div>
-
-
-<!-- ================= LOGIN ================= -->
-
-<div class="modal" id="loginModal">
-  <div class="modal-content">
-
-    <h2>Acceso requerido</h2>
-
-    <div class="form-group">
-      <label>ID</label>
-      <input type="text" id="loginId">
     </div>
+  </main>
 
-    <div class="form-group">
-      <label>Contraseña</label>
-      <input type="password" id="loginPassword">
+  <!-- FOOTER -->
+  <div id="footer-container"></div>
+
+  <!-- MODAL LOGIN -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal">
+      <h2>Acceso seguro</h2>
+
+      <input type="text" id="userId" placeholder="ID de usuario">
+      <input type="password" id="userPassword" placeholder="Contraseña">
+
+      <button onclick="login()">Ingresar</button>
+
+      <div class="error" id="loginError"></div>
+
+      <button class="close-btn" onclick="closeLogin()">Cancelar</button>
     </div>
-
-    <button onclick="validateAccess()">Ingresar</button>
-    <button class="close-btn" onclick="closeLogin()">Cerrar</button>
-
   </div>
-</div>
 
-   
-<script>
+  <!-- SCRIPTS -->
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/footer.js"></script>
 
-const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxwU0rBDQYp20GKqlgefg6poJo0zsdz0VkNKeVqHsv3T6czOY3-E-h8Bfa4ULrOGlU/exec";
+  <script>
+    const API_URL = "https://script.google.com/macros/s/AKfycbzLVLcJ3ZGTfgJsBBbgmrR4xOPtrLP9UU2tEJyU6JhXEsT5iPXvygpT4h48LkhsQ9w/exec";
 
-/* =============================
-   LOGIN
-============================= */
+    let selectedTool = null;
 
-let selectedTool = "";
-
-function requestAccess(tool){
-  selectedTool = tool;
-  document.getElementById("loginModal").style.display = "flex";
-}
-
-function closeLogin(){
-  document.getElementById("loginModal").style.display = "none";
-}
-
-async function validateAccess(){
-
-  const id = document.getElementById("loginId").value.trim();
-  const password = document.getElementById("loginPassword").value.trim();
-
-  if(!id || !password){
-    alert("Ingresa ID y contraseña");
-    return;
-  }
-
-  try{
-
-    const res = await fetch(WEBAPP_URL,{
-      method:"POST",
-      headers:{ "Content-Type":"application/json" },
-      body: JSON.stringify({
-        action:"login",
-        id:id,
-        password:password,
-        tool:selectedTool
-      })
-    });
-
-    const data = await res.json();
-
-    if(data.success){
-      window.location.href = "https://platform-robs.github.io/THINKORA/dev.html";
-    }else{
-      alert("Acceso denegado");
+    function openLogin(tool) {
+      selectedTool = tool;
+      document.getElementById("loginModal").style.display = "flex";
+      document.getElementById("loginError").innerText = "";
     }
 
-  }catch(error){
-    console.error(error);
-    alert("Error de conexión con el servidor");
-  }
+    function closeLogin() {
+      document.getElementById("loginModal").style.display = "none";
+    }
 
-}
+    async function login() {
 
-/* =============================
-   REGISTRO
-============================= */
+      const id = document.getElementById("userId").value.trim();
+      const password = document.getElementById("userPassword").value.trim();
+      const errorDiv = document.getElementById("loginError");
 
-function openRegister(){
-  document.getElementById("registerModal").style.display="flex";
-}
+      if (!id || !password) {
+        errorDiv.innerText = "Completa todos los campos.";
+        return;
+      }
 
-function closeRegister(){
-  document.getElementById("registerModal").style.display="none";
-}
+      try {
 
-document.getElementById("registerForm").addEventListener("submit", async function(e){
+        const response = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            action: "login",
+            id: id,
+            password: password,
+            tool: selectedTool
+          })
+        });
 
-  e.preventDefault();
+        const data = await response.json();
 
-  const form = e.target;
+        if (data.success) {
 
-  if(form.password.value !== form.confirmPassword.value){
-    alert("Las contraseñas no coinciden");
-    return;
-  }
+          closeLogin();
 
-  if(!/^[0-9]{10}$/.test(form.telefono.value)){
-    alert("El teléfono debe tener 10 dígitos");
-    return;
-  }
+          if (selectedTool === "cotizador") {
+            window.location.href = "cotizador.html";
+          }
 
-  try{
+          if (selectedTool === "verCotizaciones") {
+            window.location.href = "ver-cotizaciones.html";
+          }
 
-    await fetch(WEBAPP_URL,{
-      method:"POST",
-      headers:{ "Content-Type":"application/json" },
-      body: JSON.stringify({
-        action:"register",
-        nombre:form.nombre.value,
-        apellidoP:form.apellidoP.value,
-        apellidoM:form.apellidoM.value,
-        telefono:form.telefono.value,
-        correo:form.correo.value,
-        password:form.password.value,
-        equipo:form.equipo.value
-      })
-    });
+        } else {
+          errorDiv.innerText = data.message;
+        }
 
-    alert("Solicitud enviada correctamente");
-    closeRegister();
+      } catch (err) {
+        errorDiv.innerText = "Error de conexión con el servidor.";
+      }
+    }
+  </script>
 
-  }catch(error){
-    console.error(error);
-    alert("Error al enviar solicitud");
-  }
-
-});
-
-/* =============================
-   MAYÚSCULAS AUTOMÁTICAS
-============================= */
-
-document.querySelectorAll("input[name='nombre'], input[name='apellidoP'], input[name='apellidoM']")
-.forEach(input=>{
-  input.addEventListener("input",()=>{
-    input.value = input.value.toUpperCase();
-  });
-});
-
-/* =============================
-   PORTAFOLIO
-============================= */
-
-function openPortfolio(){
-  window.location.href = "https://platform-robs.github.io/THINKORA/dev.html";
-}
-
-</script>
-
-<script src="assets/js/i18n.js"></script>
-<script src="assets/js/navbar.js"></script>
-<script src="assets/js/footer.js"></script>
-   
 </body>
 </html>
