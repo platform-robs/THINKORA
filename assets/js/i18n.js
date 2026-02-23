@@ -211,7 +211,7 @@ const translations = {
           ]
         }
       }
-    }
+    },
 
      /* ---------- HERRAMIENTAS ---------- */
      toolsPage: {
