@@ -212,6 +212,63 @@ const translations = {
         }
       }
     }
+
+     /* ---------- SOLUCIONES ---------- */
+     toolsPage: {
+      title: "Herramientas Internas",
+      intro:
+       "Accede a las herramientas internas de Thinkora.<br>" +
+       "Algunas requieren permisos según tu equipo y estado.",
+      
+      cards: {
+       quote: "Cotizador",
+       viewQuotes: "Ver Cotizaciones",
+       techGen: "Generador de Propuesta Técnica",
+       viewTech: "Ver Propuestas Técnicas",
+       contracts: "Contratos",
+       agents: "Presentación Agentes",
+       qr: "Generador QR",
+       portfolio: "Portafolio",
+       createUser: "Crear Usuario"
+      },
+      
+      login: {
+       title: "Acceso requerido",
+       id: "ID",
+       password: "Contraseña",
+       confirmPassword: "Confirmar contraseña",
+       team: "Equipo",
+       submit: "Ingresar",
+       register: "Registrar usuario",
+       error: "No tienes permisos para acceder.",
+       disabled: "Enviando solicitud..."
+      },
+      
+      register: {
+       title: "Unirse al equipo Thinkora",
+       name: "Nombre",
+       lastName1: "Apellido Paterno",
+       lastName2: "Apellido Materno",
+       phone: "Teléfono",
+       email: "Correo",
+       password: "Contraseña",
+       confirmPassword: "Confirmar contraseña",
+       team: "Equipo",
+       submit: "Enviar solicitud",
+       success: "Solicitud enviada correctamente. Revisa tu correo."
+      },
+      
+      email: {
+       subject: "Solicitud recibida - Thinkora",
+       body:
+         "Hola {{name}},\n\n" +
+         "Hemos recibido tu solicitud para unirte al equipo Thinkora.\n\n" +
+         "Equipo: {{team}}\n" +
+         "Correo: {{email}}\n\n" +
+         "Tu solicitud está en revisión.\n\n" +
+         "Thinkora"
+      }
+      }
   },
 
   /* =====================================================
@@ -302,7 +359,64 @@ const translations = {
         payments: { title: "Payments & Certification", items: ["Payment tracking", "Custom certificates", "Access renewal"] }
       }
     }
-  }
+  },
+
+   /* ---------- SOLUTIONS ---------- */
+   toolsPage: {
+     title: "Internal Tools",
+     intro:
+       "Access Thinkora internal tools.<br>" +
+       "Some require permissions depending on your team and status.",
+   
+     cards: {
+       quote: "Quote Generator",
+       viewQuotes: "View Quotes",
+       techGen: "Technical Proposal Generator",
+       viewTech: "View Technical Proposals",
+       contracts: "Contracts",
+       agents: "Agents Presentation",
+       qr: "QR Generator",
+       portfolio: "Portfolio",
+       createUser: "Create User"
+     },
+   
+     login: {
+       title: "Access Required",
+       id: "ID",
+       password: "Password",
+       confirmPassword: "Confirm Password",
+       team: "Team",
+       submit: "Login",
+       register: "Register user",
+       error: "You don't have permission to access.",
+       disabled: "Sending request..."
+     },
+   
+     register: {
+       title: "Join the Thinkora Team",
+       name: "Name",
+       lastName1: "Last Name",
+       lastName2: "Second Last Name",
+       phone: "Phone",
+       email: "Email",
+       password: "Password",
+       confirmPassword: "Confirm Password",
+       team: "Team",
+       submit: "Send request",
+       success: "Request sent successfully. Check your email."
+     },
+   
+     email: {
+       subject: "Request received - Thinkora",
+       body:
+         "Hello {{name}},\n\n" +
+         "We have received your request to join Thinkora.\n\n" +
+         "Team: {{team}}\n" +
+         "Email: {{email}}\n\n" +
+         "Your request is under review.\n\n" +
+         "Thinkora"
+     }
+   }
 };
 
 /* =====================================================
