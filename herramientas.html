@@ -146,12 +146,12 @@ button{
 
 <div class="tools-grid">
 
-  <a class="tool-card" href="https://platform-robs.github.io/THINKORA/dev.html">Cotizador</a>
-  <a class="tool-card" href="https://platform-robs.github.io/THINKORA/dev.html">Ver Cotizaciones</a>
-  <a class="tool-card" href="https://platform-robs.github.io/THINKORA/dev.html">Generador Propuesta Técnica</a>
-  <a class="tool-card" href="https://platform-robs.github.io/THINKORA/dev.html">Ver Propuestas Técnicas</a>
-  <a class="tool-card" href="https://platform-robs.github.io/THINKORA/dev.html">Contratos</a>
-  <a class="tool-card" href="https://platform-robs.github.io/THINKORA/dev.html">Presentación Agentes</a>
+   <div class="tool-card" onclick="requestAccess('cotizador')">Cotizador</div>
+   <div class="tool-card" onclick="requestAccess('verCotizaciones')">Ver Cotizaciones</div>
+   <div class="tool-card" onclick="requestAccess('propuesta')">Generador Propuesta Técnica</div>
+   <div class="tool-card" onclick="requestAccess('verPropuesta')">Ver Propuestas Técnicas</div>
+   <div class="tool-card" onclick="requestAccess('contratos')">Contratos</div>
+   <div class="tool-card" onclick="requestAccess('agentes')">Presentación Agentes</div>
   <a class="tool-card" href="https://platform-robs.github.io/THINKORA/dev.html">Generador QR</a>
 
   <div class="tool-card" onclick="openPortfolio()">Portafolio</div>
@@ -223,7 +223,83 @@ button{
 </div>
 </div>
 
+
+<!-- ================= LOGIN ================= -->
+
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+
+    <h2>Acceso requerido</h2>
+
+    <div class="form-group">
+      <label>ID</label>
+      <input type="text" id="loginId">
+    </div>
+
+    <div class="form-group">
+      <label>Contraseña</label>
+      <input type="password" id="loginPassword">
+    </div>
+
+    <button onclick="validateAccess()">Ingresar</button>
+    <button class="close-btn" onclick="closeLogin()">Cerrar</button>
+
+  </div>
+</div>
+
+   
 <script>
+
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxGcyul5yuzawrEt-IimLrIjx7AzU_-LMcadyNYsv7Pd470OzdJVbf5Z7aRvkc3TA/exec";
+let selectedTool = "";
+
+/* =============================
+   ABRIR LOGIN
+============================= */
+
+function requestAccess(tool){
+  selectedTool = tool;
+  document.getElementById("loginModal").style.display="flex";
+}
+
+function closeLogin(){
+  document.getElementById("loginModal").style.display="none";
+}
+
+/* =============================
+   VALIDAR LOGIN
+============================= */
+
+async function validateAccess(){
+
+  const id = document.getElementById("loginId").value;
+  const password = document.getElementById("loginPassword").value;
+
+  const res = await fetch(WEBAPP_URL,{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body:JSON.stringify({
+      action:"login",
+      id:id,
+      password:password,
+      tool:selectedTool
+    })
+  });
+
+  const data = await res.json();
+
+  if(!data.success){
+    alert("Acceso denegado");
+    return;
+  }
+
+  // SI TODO ES CORRECTO
+  window.location.href="https://platform-robs.github.io/THINKORA/dev.html";
+}
+
+/* =============================
+   REGISTRO
+============================= */
 
 function openRegister(){
   document.getElementById("registerModal").style.display="flex";
@@ -233,22 +309,13 @@ function closeRegister(){
   document.getElementById("registerModal").style.display="none";
 }
 
-/* MAYÚSCULAS AUTOMÁTICAS */
-document.querySelectorAll("input[name='nombre'], input[name='apellidoP'], input[name='apellidoM']")
-.forEach(input=>{
-  input.addEventListener("input",()=>{
-    input.value=input.value.toUpperCase();
-  });
-});
-
-/* VALIDACIÓN */
-document.getElementById("registerForm").addEventListener("submit",function(e){
+document.getElementById("registerForm").addEventListener("submit", async function(e){
 
   e.preventDefault();
 
-  const form=e.target;
+  const form = e.target;
 
-  if(form.password.value!==form.confirmPassword.value){
+  if(form.password.value !== form.confirmPassword.value){
     alert("Las contraseñas no coinciden");
     return;
   }
@@ -258,14 +325,36 @@ document.getElementById("registerForm").addEventListener("submit",function(e){
     return;
   }
 
-  alert("Solicitud lista para enviar a Apps Script");
+  await fetch(WEBAPP_URL,{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body:JSON.stringify({
+      action:"register",
+      nombre:form.nombre.value,
+      apellidoP:form.apellidoP.value,
+      apellidoM:form.apellidoM.value,
+      telefono:form.telefono.value,
+      correo:form.correo.value,
+      password:form.password.value,
+      equipo:form.equipo.value
+    })
+  });
 
+  alert("Solicitud enviada correctamente");
   closeRegister();
 
 });
 
+/* MAYÚSCULAS */
+document.querySelectorAll("input[name='nombre'], input[name='apellidoP'], input[name='apellidoM']")
+.forEach(input=>{
+  input.addEventListener("input",()=>{
+    input.value=input.value.toUpperCase();
+  });
+});
+
 function openPortfolio(){
-  alert("Aquí irá el popup de proyectos.");
+  window.location.href="https://platform-robs.github.io/THINKORA/dev.html";
 }
 
 </script>
