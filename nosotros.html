@@ -10,7 +10,7 @@
 
 <!-- Fuentes -->
 <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <!-- Estilos globales -->
 <link rel="stylesheet" href="assets/css/styles.css">
 
@@ -163,6 +163,58 @@ main {
         }
       }
 
+
+
+   /* ============================
+         BOTÓN TIPO TOOL-CARDN
+         PARA NOSOTROS
+      ============================ */
+      
+      .cta-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 15px;
+      }
+      
+      .cta-card {
+        background: var(--gradient-main);
+        color: #0b0b0b;
+        border-radius: 16px;
+        padding: 30px 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-align: center;
+      }
+      
+      .cta-card:hover {
+        transform: translateY(-6px);
+      }
+      
+      /* Estructura interna igual que tools */
+      .cta-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      
+      .cta-title i {
+        font-size: 1.2rem;
+        color: #0b0b0b;
+      }
+      
+      .cta-card h3 {
+        margin: 0;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+      
+      .cta-card p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #0b0b0b;
+      }
+
 </style>
 
 </head>
@@ -235,15 +287,18 @@ main {
   </div>
 
   <!-- Botón Crear Usuario -->
-  <div class="about-card about-button">
-    <div class="tool-cardn" onclick="openUserModal()" style="cursor:pointer;">
-      <div class="tool-titlen">
-        <i class="fa-solid fa-user-plus"></i>
-        <h3>Crear Usuario</h3>
-      </div>
-      <p>Únete al equipo Thinkora</p>
+<div class="cta-grid">
+  <div class="cta-card" onclick="openUserModal()">
+
+    <div class="cta-title">
+      <i class="fa-solid fa-user-plus"></i>
+      <h3>Crear Usuario</h3>
     </div>
+
+    <p>Únete al equipo Thinkora</p>
+
   </div>
+</div>
 
 </section>
 
