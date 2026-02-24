@@ -1,242 +1,325 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- CONFIGURACIÓN BÁSICA -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO -->
-  <title>Herramientas | Thinkora</title>
-  <meta name="description" content="Acceso a herramientas internas Thinkora.">
-  <meta name="author" content="Salvador Robles">
+<title>Thinkora | Herramientas</title>
 
-  <!-- FUENTES -->
-  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-  <!-- CSS GLOBAL -->
-  <link rel="stylesheet" href="assets/css/styles.css">
+<style>
 
-  <!-- ESTILOS ESPECÍFICOS DE ESTA PÁGINA -->
-  <style>
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
-    }
+/* =============================
+   CONTENEDOR PRINCIPAL
+============================= */
 
-    .tool-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-soft);
-      border-radius: 16px;
-      padding: 30px 20px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
+.tools-main{
+  text-align:center;
+  padding:80px 20px;
+}
 
-    .tool-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--accent-green);
-    }
+.tools-main h1{
+  font-family:'Righteous', cursive;
+  font-size:2.6rem;
+  margin-bottom:10px;
+}
 
-    .tool-card i {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      background: var(--gradient-main);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+.tools-main p{
+  color:var(--text-muted);
+  max-width:800px;
+  margin:0 auto 50px;
+}
 
-    .tool-card h3 {
-      margin: 10px 0;
-    }
+/* =============================
+   GRID
+============================= */
 
-    .tool-card p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
+.tools-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  max-width:1200px;
+  margin:0 auto;
+}
 
-    /* MODAL LOGIN */
+/* =============================
+   TARJETAS ESTILO CONTORNO AZUL
+============================= */
 
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-    }
+.tool-card{
+  background:var(--bg-card);
+  border:2px solid transparent;
+  padding:28px 20px;
+  border-radius:18px;
+  text-decoration:none;
+  color:var(--text-main);
+  font-weight:600;
+  transition:.3s ease;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  font-size:1rem;
+}
 
-    .modal {
-      background: var(--bg-card);
-      padding: 40px 30px;
-      border-radius: 16px;
-      width: 100%;
-      max-width: 400px;
-      text-align: center;
-      border: 1px solid var(--border-soft);
-    }
+.tool-card i{
+  font-size:1.2rem;
+}
 
-    .modal h2 {
-      margin-bottom: 25px;
-    }
+.tool-card:hover{
+  transform:translateY(-6px);
+  border:2px solid var(--accent-blue);
+  box-shadow:0 10px 25px rgba(0,168,198,.25);
+}
 
-    .modal input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      border: 1px solid var(--border-soft);
-      background: var(--bg-dark);
-      color: var(--text-main);
-    }
+/* Botón especial crear usuario */
+.highlight-card{
+  background:var(--gradient-main);
+  color:#0b0b0b;
+  font-weight:800;
+  border:none;
+}
 
-    .modal button {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: none;
-      background: var(--gradient-main);
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
+/* =============================
+   MODALES
+============================= */
 
-    .modal button:hover {
-      transform: scale(1.03);
-    }
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  backdrop-filter:blur(6px);
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+}
 
-    .modal .error {
-      color: #ff6b6b;
-      margin-top: 10px;
-      font-size: 0.9rem;
-    }
+.modal-content{
+  background:var(--bg-dark);
+  padding:35px;
+  border-radius:20px;
+  width:90%;
+  max-width:500px;
+  text-align:left;
+}
 
-    .modal .close-btn {
-      margin-top: 15px;
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-    }
-  </style>
+.modal-content h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+label{
+  display:block;
+  margin-bottom:6px;
+  font-size:.9rem;
+  color:var(--text-muted);
+}
+
+input, select{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid var(--border-soft);
+  background:var(--bg-card);
+  color:var(--text-main);
+}
+
+button{
+  margin-top:15px;
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  background:var(--gradient-main);
+  color:#0b0b0b;
+}
+
+.close-btn{
+  margin-top:10px;
+  background:#444;
+  color:white;
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <div id="navbar-container"></div>
+<div id="navbar-container"></div>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main>
-    <h1 class="title">Herramientas Internas</h1>
-    <p class="subtitle">Acceso exclusivo para miembros del equipo</p>
+<main class="tools-main">
 
-    <div class="tools-grid">
+<h1>Herramientas Thinkora</h1>
+<p>Selecciona la herramienta que necesitas para tu gestión interna.</p>
 
-      <div class="tool-card" onclick="openLogin('cotizador')">
-        <i class="fa-solid fa-calculator"></i>
-        <h3>Cotizador</h3>
-        <p>Genera cotizaciones personalizadas para clientes.</p>
-      </div>
+<div class="tools-grid">
 
-      <div class="tool-card" onclick="openLogin('verCotizaciones')">
-        <i class="fa-solid fa-file-lines"></i>
-        <h3>Ver Cotizaciones</h3>
-        <p>Consulta el historial de cotizaciones registradas.</p>
-      </div>
+  <!-- ================= ADMIN ================= -->
 
-    </div>
-  </main>
-
-  <!-- FOOTER -->
-  <div id="footer-container"></div>
-
-  <!-- MODAL LOGIN -->
-  <div class="modal-overlay" id="loginModal">
-    <div class="modal">
-      <h2>Acceso seguro</h2>
-
-      <input type="text" id="userId" placeholder="ID de usuario">
-      <input type="password" id="userPassword" placeholder="Contraseña">
-
-      <button onclick="login()">Ingresar</button>
-
-      <div class="error" id="loginError"></div>
-
-      <button class="close-btn" onclick="closeLogin()">Cancelar</button>
-    </div>
+  <div class="tool-card" onclick="requestAccess('TOOLS/cotizador.html')">
+    <i class="fa-solid fa-calculator"></i> Cotizador
   </div>
 
-  <!-- SCRIPTS -->
-  <script src="assets/js/i18n.js"></script>
-  <script src="assets/js/navbar.js"></script>
-  <script src="assets/js/footer.js"></script>
+  <div class="tool-card" onclick="requestAccess('TOOLS/ver_cotizaciones.html')">
+    <i class="fa-solid fa-file-invoice"></i> Ver Cotizaciones
+  </div>
 
-  <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbxwSbV5vwGP6bnBNoDQYZhOvuNd_eSAdibNdNH0ESE80lUpmKoCbt_YHk2b5EvVU1RRlQ/exec";
+  <div class="tool-card" onclick="requestAccess('TOOLS/generar_propuesta.html')">
+    <i class="fa-solid fa-file-signature"></i> Generar Propuesta
+  </div>
 
-    let selectedTool = null;
+  <div class="tool-card" onclick="requestAccess('TOOLS/ver_propuestas.html')">
+    <i class="fa-solid fa-folder-open"></i> Ver Propuestas
+  </div>
 
-    function openLogin(tool) {
-      selectedTool = tool;
-      document.getElementById("loginModal").style.display = "flex";
-      document.getElementById("loginError").innerText = "";
+  <div class="tool-card" onclick="requestAccess('TOOLS/contratos.html')">
+    <i class="fa-solid fa-file-contract"></i> Contratos
+  </div>
+
+  <div class="tool-card" onclick="requestAccess('TOOLS/presentacion.html')">
+    <i class="fa-solid fa-users"></i> Presentación Agentes
+  </div>
+
+  <!-- ================= QR ================= -->
+
+  <a class="tool-card" href="TOOLS/qrs.html">
+    <i class="fa-solid fa-qrcode"></i> Generador QR
+  </a>
+
+  <!-- ================= PROYECTOS POPUP ================= -->
+
+  <div class="tool-card" onclick="openProjects()">
+    <i class="fa-solid fa-briefcase"></i> Proyectos
+  </div>
+
+  <!-- ================= CREAR USUARIO ================= -->
+
+  <div class="tool-card highlight-card" onclick="openRegister()">
+    <i class="fa-solid fa-user-plus"></i> Crear Usuario
+  </div>
+
+</div>
+
+</main>
+
+<div id="footer-container"></div>
+
+<!-- ================= LOGIN MODAL ================= -->
+
+<div class="modal" id="loginModal">
+<div class="modal-content">
+<h2>Acceso requerido</h2>
+
+<div class="form-group">
+<label>ID</label>
+<input type="text" id="loginId">
+</div>
+
+<div class="form-group">
+<label>Contraseña</label>
+<input type="password" id="loginPassword">
+</div>
+
+<button onclick="validateAccess()">Ingresar</button>
+<button class="close-btn" onclick="closeLogin()">Cerrar</button>
+
+</div>
+</div>
+
+<!-- ================= PROYECTOS POPUP ================= -->
+
+<div class="modal" id="projectsModal">
+<div class="modal-content">
+<h2>Proyectos</h2>
+
+<a href="https://ejemplo1.com" target="_blank">Proyecto 1</a><br><br>
+<a href="https://ejemplo2.com" target="_blank">Proyecto 2</a><br><br>
+
+<button class="close-btn" onclick="closeProjects()">Cerrar</button>
+</div>
+</div>
+
+<script>
+
+/* ================= CONFIG ================= */
+
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwkiusDPtzKcizYzRkQHwUEe6N9E3D2ATlnmGGBBeBykf7pmnSjJ5wroH-HVMjEkW25/exec";
+
+let selectedTool = "";
+
+/* ================= LOGIN ================= */
+
+function requestAccess(path){
+  selectedTool = path;
+  document.getElementById("loginModal").style.display = "flex";
+}
+
+function closeLogin(){
+  document.getElementById("loginModal").style.display = "none";
+}
+
+async function validateAccess(){
+
+  const id = document.getElementById("loginId").value.trim();
+  const password = document.getElementById("loginPassword").value.trim();
+
+  if(!id || !password){
+    alert("Ingresa ID y contraseña");
+    return;
+  }
+
+  try{
+    const res = await fetch(WEBAPP_URL,{
+      method:"POST",
+      body:new URLSearchParams({
+        action:"login",
+        id:id,
+        password:password
+      })
+    });
+
+    const data = await res.json();
+
+    if(data.success){
+      window.location.href = selectedTool;
+    }else{
+      alert(data.message);
     }
 
-    function closeLogin() {
-      document.getElementById("loginModal").style.display = "none";
-    }
+  }catch(err){
+    alert("Error de conexión con el servidor");
+  }
+}
 
-    async function login() {
+/* ================= PROYECTOS ================= */
 
-      const id = document.getElementById("userId").value.trim();
-      const password = document.getElementById("userPassword").value.trim();
-      const errorDiv = document.getElementById("loginError");
+function openProjects(){
+  document.getElementById("projectsModal").style.display="flex";
+}
 
-      if (!id || !password) {
-        errorDiv.innerText = "Completa todos los campos.";
-        return;
-      }
+function closeProjects(){
+  document.getElementById("projectsModal").style.display="none";
+}
 
-      try {
+/* ================= REGISTRO ================= */
 
-        const response = await fetch(API_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            action: "login",
-            id: id,
-            password: password,
-            tool: selectedTool
-          })
-        });
+function openRegister(){
+  alert("Aquí conectaremos el registro global.");
+}
 
-        const data = await response.json();
-
-        if (data.success) {
-
-          closeLogin();
-
-          if (selectedTool === "cotizador") {
-            window.location.href = "cotizador.html";
-          }
-
-          if (selectedTool === "verCotizaciones") {
-            window.location.href = "ver-cotizaciones.html";
-          }
-
-        } else {
-          errorDiv.innerText = data.message;
-        }
-
-      } catch (err) {
-        errorDiv.innerText = "Error de conexión con el servidor.";
-      }
-    }
-  </script>
+</script>
 
 </body>
 </html>
