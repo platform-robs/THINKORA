@@ -53,6 +53,12 @@ r<!DOCTYPE html>
 
 /* Ícono blanco */
 .tool-title i {
+  color: #0b0b0b;
+  font-size: 1.2rem;
+}
+
+/* Ícono negro */
+.tool-titlen i {
   color: #ffffff;
   font-size: 1.2rem;
 }
@@ -65,6 +71,13 @@ r<!DOCTYPE html>
 /* Texto descriptivo */
 .tool-card p {
   color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+    /* Texto descriptivo negro*/
+.tool-cardn p {
+  color: #0b0b0b;
   font-size: 0.9rem;
   margin: 0;
 }
@@ -246,8 +259,8 @@ r<!DOCTYPE html>
         <p data-i18n="toolsPage.descriptions.projects"></p>
       </div>
 
-    <div class="tool-card highlight-card" onclick="openUserModal()">
-  <div class="tool-title">
+    <div class="tool-cardn highlight-card" onclick="openUserModal()">
+  <div class="tool-titlen">
     <i class="fa-solid fa-user-plus"></i>
     <h3 data-i18n="toolsPage.cards.createUser"></h3>
   </div>
