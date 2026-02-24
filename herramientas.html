@@ -290,9 +290,14 @@ r<!DOCTYPE html>
       target="hidden_iframe"
       onsubmit="handleSubmit(event)">
 
-      <input name="nombre" placeholder="Nombre" required>
-      <input name="apellidoP" placeholder="Apellido Paterno" required>
-      <input name="apellidoM" placeholder="Apellido Materno" required>
+<input name="nombre" placeholder="Nombre" required 
+  oninput="this.value = this.value.toUpperCase()">
+
+<input name="apellidoP" placeholder="Apellido Paterno" required 
+  oninput="this.value = this.value.toUpperCase()">
+
+<input name="apellidoM" placeholder="Apellido Materno" required 
+  oninput="this.value = this.value.toUpperCase()">
       <input name="telefono" placeholder="Teléfono" required>
       <input name="correo" type="email" placeholder="Correo" required>
 
@@ -366,11 +371,16 @@ function handleSubmit(event) {
     return;
   }
 
-  // VALIDAR PASSWORD
-  if (p1.value !== p2.value) {
-    alert("Las contraseñas no coinciden.");
-    return;
-  }
+// VALIDAR PASSWORD
+if (p1.value.length < 8) {
+  alert("La contraseña debe tener al menos 8 caracteres.");
+  return;
+}
+
+if (p1.value !== p2.value) {
+  alert("Las contraseñas no coinciden.");
+  return;
+}
 
   btn.disabled = true;
   btn.innerText = "Enviando...";
