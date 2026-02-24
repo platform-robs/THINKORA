@@ -32,10 +32,10 @@ r<!DOCTYPE html>
   background: var(--bg-card);
   border: 1px solid var(--border-soft);
   border-radius: 16px;
-  padding: 25px;
+  padding: 30px 20px;
   transition: all 0.3s ease;
   cursor: pointer;
-  text-align: center;
+  text-align: center; /* 🔥 mantiene todo centrado */
 }
 
 .tool-card:hover {
@@ -43,26 +43,26 @@ r<!DOCTYPE html>
   border-color: var(--accent-blue);
 }
 
-/* Contenedor superior (icono + título) */
-.tool-header {
-  display: flex;
+/* Contenedor icono + título */
+.tool-title {
+  display: inline-flex;   /* 🔥 clave */
   align-items: center;
-  gap: 15px;
+  gap: 10px;
   margin-bottom: 10px;
 }
 
-.tool-card h3 {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.tool-card h3 i {
+/* Ícono blanco */
+.tool-title i {
   color: #ffffff;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
-/* Descripción */
+/* Quita margen automático del h3 */
+.tool-title h3 {
+  margin: 0;
+}
+
+/* Texto descriptivo */
 .tool-card p {
   color: var(--text-muted);
   font-size: 0.9rem;
