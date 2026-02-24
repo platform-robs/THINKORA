@@ -17,84 +17,76 @@
 <style>
 
 /* ============================
-   SECCIONES NOSOTROS
+   NOSOTROS — ESTILO PROFESIONAL
 ============================ */
 
-.about-section{
-  margin-top: 50px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-soft);
-  border-radius: 16px;
-  padding: 35px 25px;
-  text-align: left;
-  transition: 0.3s ease;
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
-.about-section:hover{
-  border-color: var(--accent-blue);
-  transform: translateY(-4px);
-}
-
-.about-section h2{
+/* Títulos de sección */
+.section-title {
   font-family: 'Righteous', cursive;
-  margin-top: 0;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
   background: var(--gradient-main);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.about-section p{
+/* Párrafos principales */
+.section-text {
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.8;
+  font-size: 1.05rem;
 }
 
-/* ============================
-   FAQ FINAL
-============================ */
+/* Separador elegante */
+.section-divider {
+  height: 1px;
+  margin: 60px 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border-soft),
+    transparent
+  );
+  border: none;
+}
 
-.faq-container{
-  margin-top: 40px;
+/* FAQ */
+.faq-container {
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
 }
 
-.faq-item{
-  background: var(--bg-card);
-  border: 1px solid var(--border-soft);
-  border-radius: 14px;
-  overflow: hidden;
+.faq-item {
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: 10px;
 }
 
-.faq-question{
-  padding: 18px 20px;
+.faq-question {
   cursor: pointer;
+  font-weight: 600;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 600;
 }
 
-.faq-question:hover{
-  background: rgba(0,168,198,0.08);
-}
-
-.faq-answer{
+.faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height .4s ease, padding .3s ease;
-  padding: 0 20px;
+  transition: max-height .4s ease;
   color: var(--text-muted);
-  text-align: left;
+  margin-top: 8px;
 }
 
-.faq-item.active .faq-answer{
-  max-height: 300px;
-  padding: 0 20px 18px;
-}
-
-.faq-item.active .faq-question{
-  color: var(--accent-green);
+.faq-item.active .faq-answer {
+  max-height: 200px;
 }
 
 </style>
@@ -112,39 +104,49 @@
 <p class="subtitle" data-i18n="about.subtitle"></p>
 
 <!-- ¿Qué es Thinkora? -->
-<section class="about-section">
-  <h2 data-i18n="about.what.title"></h2>
-  <p data-i18n="about.what.text"></p>
+<section>
+  <h2 class="section-title" data-i18n="about.what.title"></h2>
+  <p class="section-text" data-i18n="about.what.text"></p>
 </section>
+
+<hr class="section-divider">
 
 <!-- Propósito -->
-<section class="about-section">
-  <h2 data-i18n="about.purpose.title"></h2>
-  <p data-i18n="about.purpose.text"></p>
+<section>
+  <h2 class="section-title" data-i18n="about.purpose.title"></h2>
+  <p class="section-text" data-i18n="about.purpose.text"></p>
 </section>
+
+<hr class="section-divider">
 
 <!-- Visión -->
-<section class="about-section">
-  <h2 data-i18n="about.vision.title"></h2>
-  <p data-i18n="about.vision.text"></p>
+<section>
+  <h2 class="section-title" data-i18n="about.vision.title"></h2>
+  <p class="section-text" data-i18n="about.vision.text"></p>
 </section>
+
+<hr class="section-divider">
 
 <!-- Valores -->
-<section class="about-section">
-  <h2 data-i18n="about.values.title"></h2>
-  <p data-i18n="about.values.text"></p>
+<section>
+  <h2 class="section-title" data-i18n="about.values.title"></h2>
+  <p class="section-text" data-i18n="about.values.text"></p>
 </section>
+
+<hr class="section-divider">
 
 <!-- Acompañamiento -->
-<section class="about-section">
-  <h2 data-i18n="about.accompaniment.title"></h2>
-  <p data-i18n="about.accompaniment.text"></p>
+<section>
+  <h2 class="section-title" data-i18n="about.accompaniment.title"></h2>
+  <p class="section-text" data-i18n="about.accompaniment.text"></p>
 </section>
 
+<hr class="section-divider">
+
 <!-- Capital humano -->
-<section class="about-section">
-  <h2 data-i18n="about.human.title"></h2>
-  <p data-i18n="about.human.text"></p>
+<section>
+  <h2 class="section-title" data-i18n="about.human.title"></h2>
+  <p class="section-text" data-i18n="about.human.text"></p>
 </section>
 
 <!-- FAQ -->
