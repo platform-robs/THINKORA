@@ -43,10 +43,10 @@ alerts: {
     /* ---------- NAVBAR ---------- */
     nav: {
       services: "Servicios",
-      packages: "Paquetes",
-      tools: "Herramientas",
+      faqs: "Preguntas",
       about: "Nosotros",
-      contact: "Contacto"
+      contact: "Contacto",
+      tools: "Herramientas"
     },
 
     /* ---------- FOOTER ---------- */
@@ -321,10 +321,10 @@ alerts: {
 
     nav: {
       services: "Services",
-      packages: "Packages",
-      tools: "Tools",
+      faqs: "FAQs",
       about: "About Us",
-      contact: "Contact"
+      contact: "Contact",
+      tools: "Tools"
     },
 
     footer: {
