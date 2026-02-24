@@ -430,6 +430,7 @@ function setLanguage(lang) {
   localStorage.setItem("language", lang);
   applyTranslations(lang);
   renderItems();
+   document.documentElement.lang = lang;
 }
 
 function applyTranslations(lang) {
