@@ -253,6 +253,7 @@ alerts: {
        contracts: "Contratos",
        agents: "Presentación Agentes",
        qr: "Generador QR",
+      portfolio: "Proyectos",
        portfolio: "Portafolio",
        createUser: "Crear Usuario"
       },
@@ -469,6 +470,7 @@ alerts: {
         agents: "Material for sales agents.",
         packages: "Business packages.",
         qr: "Generate custom QR codes.",
+         portfolio: "Projects"
         projects: "Access external projects.",
         createUser: "Join the team."
       },
