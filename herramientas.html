@@ -288,7 +288,7 @@ r<!DOCTYPE html>
       action="https://script.google.com/macros/s/AKfycbyKqhkThBJJtzD6kuGMuASgsorAgDywZms8aSwvHe0Nln_UHiWibX0UxEy1cozaAwTM/exec"
       method="POST"
       target="hidden_iframe"
-      onsubmit="handleSubmit()">
+      onsubmit="handleSubmit(event)">
 
       <input name="nombre" placeholder="Nombre" required>
       <input name="apellidoP" placeholder="Apellido Paterno" required>
@@ -324,6 +324,7 @@ r<!DOCTYPE html>
 
 
 <script>
+
 function openUserModal() {
   document.getElementById("userModal").style.display = "flex";
 }
@@ -336,135 +337,79 @@ function handleSubmit(event) {
 
   event.preventDefault();
 
-  const nombre = document.querySelector("input[name='nombre']");
-  const apellidoP = document.querySelector("input[name='apellidoP']");
-  const apellidoM = document.querySelector("input[name='apellidoM']");
-  const telefono = document.querySelector("input[name='telefono']");
-  const correo = document.querySelector("input[name='correo']");
+  const form = document.getElementById("userForm");
+  const btn = document.getElementById("submitBtn");
+
+  const nombre = form.nombre;
+  const apellidoP = form.apellidoP;
+  const apellidoM = form.apellidoM;
+  const telefono = form.telefono;
+  const correo = form.correo;
+  const equipo = form.equipo.value;
   const p1 = document.getElementById("pass1");
   const p2 = document.getElementById("pass2");
-  const btn = document.getElementById("submitBtn");
-  const form = document.getElementById("userForm");
 
-  // 🔥 Convertir a MAYÚSCULAS automáticamente
+  // MAYÚSCULAS
   nombre.value = nombre.value.toUpperCase();
   apellidoP.value = apellidoP.value.toUpperCase();
   apellidoM.value = apellidoM.value.toUpperCase();
 
-  // 🔥 Validar teléfono 10 dígitos
-  const phoneRegex = /^[0-9]{10}$/;
-  if (!phoneRegex.test(telefono.value)) {
-    alert("El teléfono debe tener exactamente 10 dígitos.");
+  // TELÉFONO 10 DÍGITOS
+  if (!/^[0-9]{10}$/.test(telefono.value)) {
+    alert("El teléfono debe tener 10 dígitos.");
     return;
   }
 
-  // 🔥 Validar correo
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(correo.value)) {
-    alert("Correo electrónico no válido.");
+  // VALIDAR EMAIL
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo.value)) {
+    alert("Correo inválido.");
     return;
   }
 
-  // 🔥 Validar contraseña doble
+  // VALIDAR PASSWORD
   if (p1.value !== p2.value) {
     alert("Las contraseñas no coinciden.");
     return;
   }
 
-  // 🔥 Bloquear botón
   btn.disabled = true;
   btn.innerText = "Enviando...";
 
-  // 🔥 Enviar formulario
-  form.submit();
-
-  const idGenerado =
-  nombre.value.charAt(0) +
-  apellidoP.value.substring(0,3) +
-  telefono.value.slice(-3);
-
-enviarWhatsApp(
-  nombre.value,
-  apellidoP.value,
-  document.querySelector("select[name='equipo']").value,
-  idGenerado.toUpperCase()
-);
-
-  // 🔥 Generar mensaje WhatsApp
+  // GENERAR ID (últimos 3 dígitos)
   const idGenerado =
     nombre.value.charAt(0) +
     apellidoP.value.substring(0,3) +
     telefono.value.slice(-3);
 
-  const mensaje = encodeURIComponent(
-    `Nuevo registro Thinkora:\n\nNombre: ${nombre.value} ${apellidoP.value}\nEquipo: ${document.querySelector("select[name='equipo']").value}\nID: ${idGenerado.toUpperCase()}`
-  );
+  // ENVIAR FORMULARIO
+  form.submit();
 
-  // 🔥 Abrir WhatsApp después de 2 segundos
-  setTimeout(() => {
-    window.open(
-      `https://wa.me/5214495165882?text=${mensaje}`,
-      "_blank"
-    );
-
-    alert("Solicitud enviada correctamente");
-
-    form.reset();
-    btn.disabled = false;
-    btn.innerText = "Enviar solicitud";
-    closeUserModal();
-
-  }, 2000);
-}
-</script>
-
-
-<script>
-
-function enviarWhatsApp(nombre, apellidoP, equipo, idGenerado) {
-
+  // ABRIR WHATSAPP (sin setTimeout)
   const mensaje = encodeURIComponent(
     `Nuevo registro Thinkora:
 
-Nombre: ${nombre} ${apellidoP}
+Nombre: ${nombre.value} ${apellidoP.value}
 Equipo: ${equipo}
-ID: ${idGenerado}`
+ID: ${idGenerado.toUpperCase()}`
   );
 
-  const url = `https://wa.me/5214495165882?text=${mensaje}`;
-
-  window.open(url, "_blank");
-}
-
-
-function handleSubmit(event) {
-
-  event.preventDefault();
-
-  const nombre = document.querySelector("input[name='nombre']");
-  const apellidoP = document.querySelector("input[name='apellidoP']");
-  const telefono = document.querySelector("input[name='telefono']");
-  const equipo = document.querySelector("select[name='equipo']").value;
-
-  const idGenerado =
-    nombre.value.charAt(0) +
-    apellidoP.value.substring(0,3) +
-    telefono.value.slice(-3);
-
-  // 🔥 Enviar formulario a Apps Script
-  document.getElementById("userForm").submit();
-
-  // 🔥 Abrir WhatsApp inmediatamente
-  enviarWhatsApp(
-    nombre.value,
-    apellidoP.value,
-    equipo,
-    idGenerado.toUpperCase()
+  window.open(
+    `https://wa.me/5214495165882?text=${mensaje}`,
+    "_blank"
   );
 
+  alert("Solicitud enviada correctamente");
+
+  form.reset();
+  btn.disabled = false;
+  btn.innerText = "Enviar solicitud";
+  closeUserModal();
 }
 
 </script>
+
+
+
   
 
 </body>
