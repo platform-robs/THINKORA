@@ -172,7 +172,7 @@ r<!DOCTYPE html>
           <i class="fa-solid fa-calculator"></i>
           <h3 data-i18n="toolsPage.cards.quote"></h3>
         </div>
-        <p>Genera cotizaciones personalizadas.</p>
+        <p data-i18n="toolsPage.descriptions.quote"></p>
       </div>
 
       <div class="tool-card" onclick="window.location.href='TOOLS/ver_cotizaciones.html'">
@@ -180,7 +180,7 @@ r<!DOCTYPE html>
           <i class="fa-solid fa-file-lines"></i>
           <h3 data-i18n="toolsPage.cards.viewQuotes"></h3>
         </div>
-        <p>Consulta historial de cotizaciones.</p>
+        <p data-i18n="toolsPage.descriptions.viewQuotes"></p>
       </div>
 
       <div class="tool-card" onclick="window.location.href='TOOLS/generar_propuesta.html'">
@@ -188,7 +188,7 @@ r<!DOCTYPE html>
           <i class="fa-solid fa-file-signature"></i>
           <h3 data-i18n="toolsPage.cards.techGen"></h3>
         </div>
-        <p>Crea propuestas técnicas profesionales.</p>
+        <p data-i18n="toolsPage.descriptions.techGen"></p>
       </div>
 
       <div class="tool-card" onclick="window.location.href='TOOLS/ver_propuestas.html'">
@@ -196,7 +196,7 @@ r<!DOCTYPE html>
           <i class="fa-solid fa-folder-open"></i>
           <h3 data-i18n="toolsPage.cards.viewTech"></h3>
         </div>
-        <p>Consulta propuestas guardadas.</p>
+        <p data-i18n="toolsPage.descriptions.viewTech"></p>
       </div>
 
       <div class="tool-card" onclick="window.location.href='TOOLS/contratos.html'">
@@ -204,7 +204,7 @@ r<!DOCTYPE html>
           <i class="fa-solid fa-file-contract"></i>
           <h3 data-i18n="toolsPage.cards.contracts"></h3>
         </div>
-        <p>Gestión de contratos activos.</p>
+        <p data-i18n="toolsPage.descriptions.contracts"></p>
       </div>
 
       <div class="tool-card" onclick="window.location.href='TOOLS/presentacion.html'">
@@ -212,7 +212,7 @@ r<!DOCTYPE html>
           <i class="fa-solid fa-users"></i>
           <h3 data-i18n="toolsPage.cards.agents"></h3>
         </div>
-        <p>Material para agentes comerciales.</p>
+        <p data-i18n="toolsPage.descriptions.agents"></p>
       </div>
 
       <div class="tool-card" onclick="window.location.href='TOOLS/paquetes.html'">
@@ -223,7 +223,7 @@ r<!DOCTYPE html>
           -->
           <h3>PAQUETES</h3>
         </div>
-        <p>Paquetes para negocios.</p>
+        <p data-i18n="toolsPage.descriptions.packages"></p>
       </div>
 
       <div class="tool-card" onclick="window.location.href='TOOLS/qrs.html'">
@@ -231,15 +231,15 @@ r<!DOCTYPE html>
           <i class="fa-solid fa-qrcode"></i>
           <h3 data-i18n="toolsPage.cards.qr"></h3>
         </div>
-        <p>Genera códigos QR personalizados.</p>
+        <p data-i18n="toolsPage.descriptions.qr"></p>
       </div>
 
       <div class="tool-card" onclick="openProjects()">
         <div class="tool-title">
           <i class="fa-solid fa-briefcase"></i>
-          <h3 data-i18n="toolsPage.cards.quote"></h3>
+          <h3 data-i18n="toolsPage.cards.portfolio"></h3>
         </div>
-        <p>Acceso a proyectos externos.</p>
+        <p data-i18n="toolsPage.descriptions.projects"></p>
       </div>
 
 <div class="tool-card" onclick="openUserModal()">
@@ -247,7 +247,7 @@ r<!DOCTYPE html>
     <i class="fa-solid fa-user-plus"></i>
     <h3 data-i18n="toolsPage.cards.createUser"></h3>
   </div>
-  <p>Únete al equipo.</p>
+  <<p data-i18n="toolsPage.descriptions.createUser"></p>
 </div>
 
     </div>
@@ -293,7 +293,7 @@ r<!DOCTYPE html>
 <div class="modal-overlay" id="userModal">
   <div class="modal-form">
 
-    <h2>Solicitud de Nuevo Usuario</h2>
+    <h2 data-i18n="toolsPage.registerModal.title"></h2>
 
     <form id="userForm"
       action="https://script.google.com/macros/s/AKfycbyyriFyvjjsYm30sDqyHfj87woIiW6eCYB8KJDDmMczb9mSqB2Bxsatytq4YMZaUaxj/exec"
@@ -316,7 +316,7 @@ r<!DOCTYPE html>
       <input type="password" id="pass2" data-i18n="toolsPage.register.confirmPassword" placeholder="">
 
       <select name="equipo" required>
-        <option value="">Selecciona equipo</option>
+        <option value="" data-i18n="toolsPage.registerModal.selectTeam"></option>
         <option>Sales</option>
         <option>Tech</option>
         <option>Design</option>
@@ -327,7 +327,9 @@ r<!DOCTYPE html>
 
     </form>
 
-    <button class="close-btn" onclick="closeUserModal()">Cancelar</button>
+    <button class="close-btn" onclick="closeUserModal()"
+      data-i18n="toolsPage.registerModal.cancel">
+    </button>
 
   </div>
 </div>
