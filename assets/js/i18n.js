@@ -248,12 +248,11 @@ alerts: {
       cards: {
        quote: "Cotizador",
        viewQuotes: "Ver Cotizaciones",
-       techGen: "Generador de Propuesta Técnica",
+       techGen: "Generar Propuesta Técnica",
        viewTech: "Ver Propuestas Técnicas",
        contracts: "Contratos",
        agents: "Presentación Agentes",
-       qr: "Generador QR",
-      portfolio: "Proyectos",
+       packages: "Paquetes",
        portfolio: "Portafolio",
        createUser: "Crear Usuario"
       },
@@ -303,7 +302,6 @@ alerts: {
         contracts: "Gestión de contratos activos.",
         agents: "Material para agentes comerciales.",
         packages: "Paquetes para negocios.",
-        qr: "Genera códigos QR personalizados.",
         projects: "Acceso a proyectos externos.",
         createUser: "Únete al equipo."
       },
@@ -419,7 +417,7 @@ alerts: {
           viewTech: "View Technical Proposals",
           contracts: "Contracts",
           agents: "Agents Presentation",
-          qr: "QR Generator",
+          packages: "Packages",
           portfolio: "Portfolio",
           createUser: "Create User"
         },
@@ -469,8 +467,6 @@ alerts: {
         contracts: "Manage active contracts.",
         agents: "Material for sales agents.",
         packages: "Business packages.",
-        qr: "Generate custom QR codes.",
-         portfolio: "Projects",
         projects: "Access external projects.",
         createUser: "Join the team."
       },
