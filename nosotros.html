@@ -94,6 +94,47 @@ main {
   max-height: 200px;
 }
 
+   /* ============================
+   FAQ PROFESIONAL CENTRADA
+============================ */
+
+.faq-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.faq-item {
+  width: 100%;
+  max-width: 750px;
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: 12px;
+}
+
+.faq-question {
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;   /* CENTRADO */
+  gap: 10px;
+  text-align: center;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease;
+  color: var(--text-muted);
+  margin-top: 10px;
+  text-align: center;       /* CENTRADO */
+}
+
+.faq-item.active .faq-answer {
+  max-height: 250px;
+}
+
 </style>
 
 </head>
