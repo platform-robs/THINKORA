@@ -326,7 +326,45 @@ alerts: {
            "a2": "Desarrollo web, sistemas administrativos, automatización con Google Apps Script y soluciones personalizadas.",
            "q3": "¿Puedo solicitar una solución personalizada?",
            "a3": "Sí. Thinkora desarrolla soluciones adaptadas a cada necesidad."
-         }
+         },
+     about: {
+        title: "Nosotros",
+        subtitle: "Conoce nuestra visión, propósito y enfoque.",
+      
+        what: {
+          title: "¿Qué es Thinkora?",
+          text: "Thinkora es una plataforma de soluciones digitales enfocada en transformar ideas en herramientas funcionales que generen impacto real."
+        },
+      
+        purpose: {
+          title: "Nuestro Propósito",
+          text: "Ayudar a empresas y emprendedores a optimizar procesos, automatizar tareas y crecer con tecnología estratégica."
+        },
+      
+        vision: {
+          title: "Nuestra Visión",
+          text: "Construir un ecosistema digital que acompañe el crecimiento de nuestros clientes y evolucione con ellos."
+        },
+      
+        values: {
+          title: "Nuestros Valores",
+          text: "Claridad, funcionalidad, innovación práctica, compromiso y crecimiento compartido."
+        },
+      
+        accompaniment: {
+          title: "Acompañamiento",
+          text: "No entregamos solo proyectos. Acompañamos a nuestros clientes en cada etapa."
+        },
+      
+        human: {
+          title: "Capital Humano",
+          text: "Thinkora también impulsa el crecimiento profesional y la incorporación de talento al equipo."
+        },
+      
+        faq: {
+          title: "Preguntas Frecuentes"
+        }
+      }
   },
 
 
@@ -505,7 +543,46 @@ alerts: {
            "a2": "Web development, administrative systems, Google Apps Script automation, and custom solutions.",
            "q3": "Can I request a custom solution?",
            "a3": "Yes. Thinkora builds tailored solutions for each project."
-         }
+         },
+
+     about: {
+        title: "About Us",
+        subtitle: "Learn about our vision, purpose and approach.",
+      
+        what: {
+          title: "What is Thinkora?",
+          text: "Thinkora is a digital solutions platform focused on transforming ideas into functional tools that generate real impact."
+        },
+      
+        purpose: {
+          title: "Our Purpose",
+          text: "Help businesses optimize processes, automate tasks, and grow through strategic technology."
+        },
+      
+        vision: {
+          title: "Our Vision",
+          text: "Build a digital ecosystem that supports our clients' growth and evolves with them."
+        },
+      
+        values: {
+          title: "Our Values",
+          text: "Clarity, functionality, practical innovation, commitment, and shared growth."
+        },
+      
+        accompaniment: {
+          title: "Support",
+          text: "We don't just deliver projects. We accompany our clients at every stage."
+        },
+      
+        human: {
+          title: "Human Capital",
+          text: "Thinkora promotes professional growth and talent integration into the team."
+        },
+      
+        faq: {
+          title: "Frequently Asked Questions"
+        }
+      }
 
      
     },
