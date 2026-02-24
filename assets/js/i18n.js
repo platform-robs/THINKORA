@@ -438,7 +438,11 @@ function applyTranslations(lang) {
     let text = translations[lang];
     keys.forEach(k => text = text?.[k]);
     if (!text) return;
-    el.innerHTML = text;
+    if (el.placeholder !== undefined) {
+        el.placeholder = text;
+      } else {
+        el.innerHTML = text;
+      }
   });
 }
 
