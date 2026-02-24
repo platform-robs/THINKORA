@@ -20,7 +20,10 @@
    NOSOTROS — ESTILO PROFESIONAL
 ============================ */
 
-   /* Sección introductoria */
+/* ============================
+   NOSOTROS — ESTILO PROFESIONAL
+============================ */
+
 .intro-section {
   margin-top: 20px;
 }
@@ -31,7 +34,10 @@ main {
   padding: 40px 20px;
 }
 
-/* Títulos de sección */
+/* ============================
+   TÍTULOS DE SECCIÓN
+============================ */
+
 .section-title {
   font-family: 'Righteous', cursive;
   font-size: 1.8rem;
@@ -41,14 +47,16 @@ main {
   -webkit-text-fill-color: transparent;
 }
 
-/* Párrafos principales */
 .section-text {
   color: var(--text-muted);
   line-height: 1.8;
   font-size: 1.05rem;
 }
 
-/* Separador elegante */
+/* ============================
+   SEPARADOR
+============================ */
+
 .section-divider {
   height: 1px;
   margin: 40px 0;
@@ -61,41 +69,77 @@ main {
   border: none;
 }
 
-/* FAQ */
-.faq-container {
+/* ============================
+   LAYOUT 2 COLUMNAS
+============================ */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
   margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
 
-.faq-item {
-  border-bottom: 1px solid var(--border-soft);
-  padding-bottom: 10px;
+.about-card {
+  padding: 10px 0;
 }
 
-.faq-question {
+/* Responsive */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================
+   BOTÓN TIPO tool-cardn
+   (MISMO ESTILO QUE HERRAMIENTAS)
+============================ */
+
+.tool-cardn {
+  background: var(--gradient-main);
+  color: #0b0b0b;
+  border-radius: 16px;
+  padding: 30px 20px;
+  transition: all 0.3s ease;
   cursor: pointer;
-  font-weight: 600;
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
+}
+
+.tool-cardn:hover {
+  transform: translateY(-6px);
+}
+
+/* Contenedor icono + título */
+.tool-titlen {
+  display: inline-flex;
   align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .4s ease;
-  color: var(--text-muted);
-  margin-top: 8px;
+/* Ícono */
+.tool-titlen i {
+  font-size: 1.2rem;
+  color: #0b0b0b;
 }
 
-.faq-item.active .faq-answer {
-  max-height: 200px;
+/* Título */
+.tool-cardn h3 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
-   /* ============================
-   FAQ PROFESIONAL CENTRADA
+/* Texto */
+.tool-cardn p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #0b0b0b;
+}
+
+/* ============================
+   FAQ — ESTILO CENTRADO
 ============================ */
 
 .faq-container {
@@ -117,7 +161,7 @@ main {
   cursor: pointer;
   font-weight: 600;
   display: flex;
-  justify-content: center;   /* CENTRADO */
+  justify-content: center;
   gap: 10px;
   text-align: center;
 }
@@ -128,92 +172,12 @@ main {
   transition: max-height .4s ease;
   color: var(--text-muted);
   margin-top: 10px;
-  text-align: center;       /* CENTRADO */
+  text-align: center;
 }
 
 .faq-item.active .faq-answer {
   max-height: 250px;
 }
-
-
-   /* ============================
-         SECCIÓN DOS COLUMNAS
-      ============================ */
-      
-      .about-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-        margin-top: 30px;
-      }
-      
-      .about-card {
-        padding: 10px 0;
-      }
-      
-      /* Botón dentro de sección */
-      .about-button {
-        margin-top: 15px;
-      }
-      
-      /* Responsive */
-      @media (max-width: 768px) {
-        .about-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-
-
-   /* ============================
-         BOTÓN TIPO TOOL-CARDN
-         PARA NOSOTROS
-      ============================ */
-      
-      .cta-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        margin-top: 15px;
-      }
-      
-      .cta-card {
-        background: var(--gradient-main);
-        color: #0b0b0b;
-        border-radius: 16px;
-        padding: 30px 20px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        text-align: center;
-      }
-      
-      .cta-card:hover {
-        transform: translateY(-6px);
-      }
-      
-      /* Estructura interna igual que tools */
-      .cta-title {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 10px;
-      }
-      
-      .cta-title i {
-        font-size: 1.2rem;
-        color: #0b0b0b;
-      }
-      
-      .cta-card h3 {
-        margin: 0;
-        font-weight: 600;
-        line-height: 1.3;
-      }
-      
-      .cta-card p {
-        margin: 0;
-        font-size: 0.9rem;
-        color: #0b0b0b;
-      }
 
 </style>
 
@@ -235,70 +199,49 @@ main {
 
 <hr class="section-divider">
 
-<hr class="section-divider">
-
-<!-- SECCIÓN EN DOS COLUMNAS -->
 <section class="about-grid">
 
-  <!-- Columna Izquierda -->
   <div class="about-card">
-    <h2 class="section-title">Nuestro Propósito</h2>
-    <p class="section-text">
-      Ayudar a empresas y emprendedores a optimizar procesos,
-      automatizar tareas y crecer con tecnología estratégica.
-    </p>
-  </div>
-
-  <!-- Columna Derecha -->
-  <div class="about-card">
-    <h2 class="section-title">Nuestra Visión</h2>
-    <p class="section-text">
-      Construir un ecosistema digital que acompañe el crecimiento
-      de nuestros clientes y evolucione con ellos.
-    </p>
-  </div>
-
-  <!-- Segunda fila -->
-
-  <div class="about-card">
-    <h2 class="section-title">Nuestros Valores</h2>
-    <p class="section-text">
-      Claridad, funcionalidad, innovación práctica, compromiso
-      y crecimiento compartido.
-    </p>
+    <h2 class="section-title" data-i18n="about.purpose.title"></h2>
+    <p class="section-text" data-i18n="about.purpose.text"></p>
   </div>
 
   <div class="about-card">
-    <h2 class="section-title">Acompañamiento</h2>
-    <p class="section-text">
-      No entregamos solo proyectos. Acompañamos a nuestros clientes
-      en cada etapa.
-    </p>
+    <h2 class="section-title" data-i18n="about.vision.title"></h2>
+    <p class="section-text" data-i18n="about.vision.text"></p>
   </div>
-
-  <!-- Tercera fila -->
 
   <div class="about-card">
-    <h2 class="section-title">Capital Humano</h2>
-    <p class="section-text">
-      Thinkora también impulsa el crecimiento profesional y la
-      incorporación de talento al equipo.
-    </p>
+    <h2 class="section-title" data-i18n="about.values.title"></h2>
+    <p class="section-text" data-i18n="about.values.text"></p>
   </div>
 
-  <!-- Botón Crear Usuario -->
-<div class="cta-grid">
-  <div class="cta-card" onclick="openUserModal()">
+  <div class="about-card">
+    <h2 class="section-title" data-i18n="about.accompaniment.title"></h2>
+    <p class="section-text" data-i18n="about.accompaniment.text"></p>
+  </div>
 
-    <div class="cta-title">
-      <i class="fa-solid fa-user-plus"></i>
-      <h3>Crear Usuario</h3>
+  <div class="about-card">
+    <h2 class="section-title" data-i18n="about.human.title"></h2>
+    <p class="section-text" data-i18n="about.human.text"></p>
+  </div>
+
+  <!-- BOTÓN EXACTO COMO EN HERRAMIENTAS -->
+
+  <div class="about-card">
+
+    <div class="tool-cardn" onclick="openUserModal()">
+
+      <div class="tool-titlen">
+        <i class="fa-solid fa-user-plus"></i>
+        <h3 data-i18n="toolsPage.cards.createUser"></h3>
+      </div>
+
+      <p data-i18n="toolsPage.descriptions.createUser"></p>
+
     </div>
 
-    <p>Únete al equipo Thinkora</p>
-
   </div>
-</div>
 
 </section>
 
