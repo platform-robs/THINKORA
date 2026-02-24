@@ -1,1 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Thinkora | Dev Auth</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<style>
+/* ============================
+   ESTILOS DEL MODAL LOGIN
+============================ */
+.auth-overlay{
+  position:fixed;
+  inset:0;
+  background:#000000cc;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+.auth-box{
+  background:#fff;
+  padding:30px;
+  border-radius:12px;
+  width:320px;
+  text-align:center;
+}
+.auth-box input{
+  width:100%;
+  margin:10px 0;
+  padding:8px;
+}
+.auth-box button{
+  padding:10px 20px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<main style="text-align:center; margin-top:80px;">
+  <h1>Zona protegida</h1>
+  <p>Si estás viendo esto, el login funcionó correctamente.</p>
+
+  <button onclick="logout()">Cerrar sesión</button>
+
+  <div id="user-info" style="margin-top:20px;"></div>
+</main>
+
+<script>
+/* =====================================================
+   CONFIGURACIÓN
+   Cambia esto por tu URL real de Apps Script
+===================================================== */
+const AUTH_CONFIG = {
+  apiUrl: "PEGA_AQUI_TU_WEBAPP_URL",
+  requiredEstado: "Habilitado",   // Cambia si quieres probar otro estado
+  requiredEquipo: null            // Ejemplo: "Equipo A"
+};
+
+/* =====================================================
+   INICIO AUTOMÁTICO
+===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+
+  const saved = localStorage.getItem("authUser");
+
+  if (!saved) {
+    showLogin();
+    return;
+  }
+
+  const user = JSON.parse(saved);
+
+  if (!validateUser(user)) {
+    localStorage.removeItem("authUser");
+    showLogin();
+    return;
+  }
+
+  showUser(user);
+});
+
+/* =====================================================
+   VALIDAR ESTADO Y EQUIPO
+===================================================== */
+function validateUser(user){
+
+  if (AUTH_CONFIG.requiredEstado &&
+      user.estado !== AUTH_CONFIG.requiredEstado){
+    return false;
+  }
+
+  if (AUTH_CONFIG.requiredEquipo &&
+      user.equipo !== AUTH_CONFIG.requiredEquipo){
+    return false;
+  }
+
+  return true;
+}
+
+/* =====================================================
+   MOSTRAR LOGIN
+===================================================== */
+function showLogin(){
+
+  const overlay = document.createElement("div");
+  overlay.className = "auth-overlay";
+
+  overlay.innerHTML = `
+    <div class="auth-box">
+      <h2>Acceso Thinkora</h2>
+      <input id="login-id" placeholder="ID">
+      <input id="login-pass" type="password" placeholder="Contraseña">
+      <button onclick="doLogin()">Ingresar</button>
+      <p id="login-msg" style="color:red;"></p>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+}
+
+/* =====================================================
+   LOGIN
+===================================================== */
+async function doLogin(){
+
+  const id = document.getElementById("login-id").value;
+  const password = document.getElementById("login-pass").value;
+
+  const params = new URLSearchParams();
+  params.append("action","login");
+  params.append("id",id);
+  params.append("password",password);
+
+  const response = await fetch(AUTH_CONFIG.apiUrl,{
+    method:"POST",
+    body:params
+  });
+
+  const data = await response.json();
+
+  if(!data.success){
+    document.getElementById("login-msg").innerText = data.message;
+    return;
+  }
+
+  if(!validateUser(data.user)){
+    document.getElementById("login-msg").innerText =
+      "No tienes permisos para esta sección.";
+    return;
+  }
+
+  localStorage.setItem("authUser",JSON.stringify(data.user));
+  location.reload();
+}
+
+/* =====================================================
+   MOSTRAR INFO USUARIO
+===================================================== */
+function showUser(user){
+
+  document.getElementById("user-info").innerHTML = `
+    <p><strong>ID:</strong> ${user.id}</p>
+    <p><strong>Equipo:</strong> ${user.equipo}</p>
+    <p><strong>Estado:</strong> ${user.estado}</p>
+  `;
+}
+
+/* =====================================================
+   CERRAR SESIÓN
+===================================================== */
+function logout(){
+  localStorage.removeItem("authUser");
+  location.reload();
+}
+</script>
+
+</body>
+</html>
