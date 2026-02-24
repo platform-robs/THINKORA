@@ -135,6 +135,34 @@ main {
   max-height: 250px;
 }
 
+
+   /* ============================
+         SECCIÓN DOS COLUMNAS
+      ============================ */
+      
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin-top: 30px;
+      }
+      
+      .about-card {
+        padding: 10px 0;
+      }
+      
+      /* Botón dentro de sección */
+      .about-button {
+        margin-top: 15px;
+      }
+      
+      /* Responsive */
+      @media (max-width: 768px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
 </style>
 
 </head>
@@ -155,42 +183,68 @@ main {
 
 <hr class="section-divider">
 
-<!-- Propósito -->
-<section>
-  <h2 class="section-title" data-i18n="about.purpose.title"></h2>
-  <p class="section-text" data-i18n="about.purpose.text"></p>
-</section>
-
 <hr class="section-divider">
 
-<!-- Visión -->
-<section>
-  <h2 class="section-title" data-i18n="about.vision.title"></h2>
-  <p class="section-text" data-i18n="about.vision.text"></p>
-</section>
+<!-- SECCIÓN EN DOS COLUMNAS -->
+<section class="about-grid">
 
-<hr class="section-divider">
+  <!-- Columna Izquierda -->
+  <div class="about-card">
+    <h2 class="section-title">Nuestro Propósito</h2>
+    <p class="section-text">
+      Ayudar a empresas y emprendedores a optimizar procesos,
+      automatizar tareas y crecer con tecnología estratégica.
+    </p>
+  </div>
 
-<!-- Valores -->
-<section>
-  <h2 class="section-title" data-i18n="about.values.title"></h2>
-  <p class="section-text" data-i18n="about.values.text"></p>
-</section>
+  <!-- Columna Derecha -->
+  <div class="about-card">
+    <h2 class="section-title">Nuestra Visión</h2>
+    <p class="section-text">
+      Construir un ecosistema digital que acompañe el crecimiento
+      de nuestros clientes y evolucione con ellos.
+    </p>
+  </div>
 
-<hr class="section-divider">
+  <!-- Segunda fila -->
 
-<!-- Acompañamiento -->
-<section>
-  <h2 class="section-title" data-i18n="about.accompaniment.title"></h2>
-  <p class="section-text" data-i18n="about.accompaniment.text"></p>
-</section>
+  <div class="about-card">
+    <h2 class="section-title">Nuestros Valores</h2>
+    <p class="section-text">
+      Claridad, funcionalidad, innovación práctica, compromiso
+      y crecimiento compartido.
+    </p>
+  </div>
 
-<hr class="section-divider">
+  <div class="about-card">
+    <h2 class="section-title">Acompañamiento</h2>
+    <p class="section-text">
+      No entregamos solo proyectos. Acompañamos a nuestros clientes
+      en cada etapa.
+    </p>
+  </div>
 
-<!-- Capital humano -->
-<section>
-  <h2 class="section-title" data-i18n="about.human.title"></h2>
-  <p class="section-text" data-i18n="about.human.text"></p>
+  <!-- Tercera fila -->
+
+  <div class="about-card">
+    <h2 class="section-title">Capital Humano</h2>
+    <p class="section-text">
+      Thinkora también impulsa el crecimiento profesional y la
+      incorporación de talento al equipo.
+    </p>
+  </div>
+
+  <!-- Botón Crear Usuario -->
+  <div class="about-card about-button">
+    <div class="tool-cardn" onclick="openUserModal()" style="cursor:pointer;">
+      <div class="tool-titlen">
+        <i class="fa-solid fa-user-plus"></i>
+        <h3>Crear Usuario</h3>
+      </div>
+      <p>Únete al equipo Thinkora</p>
+    </div>
+  </div>
+
 </section>
 
 <!-- FAQ -->
