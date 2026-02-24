@@ -470,7 +470,7 @@ alerts: {
         agents: "Material for sales agents.",
         packages: "Business packages.",
         qr: "Generate custom QR codes.",
-         portfolio: "Projects"
+         portfolio: "Projects",
         projects: "Access external projects.",
         createUser: "Join the team."
       },
