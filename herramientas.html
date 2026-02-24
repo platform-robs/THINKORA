@@ -162,15 +162,15 @@ r<!DOCTYPE html>
 
   <!-- ================= CONTENIDO ================= -->
   <main>
-    <h1 class="title">Herramientas Internas</h1>
-    <p class="subtitle">Acceso exclusivo para miembros del equipo Thinkora</p>
+    <h1 class="title" data-i18n="toolsPage.title"></h1>
+      <p class="subtitle" data-i18n="toolsPage.intro"></p>
 
     <div class="tools-grid">
 
       <div class="tool-card" onclick="window.location.href='TOOLS/cotizador.html'">
         <div class="tool-title">
           <i class="fa-solid fa-calculator"></i>
-          <h3>Cotizador</h3>
+          <h3 data-i18n="toolsPage.cards.quote"></h3>
         </div>
         <p>Genera cotizaciones personalizadas.</p>
       </div>
@@ -178,7 +178,7 @@ r<!DOCTYPE html>
       <div class="tool-card" onclick="window.location.href='TOOLS/ver_cotizaciones.html'">
         <div class="tool-title">
           <i class="fa-solid fa-file-lines"></i>
-          <h3>Ver Cotizaciones</h3>
+          <h3 data-i18n="toolsPage.cards.viewQuotes"></h3>
         </div>
         <p>Consulta historial de cotizaciones.</p>
       </div>
@@ -186,7 +186,7 @@ r<!DOCTYPE html>
       <div class="tool-card" onclick="window.location.href='TOOLS/generar_propuesta.html'">
         <div class="tool-title">
           <i class="fa-solid fa-file-signature"></i>
-          <h3>Generar Propuesta</h3>
+          <h3 data-i18n="toolsPage.cards.techGen"></h3>
         </div>
         <p>Crea propuestas técnicas profesionales.</p>
       </div>
@@ -194,7 +194,7 @@ r<!DOCTYPE html>
       <div class="tool-card" onclick="window.location.href='TOOLS/ver_propuestas.html'">
         <div class="tool-title">
           <i class="fa-solid fa-folder-open"></i>
-          <h3>Ver Propuestas</h3>
+          <h3 data-i18n="toolsPage.cards.viewTech"></h3>
         </div>
         <p>Consulta propuestas guardadas.</p>
       </div>
@@ -202,7 +202,7 @@ r<!DOCTYPE html>
       <div class="tool-card" onclick="window.location.href='TOOLS/contratos.html'">
         <div class="tool-title">
           <i class="fa-solid fa-file-contract"></i>
-          <h3>Contratos</h3>
+          <h3 data-i18n="toolsPage.cards.contracts"></h3>
         </div>
         <p>Gestión de contratos activos.</p>
       </div>
@@ -210,15 +210,26 @@ r<!DOCTYPE html>
       <div class="tool-card" onclick="window.location.href='TOOLS/presentacion.html'">
         <div class="tool-title">
           <i class="fa-solid fa-users"></i>
-          <h3>Presentación Agentes</h3>
+          <h3 data-i18n="toolsPage.cards.agents"></h3>
         </div>
         <p>Material para agentes comerciales.</p>
+      </div>
+
+      <div class="tool-card" onclick="window.location.href='TOOLS/paquetes.html'">
+        <div class="tool-title">
+          <!--
+          <i class="fa-solid fa-users"></i>
+          <h3 data-i18n="toolsPage.cards.agents"></h3>
+          -->
+          <h3>PAQUETES</h3>
+        </div>
+        <p>Paquetes para negocios.</p>
       </div>
 
       <div class="tool-card" onclick="window.location.href='TOOLS/qrs.html'">
         <div class="tool-title">
           <i class="fa-solid fa-qrcode"></i>
-          <h3>Generador QR</h3>
+          <h3 data-i18n="toolsPage.cards.qr"></h3>
         </div>
         <p>Genera códigos QR personalizados.</p>
       </div>
@@ -226,7 +237,7 @@ r<!DOCTYPE html>
       <div class="tool-card" onclick="openProjects()">
         <div class="tool-title">
           <i class="fa-solid fa-briefcase"></i>
-          <h3>Proyectos</h3>
+          <h3 data-i18n="toolsPage.cards.quote"></h3>
         </div>
         <p>Acceso a proyectos externos.</p>
       </div>
@@ -234,7 +245,7 @@ r<!DOCTYPE html>
 <div class="tool-card" onclick="openUserModal()">
   <div class="tool-title">
     <i class="fa-solid fa-user-plus"></i>
-    <h3>Crear Usuario</h3>
+    <h3 data-i18n="toolsPage.cards.createUser"></h3>
   </div>
   <p>Únete al equipo.</p>
 </div>
@@ -290,19 +301,19 @@ r<!DOCTYPE html>
       target="hidden_iframe"
       onsubmit="handleSubmit(event)">
 
-<input name="nombre" placeholder="Nombre" required 
-  oninput="this.value = this.value.toUpperCase()">
+      <input name="nombre" data-i18n="toolsPage.register.name" placeholder="">
+      
+      <input name="apellidoP" data-i18n="toolsPage.register.lastName1" placeholder="">
+      
+      <input name="apellidoM" data-i18n="toolsPage.register.lastName2" placeholder="">
+      
+      <input name="telefono" data-i18n="toolsPage.register.phone" placeholder="">
+      
+      <input name="correo" data-i18n="toolsPage.register.email" placeholder="">
 
-<input name="apellidoP" placeholder="Apellido Paterno" required 
-  oninput="this.value = this.value.toUpperCase()">
-
-<input name="apellidoM" placeholder="Apellido Materno" required 
-  oninput="this.value = this.value.toUpperCase()">
-      <input name="telefono" placeholder="Teléfono" required>
-      <input name="correo" type="email" placeholder="Correo" required>
-
-      <input name="password" type="password" id="pass1" placeholder="Contraseña" required>
-      <input type="password" id="pass2" placeholder="Confirmar contraseña" required>
+      <input name="password" type="password" id="pass1" data-i18n="toolsPage.register.password" placeholder="">
+      
+      <input type="password" id="pass2" data-i18n="toolsPage.register.confirmPassword" placeholder="">
 
       <select name="equipo" required>
         <option value="">Selecciona equipo</option>
@@ -312,9 +323,7 @@ r<!DOCTYPE html>
         <option>Marketing</option>
       </select>
 
-      <button type="submit" id="submitBtn">
-        Enviar solicitud
-      </button>
+      <button type="submit" id="submitBtn" data-i18n="toolsPage.register.submit"></button>
 
     </form>
 
