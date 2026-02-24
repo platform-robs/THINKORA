@@ -1,117 +1,199 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- =====================================================
-       CONFIGURACIÓN BÁSICA
-  ====================================================== -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- =====================================================
-       SEO BÁSICO (ajusta por página)
-  ====================================================== -->
-  <title>Thinkora | Development</title>
-  <meta name="description" content="Thinkora - Digital solutions under development.">
-  <meta name="author" content="Salvador Robles">
 
-  <!-- =====================================================
-       FUENTES (IDENTIDAD THINKORA)
-  ====================================================== -->
-  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- =====================================================
-       CSS GLOBAL
-       (un solo CSS para todo el sitio)
-  ====================================================== -->
-  <link rel="stylesheet" href="assets/css/styles.css">
+<title>Nosotros | Thinkora</title>
+<meta name="description" content="Conoce la visión, propósito y valores de Thinkora.">
+
+<!-- Fuentes -->
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+
+<!-- Estilos globales -->
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<style>
+
+/* ============================
+   SECCIONES NOSOTROS
+============================ */
+
+.about-section{
+  margin-top: 50px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 35px 25px;
+  text-align: left;
+  transition: 0.3s ease;
+}
+
+.about-section:hover{
+  border-color: var(--accent-blue);
+  transform: translateY(-4px);
+}
+
+.about-section h2{
+  font-family: 'Righteous', cursive;
+  margin-top: 0;
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-section p{
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ============================
+   FAQ FINAL
+============================ */
+
+.faq-container{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faq-item{
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.faq-question{
+  padding: 18px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.faq-question:hover{
+  background: rgba(0,168,198,0.08);
+}
+
+.faq-answer{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease, padding .3s ease;
+  padding: 0 20px;
+  color: var(--text-muted);
+  text-align: left;
+}
+
+.faq-item.active .faq-answer{
+  max-height: 300px;
+  padding: 0 20px 18px;
+}
+
+.faq-item.active .faq-question{
+  color: var(--accent-green);
+}
+
+</style>
+
 </head>
 
 <body>
 
-  <!-- =====================================================
-       NAVBAR
-       Se carga dinámicamente desde navbar.html
-       Esto permite reutilizarlo en todo el sitio
-  ====================================================== -->
-  <div id="navbar-container"></div>
+<!-- Navbar -->
+<div id="navbar-container"></div>
 
-  <!-- =====================================================
-       CONTENIDO PRINCIPAL
-       TODO lo que cambies entre páginas va aquí
-  ====================================================== -->
-  <main>
+<main>
 
-    <!-- ===== TÍTULO PRINCIPAL ===== -->
-    <h1 class="title" data-i18n="dev.title">
-      Development
-    </h1>
+<h1 class="title" data-i18n="about.title"></h1>
+<p class="subtitle" data-i18n="about.subtitle"></p>
 
-    <!-- ===== SUBTÍTULO / DESCRIPCIÓN ===== -->
-    <p class="subtitle" data-i18n="dev.subtitle">
-      This section is currently under development
-    </p>
+<!-- ¿Qué es Thinkora? -->
+<section class="about-section">
+  <h2 data-i18n="about.what.title"></h2>
+  <p data-i18n="about.what.text"></p>
+</section>
 
-    <!-- ===== CARD PRINCIPAL ===== -->
-    <section class="card">
+<!-- Propósito -->
+<section class="about-section">
+  <h2 data-i18n="about.purpose.title"></h2>
+  <p data-i18n="about.purpose.text"></p>
+</section>
 
-      <h2 data-i18n="dev.cardTitle">
-        We are building something great 🚀
-      </h2>
+<!-- Visión -->
+<section class="about-section">
+  <h2 data-i18n="about.vision.title"></h2>
+  <p data-i18n="about.vision.text"></p>
+</section>
 
-      <p data-i18n="dev.cardText">
-        This page is part of Thinkora’s ecosystem.  
-        We are working to deliver a clean, modern and powerful digital experience.
-      </p>
+<!-- Valores -->
+<section class="about-section">
+  <h2 data-i18n="about.values.title"></h2>
+  <p data-i18n="about.values.text"></p>
+</section>
 
-      <!-- ===== ESTADO ===== -->
-      <div style="margin-top: 25px;">
-        <span class="status" data-i18n="dev.status">
-          IN DEVELOPMENT
-        </span>
-      </div>
+<!-- Acompañamiento -->
+<section class="about-section">
+  <h2 data-i18n="about.accompaniment.title"></h2>
+  <p data-i18n="about.accompaniment.text"></p>
+</section>
 
-    </section>
+<!-- Capital humano -->
+<section class="about-section">
+  <h2 data-i18n="about.human.title"></h2>
+  <p data-i18n="about.human.text"></p>
+</section>
 
-    <!-- ===== SEPARADOR VISUAL ===== -->
-    <div class="separator"></div>
+<!-- FAQ -->
+<h2 class="title" style="margin-top:70px;" data-i18n="about.faq.title"></h2>
 
-    <!-- ===== SECCIÓN INFORMATIVA ===== -->
-    <section>
-      <h2 class="section-title" data-i18n="dev.nextTitle">
-        What’s coming next?
-      </h2>
+<div class="faq-container">
 
-      <p class="section-description" data-i18n="dev.nextText">
-        New features, services and projects are being designed to help businesses
-        transform ideas into real digital solutions.
-      </p>
-    </section>
+  <div class="faq-item">
+    <div class="faq-question">
+      <span data-i18n="faq.q1"></span>
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+    <div class="faq-answer" data-i18n="faq.a1"></div>
+  </div>
 
-  </main>
+  <div class="faq-item">
+    <div class="faq-question">
+      <span data-i18n="faq.q2"></span>
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+    <div class="faq-answer" data-i18n="faq.a2"></div>
+  </div>
 
-  <!-- =====================================================
-       FOOTER
-       Igual que el navbar, se reutiliza en todo el sitio
-  ====================================================== -->
-  <div id="footer-container"></div>
+  <div class="faq-item">
+    <div class="faq-question">
+      <span data-i18n="faq.q3"></span>
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+    <div class="faq-answer" data-i18n="faq.a3"></div>
+  </div>
 
-  <!-- =====================================================
-       SCRIPTS
-       IMPORTANTE: el orden SÍ importa
-  ====================================================== -->
+</div>
 
-  <!-- 1️⃣ Traducciones (idiomas) -->
-  <script src="assets/js/i18n.js"></script>
+</main>
 
-  <!-- 2️⃣ Navbar dinámico -->
-  <script src="assets/js/navbar.js"></script>
+<!-- Footer -->
+<div id="footer-container"></div>
 
-  <!-- 3️⃣ Footer dinámico -->
-  <script src="assets/js/footer.js"></script>
+<!-- Scripts -->
+<script src="assets/js/navbar.js"></script>
+<script src="assets/js/footer.js"></script>
+
+<script>
+document.querySelectorAll(".faq-question").forEach(item=>{
+  item.addEventListener("click",()=>{
+    item.parentElement.classList.toggle("active");
+  });
+});
+</script>
 
 </body>
 </html>
