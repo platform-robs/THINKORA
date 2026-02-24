@@ -309,7 +309,8 @@ alerts: {
       registerModal: {
         title: "Solicitud de Nuevo Usuario",
         cancel: "Cancelar",
-        selectTeam: "Selecciona equipo"
+        selectTeam: "Selecciona equipo",
+        close: "Cerrar" 
       }
       }
   },
@@ -474,7 +475,8 @@ alerts: {
       registerModal: {
         title: "New User Request",
         cancel: "Cancel",
-        selectTeam: "Select team"
+        selectTeam: "Select team",
+         close: "Close"
       }
       }
     },
