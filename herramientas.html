@@ -1,325 +1,215 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Thinkora | Herramientas</title>
+  <!-- ================= CONFIG ================= -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
-<link rel="stylesheet"
- href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <!-- ================= SEO ================= -->
+  <title>Herramientas | Thinkora</title>
+  <meta name="description" content="Acceso a herramientas internas Thinkora.">
+  <meta name="author" content="Salvador Robles">
 
-<style>
+  <!-- ================= FUENTES ================= -->
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-/* =============================
-   CONTENEDOR PRINCIPAL
-============================= */
+  <!-- ================= CSS GLOBAL ================= -->
+  <link rel="stylesheet" href="assets/css/styles.css">
 
-.tools-main{
-  text-align:center;
-  padding:80px 20px;
-}
+  <!-- ================= ESTILOS DE ESTA PÁGINA ================= -->
+  <style>
 
-.tools-main h1{
-  font-family:'Righteous', cursive;
-  font-size:2.6rem;
-  margin-bottom:10px;
-}
+    .tools-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:30px;
+      margin-top:50px;
+    }
 
-.tools-main p{
-  color:var(--text-muted);
-  max-width:800px;
-  margin:0 auto 50px;
-}
+    .tool-card{
+      background:var(--bg-card);
+      border:2px solid var(--border-soft);
+      border-radius:16px;
+      padding:30px 20px;
+      transition:all .3s ease;
+      cursor:pointer;
+      text-align:center;
+    }
 
-/* =============================
-   GRID
-============================= */
+    .tool-card:hover{
+      transform:translateY(-6px);
+      border-color:var(--accent-blue);
+      box-shadow:0 10px 25px rgba(0,168,198,.25);
+    }
 
-.tools-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px;
-  max-width:1200px;
-  margin:0 auto;
-}
+    .tool-card i{
+      font-size:2.4rem;
+      margin-bottom:15px;
+      background:var(--gradient-main);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
 
-/* =============================
-   TARJETAS ESTILO CONTORNO AZUL
-============================= */
+    .tool-card h3{
+      margin:10px 0;
+    }
 
-.tool-card{
-  background:var(--bg-card);
-  border:2px solid transparent;
-  padding:28px 20px;
-  border-radius:18px;
-  text-decoration:none;
-  color:var(--text-main);
-  font-weight:600;
-  transition:.3s ease;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-  font-size:1rem;
-}
+    .tool-card p{
+      color:var(--text-muted);
+      font-size:.9rem;
+    }
 
-.tool-card i{
-  font-size:1.2rem;
-}
+    .highlight-card{
+      background:var(--gradient-main);
+      color:#0b0b0b;
+      font-weight:700;
+      border:none;
+    }
 
-.tool-card:hover{
-  transform:translateY(-6px);
-  border:2px solid var(--accent-blue);
-  box-shadow:0 10px 25px rgba(0,168,198,.25);
-}
+    /* ===== MODAL PROYECTOS ===== */
 
-/* Botón especial crear usuario */
-.highlight-card{
-  background:var(--gradient-main);
-  color:#0b0b0b;
-  font-weight:800;
-  border:none;
-}
+    .modal-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.75);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+    }
 
-/* =============================
-   MODALES
-============================= */
+    .modal{
+      background:var(--bg-card);
+      padding:40px;
+      border-radius:16px;
+      max-width:400px;
+      width:90%;
+      text-align:center;
+      border:1px solid var(--border-soft);
+    }
 
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.75);
-  backdrop-filter:blur(6px);
-  justify-content:center;
-  align-items:center;
-  z-index:2000;
-}
+    .modal a{
+      display:block;
+      margin:10px 0;
+      color:var(--accent-blue);
+      text-decoration:none;
+      font-weight:600;
+    }
 
-.modal-content{
-  background:var(--bg-dark);
-  padding:35px;
-  border-radius:20px;
-  width:90%;
-  max-width:500px;
-  text-align:left;
-}
+    .modal button{
+      margin-top:20px;
+      background:none;
+      border:none;
+      color:var(--text-muted);
+      cursor:pointer;
+    }
 
-.modal-content h2{
-  text-align:center;
-  margin-bottom:20px;
-}
-
-.form-group{
-  margin-bottom:15px;
-}
-
-label{
-  display:block;
-  margin-bottom:6px;
-  font-size:.9rem;
-  color:var(--text-muted);
-}
-
-input, select{
-  width:100%;
-  padding:12px;
-  border-radius:10px;
-  border:1px solid var(--border-soft);
-  background:var(--bg-card);
-  color:var(--text-main);
-}
-
-button{
-  margin-top:15px;
-  width:100%;
-  padding:12px;
-  border:none;
-  border-radius:10px;
-  font-weight:700;
-  cursor:pointer;
-  background:var(--gradient-main);
-  color:#0b0b0b;
-}
-
-.close-btn{
-  margin-top:10px;
-  background:#444;
-  color:white;
-}
-
-</style>
+  </style>
 </head>
 
 <body>
 
-<div id="navbar-container"></div>
+  <!-- ================= NAVBAR ================= -->
+  <div id="navbar-container"></div>
 
-<main class="tools-main">
+  <!-- ================= CONTENIDO ================= -->
+  <main>
+    <h1 class="title">Herramientas Internas</h1>
+    <p class="subtitle">Acceso exclusivo para miembros del equipo Thinkora</p>
 
-<h1>Herramientas Thinkora</h1>
-<p>Selecciona la herramienta que necesitas para tu gestión interna.</p>
+    <div class="tools-grid">
 
-<div class="tools-grid">
+      <div class="tool-card" onclick="goTo('TOOLS/cotizador.html')">
+        <i class="fa-solid fa-calculator"></i>
+        <h3>Cotizador</h3>
+        <p>Genera cotizaciones personalizadas.</p>
+      </div>
 
-  <!-- ================= ADMIN ================= -->
+      <div class="tool-card" onclick="goTo('TOOLS/ver_cotizaciones.html')">
+        <i class="fa-solid fa-file-lines"></i>
+        <h3>Ver Cotizaciones</h3>
+        <p>Consulta historial de cotizaciones.</p>
+      </div>
 
-  <div class="tool-card" onclick="requestAccess('TOOLS/cotizador.html')">
-    <i class="fa-solid fa-calculator"></i> Cotizador
+      <div class="tool-card" onclick="goTo('TOOLS/generar_propuesta.html')">
+        <i class="fa-solid fa-file-signature"></i>
+        <h3>Generar Propuesta</h3>
+        <p>Crea propuestas técnicas profesionales.</p>
+      </div>
+
+      <div class="tool-card" onclick="goTo('TOOLS/ver_propuestas.html')">
+        <i class="fa-solid fa-folder-open"></i>
+        <h3>Ver Propuestas</h3>
+        <p>Consulta propuestas guardadas.</p>
+      </div>
+
+      <div class="tool-card" onclick="goTo('TOOLS/contratos.html')">
+        <i class="fa-solid fa-file-contract"></i>
+        <h3>Contratos</h3>
+        <p>Gestión de contratos activos.</p>
+      </div>
+
+      <div class="tool-card" onclick="goTo('TOOLS/presentacion.html')">
+        <i class="fa-solid fa-users"></i>
+        <h3>Presentación Agentes</h3>
+        <p>Material para agentes comerciales.</p>
+      </div>
+
+      <div class="tool-card" onclick="goTo('TOOLS/qrs.html')">
+        <i class="fa-solid fa-qrcode"></i>
+        <h3>Generador QR</h3>
+        <p>Genera códigos QR personalizados.</p>
+      </div>
+
+      <div class="tool-card" onclick="openProjects()">
+        <i class="fa-solid fa-briefcase"></i>
+        <h3>Proyectos</h3>
+        <p>Acceso a proyectos externos.</p>
+      </div>
+
+      <div class="tool-card highlight-card" onclick="goTo('register.html')">
+        <i class="fa-solid fa-user-plus"></i>
+        <h3>Crear Usuario</h3>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <div id="footer-container"></div>
+
+  <!-- ================= MODAL PROYECTOS ================= -->
+  <div class="modal-overlay" id="projectsModal">
+    <div class="modal">
+      <h2>Proyectos</h2>
+      <a href="https://ejemplo1.com" target="_blank">Proyecto 1</a>
+      <a href="https://ejemplo2.com" target="_blank">Proyecto 2</a>
+      <button onclick="closeProjects()">Cerrar</button>
+    </div>
   </div>
 
-  <div class="tool-card" onclick="requestAccess('TOOLS/ver_cotizaciones.html')">
-    <i class="fa-solid fa-file-invoice"></i> Ver Cotizaciones
-  </div>
+  <!-- ================= SCRIPTS ================= -->
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/footer.js"></script>
 
-  <div class="tool-card" onclick="requestAccess('TOOLS/generar_propuesta.html')">
-    <i class="fa-solid fa-file-signature"></i> Generar Propuesta
-  </div>
+  <script>
 
-  <div class="tool-card" onclick="requestAccess('TOOLS/ver_propuestas.html')">
-    <i class="fa-solid fa-folder-open"></i> Ver Propuestas
-  </div>
-
-  <div class="tool-card" onclick="requestAccess('TOOLS/contratos.html')">
-    <i class="fa-solid fa-file-contract"></i> Contratos
-  </div>
-
-  <div class="tool-card" onclick="requestAccess('TOOLS/presentacion.html')">
-    <i class="fa-solid fa-users"></i> Presentación Agentes
-  </div>
-
-  <!-- ================= QR ================= -->
-
-  <a class="tool-card" href="TOOLS/qrs.html">
-    <i class="fa-solid fa-qrcode"></i> Generador QR
-  </a>
-
-  <!-- ================= PROYECTOS POPUP ================= -->
-
-  <div class="tool-card" onclick="openProjects()">
-    <i class="fa-solid fa-briefcase"></i> Proyectos
-  </div>
-
-  <!-- ================= CREAR USUARIO ================= -->
-
-  <div class="tool-card highlight-card" onclick="openRegister()">
-    <i class="fa-solid fa-user-plus"></i> Crear Usuario
-  </div>
-
-</div>
-
-</main>
-
-<div id="footer-container"></div>
-
-<!-- ================= LOGIN MODAL ================= -->
-
-<div class="modal" id="loginModal">
-<div class="modal-content">
-<h2>Acceso requerido</h2>
-
-<div class="form-group">
-<label>ID</label>
-<input type="text" id="loginId">
-</div>
-
-<div class="form-group">
-<label>Contraseña</label>
-<input type="password" id="loginPassword">
-</div>
-
-<button onclick="validateAccess()">Ingresar</button>
-<button class="close-btn" onclick="closeLogin()">Cerrar</button>
-
-</div>
-</div>
-
-<!-- ================= PROYECTOS POPUP ================= -->
-
-<div class="modal" id="projectsModal">
-<div class="modal-content">
-<h2>Proyectos</h2>
-
-<a href="https://ejemplo1.com" target="_blank">Proyecto 1</a><br><br>
-<a href="https://ejemplo2.com" target="_blank">Proyecto 2</a><br><br>
-
-<button class="close-btn" onclick="closeProjects()">Cerrar</button>
-</div>
-</div>
-
-<script>
-
-/* ================= CONFIG ================= */
-
-const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwkiusDPtzKcizYzRkQHwUEe6N9E3D2ATlnmGGBBeBykf7pmnSjJ5wroH-HVMjEkW25/exec";
-
-let selectedTool = "";
-
-/* ================= LOGIN ================= */
-
-function requestAccess(path){
-  selectedTool = path;
-  document.getElementById("loginModal").style.display = "flex";
-}
-
-function closeLogin(){
-  document.getElementById("loginModal").style.display = "none";
-}
-
-async function validateAccess(){
-
-  const id = document.getElementById("loginId").value.trim();
-  const password = document.getElementById("loginPassword").value.trim();
-
-  if(!id || !password){
-    alert("Ingresa ID y contraseña");
-    return;
-  }
-
-  try{
-    const res = await fetch(WEBAPP_URL,{
-      method:"POST",
-      body:new URLSearchParams({
-        action:"login",
-        id:id,
-        password:password
-      })
-    });
-
-    const data = await res.json();
-
-    if(data.success){
-      window.location.href = selectedTool;
-    }else{
-      alert(data.message);
+    function goTo(path){
+      window.location.href = path;
     }
 
-  }catch(err){
-    alert("Error de conexión con el servidor");
-  }
-}
+    function openProjects(){
+      document.getElementById("projectsModal").style.display="flex";
+    }
 
-/* ================= PROYECTOS ================= */
+    function closeProjects(){
+      document.getElementById("projectsModal").style.display="none";
+    }
 
-function openProjects(){
-  document.getElementById("projectsModal").style.display="flex";
-}
-
-function closeProjects(){
-  document.getElementById("projectsModal").style.display="none";
-}
-
-/* ================= REGISTRO ================= */
-
-function openRegister(){
-  alert("Aquí conectaremos el registro global.");
-}
-
-</script>
+  </script>
 
 </body>
 </html>
