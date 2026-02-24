@@ -38,6 +38,19 @@ r<!DOCTYPE html>
   text-align: center; /* 🔥 mantiene todo centrado */
 }
 
+/* tarejeta especial negro */
+    .tool-cardn {
+      background:var(--gradient-main);
+      color:#0b0b0b;
+      font-weight:800;
+ /* border: 1px solid var(--border-soft);*/
+  border-radius: 16px;
+  padding: 30px 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center; /* 🔥 mantiene todo centrado */
+}
+
 .tool-card:hover {
   transform: translateY(-6px);
   border-color: var(--accent-blue);
@@ -82,11 +95,6 @@ r<!DOCTYPE html>
       margin: 0;
     }
     
-    .highlight-card{
-      background:var(--gradient-main);
-      color:#0b0b0b;
-      font-weight:800;
-    }
 
     /* ===== MODAL PROYECTOS ===== */
 
@@ -260,7 +268,7 @@ r<!DOCTYPE html>
         <p data-i18n="toolsPage.descriptions.projects"></p>
       </div>
 
-    <div class="tool-cardn highlight-card" onclick="openUserModal()">
+    <div class="tool-cardn" onclick="openUserModal()">
   <div class="tool-title">
     <i class="fa-solid fa-user-plus"></i>
     <h3 data-i18n="toolsPage.cards.createUser"></h3>
