@@ -107,6 +107,51 @@ r<!DOCTYPE html>
       cursor:pointer;
     }
 
+
+    /* ======= CREAR USUARIO =====*/
+
+    .modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  padding: 20px;
+}
+
+.modal-form {
+  background: var(--bg-card);
+  padding: 30px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid var(--border-soft);
+  text-align: center;
+}
+
+.modal-form input,
+.modal-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border-soft);
+  background: var(--bg-dark);
+  color: var(--text-main);
+}
+
+.modal-form button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: var(--gradient-main);
+  font-weight: bold;
+  cursor: pointer;
+}
+    
   </style>
 </head>
 
@@ -172,10 +217,12 @@ r<!DOCTYPE html>
         <p>Acceso a proyectos externos.</p>
       </div>
 
-      <div class="tool-card highlight-card" onclick="goTo('register.html')">
-        <i class="fa-solid fa-user-plus"></i>
-        <h3>Crear Usuario</h3>
-      </div>
+<div class="tool-card" onclick="openUserModal()">
+  <div class="tool-title">
+    <i class="fa-solid fa-user-plus"></i>
+    <h3>Crear Usuario</h3>
+  </div>
+</div>
 
     </div>
   </main>
@@ -213,6 +260,88 @@ r<!DOCTYPE html>
     }
 
   </script>
+
+  <!-- ================= CREAR USUARIO ================= -->
+
+<!-- POPUP CREAR USUARIO -->
+<div class="modal-overlay" id="userModal">
+  <div class="modal-form">
+
+    <h2>Solicitud de Nuevo Usuario</h2>
+
+    <form id="userForm"
+      action="https://script.google.com/macros/s/AKfycbxrpYMHsqo21kOUAP42yhnFgHh44lQ0C0xXEvSz65_7yYlwTT_2gEaWuabqC9EdoLYF/exec"
+      method="POST"
+      target="hidden_iframe"
+      onsubmit="handleSubmit()">
+
+      <input name="nombre" placeholder="Nombre" required>
+      <input name="apellidoP" placeholder="Apellido Paterno" required>
+      <input name="apellidoM" placeholder="Apellido Materno" required>
+      <input name="telefono" placeholder="Teléfono" required>
+      <input name="correo" type="email" placeholder="Correo" required>
+
+      <input name="password" type="password" id="pass1" placeholder="Contraseña" required>
+      <input type="password" id="pass2" placeholder="Confirmar contraseña" required>
+
+      <select name="equipo" required>
+        <option value="">Selecciona equipo</option>
+        <option>Sales</option>
+        <option>Tech</option>
+        <option>Design</option>
+        <option>Marketing</option>
+      </select>
+
+      <button type="submit" id="submitBtn">
+        Enviar solicitud
+      </button>
+
+    </form>
+
+    <button class="close-btn" onclick="closeUserModal()">Cancelar</button>
+
+  </div>
+</div>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+
+
+
+  <script>
+function openUserModal() {
+  document.getElementById("userModal").style.display = "flex";
+}
+
+function closeUserModal() {
+  document.getElementById("userModal").style.display = "none";
+}
+
+function handleSubmit() {
+
+  const p1 = document.getElementById("pass1").value;
+  const p2 = document.getElementById("pass2").value;
+  const btn = document.getElementById("submitBtn");
+
+  if (p1 !== p2) {
+    alert("Las contraseñas no coinciden");
+    event.preventDefault();
+    return false;
+  }
+
+  btn.disabled = true;
+  btn.innerText = "Enviando...";
+
+  setTimeout(() => {
+    alert("Solicitud enviada correctamente");
+    closeUserModal();
+  }, 1500);
+}
+</script>
+
+
+
+  
 
 </body>
 </html>
