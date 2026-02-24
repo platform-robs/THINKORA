@@ -12,17 +12,25 @@ const translations = {
 
 
 alerts: {
+  phone: {
+    es: "El teléfono debe tener 10 dígitos.",
+    en: "Phone number must have 10 digits."
+  },
+  invalidEmail: {
+    es: "Correo inválido.",
+    en: "Invalid email."
+  },
+  passwordLength: {
+    es: "La contraseña debe tener al menos 8 caracteres.",
+    en: "Password must be at least 8 characters."
+  },
   passwordMismatch: {
-    es: "Las contraseñas no coinciden",
-    en: "Passwords do not match"
+    es: "Las contraseñas no coinciden.",
+    en: "Passwords do not match."
   },
-  userCreated: {
-    es: "Solicitud enviada correctamente",
-    en: "Request sent successfully"
-  },
-  error: {
-    es: "Ocurrió un error",
-    en: "An error occurred"
+  success: {
+    es: "Solicitud enviada correctamente.",
+    en: "Request sent successfully."
   }
 }
    
