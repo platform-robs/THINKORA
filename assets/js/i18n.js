@@ -10,6 +10,7 @@
 
 const translations = {
 
+
 alerts: {
   passwordMismatch: {
     es: "Las contraseñas no coinciden",
