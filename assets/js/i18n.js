@@ -32,7 +32,7 @@ alerts: {
     es: "Solicitud enviada correctamente.",
     en: "Request sent successfully."
   }
-}
+},
    
 
   /* =====================================================
@@ -451,7 +451,9 @@ alerts: {
 let currentLang = localStorage.getItem("language") || "es";
 
 function t(path) {
-  return path.split('.').reduce((obj, key) => obj[key], translations)[currentLanguage];
+  return path
+    .split('.')
+    .reduce((obj, key) => obj[key], translations)[currentLang];
 }
 
 function setLanguage(lang) {
