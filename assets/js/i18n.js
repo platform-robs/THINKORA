@@ -35,16 +35,7 @@ alerts: {
 },
 
 
-   "faq": {
-  "title": "Preguntas Frecuentes",
-  "subtitle": "Resuelve dudas sobre Thinkora y nuestras soluciones.",
-  "q1": "¿Qué es Thinkora?",
-  "a1": "Thinkora es una plataforma de soluciones digitales enfocada en automatización y desarrollo web.",
-  "q2": "¿Qué servicios ofrecen?",
-  "a2": "Desarrollo web, sistemas administrativos, automatización con Google Apps Script y soluciones personalizadas.",
-  "q3": "¿Puedo solicitar una solución personalizada?",
-  "a3": "Sí. Thinkora desarrolla soluciones adaptadas a cada necesidad."
-},
+
       
 
   /* =====================================================
@@ -324,20 +315,22 @@ alerts: {
         selectTeam: "Selecciona equipo",
         close: "Cerrar" 
       }
-      }
+      },
+
+        "faq": {
+           "title": "Preguntas Frecuentes",
+           "subtitle": "Resuelve dudas sobre Thinkora y nuestras soluciones.",
+           "q1": "¿Qué es Thinkora?",
+           "a1": "Thinkora es una plataforma de soluciones digitales enfocada en automatización y desarrollo web.",
+           "q2": "¿Qué servicios ofrecen?",
+           "a2": "Desarrollo web, sistemas administrativos, automatización con Google Apps Script y soluciones personalizadas.",
+           "q3": "¿Puedo solicitar una solución personalizada?",
+           "a3": "Sí. Thinkora desarrolla soluciones adaptadas a cada necesidad."
+         }
   },
 
 
-   "faq": {
-  "title": "Frequently Asked Questions",
-  "subtitle": "Find answers about Thinkora and our digital solutions.",
-  "q1": "What is Thinkora?",
-  "a1": "Thinkora is a digital solutions platform focused on automation and web development.",
-  "q2": "What services do you offer?",
-  "a2": "Web development, administrative systems, Google Apps Script automation, and custom solutions.",
-  "q3": "Can I request a custom solution?",
-  "a3": "Yes. Thinkora builds tailored solutions for each project."
-},
+
   /* =====================================================
      ENGLISH
   ===================================================== */
@@ -501,7 +494,20 @@ alerts: {
         selectTeam: "Select team",
          close: "Close"
       }
-      }
+      },
+
+        "faq": {
+           "title": "Frequently Asked Questions",
+           "subtitle": "Find answers about Thinkora and our digital solutions.",
+           "q1": "What is Thinkora?",
+           "a1": "Thinkora is a digital solutions platform focused on automation and web development.",
+           "q2": "What services do you offer?",
+           "a2": "Web development, administrative systems, Google Apps Script automation, and custom solutions.",
+           "q3": "Can I request a custom solution?",
+           "a3": "Yes. Thinkora builds tailored solutions for each project."
+         }
+
+     
     },
 };
 
