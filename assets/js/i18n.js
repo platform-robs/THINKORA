@@ -292,6 +292,25 @@ alerts: {
          "Correo: {{email}}\n\n" +
          "Tu solicitud está en revisión.\n\n" +
          "Thinkora"
+      },
+
+        descriptions: {
+        quote: "Genera cotizaciones personalizadas.",
+        viewQuotes: "Consulta historial de cotizaciones.",
+        techGen: "Crea propuestas técnicas profesionales.",
+        viewTech: "Consulta propuestas guardadas.",
+        contracts: "Gestión de contratos activos.",
+        agents: "Material para agentes comerciales.",
+        packages: "Paquetes para negocios.",
+        qr: "Genera códigos QR personalizados.",
+        projects: "Acceso a proyectos externos.",
+        createUser: "Únete al equipo."
+      },
+      
+      registerModal: {
+        title: "Solicitud de Nuevo Usuario",
+        cancel: "Cancelar",
+        selectTeam: "Selecciona equipo"
       }
       }
   },
@@ -439,7 +458,26 @@ alerts: {
             "Email: {{email}}\n\n" +
             "Your request is under review.\n\n" +
             "Thinkora"
-        }
+        },
+
+         descriptions: {
+        quote: "Generate custom quotes.",
+        viewQuotes: "View quote history.",
+        techGen: "Create professional technical proposals.",
+        viewTech: "View saved proposals.",
+        contracts: "Manage active contracts.",
+        agents: "Material for sales agents.",
+        packages: "Business packages.",
+        qr: "Generate custom QR codes.",
+        projects: "Access external projects.",
+        createUser: "Join the team."
+      },
+      
+      registerModal: {
+        title: "New User Request",
+        cancel: "Cancel",
+        selectTeam: "Select team"
+      }
       }
     },
 };
