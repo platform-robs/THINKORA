@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Preguntas Frecuentes | Thinkora</title>
+<meta name="description" content="Resuelve tus dudas sobre Thinkora y nuestras soluciones digitales.">
+
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<style>
+
+/* ============================
+   FAQ SECTION
+============================ */
+
+.faq-container{
+  margin-top:50px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+/* Card pregunta */
+.faq-item{
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all .3s ease;
+}
+
+/* Header pregunta */
+.faq-question{
+  padding:18px 20px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:600;
+  transition:.3s ease;
+}
+
+.faq-question:hover{
+  background: rgba(0,168,198,0.08);
+}
+
+/* Respuesta */
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .4s ease, padding .3s ease;
+  padding:0 20px;
+  color:var(--text-muted);
+  text-align:left;
+}
+
+/* Estado activo */
+.faq-item.active .faq-answer{
+  max-height:300px;
+  padding:0 20px 18px;
+}
+
+.faq-item.active .faq-question{
+  color:var(--accent-green);
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="navbar-container"></div>
+
+<main>
+
+<h1 class="title">Preguntas Frecuentes</h1>
+<p class="subtitle">Resuelve dudas sobre Thinkora y nuestras soluciones.</p>
+
+<div class="faq-container">
+
+  <div class="faq-item">
+    <div class="faq-question">
+      ¿Qué es Thinkora?
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+    <div class="faq-answer">
+      Thinkora es una plataforma de soluciones digitales enfocada en
+      automatización, desarrollo web y herramientas empresariales.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      ¿Qué tipo de servicios ofrecen?
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+    <div class="faq-answer">
+      Desarrollo web, sistemas administrativos, automatización con Google Apps Script,
+      formularios inteligentes y soluciones personalizadas.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      ¿Puedo solicitar una solución personalizada?
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+    <div class="faq-answer">
+      Sí. Thinkora desarrolla soluciones adaptadas a las necesidades específicas
+      de cada proyecto.
+    </div>
+  </div>
+
+</div>
+
+</main>
+
+<div id="footer-container"></div>
+
+<script src="assets/js/navbar.js"></script>
+<script src="assets/js/footer.js"></script>
+
+<script>
+document.querySelectorAll(".faq-question").forEach(item=>{
+  item.addEventListener("click",()=>{
+    const parent = item.parentElement;
+    parent.classList.toggle("active");
+  });
+});
+</script>
+
+</body>
+</html>
