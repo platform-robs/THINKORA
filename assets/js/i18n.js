@@ -10,6 +10,22 @@
 
 const translations = {
 
+alerts: {
+  passwordMismatch: {
+    es: "Las contraseñas no coinciden",
+    en: "Passwords do not match"
+  },
+  userCreated: {
+    es: "Solicitud enviada correctamente",
+    en: "Request sent successfully"
+  },
+  error: {
+    es: "Ocurrió un error",
+    en: "An error occurred"
+  }
+}
+   
+
   /* =====================================================
      ESPAÑOL
   ===================================================== */
@@ -424,6 +440,10 @@ const translations = {
 ===================================================== */
 
 let currentLang = localStorage.getItem("language") || "es";
+
+function t(path) {
+  return path.split('.').reduce((obj, key) => obj[key], translations)[currentLanguage];
+}
 
 function setLanguage(lang) {
   currentLang = lang;
