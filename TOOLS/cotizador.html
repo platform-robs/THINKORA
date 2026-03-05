@@ -1,71 +1,131 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Generador de Cotizaciones - Thinkora</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cotizador Thinkora</title>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>
 
 body{
-font-family:system-ui;
-background:#f5f5f5;
 margin:0;
+font-family:'Comfortaa',sans-serif;
+background:#434343;
+color:#fff;
+display:flex;
+justify-content:center;
 padding:20px;
 }
 
 .wrap{
-max-width:900px;
-margin:auto;
+width:980px;
+max-width:96%;
+}
+
+.header{text-align:center;margin-bottom:12px;}
+
+.thinkora{
+margin-top:50px;
+font-family:'Righteous',cursive;
+font-size:5rem;
+font-weight:800;
+letter-spacing:1px;
+background:linear-gradient(90deg,#00b0ff,#76ff03);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+line-height:1;
+padding-top:60px;
+}
+
+.eslogan{
+color:#f1f1f1;
+margin-top:6px;
+font-size:20px;
 }
 
 .card{
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 4px 12px rgba(0,0,0,.08);
-margin-bottom:20px;
+margin-top:50px;
+background:#cccccc;
+color:#222;
+border-radius:12px;
+padding:18px;
+box-shadow:0 8px 30px rgba(0,0,0,0.18);
 }
 
-button{
-background:black;
-color:white;
-border:none;
-padding:10px 14px;
-border-radius:6px;
-cursor:pointer;
+label{
+display:block;
+margin-top:10px;
+font-weight:700;
 }
 
-button:hover{
-opacity:.9;
-}
-
-input,select{
+select,input{
 width:100%;
 padding:8px;
-margin:6px 0;
+border-radius:8px;
+border:1px solid #e6e6e6;
+margin-top:6px;
+box-sizing:border-box;
 }
 
-.auth-overlay{
+.paquetes-list{
+margin-top:12px;
+max-height:260px;
+overflow:auto;
+border:1px solid #eee;
+padding:10px;
+border-radius:8px;
+background:#fafafa;
+color:#222;
+}
+
+.paquete-row{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+padding:8px 6px;
+border-bottom:1px solid #f0f0f0;
+}
+
+.btn{
+background:linear-gradient(90deg,#00b0ff,#76ff03);
+border:none;
+color:#111;
+padding:12px 16px;
+border-radius:10px;
+font-weight:800;
+cursor:pointer;
+margin-top:14px;
+width:100%;
+}
+
+.resultado{
+margin-top:16px;
+padding:14px;
+border-radius:8px;
+background:#0b6cf5;
+color:#fff;
+display:none;
+}
+
+.loginOverlay{
 position:fixed;
 inset:0;
-background:#000000b0;
+background:#000000cc;
 display:flex;
 align-items:center;
 justify-content:center;
-z-index:1000;
+z-index:999;
 }
 
-.auth-card{
+.loginCard{
 background:white;
 padding:30px;
 border-radius:10px;
 width:320px;
-}
-
-.hidden{
-display:none;
+color:black;
 }
 
 </style>
@@ -73,13 +133,13 @@ display:none;
 
 <body>
 
-<div class="auth-overlay" id="loginOverlay">
+<div class="loginOverlay" id="loginOverlay">
 
-<div class="auth-card">
+<div class="loginCard">
 
 <h2>Iniciar sesión</h2>
 
-<input id="loginId" placeholder="ID de agente">
+<input id="loginUser" placeholder="ID agente">
 
 <input id="loginPass" type="password" placeholder="Contraseña">
 
@@ -91,152 +151,201 @@ display:none;
 
 </div>
 
+<div class="wrap">
 
-<div class="wrap hidden" id="app">
-
-<div class="card">
-
-<h3>Datos del agente</h3>
-
-<input id="agenteNombre" placeholder="Nombre">
-
-<input id="agenteTelefono" placeholder="Teléfono">
-
-<input id="agenteEmail" placeholder="Email">
-
+<div class="header">
+<div class="thinkora">Thinkora</div>
+<div class="eslogan">Donde lo que piensas, se vuelve solución...</div>
 </div>
 
-
 <div class="card">
 
-<h3>Cliente</h3>
+<label>Nombre del cliente</label>
+<input id="cliente" type="text">
 
-<input id="cliente" placeholder="Nombre del cliente">
+<label>Tipo de proyecto</label>
+<select id="tipo" onchange="cargarPaquetes()"></select>
 
+<div id="paquetesContainer" style="display:none;">
+<label>Paquetes disponibles</label>
+<div class="paquetes-list" id="paquetesList"></div>
 </div>
 
-
-<div class="card">
-
-<h3>Tipo de proyecto</h3>
-
-<select id="tipo">
-<option value="">Selecciona</option>
-<option>Landing Page</option>
-<option>Sitio Web</option>
-<option>Ecommerce</option>
+<label>¿Desea mantenimiento?</label>
+<select id="wantMaintenance" onchange="onWantMaintenanceChange()">
+<option value="NO">NO</option>
+<option value="SI">SI</option>
 </select>
 
+<div id="mantContainer" style="display:none;">
+<label>Paquetes mantenimiento</label>
+<div class="paquetes-list" id="mantList"></div>
 </div>
 
+<label>Datos del agente</label>
 
-<div class="card">
+<input id="agenteNombre">
+<input id="agenteTelefono">
+<input id="agenteEmail">
 
-<h3>Paquetes</h3>
+<button class="btn" onclick="generarCotizacion()">GENERAR COTIZACIÓN</button>
 
-<label>
-<input type="checkbox" data-paquete="Diseño UX/UI">
-Diseño UX/UI
-</label>
-
-<label>
-<input type="checkbox" data-paquete="Desarrollo Web">
-Desarrollo Web
-</label>
-
-<label>
-<input type="checkbox" data-paquete="SEO inicial">
-SEO inicial
-</label>
+<div id="resultado" class="resultado"></div>
 
 </div>
-
-
-<div class="card">
-
-<button onclick="generarCotizacion()">Generar cotización</button>
-
-<div id="resultado"></div>
-
 </div>
-
-</div>
-
-
 
 <script>
 
-/* ==============================
-CONFIG
-============================== */
-
-const API_URL =
-"https://script.google.com/macros/s/AKfycbz9NJuR1OsL5qTkLmizUE0e9MWxQK_XTqY-25O1ErlDgnQX8P3YpC6BH6uTyVoh5gvz/exec";
+const API_URL="TU_WEBAPP_URL_AQUI";
 
 
-/* ==============================
-LOGIN
-============================== */
-
-async function login(){
-
-const id=document.getElementById("loginId").value;
-const password=document.getElementById("loginPass").value;
+async function api(action,data={}){
 
 const params=new URLSearchParams();
 
-params.append("action","login");
-params.append("id",id);
-params.append("password",password);
+params.append("action",action);
+
+for(const k in data){
+params.append(k,JSON.stringify(data[k]));
+}
 
 const res=await fetch(API_URL,{
 method:"POST",
 body:params
 });
 
-const data=await res.json();
+return res.json();
+}
 
-if(data.success){
 
-localStorage.setItem("authUser",JSON.stringify(data.user));
 
-iniciarApp();
+async function login(){
+
+const id=document.getElementById("loginUser").value;
+const pass=document.getElementById("loginPass").value;
+
+const res=await api("login",{id,password:pass});
+
+if(res.success){
+
+localStorage.setItem("authUser",JSON.stringify(res.user));
+
+document.getElementById("loginOverlay").style.display="none";
+
+autollenarAgente();
+
+init();
 
 }else{
 
-document.getElementById("loginMsg").innerText=data.message;
+document.getElementById("loginMsg").innerText=res.message;
 
 }
 
 }
 
 
-/* ==============================
-INICIAR APP
-============================== */
 
-function iniciarApp(){
+function autollenarAgente(){
 
 const user=JSON.parse(localStorage.getItem("authUser"));
 
 if(!user) return;
 
-document.getElementById("loginOverlay").style.display="none";
-
-document.getElementById("app").classList.remove("hidden");
-
-document.getElementById("agenteNombre").value=user.nombre;
-
+document.getElementById("agenteNombre").value=user.nombreCompleto;
 document.getElementById("agenteTelefono").value=user.telefono;
-
 document.getElementById("agenteEmail").value=user.email;
 
 }
 
 
-/* ==============================
-GENERAR COTIZACION
-============================== */
+
+async function init(){
+
+const tipos=await api("obtenerTipos");
+
+const sel=document.getElementById("tipo");
+
+sel.innerHTML='<option value="">-- Selecciona --</option>';
+
+tipos.forEach(t=>{
+const opt=document.createElement("option");
+opt.value=t;
+opt.text=t;
+sel.appendChild(opt);
+});
+
+}
+
+
+
+async function cargarPaquetes(){
+
+const tipo=document.getElementById("tipo").value;
+
+if(!tipo) return;
+
+const paquetes=await api("getPaquetes",{tipo});
+
+const list=document.getElementById("paquetesList");
+
+list.innerHTML="";
+
+document.getElementById("paquetesContainer").style.display="block";
+
+paquetes.forEach((p,i)=>{
+
+const row=document.createElement("div");
+
+row.className="paquete-row";
+
+row.innerHTML=`
+<div><b>${p.paquete}</b></div>
+<div><input type="checkbox" id="pkg_${i}" data-paquete="${p.paquete}"></div>
+`;
+
+list.appendChild(row);
+
+});
+
+}
+
+
+
+async function onWantMaintenanceChange(){
+
+if(document.getElementById("wantMaintenance").value==="NO"){
+document.getElementById("mantContainer").style.display="none";
+return;
+}
+
+const paquetes=await api("getPaquetes",{tipo:"MANTENIMIENTO"});
+
+const list=document.getElementById("mantList");
+
+list.innerHTML="";
+
+document.getElementById("mantContainer").style.display="block";
+
+paquetes.forEach((p,i)=>{
+
+const row=document.createElement("div");
+
+row.className="paquete-row";
+
+row.innerHTML=`
+<div><b>${p.paquete}</b></div>
+<div><input type="checkbox" id="m_pkg_${i}" data-paquete="${p.paquete}"></div>
+`;
+
+list.appendChild(row);
+
+});
+
+}
+
+
 
 async function generarCotizacion(){
 
@@ -246,72 +355,58 @@ const tipo=document.getElementById("tipo").value;
 
 const paquetes=[];
 
-document.querySelectorAll('input[data-paquete]').forEach(cb=>{
+document.querySelectorAll('#paquetesList input[type="checkbox"]').forEach(cb=>{
 
 if(cb.checked){
+paquetes.push({nombre:cb.dataset.paquete,cantidad:1});
+}
 
-paquetes.push({
-nombre:cb.dataset.paquete,
-cantidad:1
 });
 
+
+const mantenimiento=[];
+
+document.querySelectorAll('#mantList input[type="checkbox"]').forEach(cb=>{
+
+if(cb.checked){
+mantenimiento.push({nombre:cb.dataset.paquete,cantidad:1});
 }
 
 });
 
 
 const agente={
-
 nombre:document.getElementById("agenteNombre").value,
-
 telefono:document.getElementById("agenteTelefono").value,
-
 email:document.getElementById("agenteEmail").value
-
 };
 
 
-const payload={
-cliente,
-tipoProyecto:tipo,
-paquetes,
-mantenimiento:[],
-agente
-};
+const payload={cliente,tipoProyecto:tipo,paquetes,mantenimiento,agente};
 
+const res=await api("generarCotizacion",{payload});
 
-const params=new URLSearchParams();
+const div=document.getElementById("resultado");
 
-params.append("action","generarCotizacion");
+div.style.display="block";
 
-params.append("payload",JSON.stringify(payload));
+if(res.url){
 
-
-const res=await fetch(API_URL,{
-method:"POST",
-body:params
-});
-
-const data=await res.json();
-
-
-if(data.success){
-
-document.getElementById("resultado").innerHTML=
-`<a href="${data.url}" target="_blank">Abrir cotización PDF</a>`;
+div.innerHTML=`
+<b>Cotización generada correctamente</b>
+<br>
+<a href="${res.url}" target="_blank">Ver PDF</a>
+`;
 
 }else{
 
-alert("Error generando cotización");
+div.innerHTML="Error generando cotización";
 
 }
 
 }
 
 
-/* ==============================
-AUTOLOGIN
-============================== */
 
 document.addEventListener("DOMContentLoaded",()=>{
 
@@ -319,7 +414,11 @@ const user=localStorage.getItem("authUser");
 
 if(user){
 
-iniciarApp();
+document.getElementById("loginOverlay").style.display="none";
+
+autollenarAgente();
+
+init();
 
 }
 
