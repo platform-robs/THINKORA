@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Generador de Cotizaciones - Thinkora</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Thinkora Cotizador</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
 
@@ -20,265 +22,137 @@ padding:20px;
 }
 
 .wrap{
-width:980px;
-max-width:96%;
+width:900px;
+max-width:95%;
 }
 
-.header{text-align:center;margin-bottom:12px;}
-
 .thinkora{
-margin-top:50px;
-font-family:'Righteous',cursive;
-font-size:5rem;
-font-weight:800;
-letter-spacing:1px;
+font-family:'Righteous';
+font-size:4rem;
 background:linear-gradient(90deg,#00b0ff,#76ff03);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-line-height:1;
-padding-top:60px;
-}
-
-.eslogan{
-color:#f1f1f1;
-margin-top:6px;
-font-size:20px;
+text-align:center;
+margin-top:40px;
 }
 
 .card{
-margin-top:50px;
-background:#cccccc;
+margin-top:40px;
+background:#fff;
 color:#222;
 border-radius:12px;
-padding:18px;
-box-shadow:0 8px 30px rgba(0,0,0,0.18);
+padding:20px;
 }
 
 label{
 display:block;
-margin-top:10px;
-font-weight:700;
-}
-
-select,input{
-width:100%;
-padding:8px;
-border-radius:8px;
-border:1px solid #e6e6e6;
-margin-top:6px;
-box-sizing:border-box;
-}
-
-.paquetes-list{
 margin-top:12px;
-max-height:260px;
-overflow:auto;
-border:1px solid #eee;
-padding:10px;
-border-radius:8px;
-background:#fafafa;
-color:#222;
+font-weight:bold;
 }
 
-.paquete-row{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:12px;
-padding:8px 6px;
-border-bottom:1px solid #f0f0f0;
-}
-
-.btn{
-background:linear-gradient(90deg,#00b0ff,#76ff03);
-border:none;
-color:#111;
-padding:12px 16px;
-border-radius:10px;
-font-weight:800;
-cursor:pointer;
-margin-top:14px;
+input,select{
 width:100%;
+padding:10px;
+margin-top:6px;
+border-radius:8px;
+border:1px solid #ddd;
 }
 
-.resultado{
-margin-top:16px;
+.paquete{
+display:flex;
+justify-content:space-between;
+padding:8px 0;
+border-bottom:1px solid #eee;
+}
+
+button{
+margin-top:20px;
+width:100%;
 padding:14px;
-border-radius:8px;
+border:none;
+border-radius:10px;
+background:linear-gradient(90deg,#00b0ff,#76ff03);
+font-weight:bold;
+cursor:pointer;
+}
+
+.result{
+margin-top:20px;
+padding:15px;
 background:#0b6cf5;
-color:#fff;
+border-radius:8px;
 display:none;
 }
 
-.loginOverlay{
-position:fixed;
-inset:0;
-background:#000000cc;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:999;
-}
-
-.loginCard{
-background:white;
-padding:30px;
-border-radius:10px;
-width:320px;
-color:black;
-}
-
 </style>
+
 </head>
 
 <body>
 
-<div class="loginOverlay" id="loginOverlay">
-
-<div class="loginCard">
-
-<h2>Iniciar sesión</h2>
-
-<input id="loginUser" placeholder="ID agente">
-
-<input id="loginPass" type="password" placeholder="Contraseña">
-
-<button onclick="login()">Entrar</button>
-
-<div id="loginMsg"></div>
-
-</div>
-
-</div>
-
 <div class="wrap">
 
-<div class="header">
-<div class="thinkora">Thinkora</div>
-<div class="eslogan">Donde lo que piensas, se vuelve solución...</div>
-</div>
+<h1 class="thinkora">Thinkora</h1>
 
 <div class="card">
 
-<label>Nombre del cliente</label>
-<input id="cliente" type="text">
+<label>Cliente</label>
+<input id="cliente">
 
 <label>Tipo de proyecto</label>
-<select id="tipo" onchange="cargarPaquetes()"></select>
+<select id="tipo"></select>
 
-<div id="paquetesContainer" style="display:none;">
-<label>Paquetes disponibles</label>
-<div class="paquetes-list" id="paquetesList"></div>
-</div>
+<div id="paquetes"></div>
 
-<label>¿Desea mantenimiento?</label>
-<select id="wantMaintenance" onchange="onWantMaintenanceChange()">
-<option value="NO">NO</option>
-<option value="SI">SI</option>
-</select>
-
-<div id="mantContainer" style="display:none;">
-<label>Paquetes mantenimiento</label>
-<div class="paquetes-list" id="mantList"></div>
-</div>
-
-<label>Datos del agente</label>
-
+<label>Agente</label>
 <input id="agenteNombre">
 <input id="agenteTelefono">
 <input id="agenteEmail">
 
-<button class="btn" onclick="generarCotizacion()">GENERAR COTIZACIÓN</button>
+<button onclick="generar()">GENERAR COTIZACIÓN</button>
 
-<div id="resultado" class="resultado"></div>
+<div id="resultado" class="result"></div>
 
 </div>
 </div>
 
 <script>
 
-const API_URL="TU_WEBAPP_URL_AQUI";
+const API="https://script.google.com/macros/s/AKfycbxFX54fOHKBtdXBwm6MdNu5Locs28ynwoaBotc5yts86PJuzSlMRVqAx437E5AgGqei/exec";
 
+/* ======================== */
+/* CARGAR TIPOS */
+/* ======================== */
 
-async function api(action,data={}){
+async function cargarTipos(){
 
-const params=new URLSearchParams();
+const res=await fetch(API+"?action=tipos");
 
-params.append("action",action);
-
-for(const k in data){
-params.append(k,JSON.stringify(data[k]));
-}
-
-const res=await fetch(API_URL,{
-method:"POST",
-body:params
-});
-
-return res.json();
-}
-
-
-
-async function login(){
-
-const id=document.getElementById("loginUser").value;
-const pass=document.getElementById("loginPass").value;
-
-const res=await api("login",{id,password:pass});
-
-if(res.success){
-
-localStorage.setItem("authUser",JSON.stringify(res.user));
-
-document.getElementById("loginOverlay").style.display="none";
-
-autollenarAgente();
-
-init();
-
-}else{
-
-document.getElementById("loginMsg").innerText=res.message;
-
-}
-
-}
-
-
-
-function autollenarAgente(){
-
-const user=JSON.parse(localStorage.getItem("authUser"));
-
-if(!user) return;
-
-document.getElementById("agenteNombre").value=user.nombreCompleto;
-document.getElementById("agenteTelefono").value=user.telefono;
-document.getElementById("agenteEmail").value=user.email;
-
-}
-
-
-
-async function init(){
-
-const tipos=await api("obtenerTipos");
+const tipos=await res.json();
 
 const sel=document.getElementById("tipo");
 
-sel.innerHTML='<option value="">-- Selecciona --</option>';
+sel.innerHTML="<option value=''>Selecciona</option>";
 
 tipos.forEach(t=>{
-const opt=document.createElement("option");
-opt.value=t;
-opt.text=t;
-sel.appendChild(opt);
+
+const op=document.createElement("option");
+
+op.value=t;
+
+op.textContent=t;
+
+sel.appendChild(op);
+
 });
 
 }
 
+document.getElementById("tipo").addEventListener("change",cargarPaquetes);
 
+/* ======================== */
+/* CARGAR PAQUETES */
+/* ======================== */
 
 async function cargarPaquetes(){
 
@@ -286,68 +160,36 @@ const tipo=document.getElementById("tipo").value;
 
 if(!tipo) return;
 
-const paquetes=await api("getPaquetes",{tipo});
+const res=await fetch(API+"?action=paquetes&tipo="+encodeURIComponent(tipo));
 
-const list=document.getElementById("paquetesList");
+const paquetes=await res.json();
 
-list.innerHTML="";
+const div=document.getElementById("paquetes");
 
-document.getElementById("paquetesContainer").style.display="block";
+div.innerHTML="";
 
-paquetes.forEach((p,i)=>{
+paquetes.forEach(p=>{
 
 const row=document.createElement("div");
 
-row.className="paquete-row";
+row.className="paquete";
 
 row.innerHTML=`
-<div><b>${p.paquete}</b></div>
-<div><input type="checkbox" id="pkg_${i}" data-paquete="${p.paquete}"></div>
+<span>${p.paquete}</span>
+<input type="checkbox" data-paquete="${p.paquete}">
 `;
 
-list.appendChild(row);
+div.appendChild(row);
 
 });
 
 }
 
+/* ======================== */
+/* GENERAR */
+/* ======================== */
 
-
-async function onWantMaintenanceChange(){
-
-if(document.getElementById("wantMaintenance").value==="NO"){
-document.getElementById("mantContainer").style.display="none";
-return;
-}
-
-const paquetes=await api("getPaquetes",{tipo:"MANTENIMIENTO"});
-
-const list=document.getElementById("mantList");
-
-list.innerHTML="";
-
-document.getElementById("mantContainer").style.display="block";
-
-paquetes.forEach((p,i)=>{
-
-const row=document.createElement("div");
-
-row.className="paquete-row";
-
-row.innerHTML=`
-<div><b>${p.paquete}</b></div>
-<div><input type="checkbox" id="m_pkg_${i}" data-paquete="${p.paquete}"></div>
-`;
-
-list.appendChild(row);
-
-});
-
-}
-
-
-
-async function generarCotizacion(){
+async function generar(){
 
 const cliente=document.getElementById("cliente").value;
 
@@ -355,74 +197,75 @@ const tipo=document.getElementById("tipo").value;
 
 const paquetes=[];
 
-document.querySelectorAll('#paquetesList input[type="checkbox"]').forEach(cb=>{
+document.querySelectorAll("#paquetes input:checked").forEach(cb=>{
 
-if(cb.checked){
-paquetes.push({nombre:cb.dataset.paquete,cantidad:1});
-}
+paquetes.push({
 
-});
+nombre:cb.dataset.paquete,
 
-
-const mantenimiento=[];
-
-document.querySelectorAll('#mantList input[type="checkbox"]').forEach(cb=>{
-
-if(cb.checked){
-mantenimiento.push({nombre:cb.dataset.paquete,cantidad:1});
-}
+cantidad:1
 
 });
 
+});
 
 const agente={
+
 nombre:document.getElementById("agenteNombre").value,
+
 telefono:document.getElementById("agenteTelefono").value,
+
 email:document.getElementById("agenteEmail").value
+
 };
 
+const payload={
 
-const payload={cliente,tipoProyecto:tipo,paquetes,mantenimiento,agente};
+cliente,
 
-const res=await api("generarCotizacion",{payload});
+tipoProyecto:tipo,
 
-const div=document.getElementById("resultado");
+paquetes,
 
-div.style.display="block";
+mantenimiento:[],
 
-if(res.url){
+agente
 
-div.innerHTML=`
-<b>Cotización generada correctamente</b>
-<br>
-<a href="${res.url}" target="_blank">Ver PDF</a>
-`;
+};
+
+const params=new URLSearchParams();
+
+params.append("action","generar");
+
+params.append("payload",JSON.stringify(payload));
+
+const res=await fetch(API,{
+
+method:"POST",
+
+body:params
+
+});
+
+const data=await res.json();
+
+const r=document.getElementById("resultado");
+
+r.style.display="block";
+
+if(data.url){
+
+r.innerHTML=`<a href="${data.url}" target="_blank">Descargar PDF</a>`;
 
 }else{
 
-div.innerHTML="Error generando cotización";
+r.innerHTML="Error generando cotización";
 
 }
 
 }
 
-
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-const user=localStorage.getItem("authUser");
-
-if(user){
-
-document.getElementById("loginOverlay").style.display="none";
-
-autollenarAgente();
-
-init();
-
-}
-
-});
+cargarTipos();
 
 </script>
 
