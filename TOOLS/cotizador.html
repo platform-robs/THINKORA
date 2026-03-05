@@ -1,185 +1,330 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Thinkora | Dev Auth</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cotizador Thinkora</title>
 
 <style>
-/* ============================
-   ESTILOS DEL MODAL LOGIN
-============================ */
+
+body{
+font-family:system-ui;
+background:#f5f5f5;
+margin:0;
+padding:20px;
+}
+
+.wrap{
+max-width:900px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
+margin-bottom:20px;
+}
+
+button{
+background:black;
+color:white;
+border:none;
+padding:10px 14px;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+opacity:.9;
+}
+
+input,select{
+width:100%;
+padding:8px;
+margin:6px 0;
+}
+
 .auth-overlay{
-  position:fixed;
-  inset:0;
-  background:#000000cc;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
+position:fixed;
+inset:0;
+background:#000000b0;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:1000;
 }
-.auth-box{
-  background:#fff;
-  padding:30px;
-  border-radius:12px;
-  width:320px;
-  text-align:center;
+
+.auth-card{
+background:white;
+padding:30px;
+border-radius:10px;
+width:320px;
 }
-.auth-box input{
-  width:100%;
-  margin:10px 0;
-  padding:8px;
+
+.hidden{
+display:none;
 }
-.auth-box button{
-  padding:10px 20px;
-  cursor:pointer;
-}
+
 </style>
 </head>
 
 <body>
 
-<main style="text-align:center; margin-top:80px;">
-  <h1>Zona protegida</h1>
-  <p>Si estás viendo esto, el login funcionó correctamente.</p>
+<div class="auth-overlay" id="loginOverlay">
 
-  <button onclick="logout()">Cerrar sesión</button>
+<div class="auth-card">
 
-  <div id="user-info" style="margin-top:20px;"></div>
-</main>
+<h2>Iniciar sesión</h2>
+
+<input id="loginId" placeholder="ID de agente">
+
+<input id="loginPass" type="password" placeholder="Contraseña">
+
+<button onclick="login()">Entrar</button>
+
+<div id="loginMsg"></div>
+
+</div>
+
+</div>
+
+
+<div class="wrap hidden" id="app">
+
+<div class="card">
+
+<h3>Datos del agente</h3>
+
+<input id="agenteNombre" placeholder="Nombre">
+
+<input id="agenteTelefono" placeholder="Teléfono">
+
+<input id="agenteEmail" placeholder="Email">
+
+</div>
+
+
+<div class="card">
+
+<h3>Cliente</h3>
+
+<input id="cliente" placeholder="Nombre del cliente">
+
+</div>
+
+
+<div class="card">
+
+<h3>Tipo de proyecto</h3>
+
+<select id="tipo">
+<option value="">Selecciona</option>
+<option>Landing Page</option>
+<option>Sitio Web</option>
+<option>Ecommerce</option>
+</select>
+
+</div>
+
+
+<div class="card">
+
+<h3>Paquetes</h3>
+
+<label>
+<input type="checkbox" data-paquete="Diseño UX/UI">
+Diseño UX/UI
+</label>
+
+<label>
+<input type="checkbox" data-paquete="Desarrollo Web">
+Desarrollo Web
+</label>
+
+<label>
+<input type="checkbox" data-paquete="SEO inicial">
+SEO inicial
+</label>
+
+</div>
+
+
+<div class="card">
+
+<button onclick="generarCotizacion()">Generar cotización</button>
+
+<div id="resultado"></div>
+
+</div>
+
+</div>
+
+
 
 <script>
-/* =====================================================
-   CONFIGURACIÓN
-   Cambia esto por tu URL real de Apps Script
-===================================================== */
-const AUTH_CONFIG = {
-  apiUrl: "https://script.google.com/macros/s/AKfycbyIj6vZKcYvhVPG3VUQxucT1AeQkArSU8TiAIdcR2WKQryE1YwAEqBSU3IdX9o6oCy1Og/exec",
-  requiredEstado: "Habilitado",   // Cambia si quieres probar otro estado
-  requiredEquipo: null            // Ejemplo: "Equipo A"
-};
 
-/* =====================================================
-   INICIO AUTOMÁTICO
-===================================================== */
-document.addEventListener("DOMContentLoaded", () => {
+/* ==============================
+CONFIG
+============================== */
 
-  const saved = localStorage.getItem("authUser");
+const API_URL =
+"https://script.google.com/macros/s/AKfycbz9NJuR1OsL5qTkLmizUE0e9MWxQK_XTqY-25O1ErlDgnQX8P3YpC6BH6uTyVoh5gvz/exec";
 
-  if (!saved) {
-    showLogin();
-    return;
-  }
 
-  const user = JSON.parse(saved);
+/* ==============================
+LOGIN
+============================== */
 
-  if (!validateUser(user)) {
-    localStorage.removeItem("authUser");
-    showLogin();
-    return;
-  }
+async function login(){
 
-  showUser(user);
+const id=document.getElementById("loginId").value;
+const password=document.getElementById("loginPass").value;
+
+const params=new URLSearchParams();
+
+params.append("action","login");
+params.append("id",id);
+params.append("password",password);
+
+const res=await fetch(API_URL,{
+method:"POST",
+body:params
 });
 
-/* =====================================================
-   VALIDAR ESTADO Y EQUIPO
-===================================================== */
-function validateUser(user){
+const data=await res.json();
 
-  if (AUTH_CONFIG.requiredEstado &&
-      user.estado !== AUTH_CONFIG.requiredEstado){
-    return false;
-  }
+if(data.success){
 
-  if (AUTH_CONFIG.requiredEquipo &&
-      user.equipo !== AUTH_CONFIG.requiredEquipo){
-    return false;
-  }
+localStorage.setItem("authUser",JSON.stringify(data.user));
 
-  return true;
+iniciarApp();
+
+}else{
+
+document.getElementById("loginMsg").innerText=data.message;
+
 }
 
-/* =====================================================
-   MOSTRAR LOGIN
-===================================================== */
-function showLogin(){
-
-  const overlay = document.createElement("div");
-  overlay.className = "auth-overlay";
-
-  overlay.innerHTML = `
-    <div class="auth-box">
-      <h2>Acceso Thinkora</h2>
-      <input id="login-id" placeholder="ID">
-      <input id="login-pass" type="password" placeholder="Contraseña">
-      <button onclick="doLogin()">Ingresar</button>
-      <p id="login-msg" style="color:red;"></p>
-    </div>
-  `;
-
-  document.body.appendChild(overlay);
 }
 
-/* =====================================================
-   LOGIN
-===================================================== */
-async function doLogin(){
 
-  const id = document.getElementById("login-id").value;
-  const password = document.getElementById("login-pass").value;
+/* ==============================
+INICIAR APP
+============================== */
 
-  const params = new URLSearchParams();
-  params.append("action","login");
-  params.append("id",id);
-  params.append("password",password);
+function iniciarApp(){
 
-  const response = await fetch(AUTH_CONFIG.apiUrl,{
-    method:"POST",
-    body:params
-  });
+const user=JSON.parse(localStorage.getItem("authUser"));
 
-  const data = await response.json();
+if(!user) return;
 
-  if(!data.success){
-    document.getElementById("login-msg").innerText = data.message;
-    return;
-  }
+document.getElementById("loginOverlay").style.display="none";
 
-  if(!validateUser(data.user)){
-    document.getElementById("login-msg").innerText =
-      "No tienes permisos para esta sección.";
-    return;
-  }
+document.getElementById("app").classList.remove("hidden");
 
-  localStorage.setItem("authUser",JSON.stringify(data.user));
-  location.reload();
+document.getElementById("agenteNombre").value=user.nombre;
+
+document.getElementById("agenteTelefono").value=user.telefono;
+
+document.getElementById("agenteEmail").value=user.email;
+
 }
 
-/* =====================================================
-   MOSTRAR INFO USUARIO
-===================================================== */
-function showUser(user){
 
-  document.getElementById("user-info").innerHTML = `
-    <p><strong>ID:</strong> ${user.id}</p>
-    <p><strong>Equipo:</strong> ${user.equipo}</p>
-    <p><strong>Estado:</strong> ${user.estado}</p>
-  `;
+/* ==============================
+GENERAR COTIZACION
+============================== */
+
+async function generarCotizacion(){
+
+const cliente=document.getElementById("cliente").value;
+
+const tipo=document.getElementById("tipo").value;
+
+const paquetes=[];
+
+document.querySelectorAll('input[data-paquete]').forEach(cb=>{
+
+if(cb.checked){
+
+paquetes.push({
+nombre:cb.dataset.paquete,
+cantidad:1
+});
+
 }
 
-/* =====================================================
-   CERRAR SESIÓN
-===================================================== */
-function logout(){
-  localStorage.removeItem("authUser");
-  location.reload();
+});
+
+
+const agente={
+
+nombre:document.getElementById("agenteNombre").value,
+
+telefono:document.getElementById("agenteTelefono").value,
+
+email:document.getElementById("agenteEmail").value
+
+};
+
+
+const payload={
+cliente,
+tipoProyecto:tipo,
+paquetes,
+mantenimiento:[],
+agente
+};
+
+
+const params=new URLSearchParams();
+
+params.append("action","generarCotizacion");
+
+params.append("payload",JSON.stringify(payload));
+
+
+const res=await fetch(API_URL,{
+method:"POST",
+body:params
+});
+
+const data=await res.json();
+
+
+if(data.success){
+
+document.getElementById("resultado").innerHTML=
+`<a href="${data.url}" target="_blank">Abrir cotización PDF</a>`;
+
+}else{
+
+alert("Error generando cotización");
+
 }
+
+}
+
+
+/* ==============================
+AUTOLOGIN
+============================== */
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const user=localStorage.getItem("authUser");
+
+if(user){
+
+iniciarApp();
+
+}
+
+});
+
 </script>
 
 </body>
