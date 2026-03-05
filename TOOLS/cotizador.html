@@ -1,272 +1,185 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Thinkora Cotizador</title>
+<title>Thinkora | Dev Auth</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
 
 <style>
-
-body{
-margin:0;
-font-family:'Comfortaa',sans-serif;
-background:#434343;
-color:#fff;
-display:flex;
-justify-content:center;
-padding:20px;
+/* ============================
+   ESTILOS DEL MODAL LOGIN
+============================ */
+.auth-overlay{
+  position:fixed;
+  inset:0;
+  background:#000000cc;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
 }
-
-.wrap{
-width:900px;
-max-width:95%;
+.auth-box{
+  background:#fff;
+  padding:30px;
+  border-radius:12px;
+  width:320px;
+  text-align:center;
 }
-
-.thinkora{
-font-family:'Righteous';
-font-size:4rem;
-background:linear-gradient(90deg,#00b0ff,#76ff03);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-text-align:center;
-margin-top:40px;
+.auth-box input{
+  width:100%;
+  margin:10px 0;
+  padding:8px;
 }
-
-.card{
-margin-top:40px;
-background:#fff;
-color:#222;
-border-radius:12px;
-padding:20px;
+.auth-box button{
+  padding:10px 20px;
+  cursor:pointer;
 }
-
-label{
-display:block;
-margin-top:12px;
-font-weight:bold;
-}
-
-input,select{
-width:100%;
-padding:10px;
-margin-top:6px;
-border-radius:8px;
-border:1px solid #ddd;
-}
-
-.paquete{
-display:flex;
-justify-content:space-between;
-padding:8px 0;
-border-bottom:1px solid #eee;
-}
-
-button{
-margin-top:20px;
-width:100%;
-padding:14px;
-border:none;
-border-radius:10px;
-background:linear-gradient(90deg,#00b0ff,#76ff03);
-font-weight:bold;
-cursor:pointer;
-}
-
-.result{
-margin-top:20px;
-padding:15px;
-background:#0b6cf5;
-border-radius:8px;
-display:none;
-}
-
 </style>
-
 </head>
 
 <body>
 
-<div class="wrap">
+<main style="text-align:center; margin-top:80px;">
+  <h1>Zona protegida</h1>
+  <p>Si estás viendo esto, el login funcionó correctamente.</p>
 
-<h1 class="thinkora">Thinkora</h1>
+  <button onclick="logout()">Cerrar sesión</button>
 
-<div class="card">
-
-<label>Cliente</label>
-<input id="cliente">
-
-<label>Tipo de proyecto</label>
-<select id="tipo"></select>
-
-<div id="paquetes"></div>
-
-<label>Agente</label>
-<input id="agenteNombre">
-<input id="agenteTelefono">
-<input id="agenteEmail">
-
-<button onclick="generar()">GENERAR COTIZACIÓN</button>
-
-<div id="resultado" class="result"></div>
-
-</div>
-</div>
+  <div id="user-info" style="margin-top:20px;"></div>
+</main>
 
 <script>
-
-const API="https://script.google.com/macros/s/AKfycbxFX54fOHKBtdXBwm6MdNu5Locs28ynwoaBotc5yts86PJuzSlMRVqAx437E5AgGqei/exec";
-
-/* ======================== */
-/* CARGAR TIPOS */
-/* ======================== */
-
-async function cargarTipos(){
-
-const res=await fetch(API+"?action=tipos");
-
-const tipos=await res.json();
-
-const sel=document.getElementById("tipo");
-
-sel.innerHTML="<option value=''>Selecciona</option>";
-
-tipos.forEach(t=>{
-
-const op=document.createElement("option");
-
-op.value=t;
-
-op.textContent=t;
-
-sel.appendChild(op);
-
-});
-
-}
-
-document.getElementById("tipo").addEventListener("change",cargarPaquetes);
-
-/* ======================== */
-/* CARGAR PAQUETES */
-/* ======================== */
-
-async function cargarPaquetes(){
-
-const tipo=document.getElementById("tipo").value;
-
-if(!tipo) return;
-
-const res=await fetch(API+"?action=paquetes&tipo="+encodeURIComponent(tipo));
-
-const paquetes=await res.json();
-
-const div=document.getElementById("paquetes");
-
-div.innerHTML="";
-
-paquetes.forEach(p=>{
-
-const row=document.createElement("div");
-
-row.className="paquete";
-
-row.innerHTML=`
-<span>${p.paquete}</span>
-<input type="checkbox" data-paquete="${p.paquete}">
-`;
-
-div.appendChild(row);
-
-});
-
-}
-
-/* ======================== */
-/* GENERAR */
-/* ======================== */
-
-async function generar(){
-
-const cliente=document.getElementById("cliente").value;
-
-const tipo=document.getElementById("tipo").value;
-
-const paquetes=[];
-
-document.querySelectorAll("#paquetes input:checked").forEach(cb=>{
-
-paquetes.push({
-
-nombre:cb.dataset.paquete,
-
-cantidad:1
-
-});
-
-});
-
-const agente={
-
-nombre:document.getElementById("agenteNombre").value,
-
-telefono:document.getElementById("agenteTelefono").value,
-
-email:document.getElementById("agenteEmail").value
-
+/* =====================================================
+   CONFIGURACIÓN
+   Cambia esto por tu URL real de Apps Script
+===================================================== */
+const AUTH_CONFIG = {
+  apiUrl: "https://script.google.com/macros/s/AKfycbyIj6vZKcYvhVPG3VUQxucT1AeQkArSU8TiAIdcR2WKQryE1YwAEqBSU3IdX9o6oCy1Og/exec",
+  requiredEstado: "Habilitado",   // Cambia si quieres probar otro estado
+  requiredEquipo: null            // Ejemplo: "Equipo A"
 };
 
-const payload={
+/* =====================================================
+   INICIO AUTOMÁTICO
+===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
 
-cliente,
+  const saved = localStorage.getItem("authUser");
 
-tipoProyecto:tipo,
+  if (!saved) {
+    showLogin();
+    return;
+  }
 
-paquetes,
+  const user = JSON.parse(saved);
 
-mantenimiento:[],
+  if (!validateUser(user)) {
+    localStorage.removeItem("authUser");
+    showLogin();
+    return;
+  }
 
-agente
-
-};
-
-const params=new URLSearchParams();
-
-params.append("action","generar");
-
-params.append("payload",JSON.stringify(payload));
-
-const res=await fetch(API,{
-
-method:"POST",
-
-body:params
-
+  showUser(user);
 });
 
-const data=await res.json();
+/* =====================================================
+   VALIDAR ESTADO Y EQUIPO
+===================================================== */
+function validateUser(user){
 
-const r=document.getElementById("resultado");
+  if (AUTH_CONFIG.requiredEstado &&
+      user.estado !== AUTH_CONFIG.requiredEstado){
+    return false;
+  }
 
-r.style.display="block";
+  if (AUTH_CONFIG.requiredEquipo &&
+      user.equipo !== AUTH_CONFIG.requiredEquipo){
+    return false;
+  }
 
-if(data.url){
-
-r.innerHTML=`<a href="${data.url}" target="_blank">Descargar PDF</a>`;
-
-}else{
-
-r.innerHTML="Error generando cotización";
-
+  return true;
 }
 
+/* =====================================================
+   MOSTRAR LOGIN
+===================================================== */
+function showLogin(){
+
+  const overlay = document.createElement("div");
+  overlay.className = "auth-overlay";
+
+  overlay.innerHTML = `
+    <div class="auth-box">
+      <h2>Acceso Thinkora</h2>
+      <input id="login-id" placeholder="ID">
+      <input id="login-pass" type="password" placeholder="Contraseña">
+      <button onclick="doLogin()">Ingresar</button>
+      <p id="login-msg" style="color:red;"></p>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
 }
 
-cargarTipos();
+/* =====================================================
+   LOGIN
+===================================================== */
+async function doLogin(){
 
+  const id = document.getElementById("login-id").value;
+  const password = document.getElementById("login-pass").value;
+
+  const params = new URLSearchParams();
+  params.append("action","login");
+  params.append("id",id);
+  params.append("password",password);
+
+  const response = await fetch(AUTH_CONFIG.apiUrl,{
+    method:"POST",
+    body:params
+  });
+
+  const data = await response.json();
+
+  if(!data.success){
+    document.getElementById("login-msg").innerText = data.message;
+    return;
+  }
+
+  if(!validateUser(data.user)){
+    document.getElementById("login-msg").innerText =
+      "No tienes permisos para esta sección.";
+    return;
+  }
+
+  localStorage.setItem("authUser",JSON.stringify(data.user));
+  location.reload();
+}
+
+/* =====================================================
+   MOSTRAR INFO USUARIO
+===================================================== */
+function showUser(user){
+
+  document.getElementById("user-info").innerHTML = `
+    <p><strong>ID:</strong> ${user.id}</p>
+    <p><strong>Equipo:</strong> ${user.equipo}</p>
+    <p><strong>Estado:</strong> ${user.estado}</p>
+  `;
+}
+
+/* =====================================================
+   CERRAR SESIÓN
+===================================================== */
+function logout(){
+  localStorage.removeItem("authUser");
+  location.reload();
+}
 </script>
 
 </body>
