@@ -46,19 +46,7 @@
       z-index: 0;
     }
 
-    /* ==============================
-       GRID LINES BACKGROUND
-    ============================== */
-    .grid-bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 72px 72px;
-      mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 20%, transparent 80%);
-    }
+    /* grid removed */
 
     /* ==============================
        GLOW BLOB
@@ -177,13 +165,12 @@
     }
 
     /* ==============================
-       WORDMARK
+       WORDMARK — igual al original
     ============================== */
     .wordmark {
       font-family: 'Righteous', cursive;
-      font-size: clamp(5rem, 16vw, 10rem);
-      line-height: 0.9;
-      letter-spacing: -0.03em;
+      font-size: clamp(3rem, 8vw, 5rem);
+      line-height: 1;
       background: var(--gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -235,7 +222,7 @@
     }
 
     /* ==============================
-       CTA ROW
+       CTA ROW — todos uniformes
     ============================== */
     .cta-row {
       display: flex;
@@ -246,51 +233,28 @@
       animation: fadeUp 0.8s 1.2s ease forwards;
     }
 
-    /* PRIMARY */
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 28px;
-      border-radius: 10px;
-      font-family: 'Comfortaa', sans-serif;
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-decoration: none;
-      background: var(--gradient);
-      color: #060a0b;
-      letter-spacing: 0.02em;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      box-shadow: 0 0 0 rgba(0,176,255,0);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(0,176,255,0.25);
-    }
-
-    /* GHOST */
-    .btn-ghost {
+    .btn-nav {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 12px 22px;
       border-radius: 10px;
       font-family: 'Comfortaa', sans-serif;
-      font-weight: 400;
+      font-weight: 600;
       font-size: 0.9rem;
       text-decoration: none;
-      color: var(--muted);
-      background: transparent;
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
       border: 1px solid var(--border);
+      backdrop-filter: blur(8px);
       letter-spacing: 0.02em;
-      transition: color 0.2s, border-color 0.2s, transform 0.2s;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.25s ease;
     }
 
-    .btn-ghost:hover {
-      color: var(--text);
-      border-color: rgba(255,255,255,0.2);
-      transform: translateY(-2px);
+    .btn-nav:hover {
+      background: var(--gradient);
+      color: #0b0b0b;
+      transform: translateY(-3px);
     }
 
     /* ==============================
@@ -339,8 +303,70 @@
     }
 
     /* ==============================
-       RESPONSIVE
+       FOOTER
     ============================== */
+    .footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 36px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      text-align: center;
+    }
+
+    .footer-brand h2 {
+      font-family: 'Righteous', cursive;
+      font-size: 1.8rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-slogan {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .footer-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .footer-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-family: 'DM Mono', monospace;
+    }
     @media (max-width: 600px) {
       .cta-row { flex-direction: column; align-items: center; }
       .lang-switch { top: 16px; right: 16px; }
@@ -352,7 +378,6 @@
 <body>
 
   <!-- BACKGROUNDS -->
-  <div class="grid-bg"></div>
   <div class="glow"></div>
 
   <!-- LANG SWITCH -->
@@ -384,18 +409,20 @@
 
       <!-- CTA -->
       <div class="cta-row">
-        <a href="servicios.html" class="btn-primary" id="btn-services">
+        <a href="servicios.html" class="btn-nav">
           <i class="fas fa-rocket"></i>
           <span id="cta-primary-label">Ver Servicios</span>
         </a>
-        <a href="contacto.html" class="btn-ghost" id="btn-contact">
-          <i class="fas fa-comment-dots"></i>
-          <span id="cta-secondary-label">Hablemos</span>
-        </a>
-        <a href="nosotros.html" class="btn-ghost">
+        <a href="nosotros.html" class="btn-nav">
+          <i class="fas fa-users"></i>
           <span id="cta-about-label">Nosotros</span>
         </a>
-        <a href="herramientas.html" class="btn-ghost">
+        <a href="contacto.html" class="btn-nav">
+          <i class="fas fa-comment-dots"></i>
+          <span id="cta-secondary-label">Contacto</span>
+        </a>
+        <a href="herramientas.html" class="btn-nav">
+          <i class="fas fa-wrench"></i>
           <span id="cta-tools-label">Herramientas</span>
         </a>
       </div>
@@ -409,7 +436,30 @@
     </div>
   </section>
 
-  <script>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <h2>Thinkora</h2>
+      <p class="footer-slogan" id="footer-slogan">Donde lo que piensas, se vuelve solución...</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://wa.me/524495165882" class="footer-btn">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>+52 449 516 5882</span>
+      </a>
+      <a href="mailto:contacto@thinkora.com" class="footer-btn">
+        <i class="fas fa-envelope"></i>
+        <span>contacto@thinkora.com</span>
+      </a>
+    </div>
+    <div class="footer-copy">
+      <p>+52 449 516 5882</p>
+      <p>Thinkora © 2025</p>
+      <p id="footer-author">Desarrollado y gestionado por Salvador Robles</p>
+    </div>
+  </footer>
+
+
     /* ==============================
        i18n mínimo para demo
     ============================== */
@@ -422,11 +472,13 @@
           'Automatización, web y sistemas a medida.',
           'Tecnología simple. Resultados concretos.',
         ],
-        ctaPrimary:   'Ver Servicios',
-        ctaSecondary: 'Hablemos',
+        ctaPrimary:   'Servicios',
+        ctaSecondary: 'Contacto',
         ctaAbout:     'Nosotros',
         ctaTools:     'Herramientas',
         scroll:       'scroll',
+        footerSlogan: 'Donde lo que piensas, se vuelve solución...',
+        footerAuthor: 'Desarrollado y gestionado por Salvador Robles',
       },
       en: {
         eyebrow:   'Digital Solutions',
@@ -436,11 +488,13 @@
           'Automation, web and tailored systems.',
           'Simple technology. Concrete results.',
         ],
-        ctaPrimary:   'See Services',
-        ctaSecondary: 'Let\'s Talk',
+        ctaPrimary:   'Services',
+        ctaSecondary: 'Contact',
         ctaAbout:     'About',
         ctaTools:     'Tools',
         scroll:       'scroll',
+        footerSlogan: 'Where what you think becomes a solution...',
+        footerAuthor: 'Developed and managed by Salvador Robles',
       }
     };
 
@@ -449,13 +503,15 @@
 
     function applyLang() {
       const t = copy[lang];
-      document.getElementById('eyebrow').textContent        = t.eyebrow;
-      document.getElementById('tagline').textContent        = t.tagline;
-      document.getElementById('cta-primary-label').textContent   = t.ctaPrimary;
-      document.getElementById('cta-secondary-label').textContent = t.ctaSecondary;
-      document.getElementById('cta-about-label').textContent     = t.ctaAbout;
-      document.getElementById('cta-tools-label').textContent     = t.ctaTools;
-      document.getElementById('scroll-label').textContent        = t.scroll;
+      document.getElementById('eyebrow').textContent              = t.eyebrow;
+      document.getElementById('tagline').textContent              = t.tagline;
+      document.getElementById('cta-primary-label').textContent    = t.ctaPrimary;
+      document.getElementById('cta-secondary-label').textContent  = t.ctaSecondary;
+      document.getElementById('cta-about-label').textContent      = t.ctaAbout;
+      document.getElementById('cta-tools-label').textContent      = t.ctaTools;
+      document.getElementById('scroll-label').textContent         = t.scroll;
+      document.getElementById('footer-slogan').textContent        = t.footerSlogan;
+      document.getElementById('footer-author').textContent        = t.footerAuthor;
       rotIdx = 0;
       updateRotating();
     }
