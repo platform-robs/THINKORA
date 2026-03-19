@@ -191,6 +191,8 @@ const translations = {
         desc:  "Descripción corta (1–2 líneas)."
       },
       ─────────────────────────────────────────────── */
+        sectionLabel: "Nuestros Servicios",
+        cardHint: "Toca para ver más", 
       web: {
         title: "Desarrollo Web",
         desc:  "Páginas web modernas, responsivas y optimizadas para cualquier dispositivo."
@@ -262,6 +264,7 @@ const translations = {
       ─────────────────────────────────────────────── */
 
       /* ── SECTOR: Administración & Negocios ───────── */
+      sectionLabel: "Soluciones por Sector",
       admin: {
         title: "Administración & Negocios",
         finance: {
@@ -645,6 +648,8 @@ const translations = {
        CARDS DE SERVICIOS
     ───────────────────────────────────────────────── */
     services: {
+      sectionLabel: "Our Services",
+      cardHint: "Tap to learn more", 
       web: {
         title: "Web Development",
         desc:  "Modern, responsive websites optimized for any device."
@@ -685,7 +690,7 @@ const translations = {
        CARDS FLIP POR SECTOR
     ───────────────────────────────────────────────── */
     solutions: {
-
+      sectionLabel: "Solutions by Sector", 
       /* ── SECTOR: Business & Administration ───────── */
       admin: {
         title: "Business & Administration",
