@@ -8,418 +8,784 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- =====================================================
-       SEO PARA SERVICIOS
+       SEO
   ====================================================== -->
   <title>Thinkora | Servicios y Soluciones Digitales</title>
   <meta name="description" content="Identifica las necesidades de tu negocio y descubre cómo Thinkora puede convertir tus ideas en soluciones digitales inteligentes que optimizan tus procesos y productividad.">
-  <meta name="keywords" content="Thinkora, servicios digitales, soluciones digitales, automatización, Google Apps Script, Google Sheets, páginas web, sistemas para negocios, gestión escolar, formularios inteligentes, dashboards">
+  <meta name="keywords" content="Thinkora, servicios digitales, soluciones digitales, automatización, Google Apps Script, Google Sheets, páginas web, sistemas para negocios">
   <meta name="author" content="Salvador Robles">
 
   <!-- =====================================================
-       FUENTES
+       FUENTES THINKORA (Righteous + Comfortaa)
   ====================================================== -->
   <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- =====================================================
-       CSS GLOBAL
+       CSS GLOBAL THINKORA — mantiene paleta y reset base
   ====================================================== -->
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <style>
-    /* ============================ 
-       HERO / SUBTÍTULO
-    ============================ */
-    .subtitle {
-      font-size: 1.1rem;
-      color: #d9d9d9;
-      line-height: 1.6;
-      max-width: 900px;
-      margin: 10px auto 50px auto;
-      text-align: center;
-    }
-    .subtitle .highlight {
-      font-weight: 700;
-      background: linear-gradient(90deg, #00b0ff, #00ff99);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    /* ============================================
+       VARIABLES LOCALES — complementan styles.css
+    ============================================ */
+    :root {
+      --radius-card: 16px;
+      --radius-sm:   10px;
+      --transition:  0.32s cubic-bezier(0.4, 0, 0.2, 1);
+      --glow-blue:   rgba(0, 168, 198, 0.15);
     }
 
-    /* ============================ 
-       SECCIÓN SERVICIOS
-    ============================ */
+    /* ============================================
+       HERO
+    ============================================ */
+    .hero {
+      text-align: center;
+      padding: 60px 0 40px;
+      position: relative;
+    }
+
+    /* orb de fondo */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 560px;
+      height: 260px;
+      background: radial-gradient(ellipse at center, rgba(0,168,198,0.12) 0%, transparent 68%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+
+    @keyframes dot-pulse {
+      0%, 100% { opacity: 1;   transform: scale(1);    }
+      50%       { opacity: 0.3; transform: scale(0.6);  }
+    }
+
+    /* .title usa Righteous + gradient de styles.css */
+    .title {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.6s 0.08s ease both;
+    }
+
+    .subtitle {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 680px;
+      margin: 0 auto 50px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.6s 0.15s ease both;
+    }
+
+    .subtitle .highlight {
+      font-weight: 700;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    /* ============================================
+       DIVISOR
+    ============================================ */
+    .section-divider {
+      height: 1px;
+      max-width: 500px;
+      margin: 60px auto;
+      background: linear-gradient(to right, transparent, var(--border-soft), transparent);
+    }
+
+    /* ============================================
+       ETIQUETA DE SECCIÓN
+    ============================================ */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 38px;
+    }
+
+    .section-label-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-soft);
+    }
+
+    .section-label-text {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* ============================================
+       CARDS DE SERVICIOS
+    ============================================ */
     .services {
       max-width: 1100px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
     }
+
     .service-card {
-      background: #262a2d;
-      border-radius: 15px;
-      padding: 25px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-card);
+      padding: 30px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--transition),
+                  transform var(--transition);
+      animation: fadeUp 0.5s ease both;
     }
+
+    /* stagger entrada */
+    .service-card:nth-child(1) { animation-delay: 0.04s; }
+    .service-card:nth-child(2) { animation-delay: 0.09s; }
+    .service-card:nth-child(3) { animation-delay: 0.14s; }
+    .service-card:nth-child(4) { animation-delay: 0.19s; }
+    .service-card:nth-child(5) { animation-delay: 0.24s; }
+    .service-card:nth-child(6) { animation-delay: 0.29s; }
+
+    /* glow top-left en hover */
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-card);
+      background: radial-gradient(circle at top left, var(--glow-blue), transparent 65%);
+      opacity: 0;
+      transition: opacity var(--transition);
+      pointer-events: none;
+    }
+
     .service-card:hover {
-      transform: translateY(5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      border-color: var(--accent-blue);
+      transform: translateY(-5px);
     }
-    
-    .service-card i {
-      font-size: 2.5rem;
-      color: #00b0ff;
-      margin-bottom: 15px;
+
+    .service-card:hover::after { opacity: 1; }
+
+    /* caja del icono */
+    .service-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-sm);
+      background: rgba(0, 168, 198, 0.1);
+      border: 1px solid rgba(0, 168, 198, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--accent-blue);
+      flex-shrink: 0;
+      transition: background var(--transition), transform var(--transition);
     }
+
+    .service-card:hover .service-icon {
+      background: rgba(0, 168, 198, 0.2);
+      transform: scale(1.08) rotate(-3deg);
+    }
+
     .service-card h3 {
-      margin: 10px 0;
-      font-size: 1.3rem;
-      color: #fff;
+      font-family: 'Righteous', cursive;
+      font-size: 1.1rem;
+      color: var(--text-main);
+      margin: 0;
     }
+
     .service-card p {
-      font-size: 0.95rem;
-      color: #d9d9d9;
-      line-height: 1.5;
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin: 0;
     }
 
-    /* ============================ 
-       SECCIÓN SOLUCIONES
-    ============================ */
-.solution-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
+    /* ============================================
+       SOLUCIONES — contenedor y categorías
+    ============================================ */
+    .solutions {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
 
-.solution-card {
-  background: #262a2d;
-  border-radius: 15px;
-  width: 100%;
-  height: 150px; /* altura de la tarjeta */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  border: 1px solid var(--border-soft);
-}
-
-.solution-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--accent-blue);
-}
-
-/* Contenido inicial: solo subtítulo */
-.solution-card .card-title {
-  color: #fff;
-  font-size: 1.2rem;
-  text-align: center;
-  transition: opacity 0.5s ease;
-  z-index: 2;
-}
-
-/* Contenido detallado: información de la tarjeta */
-.solution-card .card-content {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #ccc;
-  font-size: 0.95rem;
-  padding: 20px;
-  text-align: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-}
-
-/* Estado activo: subtítulo desaparece, contenido aparece */
-.solution-card.active .card-title {
-  opacity: 0;
-}
-
-.solution-card.active .card-content {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-
-    .solution-card h4 .highlight,
-    .service-card h3 .highlight {
-      font-weight: 700;
-      background: linear-gradient(90deg, #00b0ff, #00ff99);
+    .category-title {
+      font-family: 'Righteous', cursive;
+      font-size: 1.4rem;
+      /* gradient en texto */
+      background: var(--gradient-main);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
 
-    .section-divider {
+    /* línea decorativa — pseudo-elemento necesita reset del clip */
+    .category-title::after {
+      content: '';
+      flex: 1;
       height: 1px;
-      max-width: 600px;
-      margin: 50px auto;
-      background: linear-gradient(to right, transparent, var(--border-soft), transparent);
-      border-radius: 1px;
+      background: var(--border-soft);
+      /* resetear el background-clip heredado */
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      -webkit-text-fill-color: initial;
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    /* ============================================
+       SOLUTION CARDS — flip 3D
+    ============================================ */
+    .solution-card {
+      height: 168px;
+      perspective: 900px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.52s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .solution-card.active .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-card);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      overflow: hidden;
+    }
+
+    /* FRENTE */
+    .card-front {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-align: center;
+      padding: 24px;
+      transition: border-color var(--transition);
+    }
+
+    .solution-card:hover .card-front {
+      border-color: var(--accent-blue);
+    }
+
+    .card-front i {
+      font-size: 1.6rem;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card-title {
+      font-family: 'Righteous', cursive;
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+
+    .card-hint {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.67rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      opacity: 0.65;
+    }
+
+    /* REVERSO */
+    .card-back {
+      background: var(--bg-dark);
+      border: 1px solid var(--accent-blue);
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 20px 45px;
+    }
+
+    /* botón cerrar en el reverso */
+    .card-back-close {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px 6px;
+      transition: color var(--transition);
+    }
+
+    .card-back-close:hover { color: var(--accent-green); }
+
+    /* lista de ítems */
+    .card-content {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .card-content li {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+
+    .card-content li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 768px) {
+      .services           { grid-template-columns: 1fr; }
+      .solution-grid      { grid-template-columns: 1fr; }
+      .solution-card      { height: 160px; }
+      .hero               { padding: 50px 0 30px; }
+      .hero::before       { width: 320px; height: 160px; }
+    }
+
+    @media (max-width: 480px) {
+      .service-card { padding: 22px 18px; }
+      .title        { font-size: 2rem; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
+  <!-- NAVBAR (integración existente — no modificar) -->
   <div id="navbar-container"></div>
 
-<!-- CONTENIDO PRINCIPAL -->
-<main>
+  <main>
 
-  <!-- TÍTULO PRINCIPAL -->
-  <h1 class="title" data-i18n="page.title"></h1>
-  <p class="subtitle" data-i18n="page.subtitle1"></p>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <h1 class="title" data-i18n="page.title">Tecnología que impulsa tu negocio</h1>
+      <p class="subtitle" data-i18n="page.subtitle1">
+        Identificamos las necesidades de tu organización y las convertimos en
+        <span class="highlight">soluciones digitales inteligentes</span>
+        que optimizan procesos y elevan tu productividad.
+      </p>
+    </section>
 
-  <div class="section-divider"></div>
+    <div class="section-divider"></div>
 
-  <!-- ================= SERVICIOS ================= -->
-  <section id="services" class="services">
-
-    <div class="service-card">
-      <i class="fas fa-code"></i>
-      <h3 data-i18n="services.web.title"></h3>
-      <p data-i18n="services.web.desc"></p>
+    <!-- ===================== SERVICIOS ===================== -->
+    <div class="section-label">
+      <span class="section-label-line"></span>
+      <span class="section-label-text" data-i18n="services.sectionLabel"></span>
+      <span class="section-label-line"></span>
     </div>
 
-    <div class="service-card">
-      <i class="fas fa-robot"></i>
-      <h3 data-i18n="services.automation.title"></h3>
-      <p data-i18n="services.automation.desc"></p>
-    </div>
+    <section id="services" class="services">
 
-    <div class="service-card">
-      <i class="fas fa-mobile-screen-button"></i>
-      <h3 data-i18n="services.apps.title"></h3>
-      <p data-i18n="services.apps.desc"></p>
-    </div>
-
-    <div class="service-card">
-      <i class="fas fa-lightbulb"></i>
-      <h3 data-i18n="services.consulting.title"></h3>
-      <p data-i18n="services.consulting.desc"></p>
-    </div>
-
-    <div class="service-card">
-      <i class="fas fa-paintbrush"></i>
-      <h3 data-i18n="services.uiux.title"></h3>
-      <p data-i18n="services.uiux.desc"></p>
-    </div>
-
-    <div class="service-card">
-      <i class="fas fa-headset"></i>
-      <h3 data-i18n="services.support.title"></h3>
-      <p data-i18n="services.support.desc"></p>
-    </div>
-
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- ================= INTRO SOLUCIONES ================= -->
-  <p class="subtitle"
-     style="margin: 30px auto;"
-     data-i18n="solutionsIntro">
-  </p>
-
-  <!-- ================= SOLUCIONES ================= -->
-  <section id="solutions" class="solutions">
-
-    <!-- ADMIN -->
-    <div class="solution-category">
-      <h2 class="category-title"
-          data-i18n="solutions.admin.title">
-      </h2>
-
-      <div class="solution-grid">
-
-        <div class="solution-card">
-          <div class="card-title">
-            <i class="fa-solid fa-chart-line"></i>
-            <span data-i18n="solutions.admin.finance.title"></span>
-          </div>
-          <div class="card-content"
-               data-items="solutions.admin.finance.items">
-          </div>
-        </div>
-
-        <div class="solution-card">
-          <div class="card-title">
-            <i class="fa-solid fa-file-invoice"></i>
-            <span data-i18n="solutions.admin.quotes.title"></span>
-          </div>
-          <div class="card-content"
-               data-items="solutions.admin.quotes.items">
-          </div>
-        </div>
-
-        <div class="solution-card">
-          <div class="card-title">
-            <i class="fa-solid fa-briefcase"></i>
-            <span data-i18n="solutions.admin.operations.title"></span>
-          </div>
-          <div class="card-content"
-               data-items="solutions.admin.operations.items">
-          </div>
-        </div>
-
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-code"></i></div>
+        <h3 data-i18n="services.web.title">Desarrollo Web</h3>
+        <p data-i18n="services.web.desc">Sitios y aplicaciones web profesionales, rápidos y adaptados a tu marca.</p>
       </div>
-    </div>
 
-    <!-- RESTAURANTES -->
-    <div class="solution-category">
-      <h2 class="category-title"
-          data-i18n="solutions.restaurants.title">
-      </h2>
-
-      <div class="solution-grid">
-
-        <div class="solution-card">
-          <div class="card-title">
-            <i class="fa-solid fa-receipt"></i>
-            <span data-i18n="solutions.restaurants.orders.title"></span>
-          </div>
-          <div class="card-content"
-               data-items="solutions.restaurants.orders.items">
-          </div>
-        </div>
-
-        <div class="solution-card">
-          <div class="card-title">
-            <i class="fa-solid fa-table"></i>
-            <span data-i18n="solutions.restaurants.floor.title"></span>
-          </div>
-          <div class="card-content"
-               data-items="solutions.restaurants.floor.items">
-          </div>
-        </div>
-
-        <div class="solution-card">
-          <div class="card-title">
-            <i class="fa-solid fa-chart-pie"></i>
-            <span data-i18n="solutions.restaurants.analysis.title"></span>
-          </div>
-          <div class="card-content"
-               data-items="solutions.restaurants.analysis.items">
-          </div>
-        </div>
-
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-robot"></i></div>
+        <h3 data-i18n="services.automation.title">Automatización</h3>
+        <p data-i18n="services.automation.desc">Flujos inteligentes con Google Apps Script para eliminar tareas repetitivas.</p>
       </div>
-    </div>
 
-    <!-- EDUCACIÓN -->
-    <div class="solution-category">
-      <h2 class="category-title"
-          data-i18n="solutions.education.title">
-      </h2>
-
-      <div class="solution-grid">
-
-        <div class="solution-card">
-          <div class="card-title">
-            <i class="fa-solid fa-school"></i>
-            <span data-i18n="solutions.education.management.title"></span>
-          </div>
-          <div class="card-content"
-               data-items="solutions.education.management.items">
-          </div>
-        </div>
-
-        <div class="solution-card">
-          <div class="card-title">
-            <i class="fa-solid fa-envelope-open-text"></i>
-            <span data-i18n="solutions.education.communication.title"></span>
-          </div>
-          <div class="card-content"
-               data-items="solutions.education.communication.items">
-          </div>
-        </div>
-
-        <div class="solution-card">
-          <div class="card-title">
-            <i class="fa-solid fa-file-pdf"></i>
-            <span data-i18n="solutions.education.docs.title"></span>
-          </div>
-          <div class="card-content"
-               data-items="solutions.education.docs.items">
-          </div>
-        </div>
-
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-mobile-screen-button"></i></div>
+        <h3 data-i18n="services.apps.title">Aplicaciones</h3>
+        <p data-i18n="services.apps.desc">Herramientas digitales a medida que funcionan en cualquier dispositivo.</p>
       </div>
-    </div>
 
-    <!-- CURSOS -->
-    <div class="solution-category">
-      <h2 class="category-title"
-          data-i18n="solutions.courses.title">
-      </h2>
-
-      <div class="solution-grid">
-
-        <div class="solution-card">
-          <div class="card-title">
-            <i class="fa-solid fa-users"></i>
-            <span data-i18n="solutions.courses.access.title"></span>
-          </div>
-          <div class="card-content"
-               data-items="solutions.courses.access.items">
-          </div>
-        </div>
-
-        <div class="solution-card">
-          <div class="card-title">
-            <i class="fa-solid fa-graduation-cap"></i>
-            <span data-i18n="solutions.courses.tracking.title"></span>
-          </div>
-          <div class="card-content"
-               data-items="solutions.courses.tracking.items">
-          </div>
-        </div>
-
-        <div class="solution-card">
-          <div class="card-title">
-            <i class="fa-solid fa-certificate"></i>
-            <span data-i18n="solutions.courses.payments.title"></span>
-          </div>
-          <div class="card-content"
-               data-items="solutions.courses.payments.items">
-          </div>
-        </div>
-
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3 data-i18n="services.consulting.title">Consultoría</h3>
+        <p data-i18n="services.consulting.desc">Diagnóstico y estrategia digital para tomar decisiones con datos.</p>
       </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-paintbrush"></i></div>
+        <h3 data-i18n="services.uiux.title">UI / UX Design</h3>
+        <p data-i18n="services.uiux.desc">Interfaces limpias e intuitivas que conectan con tus usuarios.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-headset"></i></div>
+        <h3 data-i18n="services.support.title">Soporte Continuo</h3>
+        <p data-i18n="services.support.desc">Acompañamiento técnico para que tus soluciones siempre funcionen al máximo.</p>
+      </div>
+
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===================== SOLUCIONES ===================== -->
+    <div class="section-label">
+      <span class="section-label-line"></span>
+      <span class="section-label-text" data-i18n="solutions.sectionLabel"></span>
+      <span class="section-label-line"></span>
     </div>
 
-  </section>
+    <p class="subtitle" style="margin-bottom: 52px;" data-i18n="solutionsIntro">
+      Cada industria tiene retos únicos.
+      <span class="highlight">Toca una tarjeta</span> para descubrir cómo podemos ayudarte.
+    </p>
 
-</main>
-  <!-- FOOTER -->
+    <section id="solutions" class="solutions">
+
+      <!-- ADMINISTRACIÓN -->
+      <div class="solution-category">
+        <h2 class="category-title" data-i18n="solutions.admin.title">Administración</h2>
+        <div class="solution-grid">
+
+          <div class="solution-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-chart-line"></i>
+                <div class="card-title" data-i18n="solutions.admin.finance.title">Finanzas</div>
+              <div class="card-hint" data-i18n="services.cardHint"></div>
+              </div>
+              <div class="card-back">
+                <button class="card-back-close" aria-label="Cerrar">✕</button>
+                <ul class="card-content" data-items="solutions.admin.finance.items">
+                  <li>Control de ingresos y egresos</li>
+                  <li>Reportes automáticos en tiempo real</li>
+                  <li>Dashboards financieros interactivos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-file-invoice"></i>
+                <div class="card-title" data-i18n="solutions.admin.quotes.title">Cotizaciones</div>
+              <div class="card-hint" data-i18n="services.cardHint"></div>
+              </div>
+              <div class="card-back">
+                <button class="card-back-close" aria-label="Cerrar">✕</button>
+                <ul class="card-content" data-items="solutions.admin.quotes.items">
+                  <li>Generación automática de cotizaciones</li>
+                  <li>Seguimiento de propuestas enviadas</li>
+                  <li>Exportación a PDF con tu marca</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-briefcase"></i>
+                <div class="card-title" data-i18n="solutions.admin.operations.title">Operaciones</div>
+              <div class="card-hint" data-i18n="services.cardHint"></div>
+              </div>
+              <div class="card-back">
+                <button class="card-back-close" aria-label="Cerrar">✕</button>
+                <ul class="card-content" data-items="solutions.admin.operations.items">
+                  <li>Gestión de inventario digital</li>
+                  <li>Control de proyectos y tareas</li>
+                  <li>Flujos de aprobación automatizados</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RESTAURANTES -->
+      <div class="solution-category">
+        <h2 class="category-title" data-i18n="solutions.restaurants.title">Restaurantes</h2>
+        <div class="solution-grid">
+
+          <div class="solution-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-receipt"></i>
+                <div class="card-title" data-i18n="solutions.restaurants.orders.title">Pedidos</div>
+              <div class="card-hint" data-i18n="services.cardHint"></div>
+              </div>
+              <div class="card-back">
+                <button class="card-back-close" aria-label="Cerrar">✕</button>
+                <ul class="card-content" data-items="solutions.restaurants.orders.items">
+                  <li>Sistema de pedidos en tiempo real</li>
+                  <li>Integración con cocina y caja</li>
+                  <li>Historial y estadísticas de ventas</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-table"></i>
+                <div class="card-title" data-i18n="solutions.restaurants.floor.title">Mesas</div>
+              <div class="card-hint" data-i18n="services.cardHint"></div>
+              </div>
+              <div class="card-back">
+                <button class="card-back-close" aria-label="Cerrar">✕</button>
+                <ul class="card-content" data-items="solutions.restaurants.floor.items">
+                  <li>Control visual del salón</li>
+                  <li>Asignación y estatus de mesas</li>
+                  <li>Reservaciones digitales</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-chart-pie"></i>
+                <div class="card-title" data-i18n="solutions.restaurants.analysis.title">Análisis</div>
+              <div class="card-hint" data-i18n="services.cardHint"></div>
+              </div>
+              <div class="card-back">
+                <button class="card-back-close" aria-label="Cerrar">✕</button>
+                <ul class="card-content" data-items="solutions.restaurants.analysis.items">
+                  <li>Platillos más vendidos</li>
+                  <li>Análisis de rentabilidad</li>
+                  <li>Tendencias de consumo</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- EDUCACIÓN -->
+      <div class="solution-category">
+        <h2 class="category-title" data-i18n="solutions.education.title">Educación</h2>
+        <div class="solution-grid">
+
+          <div class="solution-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-school"></i>
+                <div class="card-title" data-i18n="solutions.education.management.title">Gestión Escolar</div>
+              <div class="card-hint" data-i18n="services.cardHint"></div>
+              </div>
+              <div class="card-back">
+                <button class="card-back-close" aria-label="Cerrar">✕</button>
+                <ul class="card-content" data-items="solutions.education.management.items">
+                  <li>Control de alumnos y grupos</li>
+                  <li>Calificaciones y asistencias</li>
+                  <li>Reportes académicos automáticos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-envelope-open-text"></i>
+                <div class="card-title" data-i18n="solutions.education.communication.title">Comunicación</div>
+              <div class="card-hint" data-i18n="services.cardHint"></div>
+              </div>
+              <div class="card-back">
+                <button class="card-back-close" aria-label="Cerrar">✕</button>
+                <ul class="card-content" data-items="solutions.education.communication.items">
+                  <li>Avisos y circulares digitales</li>
+                  <li>Notificaciones automáticas a padres</li>
+                  <li>Canal directo escuela-familia</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-file-pdf"></i>
+                <div class="card-title" data-i18n="solutions.education.docs.title">Documentos</div>
+              <div class="card-hint" data-i18n="services.cardHint"></div>
+              </div>
+              <div class="card-back">
+                <button class="card-back-close" aria-label="Cerrar">✕</button>
+                <ul class="card-content" data-items="solutions.education.docs.items">
+                  <li>Generación de boletas en PDF</li>
+                  <li>Constancias y certificados digitales</li>
+                  <li>Archivo documental organizado</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CURSOS -->
+      <div class="solution-category">
+        <h2 class="category-title" data-i18n="solutions.courses.title">Cursos &amp; Capacitación</h2>
+        <div class="solution-grid">
+
+          <div class="solution-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-users"></i>
+                <div class="card-title" data-i18n="solutions.courses.access.title">Acceso</div>
+              <div class="card-hint" data-i18n="services.cardHint"></div>
+              </div>
+              <div class="card-back">
+                <button class="card-back-close" aria-label="Cerrar">✕</button>
+                <ul class="card-content" data-items="solutions.courses.access.items">
+                  <li>Portal de alumnos con login</li>
+                  <li>Contenido exclusivo por nivel</li>
+                  <li>Control de acceso seguro</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <div class="card-title" data-i18n="solutions.courses.tracking.title">Seguimiento</div>
+              <div class="card-hint" data-i18n="services.cardHint"></div>
+              </div>
+              <div class="card-back">
+                <button class="card-back-close" aria-label="Cerrar">✕</button>
+                <ul class="card-content" data-items="solutions.courses.tracking.items">
+                  <li>Avance por módulo y alumno</li>
+                  <li>Tareas y evaluaciones digitales</li>
+                  <li>Reportes de progreso automáticos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="solution-card">
+            <div class="card-inner">
+              <div class="card-front">
+                <i class="fa-solid fa-certificate"></i>
+                <div class="card-title" data-i18n="solutions.courses.payments.title">Pagos</div>
+              <div class="card-hint" data-i18n="services.cardHint"></div>
+              </div>
+              <div class="card-back">
+                <button class="card-back-close" aria-label="Cerrar">✕</button>
+                <ul class="card-content" data-items="solutions.courses.payments.items">
+                  <li>Cobros en línea integrados</li>
+                  <li>Certificados automáticos al completar</li>
+                  <li>Control de suscripciones y pagos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER (integración existente — no modificar) -->
   <div id="footer-container"></div>
 
-  <!-- SCRIPTS -->
-<script>
-const cards = document.querySelectorAll('.solution-card');
+  <!-- =====================================================
+       SCRIPTS
+  ====================================================== -->
+  <script>
+    /* -------------------------------------------------------
+       SOLUTION CARDS — flip 3D al hacer clic
+    ------------------------------------------------------- */
+    const solutionCards = document.querySelectorAll('.solution-card');
 
-cards.forEach(card => {
-  card.addEventListener('click', () => {
-    // Cierra cualquier otra tarjeta activa
-    cards.forEach(c => {
-      if (c !== card) c.classList.remove('active');
+    solutionCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.classList.contains('card-back-close')) return;
+        const wasActive = card.classList.contains('active');
+        solutionCards.forEach(c => c.classList.remove('active'));
+        if (!wasActive) card.classList.add('active');
+      });
     });
-    // Alterna la tarjeta clickeada
-    card.classList.toggle('active');
-  });
-});
 
-</script>
-  
+    document.querySelectorAll('.card-back-close').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        btn.closest('.solution-card').classList.remove('active');
+      });
+    });
+  </script>
+
+  <!-- Scripts existentes del proyecto (no modificar) -->
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/footer.js"></script>
