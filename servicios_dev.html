@@ -60,35 +60,6 @@
       z-index: 0;
     }
 
-    /* badge animado */
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(0, 168, 198, 0.08);
-      border: 1px solid rgba(0, 168, 198, 0.22);
-      border-radius: 100px;
-      padding: 6px 20px;
-      font-family: 'Comfortaa', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent-blue);
-      margin-bottom: 24px;
-      position: relative;
-      z-index: 1;
-      animation: fadeUp 0.55s ease both;
-    }
-
-    .hero-eyebrow::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent-blue);
-      animation: dot-pulse 2.2s infinite;
-    }
 
     @keyframes dot-pulse {
       0%, 100% { opacity: 1;   transform: scale(1);    }
@@ -460,7 +431,6 @@
 
     <!-- ===================== HERO ===================== -->
     <section class="hero">
-      <div class="hero-eyebrow">Servicios &amp; Soluciones</div>
       <h1 class="title" data-i18n="page.title">Tecnología que impulsa tu negocio</h1>
       <p class="subtitle" data-i18n="page.subtitle1">
         Identificamos las necesidades de tu organización y las convertimos en
