@@ -39,7 +39,9 @@
    • solutions       → Cards flip por sector (servicios.html)
    • toolsPage       → Panel de herramientas (herramientas.html)
    • about           → Sección nosotros (nosotros.html)
-   • faq             → Preguntas frecuentes (preguntas.html)
+   •   about.slider  → 6 slides del hero de nosotros.html
+   •   about.valuesLabel → etiqueta de sección de valores
+   • faq             → Preguntas frecuentes (nosotros.html + preguntas.html)
    • dev             → Página en construcción (dev.html)
    • alerts          → Mensajes de validación (global)
    • contact         → [PENDIENTE] Página de contacto
@@ -51,7 +53,7 @@ const translations = {
   /* =====================================================
      ALERTAS Y VALIDACIONES GLOBALES
      ─────────────────────────────────────────────────────
-     Uso: usadas en formularios de cualquier página
+     Uso: formularios de cualquier página
      HTML: NO — solo texto plano
   ===================================================== */
   alerts: {
@@ -76,12 +78,12 @@ const translations = {
       en: "Request sent successfully."
     }
     /*
-    ── CÓMO AGREGAR UNA ALERTA NUEVA ──────────────────
+    ── AGREGAR ALERTA NUEVA ────────────────────────────
     nombreAlerta: {
       es: "Mensaje en español.",
       en: "Message in English."
     },
-    ────────────────────────────────────────────────── */
+    ─────────────────────────────────────────────────── */
   },
 
 
@@ -102,7 +104,7 @@ const translations = {
       contact:  "Contacto",
       tools:    "Herramientas"
       /*
-      ── AGREGAR ENLACE AL NAVBAR ────────────────────
+      ── AGREGAR ENLACE ──────────────────────────────
       nuevoEnlace: "Nombre visible",
       ─────────────────────────────────────────────── */
     },
@@ -165,9 +167,8 @@ const translations = {
     ───────────────────────────────────────────────── */
     page: {
       /*
-      ── CÓMO AGREGAR HERO A UNA PÁGINA NUEVA ────────
-      Agrega las claves title y subtitle1 dentro de
-      "page" y úsalas en el HTML con data-i18n="page.title"
+      ── AGREGAR HERO A PÁGINA NUEVA ─────────────────
+      Agrega title y subtitle1 y úsalos con data-i18n
       ─────────────────────────────────────────────── */
       title:    "Servicios y Soluciones",
       subtitle1:
@@ -180,10 +181,14 @@ const translations = {
        PÁGINA SERVICIOS — CARDS DE SERVICIOS
        Archivo: servicios.html → sección #services
        Uso HTML:
+         data-i18n="services.sectionLabel"
+         data-i18n="services.cardHint"
          data-i18n="services.web.title"
          data-i18n="services.web.desc"
     ───────────────────────────────────────────────── */
     services: {
+      sectionLabel: "Nuestros Servicios",
+      cardHint:     "Toca para ver más",
       /*
       ── AGREGAR CARD DE SERVICIO ─────────────────────
       nombreServicio: {
@@ -191,8 +196,6 @@ const translations = {
         desc:  "Descripción corta (1–2 líneas)."
       },
       ─────────────────────────────────────────────── */
-        sectionLabel: "Nuestros Servicios",
-        cardHint: "Toca para ver más", 
       web: {
         title: "Desarrollo Web",
         desc:  "Páginas web modernas, responsivas y optimizadas para cualquier dispositivo."
@@ -235,13 +238,14 @@ const translations = {
     /* ─────────────────────────────────────────────────
        PÁGINA SERVICIOS — CARDS FLIP POR SECTOR
        Archivo: servicios.html → sección #solutions
-       Uso HTML (frente):  data-i18n="solutions.admin.title"
+       Uso HTML (frente):  data-i18n="solutions.sectionLabel"
+                           data-i18n="solutions.admin.title"
                            data-i18n="solutions.admin.finance.title"
        Uso HTML (reverso): data-items="solutions.admin.finance.items"
        Nota: items[] se renderizan como <li> automáticamente
     ───────────────────────────────────────────────── */
     solutions: {
-
+      sectionLabel: "Soluciones por Sector",
       /*
       ── AGREGAR SECTOR NUEVO ─────────────────────────
       1. Agrega el bloque aquí dentro de solutions: {}
@@ -254,17 +258,12 @@ const translations = {
         title: "Nombre del Sector",
         card1: {
           title: "Título de la card",
-          items: [
-            "Ítem 1",
-            "Ítem 2",
-            "Ítem 3"
-          ]
+          items: ["Ítem 1", "Ítem 2", "Ítem 3"]
         }
       },
       ─────────────────────────────────────────────── */
 
       /* ── SECTOR: Administración & Negocios ───────── */
-      sectionLabel: "Soluciones por Sector",
       admin: {
         title: "Administración & Negocios",
         finance: {
@@ -394,7 +393,7 @@ const translations = {
         "Accede a las herramientas internas de Thinkora.<br>" +
         "Algunas requieren permisos según tu equipo y estado.",
 
-      /* ── Nombres de las cards de herramientas ────── */
+      /* ── Nombres de las cards ────────────────────── */
       cards: {
         /*
         ── AGREGAR HERRAMIENTA ──────────────────────
@@ -411,7 +410,7 @@ const translations = {
         createUser:  "Crear Usuario"
       },
 
-      /* ── Descripciones bajo cada card ────────────── */
+      /* ── Descripciones de las cards ──────────────── */
       descriptions: {
         /*
         ── AGREGAR DESCRIPCIÓN ──────────────────────
@@ -441,7 +440,7 @@ const translations = {
         disabled:        "Enviando solicitud..."
       },
 
-      /* ── Formulario de registro de usuario ───────── */
+      /* ── Formulario de registro ──────────────────── */
       register: {
         title:           "Unirse al equipo Thinkora",
         name:            "Nombre",
@@ -456,10 +455,10 @@ const translations = {
         success:         "Solicitud enviada correctamente. Revisa tu correo."
       },
 
-      /* ── Email de confirmación (plantilla) ───────── */
+      /* ── Email de confirmación ───────────────────── */
       email: {
         /*
-        ── VARIABLES DISPONIBLES EN LA PLANTILLA ───
+        ── VARIABLES DE PLANTILLA ──────────────────
         {{name}}  → nombre del usuario
         {{team}}  → equipo seleccionado
         {{email}} → correo del usuario
@@ -491,17 +490,82 @@ const translations = {
        Uso HTML: data-i18n="about.title"
     ───────────────────────────────────────────────── */
     about: {
-      title:    "Nosotros",
-      subtitle: "Conoce nuestra visión, propósito y enfoque.",
+      title:       "Nosotros",
+      subtitle:    "Conoce nuestra visión, propósito y enfoque.",
+      valuesLabel: "Nuestros Valores",
+
+      /* ── SLIDER HERO (6 slides) ──────────────────────
+         Cada slide tiene: badge, heading, body, icon
+         Los items del slide 4 son claves independientes
+         para que el motor i18n los pueda reemplazar.
+
+         ── MODIFICAR UN SLIDE ──────────────────────────
+         Edita el texto del slide correspondiente (s1–s6)
+         en AMBOS idiomas (es y en).
+
+         ── AGREGAR SLIDE ───────────────────────────────
+         1. Agrega s7: { ... } aquí y en "en"
+         2. Copia el bloque HTML de un <div class="slide">
+            en nosotros.html y actualiza los data-i18n
+      ─────────────────────────────────────────────── */
+      slider: {
+
+        /* ── Slide 1: Portada ── */
+        s1: {
+          logo:   "Thinkora",
+          slogan: "Donde lo que piensas, se vuelve solución...",
+          main:   "Creamos soluciones digitales que funcionan."
+        },
+
+        /* ── Slide 2: Quiénes somos ── */
+        s2: {
+          badge:   "Quiénes somos",
+          heading: "No solo hacemos páginas web...<br><span class='hl'>resolvemos problemas reales.</span>",
+          body:    "Somos un equipo especializado en convertir ideas y necesidades en herramientas digitales funcionales, modernas y a la medida."
+        },
+
+        /* ── Slide 3: Diferencial ── */
+        s3: {
+          badge:   "Nuestro diferencial",
+          heading: "<span class='hl'>Pensamos antes de construir.</span>",
+          body:    "Basamos cada proyecto en un Diagnóstico de Necesidades. Esto evita errores, ahorra tiempo y garantiza que lo que construimos realmente resuelve tu problema."
+        },
+
+        /* ── Slide 4: Servicios ── */
+        s4: {
+          badge:   "Nuestros servicios",
+          heading: "Te ayudamos con:",
+          item1:   "Páginas web profesionales",
+          item2:   "Aplicaciones y sistemas a medida",
+          item3:   "Automatización e integración de APIs",
+          item4:   "Soluciones con IA y Ciencia de Datos"
+        },
+
+        /* ── Slide 5: Público objetivo ── */
+        s5: {
+          badge:   "Con quién trabajamos",
+          heading: "Negocios, empresas, instituciones<br>y <span class='hl'>proyectos personales.</span>",
+          body:    "Trabajamos con quienes necesitan soluciones claras, escalables y bien construidas, sin importar el tamaño del proyecto."
+        },
+
+        /* ── Slide 6: Resultado ── */
+        s6: {
+          badge:   "El resultado",
+          heading: "Transformamos ideas confusas en<br><span class='hl'>soluciones funcionales.</span>",
+          body:    "Cada proyecto que entregamos genera impacto real y medible en el negocio de nuestros clientes."
+        }
+
+      }, /* fin slider */
 
       /*
-      ── AGREGAR BLOQUE DE CONTENIDO ─────────────────
+      ── AGREGAR BLOQUE DE VALORES ────────────────────
       nombreBloque: {
         title: "Título del bloque",
         text:  "Texto descriptivo."
       },
       ─────────────────────────────────────────────── */
 
+      /* ── Bloques de valores ──────────────────────── */
       what: {
         title: "¿Qué es Thinkora?",
         text:  "Thinkora es una plataforma de soluciones digitales enfocada en transformar ideas en herramientas funcionales que generen impacto real."
@@ -529,27 +593,42 @@ const translations = {
       faq: {
         title: "Preguntas Frecuentes"
       }
+
     }, /* fin about */
 
 
     /* ─────────────────────────────────────────────────
-       PÁGINA PREGUNTAS FRECUENTES
-       Archivo: preguntas.html
-       Uso HTML: data-i18n="faq.title"
+       PREGUNTAS FRECUENTES
+       Archivo: nosotros.html + preguntas.html
+       Uso HTML: data-i18n="faq.q1" / data-i18n="faq.a1"
 
-       ── AGREGAR PREGUNTA NUEVA ───────────────────────
-       Incrementa el número (q4, a4, q5, a5...)
-       y agrégala también en el idioma "en"
+       ── AGREGAR PREGUNTA ─────────────────────────────
+       1. Incrementa el número: q7, a7, q8, a8...
+       2. Agrégala en AMBOS idiomas (es y en)
+       3. En nosotros.html copia el bloque .faq-item
+          y actualiza los data-i18n
     ───────────────────────────────────────────────── */
     faq: {
       title:    "Preguntas Frecuentes",
       subtitle: "Resuelve dudas sobre Thinkora y nuestras soluciones.",
+
       q1: "¿Qué es Thinkora?",
-      a1: "Thinkora es una plataforma de soluciones digitales enfocada en automatización y desarrollo web.",
+      a1: "Thinkora es una plataforma de soluciones digitales enfocada en automatización y desarrollo web a medida.",
+
       q2: "¿Qué servicios ofrecen?",
-      a2: "Desarrollo web, sistemas administrativos, automatización con Google Apps Script y soluciones personalizadas.",
+      a2: "Desarrollo web, sistemas administrativos, automatización con Google Apps Script, aplicaciones a medida y soluciones personalizadas.",
+
       q3: "¿Puedo solicitar una solución personalizada?",
-      a3: "Sí. Thinkora desarrolla soluciones adaptadas a cada necesidad."
+      a3: "Sí. Thinkora desarrolla soluciones adaptadas a cada necesidad. Contáctanos y hacemos un diagnóstico sin costo.",
+
+      q4: "¿Cuánto tiempo tarda un proyecto?",
+      a4: "Depende del alcance. Un sitio web puede entregarse en 1–2 semanas; un sistema más complejo puede tomar de 4 a 8 semanas. Siempre definimos tiempos claros al inicio.",
+
+      q5: "¿Necesito conocimientos técnicos para trabajar con Thinkora?",
+      a5: "No. Nos encargamos de todo el proceso técnico. Solo necesitas saber qué problema quieres resolver.",
+
+      q6: "¿Ofrecen soporte después de entregar el proyecto?",
+      a6: "Sí. Ofrecemos planes de soporte y mantenimiento para que tus soluciones siempre funcionen correctamente."
     }
 
     /*
@@ -559,12 +638,10 @@ const translations = {
     nombrePagina: {
       title:    "Título principal",
       subtitle: "Subtítulo descriptivo.",
-
       seccion1: {
         title: "...",
         text:  "..."
       },
-
       lista: {
         title: "...",
         items: ["Ítem 1", "Ítem 2"]
@@ -649,7 +726,7 @@ const translations = {
     ───────────────────────────────────────────────── */
     services: {
       sectionLabel: "Our Services",
-      cardHint: "Tap to learn more", 
+      cardHint:     "Tap to learn more",
       web: {
         title: "Web Development",
         desc:  "Modern, responsive websites optimized for any device."
@@ -690,7 +767,8 @@ const translations = {
        CARDS FLIP POR SECTOR
     ───────────────────────────────────────────────── */
     solutions: {
-      sectionLabel: "Solutions by Sector", 
+      sectionLabel: "Solutions by Sector",
+
       /* ── SECTOR: Business & Administration ───────── */
       admin: {
         title: "Business & Administration",
@@ -894,8 +972,59 @@ const translations = {
        PÁGINA NOSOTROS
     ───────────────────────────────────────────────── */
     about: {
-      title:    "About Us",
-      subtitle: "Learn about our vision, purpose and approach.",
+      title:       "About Us",
+      subtitle:    "Learn about our vision, purpose and approach.",
+      valuesLabel: "Our Values",
+
+      /* ── SLIDER HERO (6 slides) ──────────────────── */
+      slider: {
+
+        /* ── Slide 1: Cover ── */
+        s1: {
+          logo:   "Thinkora",
+          slogan: "Where what you think becomes a solution...",
+          main:   "We build digital solutions that work."
+        },
+
+        /* ── Slide 2: Who we are ── */
+        s2: {
+          badge:   "Who we are",
+          heading: "We don't just build websites...<br><span class='hl'>we solve real problems.</span>",
+          body:    "We are a specialized team that turns ideas and needs into functional, modern, tailor-made digital tools."
+        },
+
+        /* ── Slide 3: Differentiator ── */
+        s3: {
+          badge:   "Our differentiator",
+          heading: "<span class='hl'>We think before we build.</span>",
+          body:    "Every project starts with a Needs Diagnosis. This prevents errors, saves time and ensures that what we build actually solves your problem."
+        },
+
+        /* ── Slide 4: Services ── */
+        s4: {
+          badge:   "Our services",
+          heading: "We help you with:",
+          item1:   "Professional websites",
+          item2:   "Custom applications and systems",
+          item3:   "Automation and API integration",
+          item4:   "AI and Data Science solutions"
+        },
+
+        /* ── Slide 5: Target audience ── */
+        s5: {
+          badge:   "Who we work with",
+          heading: "Businesses, companies, institutions<br>and <span class='hl'>personal projects.</span>",
+          body:    "We work with those who need clear, scalable and well-built solutions, regardless of project size."
+        },
+
+        /* ── Slide 6: Result ── */
+        s6: {
+          badge:   "The result",
+          heading: "We transform confused ideas into<br><span class='hl'>functional solutions.</span>",
+          body:    "Every project we deliver generates real, measurable impact on our clients' business."
+        }
+
+      }, /* fin slider */
 
       what: {
         title: "What is Thinkora?",
@@ -924,6 +1053,7 @@ const translations = {
       faq: {
         title: "Frequently Asked Questions"
       }
+
     }, /* fin about */
 
 
@@ -933,12 +1063,24 @@ const translations = {
     faq: {
       title:    "Frequently Asked Questions",
       subtitle: "Find answers about Thinkora and our digital solutions.",
+
       q1: "What is Thinkora?",
-      a1: "Thinkora is a digital solutions platform focused on automation and web development.",
+      a1: "Thinkora is a digital solutions platform focused on custom automation and web development.",
+
       q2: "What services do you offer?",
-      a2: "Web development, administrative systems, Google Apps Script automation, and custom solutions.",
+      a2: "Web development, administrative systems, Google Apps Script automation, custom applications, and tailored solutions.",
+
       q3: "Can I request a custom solution?",
-      a3: "Yes. Thinkora builds tailored solutions for each project."
+      a3: "Yes. Thinkora builds tailored solutions for each project. Contact us and we will do a free diagnosis.",
+
+      q4: "How long does a project take?",
+      a4: "It depends on the scope. A website can be delivered in 1–2 weeks; a more complex system may take 4 to 8 weeks. We always define clear timelines upfront.",
+
+      q5: "Do I need technical knowledge to work with Thinkora?",
+      a5: "No. We handle the entire technical process. You just need to know what problem you want to solve.",
+
+      q6: "Do you offer support after the project is delivered?",
+      a6: "Yes. We offer support and maintenance plans to keep your solutions running smoothly."
     }
 
     /*
@@ -986,7 +1128,7 @@ function applyTranslations(lang) {
     if (!text) return;
 
     /* Si es un input/textarea usa placeholder, si no innerHTML */
-    if (el.placeholder !== undefined && el.tagName !== "DIV") {
+    if (el.placeholder !== undefined && el.tagName !== "DIV" && el.tagName !== "SPAN") {
       el.placeholder = text;
     } else {
       el.innerHTML = text;
