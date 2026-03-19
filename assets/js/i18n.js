@@ -1,133 +1,267 @@
 /* =====================================================
-   SISTEMA DE TRADUCCIONES THINKORA
-   -----------------------------------------------------
-   REGLAS:
-   - TODO texto visible vive aquí
-   - TODOS los idiomas comparten la MISMA estructura
-   - El HTML solo usa data-i18n / data-items
-   - NO se toca diseño ni estructura visual
-===================================================== */
+   SISTEMA DE TRADUCCIONES — THINKORA
+   =====================================================
+
+   CÓMO USAR ESTE ARCHIVO:
+   ─────────────────────────────────────────────────────
+   1. AGREGAR TEXTO NUEVO:
+      - Encuentra la sección del idioma (es / en)
+      - Encuentra la página o módulo correspondiente
+      - Agrega tu clave siguiendo el mismo patrón
+      - Agrégala en AMBOS idiomas (es y en)
+
+   2. USAR EN HTML:
+      - Texto simple:   data-i18n="seccion.clave"
+      - Lista/items:    data-items="seccion.clave.items"
+      - Placeholder:    data-i18n="seccion.clave"  (en inputs)
+
+   3. ESTRUCTURA DE CLAVES:
+      - Máximo 3 niveles: pagina.seccion.clave
+      - Usa camelCase: toolsPage, cardTitle
+      - Nombres descriptivos en inglés
+
+   4. AGREGAR UNA PÁGINA NUEVA:
+      - Crea un bloque nuevo dentro de "es" y "en"
+      - Sigue el patrón: nombrePagina: { title, subtitle, ...}
+      - Documenta la página con un comentario de sección
+
+   5. HTML EN TRADUCCIONES:
+      - Solo se permite HTML simple: <br> <span class='highlight'>
+      - NUNCA uses scripts ni eventos dentro de las traducciones
+
+   PÁGINAS ACTUALES:
+   ─────────────────────────────────────────────────────
+   • navbar          → Menú de navegación (todas las páginas)
+   • footer          → Pie de página (todas las páginas)
+   • hero            → Slider de mensajes (index)
+   • page            → Títulos hero de páginas internas
+   • services        → Cards de servicios (servicios.html)
+   • solutions       → Cards flip por sector (servicios.html)
+   • toolsPage       → Panel de herramientas (herramientas.html)
+   • about           → Sección nosotros (nosotros.html)
+   • faq             → Preguntas frecuentes (preguntas.html)
+   • dev             → Página en construcción (dev.html)
+   • alerts          → Mensajes de validación (global)
+   • contact         → [PENDIENTE] Página de contacto
+
+   ===================================================== */
 
 const translations = {
 
-
-alerts: {
-  phone: {
-    es: "El teléfono debe tener 10 dígitos.",
-    en: "Phone number must have 10 digits."
+  /* =====================================================
+     ALERTAS Y VALIDACIONES GLOBALES
+     ─────────────────────────────────────────────────────
+     Uso: usadas en formularios de cualquier página
+     HTML: NO — solo texto plano
+  ===================================================== */
+  alerts: {
+    phone: {
+      es: "El teléfono debe tener 10 dígitos.",
+      en: "Phone number must have 10 digits."
+    },
+    invalidEmail: {
+      es: "Correo inválido.",
+      en: "Invalid email."
+    },
+    passwordLength: {
+      es: "La contraseña debe tener al menos 8 caracteres.",
+      en: "Password must be at least 8 characters."
+    },
+    passwordMismatch: {
+      es: "Las contraseñas no coinciden.",
+      en: "Passwords do not match."
+    },
+    success: {
+      es: "Solicitud enviada correctamente.",
+      en: "Request sent successfully."
+    }
+    /*
+    ── CÓMO AGREGAR UNA ALERTA NUEVA ──────────────────
+    nombreAlerta: {
+      es: "Mensaje en español.",
+      en: "Message in English."
+    },
+    ────────────────────────────────────────────────── */
   },
-  invalidEmail: {
-    es: "Correo inválido.",
-    en: "Invalid email."
-  },
-  passwordLength: {
-    es: "La contraseña debe tener al menos 8 caracteres.",
-    en: "Password must be at least 8 characters."
-  },
-  passwordMismatch: {
-    es: "Las contraseñas no coinciden.",
-    en: "Passwords do not match."
-  },
-  success: {
-    es: "Solicitud enviada correctamente.",
-    en: "Request sent successfully."
-  }
-},
 
-
-
-      
 
   /* =====================================================
      ESPAÑOL
   ===================================================== */
   es: {
 
-    /* ---------- NAVBAR ---------- */
+    /* ─────────────────────────────────────────────────
+       NAVBAR
+       Archivo: navbar.js (inyectado en todas las páginas)
+       Uso HTML: data-i18n="nav.services"
+    ───────────────────────────────────────────────── */
     nav: {
       services: "Servicios",
-      faqs: "Preguntas",
-      about: "Nosotros",
-      contact: "Contacto",
-      tools: "Herramientas"
+      faqs:     "Preguntas",
+      about:    "Nosotros",
+      contact:  "Contacto",
+      tools:    "Herramientas"
+      /*
+      ── AGREGAR ENLACE AL NAVBAR ────────────────────
+      nuevoEnlace: "Nombre visible",
+      ─────────────────────────────────────────────── */
     },
 
-    /* ---------- FOOTER ---------- */
+
+    /* ─────────────────────────────────────────────────
+       FOOTER
+       Archivo: footer.js (inyectado en todas las páginas)
+       Uso HTML: data-i18n="footer.slogan"
+    ───────────────────────────────────────────────── */
     footer: {
       slogan: "Donde lo que piensas, se vuelve solución...",
-      mail: "Correo",
-      phone: "Whatsapp",
-      copy: "Thinkora © 2026",
+      mail:   "Correo",
+      phone:  "Whatsapp",
+      copy:   "Thinkora © 2026",
       author: "Desarrollado y gestionado por Salvador Robles"
     },
 
-    /* ---------- PÁGINA EN DESARROLLO ---------- */
+
+    /* ─────────────────────────────────────────────────
+       PÁGINA EN DESARROLLO
+       Archivo: dev.html
+       Uso HTML: data-i18n="dev.title"
+    ───────────────────────────────────────────────── */
     dev: {
-      title: "En desarrollo",
-      subtitle: "Esta sección está actualmente en construcción",
+      title:     "En desarrollo",
+      subtitle:  "Esta sección está actualmente en construcción",
       cardTitle: "Estamos creando algo increíble 🚀",
-      cardText:
-        "Esta página forma parte del ecosistema Thinkora. Estamos construyendo una experiencia digital moderna y poderosa.",
-      status: "EN DESARROLLO",
+      cardText:  "Esta página forma parte del ecosistema Thinkora. Estamos construyendo una experiencia digital moderna y poderosa.",
+      status:    "EN DESARROLLO",
       nextTitle: "¿Qué sigue?",
-      nextText:
-        "Nuevos servicios, proyectos y soluciones digitales están en camino."
+      nextText:  "Nuevos servicios, proyectos y soluciones digitales están en camino."
     },
 
-    /* ---------- HERO (INDEX) ---------- */
+
+    /* ─────────────────────────────────────────────────
+       HERO — INDEX
+       Archivo: index.html
+       Uso JS: translations.es.hero.messages[0]
+       Nota: soporta HTML dentro del string (<span>)
+    ───────────────────────────────────────────────── */
     hero: {
       messages: [
         'Transformamos tus <span class="highlight">ideas</span> en soluciones digitales modernas, eficientes y a la medida de tu negocio.',
         'Explora nuestros servicios, paquetes y herramientas para tu negocio.',
         'Donde lo que piensas, se vuelve solución...'
       ]
+      /*
+      ── AGREGAR MENSAJE AL SLIDER ───────────────────
+      Agrega un string más al array messages[]:
+      'Tu <span class="highlight">nuevo mensaje</span> aquí.'
+      ─────────────────────────────────────────────── */
     },
 
-    /* ---------- PÁGINA SERVICIOS ---------- */
+
+    /* ─────────────────────────────────────────────────
+       HERO DE PÁGINAS INTERNAS
+       Uso HTML: data-i18n="page.title"
+       Nota: subtitle1 soporta <br> y <span class='highlight'>
+    ───────────────────────────────────────────────── */
     page: {
-      title: "Servicios y Soluciones",
+      /*
+      ── CÓMO AGREGAR HERO A UNA PÁGINA NUEVA ────────
+      Agrega las claves title y subtitle1 dentro de
+      "page" y úsalas en el HTML con data-i18n="page.title"
+      ─────────────────────────────────────────────── */
+      title:    "Servicios y Soluciones",
       subtitle1:
         "Encuentra soluciones digitales adaptadas a tu negocio.<br>" +
         "Transforma tus <span class='highlight'>ideas</span> y <span class='highlight'>necesidades</span> en herramientas inteligentes que impulsan tu productividad y crecimiento."
     },
 
-    /* ---------- TARJETAS DE SERVICIOS ---------- */
+
+    /* ─────────────────────────────────────────────────
+       PÁGINA SERVICIOS — CARDS DE SERVICIOS
+       Archivo: servicios.html → sección #services
+       Uso HTML:
+         data-i18n="services.web.title"
+         data-i18n="services.web.desc"
+    ───────────────────────────────────────────────── */
     services: {
+      /*
+      ── AGREGAR CARD DE SERVICIO ─────────────────────
+      nombreServicio: {
+        title: "Nombre del servicio",
+        desc:  "Descripción corta (1–2 líneas)."
+      },
+      ─────────────────────────────────────────────── */
       web: {
         title: "Desarrollo Web",
-        desc: "Páginas web modernas, responsivas y optimizadas para cualquier dispositivo."
+        desc:  "Páginas web modernas, responsivas y optimizadas para cualquier dispositivo."
       },
       automation: {
         title: "Automatización",
-        desc: "Sistemas que ahorran tiempo y recursos mediante la integración de procesos digitales."
+        desc:  "Sistemas que ahorran tiempo y recursos mediante la integración de procesos digitales."
       },
       apps: {
         title: "Aplicaciones Web",
-        desc: "Aplicaciones personalizadas para satisfacer necesidades específicas de tu negocio."
+        desc:  "Aplicaciones personalizadas para satisfacer necesidades específicas de tu negocio."
       },
       consulting: {
         title: "Consultoría",
-        desc: "Asesoría tecnológica para optimizar recursos y mejorar procesos en tu empresa."
+        desc:  "Asesoría tecnológica para optimizar recursos y mejorar procesos en tu empresa."
       },
       uiux: {
         title: "UI / UX Design",
-        desc: "Diseños atractivos y funcionales que garantizan la mejor experiencia al usuario."
+        desc:  "Diseños atractivos y funcionales que garantizan la mejor experiencia al usuario."
       },
       support: {
         title: "Soporte Técnico",
-        desc: "Asistencia continua y soluciones rápidas para mantener tu negocio en marcha."
+        desc:  "Asistencia continua y soluciones rápidas para mantener tu negocio en marcha."
       }
     },
 
-    /* ---------- INTRO SOLUCIONES ---------- */
+
+    /* ─────────────────────────────────────────────────
+       PÁGINA SERVICIOS — INTRO SOLUCIONES
+       Archivo: servicios.html → antes de #solutions
+       Uso HTML: data-i18n="solutionsIntro"
+       Nota: soporta <br> y <span class='highlight'>
+    ───────────────────────────────────────────────── */
     solutionsIntro:
       "¿Te suena alguno de estos problemas?<br>" +
       "No importa si no ves exactamente lo que necesitas.<br>" +
       "<span class='highlight'>Podemos construirlo contigo.</span>",
 
-    /* ---------- SOLUCIONES ---------- */
+
+    /* ─────────────────────────────────────────────────
+       PÁGINA SERVICIOS — CARDS FLIP POR SECTOR
+       Archivo: servicios.html → sección #solutions
+       Uso HTML (frente):  data-i18n="solutions.admin.title"
+                           data-i18n="solutions.admin.finance.title"
+       Uso HTML (reverso): data-items="solutions.admin.finance.items"
+       Nota: items[] se renderizan como <li> automáticamente
+    ───────────────────────────────────────────────── */
     solutions: {
 
+      /*
+      ── AGREGAR SECTOR NUEVO ─────────────────────────
+      1. Agrega el bloque aquí dentro de solutions: {}
+      2. Replica el mismo bloque en el idioma "en"
+      3. En el HTML agrega:
+           <h2 data-i18n="solutions.nuevoSector.title"></h2>
+           y las cards con data-i18n / data-items
+
+      nuevoSector: {
+        title: "Nombre del Sector",
+        card1: {
+          title: "Título de la card",
+          items: [
+            "Ítem 1",
+            "Ítem 2",
+            "Ítem 3"
+          ]
+        }
+      },
+      ─────────────────────────────────────────────── */
+
+      /* ── SECTOR: Administración & Negocios ───────── */
       admin: {
         title: "Administración & Negocios",
         finance: {
@@ -156,6 +290,7 @@ alerts: {
         }
       },
 
+      /* ── SECTOR: Restaurantes & Comercios ────────── */
       restaurants: {
         title: "Restaurantes & Comercios",
         orders: {
@@ -184,6 +319,7 @@ alerts: {
         }
       },
 
+      /* ── SECTOR: Educación & Escuelas ────────────── */
       education: {
         title: "Educación & Escuelas",
         management: {
@@ -212,6 +348,7 @@ alerts: {
         }
       },
 
+      /* ── SECTOR: Cursos & Infoproductos ──────────── */
       courses: {
         title: "Cursos & Infoproductos",
         access: {
@@ -239,134 +376,203 @@ alerts: {
           ]
         }
       }
-    },
 
-     /* ---------- HERRAMIENTAS ---------- */
-     toolsPage: {
+    }, /* fin solutions */
+
+
+    /* ─────────────────────────────────────────────────
+       PÁGINA HERRAMIENTAS
+       Archivo: herramientas.html
+       Uso HTML: data-i18n="toolsPage.title"
+    ───────────────────────────────────────────────── */
+    toolsPage: {
       title: "Herramientas Internas",
       intro:
-       "Accede a las herramientas internas de Thinkora.<br>" +
-       "Algunas requieren permisos según tu equipo y estado.",
-      
+        "Accede a las herramientas internas de Thinkora.<br>" +
+        "Algunas requieren permisos según tu equipo y estado.",
+
+      /* ── Nombres de las cards de herramientas ────── */
       cards: {
-       quote: "Cotizador",
-       viewQuotes: "Ver Cotizaciones",
-       techGen: "Generar Propuesta Técnica",
-       viewTech: "Ver Propuestas Técnicas",
-       contracts: "Contratos",
-       agents: "Presentación Agentes",
-       packages: "Paquetes",
-       portfolio: "Portafolio",
-       createUser: "Crear Usuario"
-      },
-      
-      login: {
-       title: "Acceso requerido",
-       id: "ID",
-       password: "Contraseña",
-       confirmPassword: "Confirmar contraseña",
-       team: "Equipo",
-       submit: "Ingresar",
-       register: "Registrar usuario",
-       error: "No tienes permisos para acceder.",
-       disabled: "Enviando solicitud..."
-      },
-      
-      register: {
-       title: "Unirse al equipo Thinkora",
-       name: "Nombre",
-       lastName1: "Apellido Paterno",
-       lastName2: "Apellido Materno",
-       phone: "Teléfono",
-       email: "Correo",
-       password: "Contraseña",
-       confirmPassword: "Confirmar contraseña",
-       team: "Equipo",
-       submit: "Enviar solicitud",
-       success: "Solicitud enviada correctamente. Revisa tu correo."
-      },
-      
-      email: {
-       subject: "Solicitud recibida - Thinkora",
-       body:
-         "Hola {{name}},\n\n" +
-         "Hemos recibido tu solicitud para unirte al equipo Thinkora.\n\n" +
-         "Equipo: {{team}}\n" +
-         "Correo: {{email}}\n\n" +
-         "Tu solicitud está en revisión.\n\n" +
-         "Thinkora"
+        /*
+        ── AGREGAR HERRAMIENTA ──────────────────────
+        nombreHerramienta: "Nombre visible en la card",
+        ────────────────────────────────────────────*/
+        quote:       "Cotizador",
+        viewQuotes:  "Ver Cotizaciones",
+        techGen:     "Generar Propuesta Técnica",
+        viewTech:    "Ver Propuestas Técnicas",
+        contracts:   "Contratos",
+        agents:      "Presentación Agentes",
+        packages:    "Paquetes",
+        portfolio:   "Portafolio",
+        createUser:  "Crear Usuario"
       },
 
-        descriptions: {
-        quote: "Genera cotizaciones personalizadas.",
+      /* ── Descripciones bajo cada card ────────────── */
+      descriptions: {
+        /*
+        ── AGREGAR DESCRIPCIÓN ──────────────────────
+        nombreHerramienta: "Descripción corta.",
+        ────────────────────────────────────────────*/
+        quote:      "Genera cotizaciones personalizadas.",
         viewQuotes: "Consulta historial de cotizaciones.",
-        techGen: "Crea propuestas técnicas profesionales.",
-        viewTech: "Consulta propuestas guardadas.",
-        contracts: "Gestión de contratos activos.",
-        agents: "Material para agentes comerciales.",
-        packages: "Paquetes para negocios.",
-        projects: "Acceso a proyectos externos.",
+        techGen:    "Crea propuestas técnicas profesionales.",
+        viewTech:   "Consulta propuestas guardadas.",
+        contracts:  "Gestión de contratos activos.",
+        agents:     "Material para agentes comerciales.",
+        packages:   "Paquetes para negocios.",
+        projects:   "Acceso a proyectos externos.",
         createUser: "Únete al equipo."
       },
-      
-      registerModal: {
-        title: "Solicitud de Nuevo Usuario",
-        cancel: "Cancelar",
-        selectTeam: "Selecciona equipo",
-        close: "Cerrar" 
-      }
+
+      /* ── Formulario de login ─────────────────────── */
+      login: {
+        title:           "Acceso requerido",
+        id:              "ID",
+        password:        "Contraseña",
+        confirmPassword: "Confirmar contraseña",
+        team:            "Equipo",
+        submit:          "Ingresar",
+        register:        "Registrar usuario",
+        error:           "No tienes permisos para acceder.",
+        disabled:        "Enviando solicitud..."
       },
 
-        "faq": {
-           "title": "Preguntas Frecuentes",
-           "subtitle": "Resuelve dudas sobre Thinkora y nuestras soluciones.",
-           "q1": "¿Qué es Thinkora?",
-           "a1": "Thinkora es una plataforma de soluciones digitales enfocada en automatización y desarrollo web.",
-           "q2": "¿Qué servicios ofrecen?",
-           "a2": "Desarrollo web, sistemas administrativos, automatización con Google Apps Script y soluciones personalizadas.",
-           "q3": "¿Puedo solicitar una solución personalizada?",
-           "a3": "Sí. Thinkora desarrolla soluciones adaptadas a cada necesidad."
-         },
-     about: {
-        title: "Nosotros",
-        subtitle: "Conoce nuestra visión, propósito y enfoque.",
-      
-        what: {
-          title: "¿Qué es Thinkora?",
-          text: "Thinkora es una plataforma de soluciones digitales enfocada en transformar ideas en herramientas funcionales que generen impacto real."
-        },
-      
-        purpose: {
-          title: "Nuestro Propósito",
-          text: "Ayudar a empresas y emprendedores a optimizar procesos, automatizar tareas y crecer con tecnología estratégica."
-        },
-      
-        vision: {
-          title: "Nuestra Visión",
-          text: "Construir un ecosistema digital que acompañe el crecimiento de nuestros clientes y evolucione con ellos."
-        },
-      
-        values: {
-          title: "Nuestros Valores",
-          text: "Claridad, funcionalidad, innovación práctica, compromiso y crecimiento compartido."
-        },
-      
-        accompaniment: {
-          title: "Acompañamiento",
-          text: "No entregamos solo proyectos. Acompañamos a nuestros clientes en cada etapa."
-        },
-      
-        human: {
-          title: "Capital Humano",
-          text: "Thinkora también impulsa el crecimiento profesional y la incorporación de talento al equipo."
-        },
-      
-        faq: {
-          title: "Preguntas Frecuentes"
-        }
-      }
-  },
+      /* ── Formulario de registro de usuario ───────── */
+      register: {
+        title:           "Unirse al equipo Thinkora",
+        name:            "Nombre",
+        lastName1:       "Apellido Paterno",
+        lastName2:       "Apellido Materno",
+        phone:           "Teléfono",
+        email:           "Correo",
+        password:        "Contraseña",
+        confirmPassword: "Confirmar contraseña",
+        team:            "Equipo",
+        submit:          "Enviar solicitud",
+        success:         "Solicitud enviada correctamente. Revisa tu correo."
+      },
 
+      /* ── Email de confirmación (plantilla) ───────── */
+      email: {
+        /*
+        ── VARIABLES DISPONIBLES EN LA PLANTILLA ───
+        {{name}}  → nombre del usuario
+        {{team}}  → equipo seleccionado
+        {{email}} → correo del usuario
+        ────────────────────────────────────────────*/
+        subject: "Solicitud recibida - Thinkora",
+        body:
+          "Hola {{name}},\n\n" +
+          "Hemos recibido tu solicitud para unirte al equipo Thinkora.\n\n" +
+          "Equipo: {{team}}\n" +
+          "Correo: {{email}}\n\n" +
+          "Tu solicitud está en revisión.\n\n" +
+          "Thinkora"
+      },
+
+      /* ── Modal de registro ───────────────────────── */
+      registerModal: {
+        title:      "Solicitud de Nuevo Usuario",
+        cancel:     "Cancelar",
+        selectTeam: "Selecciona equipo",
+        close:      "Cerrar"
+      }
+
+    }, /* fin toolsPage */
+
+
+    /* ─────────────────────────────────────────────────
+       PÁGINA NOSOTROS
+       Archivo: nosotros.html
+       Uso HTML: data-i18n="about.title"
+    ───────────────────────────────────────────────── */
+    about: {
+      title:    "Nosotros",
+      subtitle: "Conoce nuestra visión, propósito y enfoque.",
+
+      /*
+      ── AGREGAR BLOQUE DE CONTENIDO ─────────────────
+      nombreBloque: {
+        title: "Título del bloque",
+        text:  "Texto descriptivo."
+      },
+      ─────────────────────────────────────────────── */
+
+      what: {
+        title: "¿Qué es Thinkora?",
+        text:  "Thinkora es una plataforma de soluciones digitales enfocada en transformar ideas en herramientas funcionales que generen impacto real."
+      },
+      purpose: {
+        title: "Nuestro Propósito",
+        text:  "Ayudar a empresas y emprendedores a optimizar procesos, automatizar tareas y crecer con tecnología estratégica."
+      },
+      vision: {
+        title: "Nuestra Visión",
+        text:  "Construir un ecosistema digital que acompañe el crecimiento de nuestros clientes y evolucione con ellos."
+      },
+      values: {
+        title: "Nuestros Valores",
+        text:  "Claridad, funcionalidad, innovación práctica, compromiso y crecimiento compartido."
+      },
+      accompaniment: {
+        title: "Acompañamiento",
+        text:  "No entregamos solo proyectos. Acompañamos a nuestros clientes en cada etapa."
+      },
+      human: {
+        title: "Capital Humano",
+        text:  "Thinkora también impulsa el crecimiento profesional y la incorporación de talento al equipo."
+      },
+      faq: {
+        title: "Preguntas Frecuentes"
+      }
+    }, /* fin about */
+
+
+    /* ─────────────────────────────────────────────────
+       PÁGINA PREGUNTAS FRECUENTES
+       Archivo: preguntas.html
+       Uso HTML: data-i18n="faq.title"
+
+       ── AGREGAR PREGUNTA NUEVA ───────────────────────
+       Incrementa el número (q4, a4, q5, a5...)
+       y agrégala también en el idioma "en"
+    ───────────────────────────────────────────────── */
+    faq: {
+      title:    "Preguntas Frecuentes",
+      subtitle: "Resuelve dudas sobre Thinkora y nuestras soluciones.",
+      q1: "¿Qué es Thinkora?",
+      a1: "Thinkora es una plataforma de soluciones digitales enfocada en automatización y desarrollo web.",
+      q2: "¿Qué servicios ofrecen?",
+      a2: "Desarrollo web, sistemas administrativos, automatización con Google Apps Script y soluciones personalizadas.",
+      q3: "¿Puedo solicitar una solución personalizada?",
+      a3: "Sí. Thinkora desarrolla soluciones adaptadas a cada necesidad."
+    }
+
+    /*
+    ── AGREGAR PÁGINA NUEVA ─────────────────────────────
+    Al final de este bloque "es: {}" agrega:
+
+    nombrePagina: {
+      title:    "Título principal",
+      subtitle: "Subtítulo descriptivo.",
+
+      seccion1: {
+        title: "...",
+        text:  "..."
+      },
+
+      lista: {
+        title: "...",
+        items: ["Ítem 1", "Ítem 2"]
+      }
+    },
+
+    Luego replica exactamente la misma estructura
+    en el bloque "en: {}" con el texto en inglés.
+    ─────────────────────────────────────────────────── */
+
+  }, /* fin es */
 
 
   /* =====================================================
@@ -374,34 +580,47 @@ alerts: {
   ===================================================== */
   en: {
 
+    /* ─────────────────────────────────────────────────
+       NAVBAR
+    ───────────────────────────────────────────────── */
     nav: {
       services: "Services",
-      faqs: "FAQs",
-      about: "About Us",
-      contact: "Contact",
-      tools: "Tools"
+      faqs:     "FAQs",
+      about:    "About Us",
+      contact:  "Contact",
+      tools:    "Tools"
     },
 
+
+    /* ─────────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────────── */
     footer: {
       slogan: "Where what you think becomes a solution...",
-      mail: "Email",
-      phone: "Whatsapp",
-      copy: "Thinkora © 2026",
+      mail:   "Email",
+      phone:  "Whatsapp",
+      copy:   "Thinkora © 2026",
       author: "Developed and managed by Salvador Robles"
     },
 
+
+    /* ─────────────────────────────────────────────────
+       PÁGINA EN DESARROLLO
+    ───────────────────────────────────────────────── */
     dev: {
-      title: "Under development",
-      subtitle: "This section is currently under construction",
+      title:     "Under development",
+      subtitle:  "This section is currently under construction",
       cardTitle: "We are building something great 🚀",
-      cardText:
-        "This page is part of the Thinkora ecosystem. We are crafting a modern and powerful digital experience.",
-      status: "IN DEVELOPMENT",
-      nextTitle: "What’s next?",
-      nextText:
-        "New services, projects and digital solutions are coming soon."
+      cardText:  "This page is part of the Thinkora ecosystem. We are crafting a modern and powerful digital experience.",
+      status:    "IN DEVELOPMENT",
+      nextTitle: "What's next?",
+      nextText:  "New services, projects and digital solutions are coming soon."
     },
 
+
+    /* ─────────────────────────────────────────────────
+       HERO — INDEX
+    ───────────────────────────────────────────────── */
     hero: {
       messages: [
         'We transform your <span class="highlight">ideas</span> into modern, efficient digital solutions tailored to your business.',
@@ -410,226 +629,379 @@ alerts: {
       ]
     },
 
+
+    /* ─────────────────────────────────────────────────
+       HERO DE PÁGINAS INTERNAS
+    ───────────────────────────────────────────────── */
     page: {
-      title: "Services & Solutions",
+      title:    "Services & Solutions",
       subtitle1:
         "Find digital solutions tailored to your business.<br>" +
         "Transform your <span class='highlight'>ideas</span> and <span class='highlight'>needs</span> into smart tools that boost productivity and growth."
     },
 
+
+    /* ─────────────────────────────────────────────────
+       CARDS DE SERVICIOS
+    ───────────────────────────────────────────────── */
     services: {
-      web: { title: "Web Development", desc: "Modern, responsive websites optimized for any device." },
-      automation: { title: "Automation", desc: "Systems that save time and resources by integrating digital processes." },
-      apps: { title: "Web Applications", desc: "Custom applications designed for your specific business needs." },
-      consulting: { title: "Consulting", desc: "Technology consulting to optimize resources and improve business processes." },
-      uiux: { title: "UI / UX Design", desc: "Attractive and functional designs that ensure the best user experience." },
-      support: { title: "Technical Support", desc: "Ongoing assistance and fast solutions to keep your business running." }
+      web: {
+        title: "Web Development",
+        desc:  "Modern, responsive websites optimized for any device."
+      },
+      automation: {
+        title: "Automation",
+        desc:  "Systems that save time and resources by integrating digital processes."
+      },
+      apps: {
+        title: "Web Applications",
+        desc:  "Custom applications designed for your specific business needs."
+      },
+      consulting: {
+        title: "Consulting",
+        desc:  "Technology consulting to optimize resources and improve business processes."
+      },
+      uiux: {
+        title: "UI / UX Design",
+        desc:  "Attractive and functional designs that ensure the best user experience."
+      },
+      support: {
+        title: "Technical Support",
+        desc:  "Ongoing assistance and fast solutions to keep your business running."
+      }
     },
 
+
+    /* ─────────────────────────────────────────────────
+       INTRO SOLUCIONES
+    ───────────────────────────────────────────────── */
     solutionsIntro:
       "Does any of this sound familiar?<br>" +
       "Even if you don't see exactly what you need.<br>" +
       "<span class='highlight'>We can build it with you.</span>",
 
+
+    /* ─────────────────────────────────────────────────
+       CARDS FLIP POR SECTOR
+    ───────────────────────────────────────────────── */
     solutions: {
+
+      /* ── SECTOR: Business & Administration ───────── */
       admin: {
         title: "Business & Administration",
-        finance: { title: "Financial Control", items: ["Sales tracking in Sheets", "Expense alerts", "Revenue and profit dashboards"] },
-        quotes: { title: "Reports & Quotations", items: ["Automatic PDF quotations", "Email reports", "Transaction history"] },
-        operations: { title: "Operational Management", items: ["Daily cash system", "Inventory alerts", "Customer management (CRM)"] }
+        finance: {
+          title: "Financial Control",
+          items: [
+            "Sales tracking in Sheets",
+            "Expense alerts",
+            "Revenue and profit dashboards"
+          ]
+        },
+        quotes: {
+          title: "Reports & Quotations",
+          items: [
+            "Automatic PDF quotations",
+            "Email reports",
+            "Transaction history"
+          ]
+        },
+        operations: {
+          title: "Operational Management",
+          items: [
+            "Daily cash system",
+            "Inventory alerts",
+            "Customer management (CRM)"
+          ]
+        }
       },
+
+      /* ── SECTOR: Restaurants & Retail ────────────── */
       restaurants: {
         title: "Restaurants & Retail",
-        orders: { title: "Orders & Consumption", items: ["Digital ordering system", "Menu editable from Sheets", "Automatic table billing"] },
-        floor: { title: "Floor Control", items: ["Table codes", "Preparation times", "Refill control"] },
-        analysis: { title: "Analysis & Improvement", items: ["Best-selling dishes", "Tips tracking", "Post-consumption surveys"] }
+        orders: {
+          title: "Orders & Consumption",
+          items: [
+            "Digital ordering system",
+            "Menu editable from Sheets",
+            "Automatic table billing"
+          ]
+        },
+        floor: {
+          title: "Floor Control",
+          items: [
+            "Table codes",
+            "Preparation times",
+            "Refill control"
+          ]
+        },
+        analysis: {
+          title: "Analysis & Improvement",
+          items: [
+            "Best-selling dishes",
+            "Tips tracking",
+            "Post-consumption surveys"
+          ]
+        }
       },
+
+      /* ── SECTOR: Education & Schools ─────────────── */
       education: {
         title: "Education & Schools",
-        management: { title: "School Management", items: ["Automatic attendance", "Grade records", "School schedules"] },
-        communication: { title: "Communication", items: ["Parent notifications", "Student surveys", "Incident logs"] },
-        docs: { title: "Documentation", items: ["PDF report cards", "Homework tracking", "Duty schedules"] }
+        management: {
+          title: "School Management",
+          items: [
+            "Automatic attendance",
+            "Grade records",
+            "School schedules"
+          ]
+        },
+        communication: {
+          title: "Communication",
+          items: [
+            "Parent notifications",
+            "Student surveys",
+            "Incident logs"
+          ]
+        },
+        docs: {
+          title: "Documentation",
+          items: [
+            "PDF report cards",
+            "Homework tracking",
+            "Duty schedules"
+          ]
+        }
       },
+
+      /* ── SECTOR: Courses & Digital Products ──────── */
       courses: {
         title: "Courses & Digital Products",
-        access: { title: "Access & Users", items: ["Student registration", "Code-based access", "Waiting lists"] },
-        tracking: { title: "Progress Tracking", items: ["Material delivery", "Progress dashboard", "Automatic reminders"] },
-        payments: { title: "Payments & Certification", items: ["Payment tracking", "Custom certificates", "Access renewal"] }
+        access: {
+          title: "Access & Users",
+          items: [
+            "Student registration",
+            "Code-based access",
+            "Waiting lists"
+          ]
+        },
+        tracking: {
+          title: "Progress Tracking",
+          items: [
+            "Material delivery",
+            "Progress dashboard",
+            "Automatic reminders"
+          ]
+        },
+        payments: {
+          title: "Payments & Certification",
+          items: [
+            "Payment tracking",
+            "Custom certificates",
+            "Access renewal"
+          ]
+        }
       }
-    },
 
-      /* ---------- TOOLS ---------- */
-      toolsPage: {
-        title: "Internal Tools",
-        intro:
-          "Access Thinkora internal tools.<br>" +
-          "Some require permissions depending on your team and status.",
-      
-        cards: {
-          quote: "Quote Generator",
-          viewQuotes: "View Quotes",
-          techGen: "Technical Proposal Generator",
-          viewTech: "View Technical Proposals",
-          contracts: "Contracts",
-          agents: "Agents Presentation",
-          packages: "Packages",
-          portfolio: "Portfolio",
-          createUser: "Create User"
-        },
-      
-        login: {
-          title: "Access Required",
-          id: "ID",
-          password: "Password",
-          confirmPassword: "Confirm Password",
-          team: "Team",
-          submit: "Login",
-          register: "Register user",
-          error: "You don't have permission to access.",
-          disabled: "Sending request..."
-        },
-      
-        register: {
-          title: "Join the Thinkora Team",
-          name: "Name",
-          lastName1: "Last Name",
-          lastName2: "Second Last Name",
-          phone: "Phone",
-          email: "Email",
-          password: "Password",
-          confirmPassword: "Confirm Password",
-          team: "Team",
-          submit: "Send request",
-          success: "Request sent successfully. Check your email."
-        },
-      
-        email: {
-          subject: "Request received - Thinkora",
-          body:
-            "Hello {{name}},\n\n" +
-            "We have received your request to join Thinkora.\n\n" +
-            "Team: {{team}}\n" +
-            "Email: {{email}}\n\n" +
-            "Your request is under review.\n\n" +
-            "Thinkora"
-        },
+    }, /* fin solutions */
 
-         descriptions: {
-        quote: "Generate custom quotes.",
+
+    /* ─────────────────────────────────────────────────
+       PÁGINA HERRAMIENTAS
+    ───────────────────────────────────────────────── */
+    toolsPage: {
+      title: "Internal Tools",
+      intro:
+        "Access Thinkora internal tools.<br>" +
+        "Some require permissions depending on your team and status.",
+
+      cards: {
+        quote:       "Quote Generator",
+        viewQuotes:  "View Quotes",
+        techGen:     "Technical Proposal Generator",
+        viewTech:    "View Technical Proposals",
+        contracts:   "Contracts",
+        agents:      "Agents Presentation",
+        packages:    "Packages",
+        portfolio:   "Portfolio",
+        createUser:  "Create User"
+      },
+
+      descriptions: {
+        quote:      "Generate custom quotes.",
         viewQuotes: "View quote history.",
-        techGen: "Create professional technical proposals.",
-        viewTech: "View saved proposals.",
-        contracts: "Manage active contracts.",
-        agents: "Material for sales agents.",
-        packages: "Business packages.",
-        projects: "Access external projects.",
+        techGen:    "Create professional technical proposals.",
+        viewTech:   "View saved proposals.",
+        contracts:  "Manage active contracts.",
+        agents:     "Material for sales agents.",
+        packages:   "Business packages.",
+        projects:   "Access external projects.",
         createUser: "Join the team."
       },
-      
-      registerModal: {
-        title: "New User Request",
-        cancel: "Cancel",
-        selectTeam: "Select team",
-         close: "Close"
-      }
+
+      login: {
+        title:           "Access Required",
+        id:              "ID",
+        password:        "Password",
+        confirmPassword: "Confirm Password",
+        team:            "Team",
+        submit:          "Login",
+        register:        "Register user",
+        error:           "You don't have permission to access.",
+        disabled:        "Sending request..."
       },
 
-        "faq": {
-           "title": "Frequently Asked Questions",
-           "subtitle": "Find answers about Thinkora and our digital solutions.",
-           "q1": "What is Thinkora?",
-           "a1": "Thinkora is a digital solutions platform focused on automation and web development.",
-           "q2": "What services do you offer?",
-           "a2": "Web development, administrative systems, Google Apps Script automation, and custom solutions.",
-           "q3": "Can I request a custom solution?",
-           "a3": "Yes. Thinkora builds tailored solutions for each project."
-         },
+      register: {
+        title:           "Join the Thinkora Team",
+        name:            "Name",
+        lastName1:       "Last Name",
+        lastName2:       "Second Last Name",
+        phone:           "Phone",
+        email:           "Email",
+        password:        "Password",
+        confirmPassword: "Confirm Password",
+        team:            "Team",
+        submit:          "Send request",
+        success:         "Request sent successfully. Check your email."
+      },
 
-     about: {
-        title: "About Us",
-        subtitle: "Learn about our vision, purpose and approach.",
-      
-        what: {
-          title: "What is Thinkora?",
-          text: "Thinkora is a digital solutions platform focused on transforming ideas into functional tools that generate real impact."
-        },
-      
-        purpose: {
-          title: "Our Purpose",
-          text: "Help businesses optimize processes, automate tasks, and grow through strategic technology."
-        },
-      
-        vision: {
-          title: "Our Vision",
-          text: "Build a digital ecosystem that supports our clients' growth and evolves with them."
-        },
-      
-        values: {
-          title: "Our Values",
-          text: "Clarity, functionality, practical innovation, commitment, and shared growth."
-        },
-      
-        accompaniment: {
-          title: "Support",
-          text: "We don't just deliver projects. We accompany our clients at every stage."
-        },
-      
-        human: {
-          title: "Human Capital",
-          text: "Thinkora promotes professional growth and talent integration into the team."
-        },
-      
-        faq: {
-          title: "Frequently Asked Questions"
-        }
-      }    
+      email: {
+        subject: "Request received - Thinkora",
+        body:
+          "Hello {{name}},\n\n" +
+          "We have received your request to join Thinkora.\n\n" +
+          "Team: {{team}}\n" +
+          "Email: {{email}}\n\n" +
+          "Your request is under review.\n\n" +
+          "Thinkora"
+      },
+
+      registerModal: {
+        title:      "New User Request",
+        cancel:     "Cancel",
+        selectTeam: "Select team",
+        close:      "Close"
+      }
+
+    }, /* fin toolsPage */
+
+
+    /* ─────────────────────────────────────────────────
+       PÁGINA NOSOTROS
+    ───────────────────────────────────────────────── */
+    about: {
+      title:    "About Us",
+      subtitle: "Learn about our vision, purpose and approach.",
+
+      what: {
+        title: "What is Thinkora?",
+        text:  "Thinkora is a digital solutions platform focused on transforming ideas into functional tools that generate real impact."
+      },
+      purpose: {
+        title: "Our Purpose",
+        text:  "Help businesses optimize processes, automate tasks, and grow through strategic technology."
+      },
+      vision: {
+        title: "Our Vision",
+        text:  "Build a digital ecosystem that supports our clients' growth and evolves with them."
+      },
+      values: {
+        title: "Our Values",
+        text:  "Clarity, functionality, practical innovation, commitment, and shared growth."
+      },
+      accompaniment: {
+        title: "Support",
+        text:  "We don't just deliver projects. We accompany our clients at every stage."
+      },
+      human: {
+        title: "Human Capital",
+        text:  "Thinkora promotes professional growth and talent integration into the team."
+      },
+      faq: {
+        title: "Frequently Asked Questions"
+      }
+    }, /* fin about */
+
+
+    /* ─────────────────────────────────────────────────
+       PREGUNTAS FRECUENTES
+    ───────────────────────────────────────────────── */
+    faq: {
+      title:    "Frequently Asked Questions",
+      subtitle: "Find answers about Thinkora and our digital solutions.",
+      q1: "What is Thinkora?",
+      a1: "Thinkora is a digital solutions platform focused on automation and web development.",
+      q2: "What services do you offer?",
+      a2: "Web development, administrative systems, Google Apps Script automation, and custom solutions.",
+      q3: "Can I request a custom solution?",
+      a3: "Yes. Thinkora builds tailored solutions for each project."
     }
-};
+
+    /*
+    ── AGREGAR PÁGINA NUEVA (EN) ────────────────────────
+    Misma estructura que en "es", pero en inglés.
+    ─────────────────────────────────────────────────── */
+
+  } /* fin en */
+
+}; /* fin translations */
+
 
 /* =====================================================
    MOTOR DE TRADUCCIÓN
+   ─────────────────────────────────────────────────────
+   NO modificar esta sección salvo que cambies
+   la lógica de renderizado del sistema i18n.
 ===================================================== */
 
 let currentLang = localStorage.getItem("language") || "es";
 
+/* Obtiene un valor anidado por ruta de puntos
+   Ejemplo: t("services.web.title") */
 function t(path) {
   return path
-    .split('.')
-    .reduce((obj, key) => obj[key], translations)[currentLang];
+    .split(".")
+    .reduce((obj, key) => obj?.[key], translations[currentLang]);
 }
 
+/* Cambia idioma, guarda en localStorage y re-renderiza */
 function setLanguage(lang) {
   currentLang = lang;
   localStorage.setItem("language", lang);
   applyTranslations(lang);
   renderItems();
-   document.documentElement.lang = lang;
+  document.documentElement.lang = lang;
 }
 
+/* Aplica texto a todos los elementos con data-i18n */
 function applyTranslations(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const keys = el.dataset.i18n.split(".");
     let text = translations[lang];
-    keys.forEach(k => text = text?.[k]);
+    keys.forEach(k => (text = text?.[k]));
     if (!text) return;
-    if (el.placeholder !== undefined) {
-        el.placeholder = text;
-      } else {
-        el.innerHTML = text;
-      }
+
+    /* Si es un input/textarea usa placeholder, si no innerHTML */
+    if (el.placeholder !== undefined && el.tagName !== "DIV") {
+      el.placeholder = text;
+    } else {
+      el.innerHTML = text;
+    }
   });
 }
 
+/* Renderiza arrays de items como <li> en elementos data-items
+   Usado en las cards flip de la sección soluciones */
 function renderItems() {
   document.querySelectorAll("[data-items]").forEach(el => {
     const keys = el.dataset.items.split(".");
     let items = translations[currentLang];
-    keys.forEach(k => items = items?.[k]);
+    keys.forEach(k => (items = items?.[k]));
     if (!Array.isArray(items)) return;
-    el.innerHTML = items.map(i => `<p>${i}</p>`).join("");
+    el.innerHTML = items.map(i => `<li>${i}</li>`).join("");
   });
 }
 
+/* Inicializa al cargar el DOM */
 document.addEventListener("DOMContentLoaded", () => {
   applyTranslations(currentLang);
   renderItems();
