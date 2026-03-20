@@ -213,7 +213,7 @@ const translations = {
         desc:  "Asesoría tecnológica para optimizar recursos y mejorar procesos en tu empresa."
       },
       uiux: {
-        title: "UI / UX Design",
+        title: "Diseño UI / UX",
         desc:  "Diseños atractivos y funcionales que garantizan la mejor experiencia al usuario."
       },
       support: {
