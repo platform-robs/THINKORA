@@ -633,19 +633,12 @@ const translations = {
     },
 
       contact: {
-        title:        "Contacto",
+        title:         "Contacto",
         subtitle:      "¿Tienes un proyecto en mente? Cuéntanos tu <span class='highlight'>idea</span> y la convertiremos en una solución digital real.",
         whatsappLabel: "WhatsApp",
         whatsappCta:   "Escríbenos ahora",
         emailLabel:    "Correo",
         emailCta:      "Envíanos un mensaje",
-        servicesLabel: "¿En qué podemos ayudarte?",
-        service1: { title: "Tiendas y Negocios",        desc: "..." },
-        service2: { title: "Paquetes Administrativos",   desc: "..." },
-        service3: { title: "Automatización",             desc: "..." },
-        service4: { title: "Desarrollo de Software",     desc: "..." },
-        service5: { title: "Instituciones y Escuelas",   desc: "..." },
-        service6: { title: "Proyectos Personalizados",   desc: "..." },
         cta: {
           title:       "¿Listo para <span class='hl'>empezar</span>?",
           body:        "No necesitas saber de tecnología. Simplemente dinos qué problema quieres solucionar y nosotros nos encargaremos del resto. El primer diagnóstico es gratuito.",
