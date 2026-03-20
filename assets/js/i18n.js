@@ -132,7 +132,7 @@ const translations = {
     dev: {
       title:     "En desarrollo",
       subtitle:  "Esta sección está actualmente en construcción",
-      cardTitle: "Estamos creando algo increíble 🚀",
+      cardTitle: "Estamos creando algo increíble",
       cardText:  "Esta página forma parte del ecosistema Thinkora. Estamos construyendo una experiencia digital moderna y poderosa.",
       status:    "EN DESARROLLO",
       nextTitle: "¿Qué sigue?",
@@ -708,7 +708,7 @@ const translations = {
     dev: {
       title:     "Under development",
       subtitle:  "This section is currently under construction",
-      cardTitle: "We are building something great 🚀",
+      cardTitle: "We are building something great",
       cardText:  "This page is part of the Thinkora ecosystem. We are crafting a modern and powerful digital experience.",
       status:    "IN DEVELOPMENT",
       nextTitle: "What's next?",
