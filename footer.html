@@ -7,7 +7,7 @@
   </div>
 
   <!-- Botones de contacto estilo pill -->
-  <!-- ⚠️ Cambiar número o correo aquí si cambian -->
+  <!-- ⚠️ Cambiar número, correo o URL de Instagram aquí si cambian -->
   <div class="footer-links">
 
     <a href="https://wa.me/524465165882"
@@ -22,6 +22,15 @@
        class="footer-btn footer-btn-email">
       <i class="fas fa-envelope"></i>
       <span>Mail</span>
+    </a>
+
+    <!-- ⚠️ Cambiar URL si cambia el Instagram -->
+    <a href="https://www.instagram.com/thinkora_platform?igsh=Y3h5b2tsYmtyaWsw&utm_source=qr"
+       class="footer-btn footer-btn-instagram"
+       target="_blank"
+       rel="noopener noreferrer">
+      <i class="fa-brands fa-instagram"></i>
+      <span>Instagram</span>
     </a>
 
   </div>
@@ -47,7 +56,6 @@
     color: #0b0b0b !important;
     border-radius: 100px;
   }
-
   .footer-btn-whatsapp:hover {
     background: var(--gradient-main) !important;
     box-shadow: 0 8px 24px rgba(0, 168, 198, 0.3);
@@ -62,7 +70,6 @@
     color: var(--text-main) !important;
     border-radius: 100px;
   }
-
   .footer-btn-email:hover {
     background: transparent !important;
     border-color: var(--accent-blue) !important;
@@ -70,9 +77,24 @@
     transform: translateY(-3px);
   }
 
+  /* Botón Instagram — pill outline rosa/morado */
+  .footer-btn-instagram {
+    background: transparent;
+    border: 1px solid var(--border-soft);
+    color: var(--text-main) !important;
+    border-radius: 100px;
+  }
+  .footer-btn-instagram:hover {
+    background: transparent !important;
+    border-color: #e1306c !important;
+    color: #e1306c !important;
+    transform: translateY(-3px);
+  }
+
   /* Transición compartida */
   .footer-btn-whatsapp,
-  .footer-btn-email {
+  .footer-btn-email,
+  .footer-btn-instagram {
     transition: box-shadow 0.28s ease, border-color 0.28s ease,
                 color 0.28s ease, transform 0.28s ease;
   }
