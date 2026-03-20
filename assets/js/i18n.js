@@ -633,9 +633,8 @@ const translations = {
     },
 
       contact: {
-        eyebrow:      "Hablemos",
         title:        "Contacto",
-        subtitle:     "...",
+        subtitle:      "¿Tienes un proyecto en mente? Cuéntanos tu <span class='highlight'>idea</span> y la convertiremos en una solución digital real.",
         whatsappLabel: "WhatsApp",
         whatsappCta:   "Escríbenos ahora",
         emailLabel:    "Correo",
@@ -1109,7 +1108,6 @@ const translations = {
     },
 
    contact: {
-     eyebrow:       "Let's talk",
      title:         "Contact",
      subtitle:      "Have a project in mind? Tell us your <span class='highlight'>idea</span> and we'll turn it into a real digital solution.",
      whatsappLabel: "WhatsApp",
