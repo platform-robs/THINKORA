@@ -40,37 +40,40 @@
      Solo lo que no está en styles.css
   ============================================ */
 
-  /* Botón WhatsApp — verde accent */
+  /* Botón WhatsApp — pill con gradiente (estilo CTA primario) */
   .footer-btn-whatsapp {
-    background: rgba(79, 209, 122, 0.08);
-    border: 1px solid rgba(79, 209, 122, 0.25);
-    color: var(--accent-green) !important;
+    background: var(--gradient-main);
+    border: none;
+    color: #0b0b0b !important;
     border-radius: 100px;
   }
 
   .footer-btn-whatsapp:hover {
-    background: rgba(79, 209, 122, 0.15) !important;
-    border-color: var(--accent-green) !important;
+    background: var(--gradient-main) !important;
+    box-shadow: 0 8px 24px rgba(0, 168, 198, 0.3);
     transform: translateY(-3px);
+    color: #0b0b0b !important;
   }
 
-  /* Botón Email — azul accent */
+  /* Botón Email — pill outline (estilo CTA secundario) */
   .footer-btn-email {
-    background: rgba(0, 168, 198, 0.08);
-    border: 1px solid rgba(0, 168, 198, 0.25);
-    color: var(--accent-blue) !important;
+    background: transparent;
+    border: 1px solid var(--border-soft);
+    color: var(--text-main) !important;
     border-radius: 100px;
   }
 
   .footer-btn-email:hover {
-    background: rgba(0, 168, 198, 0.15) !important;
+    background: transparent !important;
     border-color: var(--accent-blue) !important;
+    color: var(--accent-blue) !important;
     transform: translateY(-3px);
   }
 
   /* Transición compartida */
   .footer-btn-whatsapp,
   .footer-btn-email {
-    transition: background 0.28s ease, border-color 0.28s ease, transform 0.28s ease;
+    transition: box-shadow 0.28s ease, border-color 0.28s ease,
+                color 0.28s ease, transform 0.28s ease;
   }
 </style>
