@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- =====================================================
+       CONFIGURACIÓN BÁSICA
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Thinkora | Contacto</title>
+  <meta name="description" content="Contáctanos y convierte tus ideas en soluciones digitales reales. Thinkora está listo para ayudarte.">
+  <meta name="author" content="Salvador Robles">
+
+  <!-- =====================================================
+       FUENTES THINKORA
+  ====================================================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Comfortaa:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- =====================================================
+       CSS GLOBAL THINKORA
+  ====================================================== -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <style>
+    /* ============================================
+       VARIABLES LOCALES
+    ============================================ */
+    :root {
+      --radius-card: 16px;
+      --radius-sm:   10px;
+      --transition:  0.32s cubic-bezier(0.4, 0, 0.2, 1);
+      --glow-blue:   rgba(0, 168, 198, 0.15);
+      --glow-green:  rgba(79, 209, 122, 0.12);
+    }
+
+    /* ============================================
+       ANIMACIONES
+    ============================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+    @keyframes dot-pulse {
+      0%, 100% { opacity: 1;   transform: scale(1);   }
+      50%       { opacity: 0.3; transform: scale(0.6); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0);   }
+      50%       { transform: translateY(-8px); }
+    }
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0,168,198,0); }
+      50%       { box-shadow: 0 0 24px 4px rgba(0,168,198,0.18); }
+    }
+
+    /* ============================================
+       HERO
+    ============================================ */
+    .contact-hero {
+      text-align: center;
+      padding: 70px 0 50px;
+      position: relative;
+    }
+
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 640px;
+      height: 320px;
+      background: radial-gradient(ellipse at center, rgba(0,168,198,0.1) 0%, transparent 68%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,168,198,0.08);
+      border: 1px solid rgba(0,168,198,0.22);
+      border-radius: 100px;
+      padding: 6px 20px;
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-blue);
+      margin-bottom: 26px;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      animation: dot-pulse 2s infinite;
+    }
+
+    .title {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.6s 0.08s ease both;
+    }
+
+    .subtitle {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.6s 0.15s ease both;
+    }
+
+    .subtitle .highlight {
+      font-weight: 700;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ============================================
+       DIVISOR
+    ============================================ */
+    .section-divider {
+      height: 1px;
+      max-width: 500px;
+      margin: 60px auto;
+      background: linear-gradient(to right, transparent, var(--border-soft), transparent);
+    }
+
+    /* ============================================
+       ETIQUETA DE SECCIÓN
+    ============================================ */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 38px;
+    }
+    .section-label-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-soft);
+    }
+    .section-label-text {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* ============================================
+       BOTONES DE CONTACTO PRINCIPALES
+    ============================================ */
+    .contact-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 680px;
+      margin: 48px auto 0;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 24px 28px;
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border-soft);
+      background: var(--bg-card);
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+
+    /* línea superior de luz */
+    .contact-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, currentColor, transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    /* glow radial */
+    .contact-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-card);
+      opacity: 0;
+      transition: opacity var(--transition);
+      pointer-events: none;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-btn:hover::before { opacity: 0.6; }
+    .contact-btn:hover::after  { opacity: 1; }
+
+    /* ── WhatsApp ── */
+    .contact-btn.whatsapp {
+      border-color: rgba(79,209,122,0.25);
+      color: var(--accent-green);
+    }
+    .contact-btn.whatsapp::after {
+      background: radial-gradient(circle at left center, rgba(79,209,122,0.08), transparent 65%);
+    }
+    .contact-btn.whatsapp:hover {
+      border-color: var(--accent-green);
+      animation: glow-pulse 2s ease infinite;
+    }
+
+    /* ── Email ── */
+    .contact-btn.email {
+      border-color: rgba(0,168,198,0.25);
+      color: var(--accent-blue);
+    }
+    .contact-btn.email::after {
+      background: radial-gradient(circle at left center, rgba(0,168,198,0.08), transparent 65%);
+    }
+    .contact-btn.email:hover {
+      border-color: var(--accent-blue);
+      animation: glow-pulse 2s ease infinite;
+    }
+
+    /* ícono en caja */
+    .contact-btn-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      transition: transform var(--transition);
+    }
+
+    .whatsapp .contact-btn-icon {
+      background: rgba(79,209,122,0.1);
+      border: 1px solid rgba(79,209,122,0.22);
+      color: var(--accent-green);
+    }
+
+    .email .contact-btn-icon {
+      background: rgba(0,168,198,0.1);
+      border: 1px solid rgba(0,168,198,0.22);
+      color: var(--accent-blue);
+    }
+
+    .contact-btn:hover .contact-btn-icon {
+      transform: scale(1.1) rotate(-4deg);
+    }
+
+    .contact-btn-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .contact-btn-label {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .contact-btn-value {
+      font-family: 'Righteous', cursive;
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+
+    .contact-btn-cta {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--text-muted);
+    }
+
+    /* ============================================
+       CARDS DE PROPUESTA DE VALOR
+    ============================================ */
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .value-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-card);
+      padding: 26px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .value-card:nth-child(1) { animation-delay: 0.05s; }
+    .value-card:nth-child(2) { animation-delay: 0.10s; }
+    .value-card:nth-child(3) { animation-delay: 0.15s; }
+    .value-card:nth-child(4) { animation-delay: 0.20s; }
+    .value-card:nth-child(5) { animation-delay: 0.25s; }
+    .value-card:nth-child(6) { animation-delay: 0.30s; }
+
+    .value-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-card);
+      background: radial-gradient(circle at top left, var(--glow-blue), transparent 65%);
+      opacity: 0;
+      transition: opacity var(--transition);
+      pointer-events: none;
+    }
+
+    .value-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-4px);
+    }
+
+    .value-card:hover::after { opacity: 1; }
+
+    .value-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      background: rgba(0,168,198,0.1);
+      border: 1px solid rgba(0,168,198,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--accent-blue);
+      flex-shrink: 0;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .value-card:hover .value-icon {
+      background: rgba(0,168,198,0.2);
+      transform: scale(1.08) rotate(-3deg);
+    }
+
+    .value-card h3 {
+      font-family: 'Righteous', cursive;
+      font-size: 1rem;
+      color: var(--text-main);
+      margin: 0;
+    }
+
+    .value-card p {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ============================================
+       CTA FINAL
+    ============================================ */
+    .contact-cta {
+      background: var(--bg-card);
+      border: 1px solid rgba(0,168,198,0.25);
+      border-radius: var(--radius-card);
+      padding: 48px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    /* línea superior */
+    .contact-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 15%;
+      right: 15%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--accent-blue), transparent);
+    }
+
+    /* orb interior */
+    .contact-cta::after {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 200px;
+      background: radial-gradient(ellipse, rgba(0,168,198,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-cta h2 {
+      font-family: 'Righteous', cursive;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--text-main);
+      margin: 0 0 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-cta h2 .hl {
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contact-cta p {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 520px;
+      margin: 0 auto 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 28px;
+      border-radius: 100px;
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .cta-btn:hover { transform: translateY(-3px); }
+
+    .cta-btn.primary {
+      background: var(--gradient-main);
+      color: #0b0b0b;
+      border: none;
+    }
+
+    .cta-btn.primary:hover {
+      box-shadow: 0 8px 24px rgba(0,168,198,0.3);
+    }
+
+    .cta-btn.secondary {
+      background: transparent;
+      border: 1px solid var(--border-soft);
+      color: var(--text-main);
+    }
+
+    .cta-btn.secondary:hover {
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+    }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 768px) {
+      .contact-hero    { padding: 50px 0 30px; }
+      .contact-buttons { grid-template-columns: 1fr; max-width: 100%; }
+      .value-grid      { grid-template-columns: 1fr; }
+      .contact-cta     { padding: 36px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .contact-btn     { padding: 20px; }
+      .cta-buttons     { flex-direction: column; align-items: center; }
+      .cta-btn         { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR (integración existente — no modificar) -->
+  <div id="navbar-container"></div>
+
+  <main>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="contact-hero">
+      <div class="hero-eyebrow" data-i18n="contact.eyebrow"></div>
+      <h1 class="title"    data-i18n="contact.title"></h1>
+      <p  class="subtitle" data-i18n="contact.subtitle"></p>
+
+      <!-- ── BOTONES DE CONTACTO PRINCIPALES ── -->
+      <div class="contact-buttons">
+
+        <!-- WhatsApp -->
+        <!-- ⚠️ Cambiar número si cambia el WhatsApp de contacto -->
+        <a  class="contact-btn whatsapp"
+            href="https://wa.me/524465165882"
+            target="_blank"
+            rel="noopener noreferrer">
+          <div class="contact-btn-icon">
+            <i class="fa-brands fa-whatsapp"></i>
+          </div>
+          <div class="contact-btn-info">
+            <span class="contact-btn-label" data-i18n="contact.whatsappLabel"></span>
+            <span class="contact-btn-value">+52 446 516 5882</span>
+            <span class="contact-btn-cta"   data-i18n="contact.whatsappCta"></span>
+          </div>
+        </a>
+
+        <!-- Correo -->
+        <!-- ⚠️ Cambiar correo si cambia el email de contacto -->
+        <a  class="contact-btn email"
+            href="mailto:platform.robs@gmail.com">
+          <div class="contact-btn-icon">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div class="contact-btn-info">
+            <span class="contact-btn-label" data-i18n="contact.emailLabel"></span>
+            <span class="contact-btn-value">platform.robs@gmail.com</span>
+            <span class="contact-btn-cta"   data-i18n="contact.emailCta"></span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ===================== QUÉ PODEMOS HACER POR TI ===================== -->
+    <div class="section-label">
+      <span class="section-label-line"></span>
+      <span class="section-label-text" data-i18n="contact.servicesLabel"></span>
+      <span class="section-label-line"></span>
+    </div>
+
+    <div class="value-grid">
+
+      <div class="value-card">
+        <div class="value-icon"><i class="fa-solid fa-store"></i></div>
+        <h3 data-i18n="contact.service1.title"></h3>
+        <p  data-i18n="contact.service1.desc"></p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon"><i class="fa-solid fa-briefcase"></i></div>
+        <h3 data-i18n="contact.service2.title"></h3>
+        <p  data-i18n="contact.service2.desc"></p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon"><i class="fa-solid fa-robot"></i></div>
+        <h3 data-i18n="contact.service3.title"></h3>
+        <p  data-i18n="contact.service3.desc"></p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon"><i class="fa-solid fa-code"></i></div>
+        <h3 data-i18n="contact.service4.title"></h3>
+        <p  data-i18n="contact.service4.desc"></p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h3 data-i18n="contact.service5.title"></h3>
+        <p  data-i18n="contact.service5.desc"></p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <h3 data-i18n="contact.service6.title"></h3>
+        <p  data-i18n="contact.service6.desc"></p>
+      </div>
+
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ===================== CTA FINAL ===================== -->
+    <div class="contact-cta">
+      <h2 data-i18n="contact.cta.title"></h2>
+      <p  data-i18n="contact.cta.body"></p>
+      <div class="cta-buttons">
+        <!-- ⚠️ Cambiar número si cambia el WhatsApp de contacto -->
+        <a class="cta-btn primary"
+           href="https://wa.me/524465165882"
+           target="_blank"
+           rel="noopener noreferrer">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span data-i18n="contact.cta.btnWhatsapp"></span>
+        </a>
+        <!-- ⚠️ Cambiar correo si cambia el email de contacto -->
+        <a class="cta-btn secondary"
+           href="mailto:platform.robs@gmail.com">
+          <i class="fa-solid fa-envelope"></i>
+          <span data-i18n="contact.cta.btnEmail"></span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER (integración existente — no modificar) -->
+  <div id="footer-container"></div>
+
+  <!-- =====================================================
+       SCRIPTS — el orden importa
+  ====================================================== -->
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/footer.js"></script>
+
+</body>
+</html>
