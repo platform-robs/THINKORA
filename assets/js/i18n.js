@@ -648,7 +648,7 @@ const translations = {
         service6: { title: "Proyectos Personalizados",   desc: "..." },
         cta: {
           title:       "¿Listo para <span class='hl'>empezar</span>?",
-          body:        "...",
+          body:        "No necesitas saber de tecnología. Simplemente dinos qué problema quieres solucionar y nosotros nos encargaremos del resto. El primer diagnóstico es gratuito.",
           btnWhatsapp: "Escribir por WhatsApp",
           btnEmail:    "Enviar correo"
         }
