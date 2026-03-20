@@ -616,13 +616,13 @@ const translations = {
       a1: "Thinkora es una plataforma de soluciones digitales enfocada en automatización y desarrollo web a medida.",
 
       q2: "¿Qué servicios ofrecen?",
-      a2: "Desarrollo web, sistemas administrativos, automatización con Google Apps Script, aplicaciones a medida y soluciones personalizadas.",
+      a2: "Desarrollo web, sistemas administrativos, automatización, aplicaciones a medida y soluciones personalizadas.",
 
       q3: "¿Puedo solicitar una solución personalizada?",
       a3: "Sí. Thinkora desarrolla soluciones adaptadas a cada necesidad. Contáctanos y hacemos un diagnóstico sin costo.",
 
       q4: "¿Cuánto tiempo tarda un proyecto?",
-      a4: "Depende del alcance. Un sitio web puede entregarse en 1–2 semanas; un sistema más complejo puede tomar de 4 a 8 semanas. Siempre definimos tiempos claros al inicio.",
+      a4: "Depende del alcance. Siempre definimos tiempos claros al inicio y trabajamos con un cronograma.",
 
       q5: "¿Necesito conocimientos técnicos para trabajar con Thinkora?",
       a5: "No. Nos encargamos de todo el proceso técnico. Solo necesitas saber qué problema quieres resolver.",
@@ -1068,13 +1068,13 @@ const translations = {
       a1: "Thinkora is a digital solutions platform focused on custom automation and web development.",
 
       q2: "What services do you offer?",
-      a2: "Web development, administrative systems, Google Apps Script automation, custom applications, and tailored solutions.",
+      a2: "Web development, administrative & automation systems, custom applications, and tailored solutions.",
 
       q3: "Can I request a custom solution?",
       a3: "Yes. Thinkora builds tailored solutions for each project. Contact us and we will do a free diagnosis.",
 
       q4: "How long does a project take?",
-      a4: "It depends on the scope. A website can be delivered in 1–2 weeks; a more complex system may take 4 to 8 weeks. We always define clear timelines upfront.",
+      a4: "It depends on the scope. We always define clear timeframes at the beginning and work with a schedule.",
 
       q5: "Do I need technical knowledge to work with Thinkora?",
       a5: "No. We handle the entire technical process. You just need to know what problem you want to solve.",
