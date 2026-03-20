@@ -84,6 +84,39 @@
       z-index: 0;
     }
 
+
+    /* badge animado */
+    .dev-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 168, 198, 0.08);
+      border: 1px solid rgba(0, 168, 198, 0.22);
+      border-radius: 100px;
+      padding: 6px 20px;
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-blue);
+      margin-bottom: 26px;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .dev-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      animation: dot-pulse 2s infinite;
+    }
+
+
+    
     /* título — usa .title de styles.css (Righteous + gradient) */
     .title {
       font-size: clamp(2.2rem, 5vw, 3.5rem);
