@@ -633,17 +633,19 @@ const translations = {
     },
 
       contact: {
-        title:         "Contacto",
-        subtitle:      "¿Tienes un proyecto en mente? Cuéntanos tu <span class='highlight'>idea</span> y la convertiremos en una solución digital real.",
-        whatsappLabel: "WhatsApp",
-        whatsappCta:   "Escríbenos ahora",
-        emailLabel:    "Correo",
-        emailCta:      "Envíanos un mensaje",
+        title:          "Contacto",
+        subtitle:       "¿Tienes un proyecto en mente? Cuéntanos tu <span class='highlight'>idea</span> y la convertiremos en una solución digital real.",
+        whatsappLabel:  "WhatsApp",
+        whatsappCta:    "Escríbenos ahora",
+        emailLabel:     "Correo",
+        emailCta:       "Envíanos un mensaje",
+        instagramLabel: "Instagram",
+        instagramCta:   "Síguenos",
         cta: {
-          title:       "¿Listo para <span class='hl'>empezar</span>?",
-          body:        "No necesitas saber de tecnología. Simplemente dinos qué problema quieres solucionar y nosotros nos encargaremos del resto. El primer diagnóstico es gratuito.",
-          btnWhatsapp: "Escribir por WhatsApp",
-          btnEmail:    "Enviar correo"
+          title:        "¿Listo para <span class='hl'>empezar</span>?",
+          body:         "No necesitas saber de tecnología. Simplemente dinos qué problema quieres solucionar y nosotros nos encargaremos del resto. El primer diagnóstico es gratuito.",
+          btnWhatsapp:  "Escribir por WhatsApp",
+          btnEmail:     "Enviar correo"
         }
       }
 
@@ -1101,24 +1103,19 @@ const translations = {
     },
 
    contact: {
-     title:         "Contact",
-     subtitle:      "Have a project in mind? Tell us your <span class='highlight'>idea</span> and we'll turn it into a real digital solution.",
-     whatsappLabel: "WhatsApp",
-     whatsappCta:   "Message us now",
-     emailLabel:    "Email",
-     emailCta:      "Send us a message",
-     servicesLabel: "How can we help you?",
-     service1: { title: "Stores & Businesses",      desc: "Sales systems, inventory, quotations and administrative control for your business." },
-     service2: { title: "Administrative Packages",  desc: "Comprehensive solutions to manage operations, finances and clients from one place." },
-     service3: { title: "Automation",               desc: "We eliminate repetitive tasks with smart workflows using Google Apps Script and APIs." },
-     service4: { title: "Software Development",     desc: "Custom web applications and systems, designed exactly for what your project needs." },
-     service5: { title: "Institutions & Schools",   desc: "School management, parent communication, digital report cards and academic control." },
-     service6: { title: "Custom Projects",          desc: "Didn't find what you were looking for? We build it from scratch for your specific case." },
+     title:          "Contact",
+     subtitle:       "Have a project in mind? Tell us your <span class='highlight'>idea</span> and we'll turn it into a real digital solution.",
+     whatsappLabel:  "WhatsApp",
+     whatsappCta:    "Message us now",
+     emailLabel:     "Email",
+     emailCta:       "Send us a message",
+     instagramLabel: "Instagram",
+     instagramCta:   "Follow us",
      cta: {
-       title:       "Ready to <span class='hl'>get started</span>?",
-       body:        "You don't need to know about technology. Just tell us what problem you want to solve and we'll take care of the rest. The first diagnosis is free.",
-       btnWhatsapp: "Message on WhatsApp",
-       btnEmail:    "Send an email"
+       title:        "Ready to <span class='hl'>get started</span>?",
+       body:         "You don't need to know about technology. Just tell us what problem you want to solve and we'll take care of the rest. The first diagnosis is free.",
+       btnWhatsapp:  "Message on WhatsApp",
+       btnEmail:     "Send an email"
      }
    }
 
