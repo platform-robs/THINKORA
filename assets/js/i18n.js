@@ -134,6 +134,7 @@ const translations = {
       subtitle:  "Esta sección está actualmente en construcción",
       cardTitle: "Estamos creando algo increíble 🚀",
       cardText:  "Esta página forma parte del ecosistema Thinkora. Estamos construyendo una experiencia digital moderna y poderosa.",
+      status:    "EN DESARROLLO",
       nextTitle: "¿Qué sigue?",
       nextText:  "Nuevos servicios, proyectos y soluciones digitales están en camino.",
       progressLabel: "Progreso"       
@@ -715,6 +716,7 @@ const translations = {
       subtitle:  "This section is currently under construction",
       cardTitle: "We are building something great 🚀",
       cardText:  "This page is part of the Thinkora ecosystem. We are crafting a modern and powerful digital experience.",
+      status:    "IN DEVELOPMENT",
       nextTitle: "What's next?",
       nextText:  "New services, projects and digital solutions are coming soon.",
       progressLabel: "Progress"
