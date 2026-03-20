@@ -629,7 +629,30 @@ const translations = {
 
       q6: "¿Ofrecen soporte después de entregar el proyecto?",
       a6: "Sí. Ofrecemos planes de soporte y mantenimiento para que tus soluciones siempre funcionen correctamente."
-    }
+    },
+
+      contact: {
+        eyebrow:      "Hablemos",
+        title:        "Contacto",
+        subtitle:     "...",
+        whatsappLabel: "WhatsApp",
+        whatsappCta:   "Escríbenos ahora",
+        emailLabel:    "Correo",
+        emailCta:      "Envíanos un mensaje",
+        servicesLabel: "¿En qué podemos ayudarte?",
+        service1: { title: "Tiendas y Negocios",        desc: "..." },
+        service2: { title: "Paquetes Administrativos",   desc: "..." },
+        service3: { title: "Automatización",             desc: "..." },
+        service4: { title: "Desarrollo de Software",     desc: "..." },
+        service5: { title: "Instituciones y Escuelas",   desc: "..." },
+        service6: { title: "Proyectos Personalizados",   desc: "..." },
+        cta: {
+          title:       "¿Listo para <span class='hl'>empezar</span>?",
+          body:        "...",
+          btnWhatsapp: "Escribir por WhatsApp",
+          btnEmail:    "Enviar correo"
+        }
+      }
 
     /*
     ── AGREGAR PÁGINA NUEVA ─────────────────────────────
@@ -1081,7 +1104,30 @@ const translations = {
 
       q6: "Do you offer support after the project is delivered?",
       a6: "Yes. We offer support and maintenance plans to keep your solutions running smoothly."
-    }
+    },
+
+   contact: {
+     eyebrow:       "Let's talk",
+     title:         "Contact",
+     subtitle:      "Have a project in mind? Tell us your <span class='highlight'>idea</span> and we'll turn it into a real digital solution.",
+     whatsappLabel: "WhatsApp",
+     whatsappCta:   "Message us now",
+     emailLabel:    "Email",
+     emailCta:      "Send us a message",
+     servicesLabel: "How can we help you?",
+     service1: { title: "Stores & Businesses",      desc: "Sales systems, inventory, quotations and administrative control for your business." },
+     service2: { title: "Administrative Packages",  desc: "Comprehensive solutions to manage operations, finances and clients from one place." },
+     service3: { title: "Automation",               desc: "We eliminate repetitive tasks with smart workflows using Google Apps Script and APIs." },
+     service4: { title: "Software Development",     desc: "Custom web applications and systems, designed exactly for what your project needs." },
+     service5: { title: "Institutions & Schools",   desc: "School management, parent communication, digital report cards and academic control." },
+     service6: { title: "Custom Projects",          desc: "Didn't find what you were looking for? We build it from scratch for your specific case." },
+     cta: {
+       title:       "Ready to <span class='hl'>get started</span>?",
+       body:        "You don't need to know about technology. Just tell us what problem you want to solve and we'll take care of the rest. The first diagnosis is free.",
+       btnWhatsapp: "Message on WhatsApp",
+       btnEmail:    "Send an email"
+     }
+   }
 
     /*
     ── AGREGAR PÁGINA NUEVA (EN) ────────────────────────
