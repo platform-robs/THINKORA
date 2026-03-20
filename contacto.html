@@ -255,6 +255,23 @@
       animation: glow-pulse 2s ease infinite;
     }
 
+    /* ── Instagram ── */
+    .contact-btn.instagram {
+      border-color: rgba(225,48,108,0.25);
+      color: #e1306c;
+    }
+    .contact-btn.instagram::after {
+      background: radial-gradient(circle at left center, rgba(225,48,108,0.07), transparent 65%);
+    }
+    .contact-btn.instagram:hover {
+      border-color: #e1306c;
+    }
+    .instagram .contact-btn-icon {
+      background: rgba(225,48,108,0.08);
+      border: 1px solid rgba(225,48,108,0.2);
+      color: #e1306c;
+    }
+
     /* ícono en caja */
     .contact-btn-icon {
       width: 52px;
@@ -305,12 +322,6 @@
       color: var(--text-main);
     }
 
-    .contact-btn-cta {
-      font-family: 'Comfortaa', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 300;
-      color: var(--text-muted);
-    }
 
     /* ============================================
        CTA FINAL
@@ -457,8 +468,7 @@
           </div>
           <div class="contact-btn-info">
             <span class="contact-btn-label" data-i18n="contact.whatsappLabel"></span>
-            <span class="contact-btn-value">+52 446 516 5882</span>
-            <span class="contact-btn-cta"   data-i18n="contact.whatsappCta"></span>
+            <span class="contact-btn-value data-i18n="contact.whatsappCta"></span>
           </div>
         </a>
 
@@ -471,8 +481,23 @@
           </div>
           <div class="contact-btn-info">
             <span class="contact-btn-label" data-i18n="contact.emailLabel"></span>
-            <span class="contact-btn-value">platform.robs@gmail.com</span>
-            <span class="contact-btn-cta"   data-i18n="contact.emailCta"></span>
+            <span class="contact-btn-value data-i18n="contact.emailCta"></span>
+          </div>
+        </a>
+
+
+        <!-- Instagram -->
+        <!-- ⚠️ Cambiar URL si cambia el Instagram -->
+        <a  class="contact-btn instagram"
+            href="https://www.instagram.com/thinkora_platform?igsh=Y3h5b2tsYmtyaWsw&utm_source=qr"
+            target="_blank"
+            rel="noopener noreferrer">
+          <div class="contact-btn-icon">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+          <div class="contact-btn-info">
+            <span class="contact-btn-label" data-i18n="contact.instagramLabel"></span>
+            <span class="contact-btn-value data-i18n="contact.instagramCta"></span>
           </div>
         </a>
 
