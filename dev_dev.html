@@ -7,8 +7,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Thinkora | Contacto</title>
-  <meta name="description" content="Contáctanos y convierte tus ideas en soluciones digitales reales. Thinkora está listo para ayudarte.">
+  <title>Thinkora | En Desarrollo</title>
+  <meta name="description" content="Thinkora - Sección en desarrollo.">
   <meta name="author" content="Salvador Robles">
 
   <!-- =====================================================
@@ -40,47 +40,58 @@
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0);    }
     }
+
     @keyframes dot-pulse {
       0%, 100% { opacity: 1;   transform: scale(1);   }
       50%       { opacity: 0.3; transform: scale(0.6); }
     }
+
     @keyframes float {
-      0%, 100% { transform: translateY(0);   }
-      50%       { transform: translateY(-8px); }
+      0%, 100% { transform: translateY(0);    }
+      50%       { transform: translateY(-10px); }
     }
-    @keyframes glow-pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(0,168,198,0); }
-      50%       { box-shadow: 0 0 24px 4px rgba(0,168,198,0.18); }
+
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    @keyframes progress-bar {
+      from { width: 0%; }
+      to   { width: 72%; }
     }
 
     /* ============================================
-       HERO
+       HERO — CENTRADO
     ============================================ */
-    .contact-hero {
+    .dev-hero {
       text-align: center;
       padding: 70px 0 50px;
       position: relative;
     }
 
-    .contact-hero::before {
+    /* orb de fondo */
+    .dev-hero::before {
       content: '';
       position: absolute;
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 640px;
-      height: 320px;
+      width: 600px;
+      height: 300px;
       background: radial-gradient(ellipse at center, rgba(0,168,198,0.1) 0%, transparent 68%);
       pointer-events: none;
       z-index: 0;
     }
 
-    .hero-eyebrow {
+
+    /* badge animado */
+    .dev-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0,168,198,0.08);
-      border: 1px solid rgba(0,168,198,0.22);
+      background: rgba(0, 168, 198, 0.08);
+      border: 1px solid rgba(0, 168, 198, 0.22);
       border-radius: 100px;
       padding: 6px 20px;
       font-family: 'Comfortaa', sans-serif;
@@ -95,7 +106,7 @@
       animation: fadeUp 0.5s ease both;
     }
 
-    .hero-eyebrow::before {
+    .dev-eyebrow::before {
       content: '';
       width: 6px;
       height: 6px;
@@ -104,11 +115,14 @@
       animation: dot-pulse 2s infinite;
     }
 
+
+    
+    /* título — usa .title de styles.css (Righteous + gradient) */
     .title {
       font-size: clamp(2.2rem, 5vw, 3.5rem);
       line-height: 1.1;
       letter-spacing: -0.01em;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       position: relative;
       z-index: 1;
       animation: fadeUp 0.6s 0.08s ease both;
@@ -120,20 +134,12 @@
       font-weight: 300;
       color: var(--text-muted);
       line-height: 1.8;
-      max-width: 620px;
-      margin: 0 auto;
+      max-width: 560px;
+      margin: 0 auto 0;
       text-align: center;
       position: relative;
       z-index: 1;
       animation: fadeUp 0.6s 0.15s ease both;
-    }
-
-    .subtitle .highlight {
-      font-weight: 700;
-      background: var(--gradient-main);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
 
     /* ============================================
@@ -147,272 +153,257 @@
     }
 
     /* ============================================
-       BOTONES DE CONTACTO PRINCIPALES
+       ÍCONO CENTRAL FLOTANTE
     ============================================ */
-    .contact-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      max-width: 680px;
-      margin: 48px auto 0;
-      animation: fadeUp 0.6s 0.2s ease both;
-    }
-
-    .contact-btn {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      padding: 24px 28px;
-      border-radius: var(--radius-card);
-      border: 1px solid var(--border-soft);
-      background: var(--bg-card);
-      text-decoration: none;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: transform var(--transition), border-color var(--transition);
-    }
-
-    /* línea superior de luz */
-    .contact-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 10%;
-      right: 10%;
-      height: 1px;
-      background: linear-gradient(to right, transparent, currentColor, transparent);
-      opacity: 0;
-      transition: opacity var(--transition);
-    }
-
-    /* glow radial */
-    .contact-btn::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: var(--radius-card);
-      opacity: 0;
-      transition: opacity var(--transition);
-      pointer-events: none;
-    }
-
-    .contact-btn:hover {
-      transform: translateY(-5px);
-    }
-
-    .contact-btn:hover::before { opacity: 0.6; }
-    .contact-btn:hover::after  { opacity: 1; }
-
-    /* ── WhatsApp ── */
-    .contact-btn.whatsapp {
-      border-color: rgba(79,209,122,0.25);
-      color: var(--accent-green);
-    }
-    .contact-btn.whatsapp::after {
-      background: radial-gradient(circle at left center, rgba(79,209,122,0.08), transparent 65%);
-    }
-    .contact-btn.whatsapp:hover {
-      border-color: var(--accent-green);
-      animation: glow-pulse 2s ease infinite;
-    }
-
-    /* ── Email ── */
-    .contact-btn.email {
-      border-color: rgba(0,168,198,0.25);
-      color: var(--accent-blue);
-    }
-    .contact-btn.email::after {
-      background: radial-gradient(circle at left center, rgba(0,168,198,0.08), transparent 65%);
-    }
-    .contact-btn.email:hover {
-      border-color: var(--accent-blue);
-      animation: glow-pulse 2s ease infinite;
-    }
-
-    /* ícono en caja */
-    .contact-btn-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: var(--radius-sm);
+    .dev-icon-wrap {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
-      flex-shrink: 0;
-      transition: transform var(--transition);
-    }
-
-    .whatsapp .contact-btn-icon {
-      background: rgba(79,209,122,0.1);
-      border: 1px solid rgba(79,209,122,0.22);
-      color: var(--accent-green);
-    }
-
-    .email .contact-btn-icon {
-      background: rgba(0,168,198,0.1);
-      border: 1px solid rgba(0,168,198,0.22);
-      color: var(--accent-blue);
-    }
-
-    .contact-btn:hover .contact-btn-icon {
-      transform: scale(1.1) rotate(-4deg);
-    }
-
-    .contact-btn-info {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .contact-btn-label {
-      font-family: 'Comfortaa', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      opacity: 0.6;
-    }
-
-    .contact-btn-value {
-      font-family: 'Righteous', cursive;
-      font-size: 1rem;
-      color: var(--text-main);
-    }
-
-    .contact-btn-cta {
-      font-family: 'Comfortaa', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 300;
-      color: var(--text-muted);
-    }
-
-    /* ============================================
-       CTA FINAL
-    ============================================ */
-    .contact-cta {
-      background: var(--bg-card);
-      border: 1px solid rgba(0,168,198,0.25);
-      border-radius: var(--radius-card);
-      padding: 48px 36px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      margin: 48px 0 40px;
       animation: fadeUp 0.6s 0.2s ease both;
     }
 
-    /* línea superior */
-    .contact-cta::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 15%;
-      right: 15%;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--accent-blue), transparent);
-    }
-
-    /* orb interior */
-    .contact-cta::after {
-      content: '';
-      position: absolute;
-      top: -40px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 400px;
-      height: 200px;
-      background: radial-gradient(ellipse, rgba(0,168,198,0.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .contact-cta h2 {
-      font-family: 'Righteous', cursive;
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      color: var(--text-main);
-      margin: 0 0 14px;
+    .dev-icon-ring {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,168,198,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
-      z-index: 1;
+      animation: float 4s ease-in-out infinite;
     }
 
-    .contact-cta h2 .hl {
+    /* anillo exterior giratorio */
+    .dev-icon-ring::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px dashed rgba(0,168,198,0.2);
+      animation: spin-slow 12s linear infinite;
+    }
+
+    .dev-icon-ring i {
+      font-size: 2.8rem;
       background: var(--gradient-main);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .contact-cta p {
+    /* ============================================
+       CARD PRINCIPAL DE ESTADO
+    ============================================ */
+    .dev-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-card);
+      padding: 36px 32px;
+      max-width: 640px;
+      margin: 0 auto 60px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.6s 0.25s ease both;
+    }
+
+    /* glow superior */
+    .dev-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--accent-blue), transparent);
+    }
+
+    .dev-card h2 {
+      font-family: 'Righteous', cursive;
+      font-size: 1.4rem;
+      color: var(--text-main);
+      margin: 0 0 14px;
+    }
+
+    .dev-card p {
       font-family: 'Comfortaa', sans-serif;
       font-size: 0.92rem;
       font-weight: 300;
       color: var(--text-muted);
       line-height: 1.75;
-      max-width: 520px;
-      margin: 0 auto 32px;
-      position: relative;
-      z-index: 1;
+      margin: 0 0 28px;
     }
 
-    .cta-buttons {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta-btn {
+    /* ── badge de estado ── */
+    .dev-status {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 13px 28px;
+      gap: 8px;
+      background: rgba(0,168,198,0.08);
+      border: 1px solid rgba(0,168,198,0.22);
       border-radius: 100px;
+      padding: 6px 18px;
       font-family: 'Comfortaa', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-
-    .cta-btn:hover { transform: translateY(-3px); }
-
-    .cta-btn.primary {
-      background: var(--gradient-main);
-      color: #0b0b0b;
-      border: none;
-    }
-
-    .cta-btn.primary:hover {
-      box-shadow: 0 8px 24px rgba(0,168,198,0.3);
-    }
-
-    .cta-btn.secondary {
-      background: transparent;
-      border: 1px solid var(--border-soft);
-      color: var(--text-main);
-    }
-
-    .cta-btn.secondary:hover {
-      border-color: var(--accent-blue);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       color: var(--accent-blue);
+    }
+
+    .dev-status::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      animation: dot-pulse 1.8s infinite;
+    }
+
+    /* ── barra de progreso ── */
+    .dev-progress-wrap {
+      margin-top: 28px;
+    }
+
+    .dev-progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .dev-progress-label span:last-child {
+      color: var(--accent-blue);
+    }
+
+    .dev-progress-track {
+      height: 4px;
+      background: var(--border-soft);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .dev-progress-fill {
+      height: 100%;
+      background: var(--gradient-main);
+      border-radius: 4px;
+      width: 0%;
+      animation: progress-bar 1.4s 0.6s ease forwards;
+    }
+
+    /* ============================================
+       ETIQUETA DE SECCIÓN
+    ============================================ */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 38px;
+    }
+
+    .section-label-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-soft);
+    }
+
+    .section-label-text {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* ============================================
+       CARD "QUÉ SIGUE"
+    ============================================ */
+    .dev-next-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-card);
+      padding: 32px;
+      max-width: 640px;
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .dev-next-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-card);
+      background: radial-gradient(circle at top left, var(--glow-blue), transparent 65%);
+      opacity: 0;
+      transition: opacity var(--transition);
+      pointer-events: none;
+    }
+
+    .dev-next-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-4px);
+    }
+
+    .dev-next-card:hover::after { opacity: 1; }
+
+    .dev-next-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-sm);
+      background: rgba(0,168,198,0.1);
+      border: 1px solid rgba(0,168,198,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--accent-blue);
+      flex-shrink: 0;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .dev-next-card:hover .dev-next-icon {
+      background: rgba(0,168,198,0.2);
+      transform: scale(1.08) rotate(-3deg);
+    }
+
+    .dev-next-body h2 {
+      font-family: 'Righteous', cursive;
+      font-size: 1.1rem;
+      color: var(--text-main);
+      margin: 0 0 10px;
+    }
+
+    .dev-next-body p {
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin: 0;
     }
 
     /* ============================================
        RESPONSIVE
     ============================================ */
     @media (max-width: 768px) {
-      .contact-hero    { padding: 50px 0 30px; }
-      .contact-buttons { grid-template-columns: 1fr; max-width: 100%; }
-      .value-grid      { grid-template-columns: 1fr; }
-      .contact-cta     { padding: 36px 20px; }
-    }
-
-    @media (max-width: 480px) {
-      .contact-btn     { padding: 20px; }
-      .cta-buttons     { flex-direction: column; align-items: center; }
-      .cta-btn         { width: 100%; justify-content: center; }
+      .dev-hero    { padding: 50px 0 30px; }
+      .dev-card,
+      .dev-next-card { padding: 26px 20px; }
+      .dev-icon-ring { width: 90px; height: 90px; }
+      .dev-icon-ring i { font-size: 2.2rem; }
     }
   </style>
 </head>
@@ -425,48 +416,55 @@
   <main>
 
     <!-- ===================== HERO ===================== -->
-    <section class="contact-hero">
-      <div class="hero-eyebrow" data-i18n="contact.eyebrow"></div>
-      <h1 class="title"    data-i18n="contact.title"></h1>
-      <p  class="subtitle" data-i18n="contact.subtitle"></p>
-
-      <!-- ── BOTONES DE CONTACTO PRINCIPALES ── -->
-      <div class="contact-buttons">
-
-        <!-- WhatsApp -->
-        <!-- ⚠️ Cambiar número si cambia el WhatsApp de contacto -->
-        <a  class="contact-btn whatsapp"
-            href="https://wa.me/524465165882"
-            target="_blank"
-            rel="noopener noreferrer">
-          <div class="contact-btn-icon">
-            <i class="fa-brands fa-whatsapp"></i>
-          </div>
-          <div class="contact-btn-info">
-            <span class="contact-btn-label" data-i18n="contact.whatsappLabel"></span>
-            <span class="contact-btn-value">+52 446 516 5882</span>
-            <span class="contact-btn-cta"   data-i18n="contact.whatsappCta"></span>
-          </div>
-        </a>
-
-        <!-- Correo -->
-        <!-- ⚠️ Cambiar correo si cambia el email de contacto -->
-        <a class="contact-btn email" href="/cdn-cgi/l/email-protection#7f0f131e0b19100d12510d101d0c3f18121e1613511c1012">
-          <div class="contact-btn-icon">
-            <i class="fa-solid fa-envelope"></i>
-          </div>
-          <div class="contact-btn-info">
-            <span class="contact-btn-label" data-i18n="contact.emailLabel"></span>
-            <span class="contact-btn-value"><span class="__cf_email__" data-cfemail="40302c2134262f322d6e322f223300272d21292c6e232f2d">[email&#160;protected]</span></span>
-            <span class="contact-btn-cta"   data-i18n="contact.emailCta"></span>
-          </div>
-        </a>
-
-      </div>
+    <section class="dev-hero">
+      <h1 class="title"    data-i18n="dev.title"></h1>
+      <p  class="subtitle" data-i18n="dev.subtitle"></p>
     </section>
 
+    <!-- ícono flotante -->
+    <div class="dev-icon-wrap">
+      <div class="dev-icon-ring">
+        <i class="fa-solid fa-rocket"></i>
+      </div>
+    </div>
 
+    <!-- ===================== CARD ESTADO ===================== -->
+    <div class="dev-card">
+      <h2 data-i18n="dev.cardTitle"></h2>
+      <p  data-i18n="dev.cardText"></p>
 
+      <div class="dev-status" data-i18n="dev.status"></div>
+
+      <!-- Barra de progreso decorativa -->
+      <div class="dev-progress-wrap">
+        <div class="dev-progress-label">
+          <span data-i18n="dev.progressLabel"></span>
+          <span>72%</span>
+        </div>
+        <div class="dev-progress-track">
+          <div class="dev-progress-fill"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ===================== QUÉ SIGUE ===================== -->
+    <div class="section-label">
+      <span class="section-label-line"></span>
+      <span class="section-label-text" data-i18n="dev.nextTitle"></span>
+      <span class="section-label-line"></span>
+    </div>
+
+    <div class="dev-next-card">
+      <div class="dev-next-icon">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+      </div>
+      <div class="dev-next-body">
+        <h2 data-i18n="dev.nextTitle"></h2>
+        <p  data-i18n="dev.nextText"></p>
+      </div>
+    </div>
 
   </main>
 
@@ -475,4 +473,10 @@
 
   <!-- =====================================================
        SCRIPTS — el orden importa
-  ===============================================
+  ====================================================== -->
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/footer.js"></script>
+
+</body>
+</html>
