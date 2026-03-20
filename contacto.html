@@ -313,90 +313,6 @@
     }
 
     /* ============================================
-       CARDS DE PROPUESTA DE VALOR
-    ============================================ */
-    .value-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-    }
-
-    .value-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-card);
-      padding: 26px 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color var(--transition), transform var(--transition);
-      animation: fadeUp 0.5s ease both;
-    }
-
-    .value-card:nth-child(1) { animation-delay: 0.05s; }
-    .value-card:nth-child(2) { animation-delay: 0.10s; }
-    .value-card:nth-child(3) { animation-delay: 0.15s; }
-    .value-card:nth-child(4) { animation-delay: 0.20s; }
-    .value-card:nth-child(5) { animation-delay: 0.25s; }
-    .value-card:nth-child(6) { animation-delay: 0.30s; }
-
-    .value-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: var(--radius-card);
-      background: radial-gradient(circle at top left, var(--glow-blue), transparent 65%);
-      opacity: 0;
-      transition: opacity var(--transition);
-      pointer-events: none;
-    }
-
-    .value-card:hover {
-      border-color: var(--accent-blue);
-      transform: translateY(-4px);
-    }
-
-    .value-card:hover::after { opacity: 1; }
-
-    .value-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: var(--radius-sm);
-      background: rgba(0,168,198,0.1);
-      border: 1px solid rgba(0,168,198,0.18);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      color: var(--accent-blue);
-      flex-shrink: 0;
-      transition: background var(--transition), transform var(--transition);
-    }
-
-    .value-card:hover .value-icon {
-      background: rgba(0,168,198,0.2);
-      transform: scale(1.08) rotate(-3deg);
-    }
-
-    .value-card h3 {
-      font-family: 'Righteous', cursive;
-      font-size: 1rem;
-      color: var(--text-main);
-      margin: 0;
-    }
-
-    .value-card p {
-      font-family: 'Comfortaa', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    /* ============================================
        CTA FINAL
     ============================================ */
     .contact-cta {
@@ -514,7 +430,6 @@
     @media (max-width: 768px) {
       .contact-hero    { padding: 50px 0 30px; }
       .contact-buttons { grid-template-columns: 1fr; max-width: 100%; }
-      .value-grid      { grid-template-columns: 1fr; }
       .contact-cta     { padding: 36px 20px; }
     }
 
@@ -573,55 +488,6 @@
 
       </div>
     </section>
-
-    <div class="section-divider"></div>
-
-    <!-- ===================== QUÉ PODEMOS HACER POR TI ===================== -->
-    <div class="section-label">
-      <span class="section-label-line"></span>
-      <span class="section-label-text" data-i18n="contact.servicesLabel"></span>
-      <span class="section-label-line"></span>
-    </div>
-
-    <div class="value-grid">
-
-      <div class="value-card">
-        <div class="value-icon"><i class="fa-solid fa-store"></i></div>
-        <h3 data-i18n="contact.service1.title"></h3>
-        <p  data-i18n="contact.service1.desc"></p>
-      </div>
-
-      <div class="value-card">
-        <div class="value-icon"><i class="fa-solid fa-briefcase"></i></div>
-        <h3 data-i18n="contact.service2.title"></h3>
-        <p  data-i18n="contact.service2.desc"></p>
-      </div>
-
-      <div class="value-card">
-        <div class="value-icon"><i class="fa-solid fa-robot"></i></div>
-        <h3 data-i18n="contact.service3.title"></h3>
-        <p  data-i18n="contact.service3.desc"></p>
-      </div>
-
-      <div class="value-card">
-        <div class="value-icon"><i class="fa-solid fa-code"></i></div>
-        <h3 data-i18n="contact.service4.title"></h3>
-        <p  data-i18n="contact.service4.desc"></p>
-      </div>
-
-      <div class="value-card">
-        <div class="value-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-        <h3 data-i18n="contact.service5.title"></h3>
-        <p  data-i18n="contact.service5.desc"></p>
-      </div>
-
-      <div class="value-card">
-        <div class="value-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-        <h3 data-i18n="contact.service6.title"></h3>
-        <p  data-i18n="contact.service6.desc"></p>
-      </div>
-
-    </div>
 
     <div class="section-divider"></div>
 
