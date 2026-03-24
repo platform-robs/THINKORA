@@ -388,10 +388,14 @@ const translations = {
        Uso HTML: data-i18n="toolsPage.title"
     ───────────────────────────────────────────────── */
     toolsPage: {
-      title: "Herramientas Internas",
-      intro:
-        "Accede a las herramientas internas de Thinkora.<br>" +
-        "Algunas requieren permisos según tu equipo y estado.",
+      eyebrow:          "Panel de trabajo",
+      title:            "Herramientas Internas",
+      intro:            "Accede a las herramientas internas de Thinkora. Cada herramienta está diseñada para optimizar el trabajo del equipo.",
+      permissionNotice: "Todas las herramientas requieren permiso según el equipo",
+      sectionLabel:     "Herramientas disponibles",
+      allTeams:         "Todos los equipos",
+      joinLabel:        "Únete al equipo",
+      faqLabel:         "Preguntas frecuentes",
 
       /* ── Nombres de las cards ────────────────────── */
       cards: {
@@ -399,35 +403,29 @@ const translations = {
         ── AGREGAR HERRAMIENTA ──────────────────────
         nombreHerramienta: "Nombre visible en la card",
         ────────────────────────────────────────────*/
-        quote:       "Cotizador",
-        viewQuotes:  "Ver Cotizaciones",
-        techGen:     "Generar Propuesta Técnica",
-        viewTech:    "Ver Propuestas Técnicas",
-        contracts:   "Contratos",
-        agents:      "Presentación Agentes",
-        packages:    "Paquetes",
-        portfolio:   "Portafolio",
-        createUser:  "Crear Usuario"
+        tasks:      "Tareas",
+        quote:      "Cotizador",
+        viewQuotes: "Ver Cotizaciones",
+        techGen:    "Generar Propuesta Técnica",
+        viewTech:   "Ver Propuestas Técnicas",
+        contracts:  "Contratos",
+        notebooklm: "NotebookLM",
+        createUser: "Crear Usuario"
       },
 
       /* ── Descripciones de las cards ──────────────── */
       descriptions: {
-        /*
-        ── AGREGAR DESCRIPCIÓN ──────────────────────
-        nombreHerramienta: "Descripción corta.",
-        ────────────────────────────────────────────*/
-        quote:      "Genera cotizaciones personalizadas.",
-        viewQuotes: "Consulta historial de cotizaciones.",
-        techGen:    "Crea propuestas técnicas profesionales.",
-        viewTech:   "Consulta propuestas guardadas.",
-        contracts:  "Gestión de contratos activos.",
-        agents:     "Material para agentes comerciales.",
-        packages:   "Paquetes para negocios.",
-        projects:   "Acceso a proyectos externos.",
-        createUser: "Únete al equipo."
+        tasks:      "Gestiona y organiza las tareas del equipo en tiempo real.",
+        quote:      "Genera cotizaciones personalizadas para clientes.",
+        viewQuotes: "Consulta el historial de cotizaciones generadas.",
+        techGen:    "Crea propuestas técnicas profesionales de forma automática.",
+        viewTech:   "Consulta y descarga propuestas técnicas guardadas.",
+        contracts:  "Gestión y seguimiento de contratos activos.",
+        notebooklm: "Sistema de wikis y base de conocimiento del equipo.",
+        createUser: "Únete al equipo Thinkora. Solicita tu acceso aquí."
       },
 
-      /* ── Formulario de login ─────────────────────── */
+      /* ── Formulario de login (mantenido por compatibilidad) ── */
       login: {
         title:           "Acceso requerido",
         id:              "ID",
@@ -446,40 +444,59 @@ const translations = {
         name:            "Nombre",
         lastName1:       "Apellido Paterno",
         lastName2:       "Apellido Materno",
-        phone:           "Teléfono",
-        email:           "Correo",
-        password:        "Contraseña",
+        phone:           "Teléfono (10 dígitos)",
+        email:           "Correo electrónico",
+        password:        "Contraseña (mín. 8 caracteres)",
         confirmPassword: "Confirmar contraseña",
         team:            "Equipo",
         submit:          "Enviar solicitud",
-        success:         "Solicitud enviada correctamente. Revisa tu correo."
-      },
-
-      /* ── Email de confirmación ───────────────────── */
-      email: {
-        /*
-        ── VARIABLES DE PLANTILLA ──────────────────
-        {{name}}  → nombre del usuario
-        {{team}}  → equipo seleccionado
-        {{email}} → correo del usuario
-        ────────────────────────────────────────────*/
-        subject: "Solicitud recibida - Thinkora",
-        body:
-          "Hola {{name}},\n\n" +
-          "Hemos recibido tu solicitud para unirte al equipo Thinkora.\n\n" +
-          "Equipo: {{team}}\n" +
-          "Correo: {{email}}\n\n" +
-          "Tu solicitud está en revisión.\n\n" +
-          "Thinkora"
+        disabled:        "Enviando...",
+        success:         "Tu solicitud fue recibida. El equipo Thinkora revisará tu perfil y se pondrá en contacto contigo para una entrevista según el equipo al que aplicaste."
       },
 
       /* ── Modal de registro ───────────────────────── */
       registerModal: {
         title:      "Solicitud de Nuevo Usuario",
         cancel:     "Cancelar",
-        selectTeam: "Selecciona equipo",
+        selectTeam: "Selecciona tu equipo",
         close:      "Cerrar"
+      },
+
+      /* ── Sección únete al equipo ─────────────────── */
+      join: {
+        title:      "¿Quieres un <span class='hl'>ingreso extra</span>?",
+        body:       "Forma parte del equipo Thinkora y desarrolla tu carrera en tecnología, ventas, diseño o marketing. Trabajamos en proyectos reales con impacto directo en negocios. Tenemos equipos para distintos perfiles — encuentra el tuyo.",
+        btnRegister:  "Solicitar acceso",
+        btnWhatsapp:  "Informes por WhatsApp",
+        btnEmail:     "Escribir al correo"
+      },
+
+      /* ── FAQ de herramientas ─────────────────────── */
+      faq: {
+        /*
+        ── AGREGAR PREGUNTA ────────────────────────────
+        q7: "Pregunta aquí",
+        a7: "Respuesta aquí.",
+        ─────────────────────────────────────────────── */
+        q1: "¿Cómo obtengo acceso a las herramientas?",
+        a1: "Debes solicitar tu registro usando el botón 'Crear Usuario'. El equipo Thinkora revisará tu solicitud y te contactará para una entrevista.",
+
+        q2: "¿Cuánto tiempo tarda en activarse mi cuenta?",
+        a2: "El proceso de revisión tarda entre 24 y 72 horas. Recibirás notificación por correo o WhatsApp.",
+
+        q3: "¿Qué herramientas puedo usar según mi equipo?",
+        a3: "Todas las herramientas son accesibles para cualquier equipo, pero el nivel de permisos varía según tu rol. El equipo Admin tiene acceso completo.",
+
+        q4: "¿Qué es NotebookLM?",
+        a4: "Es el sistema de wikis interno del equipo. Contiene documentación, guías de procesos y recursos de conocimiento compartido.",
+
+        q5: "¿Puedo usar las herramientas desde mi celular?",
+        a5: "Sí. La plataforma Thinkora es 100% responsiva y funciona correctamente en cualquier dispositivo móvil.",
+
+        q6: "¿Qué hago si olvidé mi contraseña?",
+        a6: "Contacta al administrador del sistema por WhatsApp o correo para restablecer tu acceso."
       }
+
 
     }, /* fin toolsPage */
 
@@ -909,33 +926,35 @@ const translations = {
        PÁGINA HERRAMIENTAS
     ───────────────────────────────────────────────── */
     toolsPage: {
-      title: "Internal Tools",
-      intro:
-        "Access Thinkora internal tools.<br>" +
-        "Some require permissions depending on your team and status.",
+      eyebrow:          "Work panel",
+      title:            "Internal Tools",
+      intro:            "Access Thinkora's internal tools. Each tool is designed to optimize team workflow.",
+      permissionNotice: "All tools require permission based on your team",
+      sectionLabel:     "Available tools",
+      allTeams:         "All teams",
+      joinLabel:        "Join the team",
+      faqLabel:         "Frequently asked questions",
 
       cards: {
-        quote:       "Quote Generator",
-        viewQuotes:  "View Quotes",
-        techGen:     "Technical Proposal Generator",
-        viewTech:    "View Technical Proposals",
-        contracts:   "Contracts",
-        agents:      "Agents Presentation",
-        packages:    "Packages",
-        portfolio:   "Portfolio",
-        createUser:  "Create User"
+        tasks:      "Tasks",
+        quote:      "Quote Generator",
+        viewQuotes: "View Quotes",
+        techGen:    "Technical Proposal Generator",
+        viewTech:   "View Technical Proposals",
+        contracts:  "Contracts",
+        notebooklm: "NotebookLM",
+        createUser: "Create User"
       },
 
       descriptions: {
-        quote:      "Generate custom quotes.",
-        viewQuotes: "View quote history.",
-        techGen:    "Create professional technical proposals.",
-        viewTech:   "View saved proposals.",
-        contracts:  "Manage active contracts.",
-        agents:     "Material for sales agents.",
-        packages:   "Business packages.",
-        projects:   "Access external projects.",
-        createUser: "Join the team."
+        tasks:      "Manage and organize team tasks in real time.",
+        quote:      "Generate custom quotes for clients.",
+        viewQuotes: "View the history of generated quotes.",
+        techGen:    "Create professional technical proposals automatically.",
+        viewTech:   "View and download saved technical proposals.",
+        contracts:  "Management and tracking of active contracts.",
+        notebooklm: "Team wiki system and knowledge base.",
+        createUser: "Join the Thinkora team. Request your access here."
       },
 
       login: {
@@ -955,31 +974,49 @@ const translations = {
         name:            "Name",
         lastName1:       "Last Name",
         lastName2:       "Second Last Name",
-        phone:           "Phone",
-        email:           "Email",
-        password:        "Password",
+        phone:           "Phone (10 digits)",
+        email:           "Email address",
+        password:        "Password (min. 8 characters)",
         confirmPassword: "Confirm Password",
         team:            "Team",
         submit:          "Send request",
-        success:         "Request sent successfully. Check your email."
-      },
-
-      email: {
-        subject: "Request received - Thinkora",
-        body:
-          "Hello {{name}},\n\n" +
-          "We have received your request to join Thinkora.\n\n" +
-          "Team: {{team}}\n" +
-          "Email: {{email}}\n\n" +
-          "Your request is under review.\n\n" +
-          "Thinkora"
+        disabled:        "Sending...",
+        success:         "Your request has been received. The Thinkora team will review your profile and contact you for an interview based on the team you applied for."
       },
 
       registerModal: {
         title:      "New User Request",
         cancel:     "Cancel",
-        selectTeam: "Select team",
+        selectTeam: "Select your team",
         close:      "Close"
+      },
+
+      join: {
+        title:       "Want to earn <span class='hl'>extra income</span>?",
+        body:        "Join the Thinkora team and grow your career in technology, sales, design or marketing. We work on real projects with direct impact on businesses. We have teams for different profiles — find yours.",
+        btnRegister: "Request access",
+        btnWhatsapp: "WhatsApp inquiry",
+        btnEmail:    "Send an email"
+      },
+
+      faq: {
+        q1: "How do I get access to the tools?",
+        a1: "You must request your registration using the 'Create User' button. The Thinkora team will review your request and contact you for an interview.",
+
+        q2: "How long does it take to activate my account?",
+        a2: "The review process takes between 24 and 72 hours. You will be notified by email or WhatsApp.",
+
+        q3: "What tools can I use based on my team?",
+        a3: "All tools are accessible to any team, but permission levels vary by role. The Admin team has full access.",
+
+        q4: "What is NotebookLM?",
+        a4: "It is the team's internal wiki system. It contains documentation, process guides and shared knowledge resources.",
+
+        q5: "Can I use the tools from my phone?",
+        a5: "Yes. The Thinkora platform is 100% responsive and works correctly on any mobile device.",
+
+        q6: "What do I do if I forgot my password?",
+        a6: "Contact the system administrator by WhatsApp or email to reset your access."
       }
 
     }, /* fin toolsPage */
