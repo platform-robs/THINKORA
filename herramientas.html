@@ -702,6 +702,7 @@
 
     <!-- ===================== HERO ===================== -->
     <section class="tools-hero">
+      <div class="hero-eyebrow" data-i18n="toolsPage.eyebrow"></div>
       <h1 class="title" data-i18n="toolsPage.title"></h1>
       <p  class="subtitle" data-i18n="toolsPage.intro"></p>
       <div class="permission-notice">
@@ -709,6 +710,8 @@
         <span data-i18n="toolsPage.permissionNotice"></span>
       </div>
     </section>
+
+    <div class="section-divider"></div>
 
     <!-- ===================== HERRAMIENTAS ===================== -->
     <div class="section-label">
@@ -739,7 +742,7 @@
 
       <!-- ⚠️ Ver Cotizaciones — cambiar URL cuando esté lista -->
       <!-- const VER_COTIZACIONES_URL = "URL_AQUI"; -->
-      <div class="tool-card" onclick="window.location.href='cotizador.html'">
+      <div class="tool-card" onclick="window.location.href='dev.html'">
         <div class="tool-icon"><i class="fa-solid fa-file-lines"></i></div>
         <h3 data-i18n="toolsPage.cards.viewQuotes"></h3>
         <p  data-i18n="toolsPage.descriptions.viewQuotes"></p>
@@ -774,8 +777,8 @@
       </div>
 
       <!-- ⚠️ NotebookLM — cambiar URL cuando esté lista -->
-      <!-- const NOTEBOOKLM_URL= "https://notebooklm.google.com/notebook/857734ba-ac39-4c87-aa50-04f7cd007c79"; -->
-      <div class="tool-card" onclick="window.location.href='https://notebooklm.google.com/notebook/857734ba-ac39-4c87-aa50-04f7cd007c79'">
+      <!-- const NOTEBOOKLM_URL = "URL_AQUI"; -->
+      <div class="tool-card" onclick="window.location.href='dev.html'">
         <div class="tool-icon"><i class="fa-solid fa-book-open"></i></div>
         <h3 data-i18n="toolsPage.cards.notebooklm"></h3>
         <p  data-i18n="toolsPage.descriptions.notebooklm"></p>
@@ -822,7 +825,7 @@
 
         <!-- ⚠️ Cambiar número si cambia el WhatsApp de contacto -->
         <a class="join-btn whatsapp"
-           href="https://wa.me/524495165882?text=Hola%20Thinkora%2C%20me%20interesa%20formar%20parte%20del%20equipo%20y%20quisiera%20m%C3%A1s%20informaci%C3%B3n."
+           href="https://wa.me/524465165882?text=Hola%20Thinkora%2C%20me%20interesa%20formar%20parte%20del%20equipo%20y%20quisiera%20m%C3%A1s%20informaci%C3%B3n."
            target="_blank" rel="noopener noreferrer">
           <i class="fa-brands fa-whatsapp"></i>
           <span data-i18n="toolsPage.join.btnWhatsapp"></span>
@@ -986,7 +989,7 @@
         Nombre y apellidos siempre en MAYÚSCULAS
       -->
       <form id="userForm"
-        action="https://script.google.com/macros/s/AKfycbyyriFyvjjsYm30sDqyHfj87woIiW6eCYB8KJDDmMczb9mSqB2Bxsatytq4YMZaUaxj/exec"
+        action="https://script.google.com/macros/s/AKfycbx1khRzSR-ahU7o53ob5AtSTbQNd3qk1K8SGLmVAHLuG6cwBiwWfSBqgBcDfbIrj559/exec"
         method="POST"
         target="hidden_iframe"
         onsubmit="handleSubmit(event)">
@@ -1130,16 +1133,67 @@
       const msg = encodeURIComponent(
         `Nuevo registro Thinkora:\n\nNombre: ${nombre.value} ${apP.value}\nEquipo: ${equipo}\nID: ${id}\nCorreo: ${correo.value}`
       );
-      window.open(`https://wa.me/5214495165882?text=${msg}`, '_blank');
+      window.open(`https://wa.me/5214465165882?text=${msg}`, '_blank');
 
       /* Mensaje de confirmación */
-      alert(t('toolsPage.register.success'));
+      showSuccessPopup();
 
       /* Reset */
       form.reset();
       btn.disabled  = false;
       btn.innerText = t('toolsPage.register.submit') || 'Enviar solicitud';
       closeUserModal();
+    }
+    
+    /* ── MANEJO DEL FORMULARIO ── */
+
+    function showSuccessPopup() {
+    closeUserModal();
+    
+    const popup = document.createElement('div');
+    popup.style.cssText = `
+      position:fixed; inset:0; background:rgba(0,0,0,0.78);
+      display:flex; align-items:center; justify-content:center;
+      z-index:4000; padding:20px;
+    `;
+    popup.innerHTML = `
+      <div style="
+        background:linear-gradient(145deg,var(--bg-card),#0f172a);
+        border:1px solid rgba(0,168,198,0.3);
+        border-radius:20px; padding:40px 32px;
+        max-width:440px; width:100%; text-align:center;
+        box-shadow:0 25px 70px rgba(0,0,0,.7);
+      ">
+        <div style="
+          width:64px; height:64px; border-radius:50%;
+          background:rgba(79,209,122,0.12);
+          border:1px solid rgba(79,209,122,0.3);
+          display:flex; align-items:center; justify-content:center;
+          font-size:1.8rem; margin:0 auto 20px;
+        ">✅</div>
+        <h2 style="
+          font-family:'Righteous',cursive; font-size:1.4rem;
+          background:var(--gradient-main);
+          -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+          background-clip:text; margin:0 0 14px;
+        ">¡Solicitud recibida!</h2>
+        <p style="
+          font-family:'Comfortaa',sans-serif; font-size:0.9rem;
+          font-weight:300; color:var(--text-muted);
+          line-height:1.75; margin:0 0 28px;
+        ">
+          Revisaremos tu información y nos pondremos en contacto contigo
+          para <strong style="color:var(--text-main);">confirmar tus datos</strong>
+          y continuar con el proceso.
+        </p>
+        <button onclick="this.parentElement.parentElement.remove()" style="
+          width:100%; padding:13px 16px; border-radius:12px; border:none;
+          background:var(--gradient-main); font-family:'Comfortaa',sans-serif;
+          font-weight:700; font-size:0.9rem; color:#0b0b0b; cursor:pointer;
+        ">Entendido</button>
+      </div>
+    `;
+    document.body.appendChild(popup);
     }
 
   </script>
