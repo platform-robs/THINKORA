@@ -650,6 +650,114 @@
       color: var(--accent-blue);
     }
 
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.78);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+      padding: 20px;
+    }
+    
+    .modal {
+      background: linear-gradient(145deg, var(--bg-card), #0f172a);
+      padding: 36px 32px;
+      border-radius: 20px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 25px 70px rgba(0,0,0,.7);
+    }
+    
+    .modal h2 {
+      font-family: 'Righteous', cursive;
+      font-size: 1.4rem;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0 0 22px;
+    }
+    
+    .modal input,
+    .modal select {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-main);
+      font-family: 'Comfortaa', sans-serif;
+      font-size: 0.88rem;
+      transition: .2s ease;
+      box-sizing: border-box;
+    }
+    
+    .modal input:focus,
+    .modal select:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      background: rgba(0,168,198,0.06);
+    }
+    
+    .modal select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white'%3E%3Cpath d='M4 6l4 4 4-4z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 14px;
+      cursor: pointer;
+    }
+    
+    .modal select option {
+      background-color: #0f172a;
+      color: white;
+    }
+    
+    .modal-btn-primary {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 12px;
+      border: none;
+      background: var(--gradient-main);
+      font-family: 'Comfortaa', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #0b0b0b;
+      cursor: pointer;
+      transition: .2s ease;
+      margin-bottom: 10px;
+    }
+    
+    .modal-btn-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+    
+    .modal-btn-secondary {
+      width: 100%;
+      padding: 11px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      background: transparent;
+      font-family: 'Comfortaa', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: .2s ease;
+    }
+    
+    .modal-btn-secondary:hover {
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+    }
     /* ============================================
        FAQ
     ============================================ */
@@ -1118,6 +1226,129 @@
     progressBar.style.width = (1 / total * 100) + '%';
     startAuto();
 
+
+    /* ── MODAL CREAR USUARIO ── */
+    function openUserModal()  { document.getElementById('userModal').style.display = 'flex'; }
+    function closeUserModal() { document.getElementById('userModal').style.display = 'none'; }
+    
+    /* Cerrar al click fuera del modal */
+    document.addEventListener('click', e => {
+      document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        if (e.target === overlay) overlay.style.display = 'none';
+      });
+    });
+    
+    /* ── GENERADOR DE ID ── */
+    function generateId() {
+      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const numbers = '0123456789';
+      let id = '';
+      for (let i = 0; i < 3; i++) id += letters[Math.floor(Math.random() * letters.length)];
+      for (let i = 0; i < 3; i++) id += numbers[Math.floor(Math.random() * numbers.length)];
+      return id;
+    }
+    
+    /* ── MANEJO DEL FORMULARIO ── */
+    function handleSubmit(event) {
+      event.preventDefault();
+    
+      const form   = document.getElementById('userForm');
+      const btn    = document.getElementById('submitBtn');
+      const nombre = form.nombre;
+      const apP    = form.apellidoP;
+      const apM    = form.apellidoM;
+      const tel    = form.telefono;
+      const correo = form.correo;
+      const equipo = form.equipo.value;
+      const p1     = document.getElementById('pass1');
+      const p2     = document.getElementById('pass2');
+    
+      if (!/^[0-9]{10}$/.test(tel.value))              { alert(t('alerts.phone'));           return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo.value)) { alert(t('alerts.invalidEmail')); return; }
+      if (p1.value.length < 8)                          { alert(t('alerts.passwordLength'));  return; }
+      if (p1.value !== p2.value)                        { alert(t('alerts.passwordMismatch'));return; }
+    
+      nombre.value = nombre.value.toUpperCase().trim();
+      apP.value    = apP.value.toUpperCase().trim();
+      apM.value    = apM.value.toUpperCase().trim();
+    
+      const id    = generateId();
+      const hoy   = new Date();
+      const fecha = `${hoy.getDate()}/${hoy.getMonth()+1}/${hoy.getFullYear()}`;
+    
+      document.getElementById('generatedId').value = id;
+      document.getElementById('regDate').value      = fecha;
+    
+      btn.disabled  = true;
+      btn.innerText = t('toolsPage.register.disabled') || 'Enviando...';
+    
+      form.submit();
+    
+      const msg = encodeURIComponent(
+        `Nuevo registro Thinkora:\n\nNombre: ${nombre.value} ${apP.value}\nEquipo: ${equipo}\nID: ${id}\nCorreo: ${correo.value}`
+      );
+      window.open(`https://wa.me/5214465165882?text=${msg}`, '_blank');
+    
+      showSuccessPopup();
+    
+      form.reset();
+      btn.disabled  = false;
+      btn.innerText = t('toolsPage.register.submit') || 'Enviar solicitud';
+      closeUserModal();
+    }
+    
+    function showSuccessPopup() {
+      closeUserModal();
+      const popup = document.createElement('div');
+      popup.style.cssText = `
+        position:fixed; inset:0; background:rgba(0,0,0,0.78);
+        display:flex; align-items:center; justify-content:center;
+        z-index:4000; padding:20px;
+      `;
+      popup.innerHTML = `
+        <div style="
+          background:linear-gradient(145deg,var(--bg-card),#0f172a);
+          border:1px solid rgba(0,168,198,0.3);
+          border-radius:20px; padding:40px 32px;
+          max-width:440px; width:100%; text-align:center;
+          box-shadow:0 25px 70px rgba(0,0,0,.7);
+        ">
+          <div style="
+            width:64px; height:64px; border-radius:50%;
+            background:rgba(79,209,122,0.12);
+            border:1px solid rgba(79,209,122,0.3);
+            display:flex; align-items:center; justify-content:center;
+            font-size:1.8rem; margin:0 auto 20px;
+          ">✅</div>
+          <h2 style="
+            font-family:'Righteous',cursive; font-size:1.4rem;
+            background:var(--gradient-main);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            background-clip:text; margin:0 0 14px;
+          ">¡Solicitud recibida!</h2>
+          <p style="
+            font-family:'Comfortaa',sans-serif; font-size:0.9rem;
+            font-weight:300; color:var(--text-muted);
+            line-height:1.75; margin:0 0 28px;
+          ">
+            Revisaremos tu información y nos pondremos en contacto contigo
+            para <strong style="color:var(--text-main);">confirmar tus datos</strong>
+            y continuar con el proceso.
+          </p>
+          <button onclick="this.parentElement.parentElement.remove()" style="
+            width:100%; padding:13px 16px; border-radius:12px; border:none;
+            background:var(--gradient-main); font-family:'Comfortaa',sans-serif;
+            font-weight:700; font-size:0.9rem; color:#0b0b0b; cursor:pointer;
+          ">Entendido</button>
+        </div>
+      `;
+      document.body.appendChild(popup);
+    }
+
+    
+    
+    
+
     /* -------------------------------------------------------
        FAQ ACCORDION
     ------------------------------------------------------- */
@@ -1139,6 +1370,48 @@
   <script src="assets/js/i18n.js"></script>
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/footer.js"></script>
+
+  <!-- MODAL CREAR USUARIO -->
+<div class="modal-overlay" id="userModal">
+  <div class="modal">
+    <h2 data-i18n="toolsPage.registerModal.title"></h2>
+    <form id="userForm"
+      action="https://script.google.com/macros/s/AKfycbx1khRzSR-ahU7o53ob5AtSTbQNd3qk1K8SGLmVAHLuG6cwBiwWfSBqgBcDfbIrj559/exec"
+      method="POST"
+      target="hidden_iframe"
+      onsubmit="handleSubmit(event)">
+
+      <input name="nombre"    type="text"     data-i18n="toolsPage.register.name"            placeholder="">
+      <input name="apellidoP" type="text"     data-i18n="toolsPage.register.lastName1"        placeholder="">
+      <input name="apellidoM" type="text"     data-i18n="toolsPage.register.lastName2"        placeholder="">
+      <input name="telefono"  type="tel"      data-i18n="toolsPage.register.phone"            placeholder="">
+      <input name="correo"    type="email"    data-i18n="toolsPage.register.email"            placeholder="">
+      <input name="password"  type="password" id="pass1" data-i18n="toolsPage.register.password" placeholder="">
+      <input                  type="password" id="pass2" data-i18n="toolsPage.register.confirmPassword" placeholder="">
+
+      <input name="id"     type="hidden" id="generatedId">
+      <input name="estado" type="hidden" value="Pendiente">
+      <input name="fecha"  type="hidden" id="regDate">
+
+      <select name="equipo" required>
+        <option value="" data-i18n="toolsPage.registerModal.selectTeam"></option>
+        <option value="Sales">Sales</option>
+        <option value="Tech">Tech</option>
+        <option value="Design">Design</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Admin">Admin</option>
+      </select>
+
+      <button type="submit" class="modal-btn-primary" id="submitBtn"
+              data-i18n="toolsPage.register.submit"></button>
+    </form>
+
+    <button class="modal-btn-secondary" onclick="closeUserModal()"
+            data-i18n="toolsPage.registerModal.cancel"></button>
+  </div>
+</div>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
 
 </body>
 </html>
