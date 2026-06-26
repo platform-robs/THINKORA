@@ -209,6 +209,7 @@
     .tool-card:nth-child(5) { animation-delay: 0.20s; }
     .tool-card:nth-child(6) { animation-delay: 0.24s; }
     .tool-card:nth-child(7) { animation-delay: 0.28s; }
+    .tool-card:nth-child(8) { animation-delay: 0.32s; }
 
     .tool-card::after {
       content: '';
@@ -773,6 +774,15 @@
         <div class="tool-icon"><i class="fa-solid fa-file-contract"></i></div>
         <h3 data-i18n="toolsPage.cards.contracts"></h3>
         <p  data-i18n="toolsPage.descriptions.contracts"></p>
+        <span class="tool-badge"><i class="fa-solid fa-lock"></i> <span data-i18n="toolsPage.allTeams"></span></span>
+      </div>
+
+      <!-- ⚠️ Proyectos Abiertos — cambiar URL cuando esté lista -->
+      <!-- const PROYECTOS_URL = "URL_AQUI"; -->
+      <div class="tool-card" onclick="window.location.href='dev.html'">
+        <div class="tool-icon"><i class="fa-solid fa-diagram-project"></i></div>
+        <h3 data-i18n="toolsPage.cards.openProjects"></h3>
+        <p  data-i18n="toolsPage.descriptions.openProjects"></p>
         <span class="tool-badge"><i class="fa-solid fa-lock"></i> <span data-i18n="toolsPage.allTeams"></span></span>
       </div>
 
