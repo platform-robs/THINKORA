@@ -409,6 +409,7 @@ const translations = {
         techGen:    "Generar Propuesta Técnica",
         viewTech:   "Ver Propuestas Técnicas",
         contracts:  "Contratos",
+        openProjects: "Proyectos Abiertos",
         notebooklm: "NotebookLM",
         createUser: "Crear Usuario"
       },
@@ -421,6 +422,7 @@ const translations = {
         techGen:    "Crea propuestas técnicas profesionales de forma automática.",
         viewTech:   "Consulta y descarga propuestas técnicas guardadas.",
         contracts:  "Gestión y seguimiento de contratos activos.",
+        openProjects: "Explora los proyectos activos en los que puedes participar como miembro del equipo Thinkora.",
         notebooklm: "Sistema de wikis y base de conocimiento del equipo.",
         createUser: "Únete al equipo Thinkora. Solicita tu acceso aquí."
       },
@@ -942,6 +944,7 @@ const translations = {
         techGen:    "Technical Proposal Generator",
         viewTech:   "View Technical Proposals",
         contracts:  "Contracts",
+        openProjects: "Open Projects",
         notebooklm: "NotebookLM",
         createUser: "Create User"
       },
@@ -953,6 +956,7 @@ const translations = {
         techGen:    "Create professional technical proposals automatically.",
         viewTech:   "View and download saved technical proposals.",
         contracts:  "Management and tracking of active contracts.",
+        openProjects: "Explore active projects you can join as a Thinkora team member.",
         notebooklm: "Team wiki system and knowledge base.",
         createUser: "Join the Thinkora team. Request your access here."
       },
