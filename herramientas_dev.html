@@ -834,12 +834,12 @@
         </button>
 
         <!-- ⚠️ Cambiar número si cambia el WhatsApp de contacto -->
-        <!-- <a class="join-btn whatsapp"
+        <a class="join-btn whatsapp"
            href="https://wa.me/524465165882?text=Hola%20Thinkora%2C%20me%20interesa%20formar%20parte%20del%20equipo%20y%20quisiera%20m%C3%A1s%20informaci%C3%B3n."
            target="_blank" rel="noopener noreferrer">
           <i class="fa-brands fa-whatsapp"></i>
           <span data-i18n="toolsPage.join.btnWhatsapp"></span>
-        </a> -->
+        </a>
 
         <!-- ⚠️ Cambiar correo si cambia el email de contacto -->
         <a class="join-btn email-btn"
@@ -1138,12 +1138,12 @@
       /* Enviar al Google Apps Script */
       form.submit();
 
-      // /* Notificación WhatsApp al admin */
-      // /* ⚠️ Cambiar número si cambia el WhatsApp admin */
-      // const msg = encodeURIComponent(
-      //   `Nuevo registro Thinkora:\n\nNombre: ${nombre.value} ${apP.value}\nEquipo: ${equipo}\nID: ${id}\nCorreo: ${correo.value}`
-      // );
-      // window.open(`https://wa.me/5214465165882?text=${msg}`, '_blank');
+      /* Notificación WhatsApp al admin */
+      /* ⚠️ Cambiar número si cambia el WhatsApp admin */
+      const msg = encodeURIComponent(
+        `Nuevo registro Thinkora:\n\nNombre: ${nombre.value} ${apP.value}\nEquipo: ${equipo}\nID: ${id}\nCorreo: ${correo.value}`
+      );
+      window.open(`https://wa.me/5214465165882?text=${msg}`, '_blank');
 
       /* Mensaje de confirmación */
       showSuccessPopup();
